@@ -1,0 +1,756 @@
+
+    
+    
+    
+      
+    digraph H {
+     label=<<font point-size="30"><table border="0"><tr><td bgcolor="black" colspan="2"/></tr><tr><td colspan="2">Data Generation flow for metric pack "Core workforce metric pack"</td></tr><tr><td>dbprefix=EM</td><td> id=WORKFORCE</td></tr><tr><td colspan="2"><font point-size="22"><table cellspacing="0" cellpadding="4"><tr><td colspan="5"> concept scenario, not complete or realistic </td><td/></tr><tr><td>(Fat border):  Persisted Table</td><td> (White): Views </td><td> (Filled lean border: Computations) 
+           </td><td bgcolor="lightsalmon1"> Joins </td><td bgcolor="khaki">Generator</td><td bgcolor="yellow">Post Event Calculation</td></tr><tr><td bgcolor="plum1">Fact table</td><td bgcolor="olivedrab1"> Source tables</td><td bgcolor="palegreen"> Config table</td><td/><td bgcolor="paleturquoise1">EventDriver </td><td bgcolor="lightblue"> FillStrategy</td></tr></table></font></td></tr><tr><td colspan="2"><font point-size="22"><table cellspacing="0" cellpadding="4"><tr><td bgcolor="grey"> namespace example </td><td bgcolor="grey"> Meaning </td><td bgcolor="grey"> Used for</td></tr><tr><td> EM/DA/ </td><td> Owned by Data Aquisition service</td><td> tables, views ...</td></tr><tr><td> EM/DG/ </td><td> Owned by Data Generation servcie</td><td> tables/views ...</td></tr><tr><td> EM/DG/QU/ </td><td> Query or view, not actual table</td><td> view</td></tr><tr><td> EM/DG/GEN/ </td><td> Generated, code view, not in DB</td><td> non-db</td></tr><tr><td> /EM/DG/ </td><td> column calculated in data generation,not in original table</td><td> column</td></tr><tr><td> &lt; no namespace&gt; </td><td> plain column presentin source table</td><td>both </td></tr></table></font></td></tr><tr><td bgcolor="black" colspan="2"/></tr></table></font>>
+      labelloc=top;
+      overlap=false;
+      rankdir=LR;
+      splines=true;
+        labeljust=left;
+  
+  
+   
+          NFACT_0FIN [
+   shape=plaintext
+   label=<<table align="LEFT" bgcolor="plum1" cellborder="1" border="8"><tr><td colspan="1">Final Fact Table <br/>Fact EM/DG/FACTFIN</td></tr><tr><td align="LEFT" port="PNPERSON_ID">PERSON_ID</td></tr><tr><td align="LEFT" port="PNSTART_DATE">START_DATE</td></tr><tr><td align="LEFT" port="PNNORM_EVENT">NORM_EVENT</td></tr><tr><td align="LEFT" port="PNAGE_GROUP">AGE_GROUP</td></tr><tr><td align="LEFT" port="PNWEIGHT_GROUP">WEIGHT_GROUP</td></tr><tr><td align="LEFT" port="PNCOUNTRY">COUNTRY</td></tr><tr><td align="LEFT" port="PNGENDER">GENDER</td></tr><tr><td align="LEFT" port="PNCOUNTRY_LOCATION">COUNTRY_LOCATION</td></tr><tr><td align="LEFT" port="PNPAYGROUP">PAYGROUP</td></tr><tr><td align="LEFT" port="PNLOCCODE">LOCCODE</td></tr><tr><td align="LEFT" port="PNREASON">REASON</td></tr><tr><td align="LEFT" port="PNTRAVEL_COMP_GROUP">TRAVEL_COMP_GROUP</td></tr><tr><td align="LEFT" port="PNEMPLOYMENT_STATUS">EMPLOYMENT_STATUS</td></tr><tr><td align="LEFT" port="PNWEIGHT">WEIGHT</td></tr><tr><td align="LEFT" port="PNDIST_WORK_HOME">DIST_WORK_HOME</td></tr><tr><td align="LEFT" port="PNMONTHS_SINCE_HIRE">MONTHS_SINCE_HIRE</td></tr><tr><td align="LEFT" port="PNNR_CHILDREN">NR_CHILDREN</td></tr><tr><td align="LEFT" port="PNMEAS_HEADCOUNT">MEAS_HEADCOUNT</td></tr><tr><td align="LEFT" port="PNMEAS_MOVE_IN">MEAS_MOVE_IN</td></tr><tr><td align="LEFT" port="PNMEAS_MOVE_OUT">MEAS_MOVE_OUT</td></tr><tr><td align="LEFT" port="PNEOPHeadcount">EOPHeadcount</td></tr></table>>];
+   
+          NFACT_0 [
+   shape=plaintext
+   label=<<table align="LEFT" bgcolor="mistyrose" cellborder="1">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr><td colspan="1"> Insertion Fact Tabe <br/>Fact EM/DG/FACT</td></tr><tr><td align="LEFT" port="PNPERSON_ID">PERSON_ID</td></tr><tr><td align="LEFT" port="PNSTART_DATE">START_DATE</td></tr><tr><td align="LEFT" port="PNNORM_EVENT">NORM_EVENT</td></tr><tr><td align="LEFT" port="PNWEIGHT_GROUP">WEIGHT_GROUP</td></tr><tr><td align="LEFT" port="PNCOUNTRY">COUNTRY</td></tr><tr><td align="LEFT" port="PNGENDER">GENDER</td></tr><tr><td align="LEFT" port="PNCOUNTRY_LOCATION">COUNTRY_LOCATION</td></tr><tr><td align="LEFT" port="PNPAYGROUP">PAYGROUP</td></tr><tr><td align="LEFT" port="PNLOCCODE">LOCCODE</td></tr><tr><td align="LEFT" port="PNREASON">REASON</td></tr><tr><td align="LEFT" port="PNEMPLOYMENT_STATUS">EMPLOYMENT_STATUS</td></tr><tr><td align="LEFT" port="PNWEIGHT">WEIGHT</td></tr><tr><td align="LEFT" port="PNMONTHS_SINCE_HIRE">MONTHS_SINCE_HIRE</td></tr><tr><td align="LEFT" port="PNNR_CHILDREN">NR_CHILDREN</td></tr><tr><td align="LEFT" port="PNMEAS_HEADCOUNT">MEAS_HEADCOUNT</td></tr><tr><td align="LEFT" port="PNMEAS_MOVE_IN">MEAS_MOVE_IN</td></tr><tr><td align="LEFT" port="PNMEAS_MOVE_OUT">MEAS_MOVE_OUT</td></tr><tr><td align="LEFT" port="PNEOPHeadcount">EOPHeadcount</td></tr><tr><td align="LEFT" port="PN_EM_DG_AGE">/EM/DG/AGE</td></tr><tr><td align="LEFT" port="PN_EM_DG_MGR_LOCATION">/EM/DG/MGR_LOCATION</td></tr><tr><td align="LEFT" port="PNWORK_LOC">WORK_LOC</td></tr></table>>];
+   
+          NAliasLE77 [
+   shape=plaintext
+   label=<<table align="LEFT" bgcolor="white" cellborder="1"><tr><td colspan="1"> Alias <br/>Fact EMP_JOBINFO</td></tr><tr><td align="LEFT" port="PDCAN65951">MGR_ID</td></tr><tr><td align="LEFT" port="PDCAN65961">EFFECTIVE_START_DATE</td></tr><tr><td align="LEFT" port="PDCAN65969">EFFECTIVE_END_DATE</td></tr></table>>];
+   
+          NAliasRE77 [
+   shape=plaintext
+   label=<<table align="LEFT" bgcolor="white" cellborder="1"><tr><td colspan="1"> Alias <br/>Fact MGR_JOBINFO</td></tr><tr><td align="LEFT" port="PDCBN65954">PERSON_ID</td></tr><tr><td align="LEFT" port="PDCBN65963">EFFECTIVE_START_DATE</td></tr><tr><td align="LEFT" port="PDCBN65971">EFFECTIVE_END_DATE</td></tr></table>>];
+   
+          NNPC_EM_DG_PC_DIST_WORK_HOME [
+   shape=plaintext
+   color=black
+   label=<<table border="1" cellborder="1" bgcolor="yellow"><tr><td colspan="2">PostCalculation<br/>EM/DG/PC/DIST_WORK_HOME</td></tr><tr><td border="0"><table border="0"><tr><td border="0"/></tr><tr><td border="1" port="PNGEODISTANCE_KM">GEODISTANCE_KM</td></tr></table></td><td border="0"><table border="0"><tr><td border="0"/></tr><tr><td port="PNLOC_1">LOC_1</td></tr><tr><td port="PNLOC_2">LOC_2</td></tr><tr><td border="0"/></tr></table></td></tr></table>>];
+   
+          NEventBox [
+   shape=plaintext
+   color=black
+   style=dotted
+   label=<<table border="1" bgcolor="paleturquoise1"><tr><td colspan="2">Event Driver <br/>EM/DG/INT/EVENTDRIVER</td></tr><tr><td border="0"><table border="0" cellpadding="1" cellspacing="1"><tr><td border="1" port="PTGT_KEY">KEY</td></tr><tr><td border="1" port="PTGT_EVENT_DATE">EVENT_DATE</td></tr><tr><td border="1" port="PTGT_NORM_EVENT">NORM_EVENT</td></tr></table></td><td border="0"><table border="0"><tr><td border="1" port="PIN_KEY">IN_KEY</td></tr><tr><td border="1" port="PIN_START_DATE">IN_START_DATE</td></tr><tr><td border="1" port="PIN_END_DATE">IN_END_DATE</td></tr><tr><td border="1" port="PIN_SEQ_NR">IN_SEQ_NR</td></tr><tr><td border="1" port="PIN_NORM_EVENT">IN_NORM_EVENT</td></tr><tr><td border="1" port="PIN_NORM_EVENT_PRIO">IN_NORM_EVENT_PRIO</td></tr></table></td></tr></table>>];
+   
+          NNBOX_HEAD_COUNT_01 [
+   shape=plaintext
+   color=black
+   label=<<table border="1" cellborder="1" bgcolor="lightblue"><tr><td colspan="2"> FillStrategy <br/>HEAD_COUNT_01</td></tr><tr><td border="0"><table border="0" cellpadding="1" cellspacing="1"><tr><td border="0"/></tr><tr><td border="1" port="PNTGT_HC">TGT_HC</td></tr><tr><td border="1" port="PNTGT_MOVE_IN">TGT_MOVE_IN</td></tr><tr><td border="1" port="PNTGT_MOVE_OUT">TGT_MOVE_OUT</td></tr><tr><td border="1" port="PNTGT_REASON">TGT_REASON</td></tr></table></td><td border="0"><table cellspacing="1" cellpadding="1" border="0"><tr><td border="0"/></tr><tr><td border="1" port="PNinSRC_0">SRC_0</td></tr><tr><td border="1" port="PNinSRC_1">SRC_1</td></tr></table></td></tr></table>>];
+    
+          NNEM_QU_EMP_EMPLOYMENT_INFO [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1">VIEW<br/>EM/QU/EMP_EMPLOYMENT_INFO</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNUSERS_SYS_ID">USERS_SYS_ID</td></tr><tr><td port="PNEFFECTIVE_START_DATE">EFFECTIVE_START_DATE</td></tr><tr><td port="PNASSIGNMENT_TYPE">ASSIGNMENT_TYPE</td></tr><tr><td port="PNORIGINAL_START_DATE">ORIGINAL_START_DATE</td></tr><tr><td port="PN_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr></table>>];
+    
+          NNEM_DG_QU_JOBINFO [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1">VIEW<br/>EM/DG/QU/JOBINFO</td></tr><tr><td port="PNUSERS_SYS_ID">USERS_SYS_ID</td></tr><tr><td port="PNEFFECTIVE_START_DATE">EFFECTIVE_START_DATE</td></tr><tr><td port="PNEFFECTIVE_END_DATE">EFFECTIVE_END_DATE</td></tr><tr><td port="PNEMPLOYMENT_STATUS">EMPLOYMENT_STATUS</td></tr><tr><td port="PNJOB_TITLE">JOB_TITLE</td></tr><tr><td port="PNFTE">FTE</td></tr><tr><td port="PNEVENT">EVENT</td></tr><tr><td port="PNEVENT_REASON_ICODE">EVENT_REASON_ICODE</td></tr><tr><td port="PNSEQ_NR">SEQ_NR</td></tr><tr><td port="PNFTE">FTE</td></tr><tr><td port="PNWEIGHT">WEIGHT</td></tr><tr><td port="PNLOCCODE">LOCCODE</td></tr><tr><td port="PNLOCATION">LOCATION</td></tr><tr><td port="PNMOVE_REASON">MOVE_REASON</td></tr><tr><td port="PNHIRE_REASON">HIRE_REASON</td></tr><tr><td port="PNEMPLOYMENT_TYPE">EMPLOYMENT_TYPE</td></tr><tr><td port="PNPAYGROUP">PAYGROUP</td></tr><tr><td port="PNMGR_USER_ID">MGR_USER_ID</td></tr><tr><td port="PN_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr><tr><td port="PN_EM_DG_NORM_EVENT_PRIO">/EM/DG/NORM_EVENT_PRIO</td></tr><tr><td port="PN_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td port="PN_EM_DG_GA_TYPE">/EM/DG/GA_TYPE</td></tr><tr><td port="PNEM_DG_REGION_LOCATION">EM/DG/REGION_LOCATION</td></tr><tr><td port="PN_EM_DG_WEIGHT_GROUP">/EM/DG/WEIGHT_GROUP</td></tr><tr><td port="PN_EM_DG_COUNTRY_LOCATION">/EM/DG/COUNTRY_LOCATION</td></tr></table>>];
+    
+          NNEM_DG_QU_EMPLOYEE [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1">VIEW<br/>EM/DG/QU/EMPLOYEE</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNTAX_ID">TAX_ID</td></tr></table>>];
+    
+          NNEM_DG_QU_PERSONINFO [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1">VIEW<br/>EM/DG/QU/PERSONINFO</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNEFFECTIVE_DATE">EFFECTIVE_DATE</td></tr><tr><td port="PNGENDER">GENDER</td></tr><tr><td port="PNNR_CHILDREN">NR_CHILDREN</td></tr><tr><td port="PNFIRSTNAME">FIRSTNAME</td></tr><tr><td port="PNLASTNAME">LASTNAME</td></tr><tr><td port="PNDATE_OF_BIRTH">DATE_OF_BIRTH</td></tr></table>>];
+    
+          NNEM_DG_QU_MGR_LOCATION [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1">VIEW<br/>EM/DG/QU/MGR_LOCATION</td></tr><tr><td port="PN_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td port="PN_EM_DG_MGR_FROM_DATE">/EM/DG/MGR_FROM_DATE</td></tr><tr><td port="PN_EM_DG_MGR_TO_DATE">/EM/DG/MGR_TO_DATE</td></tr><tr><td port="PN_EM_DG_SEQ_NR">/EM/DG/SEQ_NR</td></tr><tr><td port="PN_EM_DG_MGR_LOCATION">/EM/DG/MGR_LOCATION</td></tr><tr><td port="PN_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr></table>>];
+   
+          NNEM_DG_GE_GEN_AGE [
+   shape=plaintext
+   label=<<table border="1" bgcolor="khaki" cellborder="1"><tr><td colspan="2">Generator <br/>EM/DG/GE/GEN_AGE</td></tr><tr><td border="0"><table border="0" cellpadding="1" cellspacing="1"><tr><td border="0"/></tr><tr><td border="1" port="PN_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td border="1" port="PNEFFECTIVE_DATE">EFFECTIVE_DATE</td></tr><tr><td border="1" port="PN_EM_DG_AGE">/EM/DG/AGE</td></tr><tr><td border="1" port="PN_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr></table></td><td border="0"><table cellspacing="1" cellpadding="1" border="0"><tr><td border="0"/></tr><tr><td border="1" port="PNinCURRENT_EVENT_DATE">CURRENT_EVENT_DATE</td></tr><tr><td border="1" port="PNinKEY">KEY</td></tr><tr><td border="1" port="PNinBASE_DATE">BASE_DATE</td></tr></table></td></tr></table>>];
+   
+          NNEM_DG_GEN_DAYS_SINCE_HIRE [
+   shape=plaintext
+   label=<<table border="1" bgcolor="khaki" cellborder="1"><tr><td colspan="2">Generator <br/>EM/DG/GEN_DAYS_SINCE_HIRE</td></tr><tr><td border="0"><table border="0" cellpadding="1" cellspacing="1"><tr><td border="0"/></tr><tr><td border="1" port="PN_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td border="1" port="PNEFFECTIVE_DATE">EFFECTIVE_DATE</td></tr><tr><td border="1" port="PN_EM_DG_DAYS_SINCE_HIRE">/EM/DG/DAYS_SINCE_HIRE</td></tr><tr><td border="1" port="PN_EM_DG_MONTHS_SINCE_HIRE">/EM/DG/MONTHS_SINCE_HIRE</td></tr><tr><td border="1" port="PN_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr></table></td><td border="0"><table cellspacing="1" cellpadding="1" border="0"><tr><td border="0"/></tr><tr><td border="1" port="PNin"/></tr><tr><td border="1" port="PNinCURRENT_EVENT_DATE">CURRENT_EVENT_DATE</td></tr><tr><td border="1" port="PNinKEY">KEY</td></tr></table></td></tr></table>>];
+   
+          NNjoin20 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join Join_to_EM/DG/EVENT_MAPPING</td></tr><tr><td port="PNjoinin_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr><tr><td port="PNjoinin_EM_DG_NORM_EVENT_PRIO">/EM/DG/NORM_EVENT_PRIO</td></tr><tr><td port="Pjoin_20" bgcolor="seashell">
+          Join Condition 0<br/>EVENT EQ EVENT</td></tr><tr><td port="Pjoin_21" bgcolor="seashell">
+          Join Condition 1<br/>EVENT_REASON_ICODE EQ EVENT_REASON_ICODE</td></tr></table>>];
+   
+          NNjoin28 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join AugmentKeyViaEmploymentInfo</td></tr><tr><td port="PNjoinin_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td port="PNjoinin_EM_DG_GA_TYPE">/EM/DG/GA_TYPE</td></tr><tr><td port="Pjoin_28" bgcolor="seashell">
+          Join Condition 0<br/>USERS_SYS_ID EQ USERS_SYS_ID</td></tr></table>>];
+   
+          NNjoin35 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join lookup_by_REGION_LOCATION</td></tr><tr><td port="PNjoininEM_DG_REGION_LOCATION">EM/DG/REGION_LOCATION</td></tr><tr><td port="Pjoin_36" bgcolor="seashell">
+          Join Condition 0<br/>LOCATION_CATEGORY EQ 'REGION'</td></tr><tr><td port="Pjoin_38" bgcolor="seashell">
+          Join Condition 1<br/>LOCATION LT LOCATION_ID</td></tr></table>>];
+   
+          NNjoin43 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join </td></tr><tr><td port="PNjoinin_EM_DG_WEIGHT_GROUP">/EM/DG/WEIGHT_GROUP</td></tr><tr><td port="Pjoin_43" bgcolor="seashell">
+          Join Condition 0<br/>WEIGHT GE FROM_WEIGHT</td></tr><tr><td port="Pjoin_44" bgcolor="seashell">
+          Join Condition 1<br/>WEIGHT LT TO_WEIGHT</td></tr></table>>];
+   
+          NNjoin56 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join lookup_LOCCODE_TO_COUNTRY</td></tr><tr><td port="PNjoinin_EM_DG_COUNTRY_LOCATION">/EM/DG/COUNTRY_LOCATION</td></tr><tr><td port="Pjoin_56" bgcolor="seashell">
+          Join Condition 0<br/>LOCCODE EQ LOCCODE</td></tr></table>>];
+   
+          NNjoin77 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join Join_To_EM/DA/JOBINFO</td></tr><tr><td port="PNjoinin_EM_DG_PERSON_ID">/EM/DG/PERSON_ID</td></tr><tr><td port="PNjoinin_EM_DG_MGR_FROM_DATE">/EM/DG/MGR_FROM_DATE</td></tr><tr><td port="PNjoinin_EM_DG_MGR_TO_DATE">/EM/DG/MGR_TO_DATE</td></tr><tr><td port="PNjoinin_EM_DG_SEQ_NR">/EM/DG/SEQ_NR</td></tr><tr><td port="PNjoinin_EM_DG_MGR_LOCATION">/EM/DG/MGR_LOCATION</td></tr><tr><td port="PNjoinin_EM_DG_NORM_EVENT">/EM/DG/NORM_EVENT</td></tr><tr><td port="Pjoin_77" bgcolor="seashell">
+          Join Condition 0<br/>MGR_ID EQ PERSON_ID</td></tr><tr><td port="Pjoin_78" bgcolor="seashell">
+          Join Condition 1<br/>EFFECTIVE_START_DATE timeinLHSRangeSTART EFFECTIVE_START_DATE</td></tr><tr><td port="Pjoin_79" bgcolor="seashell">
+          Join Condition 2<br/>EFFECTIVE_END_DATE timeinLHSRangeEND EFFECTIVE_END_DATE</td></tr></table>>];
+   
+          NNjoin117 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join </td></tr><tr><td port="PNjoininDIM_TRAVEL_COMP_GROUP">DIM_TRAVEL_COMP_GROUP</td></tr><tr><td port="Pjoin_117" bgcolor="seashell">
+          Join Condition 0<br/>/EM/DG/AGE GE AGE_FROM</td></tr><tr><td port="Pjoin_118" bgcolor="seashell">
+          Join Condition 1<br/>/EM/DG/AGE LT AGE_TO</td></tr></table>>];
+   
+          NNjoin117 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join </td></tr><tr><td port="PNjoininDIM_TRAVEL_COMP_GROUP">DIM_TRAVEL_COMP_GROUP</td></tr><tr><td port="Pjoin_117" bgcolor="seashell">
+          Join Condition 0<br/>/EM/DG/AGE GE AGE_FROM</td></tr><tr><td port="Pjoin_118" bgcolor="seashell">
+          Join Condition 1<br/>/EM/DG/AGE LT AGE_TO</td></tr></table>>];
+   
+          NNjoin124 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join resolve_age_group</td></tr><tr><td port="PNjoininAGE_GROUP">AGE_GROUP</td></tr><tr><td port="Pjoin_124" bgcolor="seashell">
+          Join Condition 0<br/>/EM/DG/AGE LE AGE_FROM_INCL</td></tr><tr><td port="Pjoin_125" bgcolor="seashell">
+          Join Condition 1<br/>/EM/DG/AGE GT AGE_TO_EXCL</td></tr></table>>];
+   
+          NNjoin124 [
+   shape=plaintext
+   label=<<table border="1" cellborder="1" bgcolor="white"><tr><td colspan="1" bgcolor="lightsalmon1">Join resolve_age_group</td></tr><tr><td port="PNjoininAGE_GROUP">AGE_GROUP</td></tr><tr><td port="Pjoin_124" bgcolor="seashell">
+          Join Condition 0<br/>/EM/DG/AGE LE AGE_FROM_INCL</td></tr><tr><td port="Pjoin_125" bgcolor="seashell">
+          Join Condition 1<br/>/EM/DG/AGE GT AGE_TO_EXCL</td></tr></table>>];
+   
+          NNEM_DG_CFG_DATA_WEIGHT_GROUPS [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="palegreen"><tr><td colspan="1">Source Table <br/>EM/DG/CFG_DATA/WEIGHT_GROUPS</td></tr><tr><td port="PNHIDDEN_IDX">HIDDEN_IDX</td></tr><tr><td port="PNFROM_WEIGHT">FROM_WEIGHT</td></tr><tr><td port="PNTO_WEIGHT">TO_WEIGHT</td></tr><tr><td port="PNWEIGHT_GROUP">WEIGHT_GROUP</td></tr></table>>];
+   
+          NNEM_DG_LOCCODE_TO_COUNTRY [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="palegreen"><tr><td colspan="1">Source Table <br/>EM/DG/LOCCODE_TO_COUNTRY</td></tr><tr><td port="PNIDX_HIDDEN">IDX_HIDDEN</td></tr><tr><td port="PNLOCCODE">LOCCODE</td></tr><tr><td port="PNCOUNTRY">COUNTRY</td></tr></table>>];
+   
+          NNEM_DG_EVENT_MAPPING [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="palegreen"><tr><td colspan="1">Source Table <br/>EM/DG/EVENT_MAPPING</td></tr><tr><td port="PNIDX_HIDDEN">IDX_HIDDEN</td></tr><tr><td port="PNEVENT">EVENT</td></tr><tr><td port="PNEVENT_REASON_ICODE">EVENT_REASON_ICODE</td></tr><tr><td port="PNEVENT_NR">EVENT_NR</td></tr><tr><td port="PNEVENT_NR2">EVENT_NR2</td></tr><tr><td port="PNNORM_EVENT_PRIO">NORM_EVENT_PRIO</td></tr><tr><td port="PNNORM_EVENT">NORM_EVENT</td></tr><tr><td port="PNEVENT_NR3">EVENT_NR3</td></tr><tr><td port="PNEVENT_CODE_RC">EVENT_CODE_RC</td></tr><tr><td port="PNEVENT_CODE_RS">EVENT_CODE_RS</td></tr><tr><td port="PNEVENT_CODE_GASSIGN">EVENT_CODE_GASSIGN</td></tr></table>>];
+   
+          NNEM_DA_EMPLOYMENT_INFO [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/EMPLOYMENT_INFO</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNUSERS_SYS_ID">USERS_SYS_ID</td></tr><tr><td port="PNEFFECTIVE_START_DATE">EFFECTIVE_START_DATE</td></tr><tr><td port="PNASSIGNMENT_TYPE">ASSIGNMENT_TYPE</td></tr><tr><td port="PNORIGINAL_START_DATE">ORIGINAL_START_DATE</td></tr></table>>];
+   
+          NNEM_DA_JOBINFO [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/JOBINFO</td></tr><tr><td port="PNUSERS_SYS_ID">USERS_SYS_ID</td></tr><tr><td port="PNEFFECTIVE_START_DATE">EFFECTIVE_START_DATE</td></tr><tr><td port="PNEFFECTIVE_END_DATE">EFFECTIVE_END_DATE</td></tr><tr><td port="PNEMPLOYMENT_STATUS">EMPLOYMENT_STATUS</td></tr><tr><td port="PNJOB_TITLE">JOB_TITLE</td></tr><tr><td port="PNFTE">FTE</td></tr><tr><td port="PNEVENT">EVENT</td></tr><tr><td port="PNEVENT_REASON_ICODE">EVENT_REASON_ICODE</td></tr><tr><td port="PNSEQ_NR">SEQ_NR</td></tr><tr><td port="PNFTE">FTE</td></tr><tr><td port="PNWEIGHT">WEIGHT</td></tr><tr><td port="PNLOCCODE">LOCCODE</td></tr><tr><td port="PNLOCATION">LOCATION</td></tr><tr><td port="PNMOVE_REASON">MOVE_REASON</td></tr><tr><td port="PNHIRE_REASON">HIRE_REASON</td></tr><tr><td port="PNEMPLOYMENT_TYPE">EMPLOYMENT_TYPE</td></tr><tr><td port="PNPAYGROUP">PAYGROUP</td></tr><tr><td port="PNMGR_USER_ID">MGR_USER_ID</td></tr></table>>];
+   
+          NNEM_DA_PERSONINFO [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/PERSONINFO</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNEFFECTIVE_DATE">EFFECTIVE_DATE</td></tr><tr><td port="PNGENDER">GENDER</td></tr><tr><td port="PNNR_CHILDREN">NR_CHILDREN</td></tr><tr><td port="PNFIRSTNAME">FIRSTNAME</td></tr><tr><td port="PNLASTNAME">LASTNAME</td></tr><tr><td port="PNDATE_OF_BIRTH">DATE_OF_BIRTH</td></tr></table>>];
+   
+          NNEM_DA_LOCATION_HIER [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/LOCATION_HIER</td></tr><tr><td port="PNIDX_HIDDEN">IDX_HIDDEN</td></tr><tr><td port="PNLOCATION_ID">LOCATION_ID</td></tr><tr><td port="PNPARENT_LOCATION">PARENT_LOCATION</td></tr><tr><td port="PNLOCATION_CATEGORY">LOCATION_CATEGORY</td></tr></table>>];
+   
+          NNEM_DA_EMPLOYEE [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/EMPLOYEE</td></tr><tr><td port="PNPERSON_ID">PERSON_ID</td></tr><tr><td port="PNTAX_ID">TAX_ID</td></tr></table>>];
+   
+          NNPICKLIST [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>PICKLIST</td></tr><tr><td port="PNOPTION_ID">OPTION_ID</td></tr><tr><td port="PNEXTERNAL_CODE">EXTERNAL_CODE</td></tr><tr><td port="PNPICKLISTID">PICKLISTID</td></tr></table>>];
+   
+          NNEM_DA_AGE_GROUPS [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/AGE_GROUPS</td></tr><tr><td port="PNAGE_FROM_INCL">AGE_FROM_INCL</td></tr><tr><td port="PNAGE_TO_EXCL">AGE_TO_EXCL</td></tr><tr><td port="PNAGE_GROUP_ID">AGE_GROUP_ID</td></tr><tr><td port="PNAGE_GROUP">AGE_GROUP</td></tr><tr><td port="PNAGE_GROUP_ATTR1">AGE_GROUP_ATTR1</td></tr></table>>];
+   
+          NNEM_DA_TRAVEL_COMP_GROUPS [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/TRAVEL_COMP_GROUPS</td></tr><tr><td port="PNAGE_FROM">AGE_FROM</td></tr><tr><td port="PNAGE_TO">AGE_TO</td></tr><tr><td port="PNTRAVEL_COMP_GROUP">TRAVEL_COMP_GROUP</td></tr></table>>];
+   
+          NNGENERIC_OBJECT_T [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>GENERIC_OBJECT_T</td></tr><tr><td port="PNSF_FIELD1">SF_FIELD1</td></tr><tr><td port="PNSF_FIELD2">SF_FIELD2</td></tr><tr><td port="PNSF_FIELD3">SF_FIELD3</td></tr><tr><td port="PNSF_FIELD4">SF_FIELD4</td></tr><tr><td port="PNEFFECTIVE_STATUS">EFFECTIVE_STATUS</td></tr></table>>];
+   
+          NNGENERIC_OBJECT_T [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>GENERIC_OBJECT_T</td></tr><tr><td port="PNSF_FIELD1">SF_FIELD1</td></tr><tr><td port="PNSF_FIELD2">SF_FIELD2</td></tr><tr><td port="PNSF_FIELD3">SF_FIELD3</td></tr><tr><td port="PNSF_FIELD4">SF_FIELD4</td></tr></table>>];
+   
+          NNEM_DA_USERS_SYSINFO [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/USERS_SYSINFO</td></tr><tr><td port="PNUSERS_SYS_ID">USERS_SYS_ID</td></tr><tr><td port="PNUSERS_SYS_FIRSTNAME">USERS_SYS_FIRSTNAME</td></tr><tr><td port="PNUSERS_SYS_MI">USERS_SYS_MI</td></tr><tr><td port="PNUSERS_SYS_LASTNAME">USERS_SYS_LASTNAME</td></tr><tr><td port="PNUSERS_SYS_MANAGERUID">USERS_SYS_MANAGERUID</td></tr></table>>];
+   
+          NNEM_DA_USERS_SYSINFO [
+   shape=plaintext
+   label=<<table border="6" cellborder="1" bgcolor="olivedrab1"><tr><td colspan="1">Source Table <br/>EM/DA/USERS_SYSINFO</td></tr><tr><td port="PNSF_FIELD1">SF_FIELD1</td></tr><tr><td port="PNUSERS_SYS_FIRSTNAME">USERS_SYS_FIRSTNAME</td></tr></table>>];NFACT_0FIN:PNPERSON_ID:e -> NFACT_0:PNPERSON_ID:w
+ [ penwidth=2,  style=dotted, color=gold ]
+;
+    NFACT_0FIN:PNSTART_DATE:e -> NFACT_0:PNSTART_DATE:w
+ [ penwidth=2,  style=dotted, color=orange ]
+;
+    NFACT_0FIN:PNNORM_EVENT:e -> NFACT_0:PNNORM_EVENT:w
+ [ penwidth=2,  style=dotted, color=cyan ]
+;
+    NFACT_0FIN:PNAGE_GROUP:e -> NNjoin124:PNjoininAGE_GROUP:w
+ [ penwidth=2,  style=dashed, color=green ]
+;
+    NFACT_0FIN:PNWEIGHT_GROUP:e -> NFACT_0:PNWEIGHT_GROUP:w
+ [ penwidth=2,  style=dotted, color=magenta ]
+;
+    NFACT_0FIN:PNCOUNTRY:e -> NFACT_0:PNCOUNTRY:w
+ [ penwidth=2,  style=dotted, color=green ]
+;
+    NFACT_0FIN:PNGENDER:e -> NFACT_0:PNGENDER:w
+ [ penwidth=2,  style=dotted, color=purple ]
+;
+    NFACT_0FIN:PNCOUNTRY_LOCATION:e -> NFACT_0:PNCOUNTRY_LOCATION:w
+ [ penwidth=2,  style=dotted, color=skyblue ]
+;
+    NFACT_0FIN:PNPAYGROUP:e -> NFACT_0:PNPAYGROUP:w
+ [ penwidth=2,  style=dotted, color=greenyellow ]
+;
+    NFACT_0FIN:PNLOCCODE:e -> NFACT_0:PNLOCCODE:w
+ [ penwidth=2,  style=solid, color=gray ]
+;
+    NFACT_0FIN:PNREASON:e -> NFACT_0:PNREASON:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+    NFACT_0FIN:PNTRAVEL_COMP_GROUP:e -> NNjoin117:PNjoininDIM_TRAVEL_COMP_GROUP:w
+ [ penwidth=2,  style=solid, color=gold ]
+;
+    NFACT_0FIN:PNEMPLOYMENT_STATUS:e -> NFACT_0:PNEMPLOYMENT_STATUS:w
+ [ penwidth=2,  style=solid, color=gold ]
+;
+    NFACT_0FIN:PNWEIGHT:e -> NFACT_0:PNWEIGHT:w
+ [ penwidth=2,  style=solid, color=orange ]
+;
+    NFACT_0FIN:PNDIST_WORK_HOME:e -> NNPC_EM_DG_PC_DIST_WORK_HOME:PNGEODISTANCE_KM:w
+ [ penwidth=2,  style=dotted, color=purple ]
+;
+    NFACT_0FIN:PNMONTHS_SINCE_HIRE:e -> NFACT_0:PNMONTHS_SINCE_HIRE:w
+ [ penwidth=2,  style=solid, color=cyan ]
+;
+    NFACT_0FIN:PNNR_CHILDREN:e -> NFACT_0:PNNR_CHILDREN:w
+ [ penwidth=2,  style=solid, color=magenta ]
+;
+    NFACT_0FIN:PNMEAS_HEADCOUNT:e -> NFACT_0:PNMEAS_HEADCOUNT:w
+ [ penwidth=2,  style=solid, color=green ]
+;
+    NFACT_0FIN:PNMEAS_MOVE_IN:e -> NFACT_0:PNMEAS_MOVE_IN:w
+ [ penwidth=2,  style=dashed, color=cyan ]
+;
+    NFACT_0FIN:PNMEAS_MOVE_OUT:e -> NFACT_0:PNMEAS_MOVE_OUT:w
+ [ penwidth=2,  style=dashed, color=magenta ]
+;
+    NFACT_0FIN:PNEOPHeadcount:e -> NFACT_0:PNEOPHeadcount:w
+ [ penwidth=2,  style=dashed, color=green ]
+;
+    NFACT_0:PNPERSON_ID:e -> NEventBox:PTGT_KEY:w
+ [ penwidth=2,  style=dashed, color=purple ]
+;
+    NFACT_0:PNSTART_DATE:e -> NEventBox:PTGT_EVENT_DATE:w
+ [ penwidth=2,  style=dashed, color=skyblue ]
+;
+    NFACT_0:PNNORM_EVENT:e -> NEventBox:PTGT_NORM_EVENT:w
+ [ penwidth=2,  style=dashed, color=greenyellow ]
+;
+    NFACT_0:PNWEIGHT_GROUP:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_WEIGHT_GROUP:w
+ [ penwidth=2,  style=dashed, color=red ]
+;
+    NFACT_0:PNCOUNTRY:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_COUNTRY_LOCATION:w
+ [ penwidth=2,  style=dashed, color=blue ]
+;
+    NFACT_0:PNGENDER:e -> NNEM_DG_QU_PERSONINFO:PNGENDER:w
+ [ penwidth=2,  style=dashed, color=gray ]
+;
+    NFACT_0:PNCOUNTRY_LOCATION:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_COUNTRY_LOCATION:w
+ [ penwidth=2,  style=dashed, color=blue ]
+;
+    NFACT_0:PNPAYGROUP:e -> NNEM_DG_QU_JOBINFO:PNPAYGROUP:w
+ [ penwidth=2,  style=solid, color=orange ]
+;
+    NFACT_0:PNLOCCODE:e -> NNEM_DG_QU_JOBINFO:PNLOCCODE:w
+ [ penwidth=2,  style=dotted, color=skyblue ]
+;
+    NFACT_0:PNEMPLOYMENT_STATUS:e -> NNEM_DG_QU_JOBINFO:PNEMPLOYMENT_STATUS:w
+ [ penwidth=2,  style=dashed, color=gray ]
+;
+    NFACT_0:PNWEIGHT:e -> NNEM_DG_QU_JOBINFO:PNWEIGHT:w
+ [ penwidth=2,  style=dotted, color=purple ]
+;
+    NFACT_0:PNMONTHS_SINCE_HIRE:e -> NNEM_DG_GEN_DAYS_SINCE_HIRE:PN_EM_DG_MONTHS_SINCE_HIRE:w
+ [ penwidth=2,  style=solid, color=green ]
+;
+    NFACT_0:PNNR_CHILDREN:e -> NNEM_DG_QU_PERSONINFO:PNNR_CHILDREN:w
+ [ penwidth=2,  style=dotted, color=blue ]
+;
+    NFACT_0:PN_EM_DG_AGE:e -> NNEM_DG_GE_GEN_AGE:PN_EM_DG_AGE:w
+ [ penwidth=2,  style=dotted, color=gold ]
+;
+    NFACT_0:PN_EM_DG_MGR_LOCATION:e -> NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_LOCATION:w
+ [ penwidth=2,  style=solid, color=gray ]
+;
+    NFACT_0:PNWORK_LOC:e -> NNEM_DG_QU_JOBINFO:PNLOCATION:w
+ [ penwidth=2,  style=dotted, color=greenyellow ]
+;
+    NNPC_EM_DG_PC_DIST_WORK_HOME:PNLOC_1:e -> NFACT_0:PN_EM_DG_MGR_LOCATION:w
+ [penwidth=2, color=orange]  
+;
+    NNPC_EM_DG_PC_DIST_WORK_HOME:PNLOC_2:e -> NFACT_0:PNWORK_LOC:w
+ [penwidth=2, color=orange]  
+;
+    NNEM_QU_EMP_EMPLOYMENT_INFO:PNPERSON_ID:e -> NNEM_DA_EMPLOYMENT_INFO:PNPERSON_ID:w
+ [ penwidth=2,  style=dashed, color=gold ]
+;
+  NNEM_QU_EMP_EMPLOYMENT_INFO:PNUSERS_SYS_ID:e -> NNEM_DA_EMPLOYMENT_INFO:PNUSERS_SYS_ID:w
+ [ penwidth=2,  style=dashed, color=orange ]
+;
+  NNEM_QU_EMP_EMPLOYMENT_INFO:PNEFFECTIVE_START_DATE:e -> NNEM_DA_EMPLOYMENT_INFO:PNEFFECTIVE_START_DATE:w
+ [ penwidth=2,  style=dashed, color=cyan ]
+;
+  NNEM_QU_EMP_EMPLOYMENT_INFO:PNASSIGNMENT_TYPE:e -> NNEM_DA_EMPLOYMENT_INFO:PNASSIGNMENT_TYPE:w
+ [ penwidth=2,  style=dashed, color=magenta ]
+;
+  NNEM_QU_EMP_EMPLOYMENT_INFO:PNORIGINAL_START_DATE:e -> NNEM_DA_EMPLOYMENT_INFO:PNORIGINAL_START_DATE:w
+ [ penwidth=2,  style=dashed, color=green ]
+;
+  NNEM_DG_QU_JOBINFO:PNUSERS_SYS_ID:e -> NNEM_DA_JOBINFO:PNUSERS_SYS_ID:w
+ [ penwidth=2,  style=dashed, color=skyblue ]
+;
+  NNEM_DG_QU_JOBINFO:PNEFFECTIVE_START_DATE:e -> NNEM_DA_JOBINFO:PNEFFECTIVE_START_DATE:w
+ [ penwidth=2,  style=dashed, color=greenyellow ]
+;
+  NNEM_DG_QU_JOBINFO:PNEFFECTIVE_END_DATE:e -> NNEM_DA_JOBINFO:PNEFFECTIVE_END_DATE:w
+ [ penwidth=2,  style=dashed, color=gray ]
+;
+  NNEM_DG_QU_JOBINFO:PNEMPLOYMENT_STATUS:e -> NNEM_DA_JOBINFO:PNEMPLOYMENT_STATUS:w
+ [ penwidth=2,  style=dotted, color=blue ]
+;
+  NNEM_DG_QU_JOBINFO:PNJOB_TITLE:e -> NNEM_DA_JOBINFO:PNJOB_TITLE:w
+ [ penwidth=2,  style=dotted, color=gold ]
+;
+  NNEM_DG_QU_JOBINFO:PNFTE:e -> NNEM_DA_JOBINFO:PNFTE:w
+ [ penwidth=2,  style=dotted, color=orange ]
+;
+  NNEM_DG_QU_JOBINFO:PNFTE:e -> NNEM_DA_JOBINFO:PNFTE:w
+ [ penwidth=2,  style=dotted, color=purple ]
+;
+  NNEM_DG_QU_JOBINFO:PNEVENT:e -> NNEM_DA_JOBINFO:PNEVENT:w
+ [ penwidth=2,  style=dotted, color=cyan ]
+;
+  NNEM_DG_QU_JOBINFO:PNEVENT_REASON_ICODE:e -> NNEM_DA_JOBINFO:PNEVENT_REASON_ICODE:w
+ [ penwidth=2,  style=dotted, color=magenta ]
+;
+  NNEM_DG_QU_JOBINFO:PNSEQ_NR:e -> NNEM_DA_JOBINFO:PNSEQ_NR:w
+ [ penwidth=2,  style=dotted, color=green ]
+;
+  NNEM_DG_QU_JOBINFO:PNFTE:e -> NNEM_DA_JOBINFO:PNFTE:w
+ [ penwidth=2,  style=dotted, color=orange ]
+;
+  NNEM_DG_QU_JOBINFO:PNFTE:e -> NNEM_DA_JOBINFO:PNFTE:w
+ [ penwidth=2,  style=dotted, color=purple ]
+;
+  NNEM_DG_QU_JOBINFO:PNWEIGHT:e -> NNEM_DA_JOBINFO:PNWEIGHT:w
+ [ penwidth=2,  style=dotted, color=skyblue ]
+;
+  NNEM_DG_QU_JOBINFO:PNLOCCODE:e -> NNEM_DA_JOBINFO:PNLOCCODE:w
+ [ penwidth=2,  style=dotted, color=greenyellow ]
+;
+  NNEM_DG_QU_JOBINFO:PNLOCATION:e -> NNEM_DA_JOBINFO:PNLOCATION:w
+ [ penwidth=2,  style=solid, color=gray ]
+;
+  NNEM_DG_QU_JOBINFO:PNMOVE_REASON:e -> NNEM_DA_JOBINFO:PNMOVE_REASON:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+  NNEM_DG_QU_JOBINFO:PNHIRE_REASON:e -> NNEM_DA_JOBINFO:PNHIRE_REASON:w
+ [ penwidth=2,  style=solid, color=gold ]
+;
+  NNEM_DG_QU_JOBINFO:PNEMPLOYMENT_TYPE:e -> NNEM_DA_JOBINFO:PNEMPLOYMENT_TYPE:w
+ [ penwidth=2,  style=solid, color=orange ]
+;
+  NNEM_DG_QU_JOBINFO:PNPAYGROUP:e -> NNEM_DA_JOBINFO:PNPAYGROUP:w
+ [ penwidth=2,  style=solid, color=cyan ]
+;
+  NNEM_DG_QU_JOBINFO:PNMGR_USER_ID:e -> NNEM_DA_JOBINFO:PNMGR_USER_ID:w
+ [ penwidth=2,  style=solid, color=magenta ]
+;
+  NNEM_DG_QU_JOBINFO:PN_EM_DG_NORM_EVENT:e -> NNjoin20:PNjoinin_EM_DG_NORM_EVENT:w 
+ [ penwidth=3,  style=solid, color=brown ]
+;
+    NNEM_DG_QU_JOBINFO:PN_EM_DG_NORM_EVENT_PRIO:e -> NNjoin20:PNjoinin_EM_DG_NORM_EVENT_PRIO:w 
+ [ penwidth=3,  style=solid, color=red ]
+;
+    NNEM_DG_QU_JOBINFO:PN_EM_DG_PERSON_ID:e -> NNjoin28:PNjoinin_EM_DG_PERSON_ID:w 
+ [ penwidth=3,  style=solid, color=brown ]
+;
+    NNEM_DG_QU_JOBINFO:PN_EM_DG_GA_TYPE:e -> NNjoin28:PNjoinin_EM_DG_GA_TYPE:w 
+ [ penwidth=3,  style=solid, color=red ]
+;
+    NNEM_DG_QU_JOBINFO:PNEM_DG_REGION_LOCATION:e -> NNjoin35:PNjoininEM_DG_REGION_LOCATION:w 
+ [ penwidth=3,  style=solid, color=magenta ]
+;
+    NNEM_DG_QU_JOBINFO:PN_EM_DG_WEIGHT_GROUP:e -> NNjoin43:PNjoinin_EM_DG_WEIGHT_GROUP:w 
+ [ penwidth=3,  style=solid, color=darkorange ]
+;
+    NNEM_DG_QU_JOBINFO:PN_EM_DG_COUNTRY_LOCATION:e -> NNjoin56:PNjoinin_EM_DG_COUNTRY_LOCATION:w 
+ [ penwidth=3,  style=solid, color=magenta ]
+;
+    NNEM_DG_QU_EMPLOYEE:PNPERSON_ID:e -> NNEM_DA_EMPLOYEE:PNPERSON_ID:w
+ [ penwidth=2,  style=dashed, color=gray ]
+;
+  NNEM_DG_QU_EMPLOYEE:PNTAX_ID:e -> NNEM_DA_EMPLOYEE:PNTAX_ID:w
+ [ penwidth=2,  style=dotted, color=blue ]
+;
+  NNEM_DG_QU_PERSONINFO:PNPERSON_ID:e -> NNEM_DA_PERSONINFO:PNPERSON_ID:w
+ [ penwidth=2,  style=solid, color=purple ]
+;
+  NNEM_DG_QU_PERSONINFO:PNEFFECTIVE_DATE:e -> NNEM_DA_PERSONINFO:PNEFFECTIVE_DATE:w
+ [ penwidth=2,  style=solid, color=skyblue ]
+;
+  NNEM_DG_QU_PERSONINFO:PNGENDER:e -> NNEM_DA_PERSONINFO:PNGENDER:w
+ [ penwidth=2,  style=solid, color=greenyellow ]
+;
+  NNEM_DG_QU_PERSONINFO:PNNR_CHILDREN:e -> NNEM_DA_PERSONINFO:PNNR_CHILDREN:w
+ [ penwidth=2,  style=dashed, color=red ]
+;
+  NNEM_DG_QU_PERSONINFO:PNFIRSTNAME:e -> NNEM_DA_PERSONINFO:PNFIRSTNAME:w
+ [ penwidth=2,  style=dashed, color=blue ]
+;
+  NNEM_DG_QU_PERSONINFO:PNLASTNAME:e -> NNEM_DA_PERSONINFO:PNLASTNAME:w
+ [ penwidth=2,  style=dashed, color=gold ]
+;
+  NNEM_DG_QU_PERSONINFO:PNDATE_OF_BIRTH:e -> NNEM_DA_PERSONINFO:PNDATE_OF_BIRTH:w
+ [ penwidth=2,  style=dashed, color=orange ]
+;
+  NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_PERSON_ID:e -> NNjoin77:PNjoinin_EM_DG_PERSON_ID:w 
+ [ penwidth=3,  style=solid, color=red ]
+;
+    NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_FROM_DATE:e -> NNjoin77:PNjoinin_EM_DG_MGR_FROM_DATE:w 
+ [ penwidth=3,  style=solid, color=brown ]
+;
+    NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_TO_DATE:e -> NNjoin77:PNjoinin_EM_DG_MGR_TO_DATE:w 
+ [ penwidth=3,  style=solid, color=red ]
+;
+    NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_SEQ_NR:e -> NNjoin77:PNjoinin_EM_DG_SEQ_NR:w 
+ [ penwidth=3,  style=solid, color=brown ]
+;
+    NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_LOCATION:e -> NNjoin77:PNjoinin_EM_DG_MGR_LOCATION:w 
+ [ penwidth=3,  style=solid, color=red ]
+;
+    NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_NORM_EVENT:e -> NNjoin77:PNjoinin_EM_DG_NORM_EVENT:w 
+ [ penwidth=3,  style=solid, color=brown ]
+;
+    NNEM_DG_GE_GEN_AGE:PNinCURRENT_EVENT_DATE:e -> NEventBox:PTGT_EVENT_DATE:w
+ [penwidth=3, color=orange]  
+;
+    NNEM_DG_GE_GEN_AGE:PNinKEY:e -> NNEM_DA_EMPLOYEE:PNPERSON_ID:w
+ [penwidth=3, color=orange]  
+;
+    NNEM_DG_GE_GEN_AGE:PNinBASE_DATE:e -> NNEM_DG_QU_PERSONINFO:PNDATE_OF_BIRTH:w
+ [penwidth=3, color=orange]  
+;
+    NNEM_DG_GEN_DAYS_SINCE_HIRE:PNin:e -> NEventBox:PTGT_NORM_EVENT:w
+ [penwidth=3, color=orange]  
+;
+    NNEM_DG_GEN_DAYS_SINCE_HIRE:PNinCURRENT_EVENT_DATE:e -> NEventBox:PTGT_EVENT_DATE:w
+ [penwidth=3, color=orange]  
+;
+    NNEM_DG_GEN_DAYS_SINCE_HIRE:PNinKEY:e -> NNEM_DA_EMPLOYEE:PNPERSON_ID:w
+ [penwidth=3, color=orange]  
+;
+    NNjoin20:Pjoin_20:e -> NNEM_DA_JOBINFO:PNEVENT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin20:Pjoin_20:e -> NNEM_DG_EVENT_MAPPING:PNEVENT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin20:Pjoin_21:e -> NNEM_DA_JOBINFO:PNEVENT_REASON_ICODE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin20:Pjoin_21:e -> NNEM_DG_EVENT_MAPPING:PNEVENT_REASON_ICODE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin20:PNjoinin_EM_DG_NORM_EVENT:e -> NNEM_DG_EVENT_MAPPING:PNNORM_EVENT:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin20:PNjoinin_EM_DG_NORM_EVENT_PRIO:e -> NNEM_DG_EVENT_MAPPING:PNNORM_EVENT:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin28:Pjoin_28:e -> NNEM_DA_JOBINFO:PNUSERS_SYS_ID:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin28:Pjoin_28:e -> NNEM_DA_EMPLOYMENT_INFO:PNUSERS_SYS_ID:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin28:PNjoinin_EM_DG_PERSON_ID:e -> NNEM_DA_EMPLOYMENT_INFO:PNPERSON_ID:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin28:PNjoinin_EM_DG_GA_TYPE:e -> NNEM_DA_EMPLOYMENT_INFO:PNASSIGNMENT_TYPE:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin35:Pjoin_36:e -> NNEM_DA_LOCATION_HIER:PNLOCATION_CATEGORY:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin35:Pjoin_38:e -> NNEM_DA_JOBINFO:PNLOCATION:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin35:Pjoin_38:e -> NNEM_DA_LOCATION_HIER:PNLOCATION_ID:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin35:PNjoininEM_DG_REGION_LOCATION:e -> NNEM_DA_LOCATION_HIER:PNPARENT_LOCATION:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin43:Pjoin_43:e -> NNEM_DA_JOBINFO:PNWEIGHT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin43:Pjoin_43:e -> NNEM_DG_CFG_DATA_WEIGHT_GROUPS:PNFROM_WEIGHT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin43:Pjoin_44:e -> NNEM_DA_JOBINFO:PNWEIGHT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin43:Pjoin_44:e -> NNEM_DG_CFG_DATA_WEIGHT_GROUPS:PNTO_WEIGHT:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin43:PNjoinin_EM_DG_WEIGHT_GROUP:e -> NNEM_DG_CFG_DATA_WEIGHT_GROUPS:PNWEIGHT_GROUP:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin56:Pjoin_56:e -> NNEM_DA_JOBINFO:PNLOCCODE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin56:Pjoin_56:e -> NNEM_DG_LOCCODE_TO_COUNTRY:PNLOCCODE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin56:PNjoinin_EM_DG_COUNTRY_LOCATION:e -> NNEM_DG_LOCCODE_TO_COUNTRY:PNCOUNTRY:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin77:Pjoin_77:e -> NAliasLE77:PDCAN65951:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin77:Pjoin_77:e -> NAliasRE77:PDCBN65954:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin77:Pjoin_78:e -> NAliasLE77:PDCAN65961:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin77:Pjoin_78:e -> NAliasRE77:PDCBN65963:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin77:Pjoin_79:e -> NAliasLE77:PDCAN65969:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin77:Pjoin_79:e -> NAliasRE77:PDCBN65971:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_117:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_117:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNAGE_FROM:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_118:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_118:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNAGE_TO:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:PNjoininDIM_TRAVEL_COMP_GROUP:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNTRAVEL_COMP_GROUP:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin117:Pjoin_117:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_117:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNAGE_FROM:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_118:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:Pjoin_118:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNAGE_TO:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin117:PNjoininDIM_TRAVEL_COMP_GROUP:e -> NNEM_DA_TRAVEL_COMP_GROUPS:PNTRAVEL_COMP_GROUP:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin124:Pjoin_124:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_124:e -> NNEM_DA_AGE_GROUPS:PNAGE_FROM_INCL:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_125:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_125:e -> NNEM_DA_AGE_GROUPS:PNAGE_TO_EXCL:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:PNjoininAGE_GROUP:e -> NNEM_DA_AGE_GROUPS:PNAGE_GROUP:w
+ [penwidth=2, color=darkgreen]  
+;
+    NNjoin124:Pjoin_124:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_124:e -> NNEM_DA_AGE_GROUPS:PNAGE_FROM_INCL:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_125:e -> NFACT_0:PN_EM_DG_AGE:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:Pjoin_125:e -> NNEM_DA_AGE_GROUPS:PNAGE_TO_EXCL:w
+ [penwidth=2, color=orange]  
+;
+    NNjoin124:PNjoininAGE_GROUP:e -> NNEM_DA_AGE_GROUPS:PNAGE_GROUP:w
+ [penwidth=2, color=darkgreen]  
+;
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NFACT_0:PNMEAS_HEADCOUNT:e -> NNBOX_HEAD_COUNT_01:PNTGT_HC:w
+ [ penwidth=2,  style=solid, color=green ]
+;
+    NFACT_0:PNMEAS_MOVE_IN:e -> NNBOX_HEAD_COUNT_01:PNTGT_MOVE_IN:w
+ [ penwidth=2,  style=dashed, color=cyan ]
+;
+    NFACT_0:PNMEAS_MOVE_OUT:e -> NNBOX_HEAD_COUNT_01:PNTGT_MOVE_OUT:w
+ [ penwidth=2,  style=dashed, color=magenta ]
+;
+    NFACT_0:PNREASON:e -> NNBOX_HEAD_COUNT_01:PNTGT_REASON:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+    NNBOX_HEAD_COUNT_01:PNinSRC_0:e -> NNEM_DG_QU_JOBINFO:PNMOVE_REASON:w
+ [ penwidth=2,  style=solid, color=gray ]
+;
+    NNBOX_HEAD_COUNT_01:PNinSRC_1:e -> NNEM_DG_QU_JOBINFO:PNHIRE_REASON:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_QU_EMP_EMPLOYMENT_INFO:PNPERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_PERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_QU_EMPLOYEE:PNPERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_QU_PERSONINFO:PNPERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_PERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_GE_GEN_AGE:PN_EM_DG_PERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_KEY:e -> NNEM_DG_GEN_DAYS_SINCE_HIRE:PN_EM_DG_PERSON_ID:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_QU_EMP_EMPLOYMENT_INFO:PNEFFECTIVE_START_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_DG_QU_JOBINFO:PNEFFECTIVE_START_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_DG_QU_PERSONINFO:PNEFFECTIVE_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_FROM_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_DG_GE_GEN_AGE:PNEFFECTIVE_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_START_DATE:e -> NNEM_DG_GEN_DAYS_SINCE_HIRE:PNEFFECTIVE_DATE:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_END_DATE:e -> NNEM_DG_QU_JOBINFO:PNEFFECTIVE_END_DATE:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+    NEventBox:PIN_END_DATE:e -> NNEM_DG_QU_MGR_LOCATION:PN_EM_DG_MGR_TO_DATE:w
+ [ penwidth=2,  style=solid, color=blue ]
+;
+    NEventBox:PIN_SEQ_NR:e -> NNEM_DG_QU_JOBINFO:PNSEQ_NR:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_NORM_EVENT:e -> NNEM_QU_EMP_EMPLOYMENT_INFO:PN_EM_DG_NORM_EVENT:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_NORM_EVENT:e -> NNEM_DG_GE_GEN_AGE:PN_EM_DG_NORM_EVENT:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_NORM_EVENT:e -> NNEM_DG_GEN_DAYS_SINCE_HIRE:PN_EM_DG_NORM_EVENT:w
+ [ penwidth=2,  style=solid, color=dodgerblue4 ]
+;
+    NEventBox:PIN_NORM_EVENT_PRIO:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_NORM_EVENT:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    NEventBox:PIN_NORM_EVENT_PRIO:e -> NNEM_DG_QU_JOBINFO:PN_EM_DG_NORM_EVENT_PRIO:w
+ [ penwidth=2,  style=solid, color=darkturquoise ]
+;
+    
+      
+    
+ 
+  
+  
+  
+    
+    }
+      
+
+
+  

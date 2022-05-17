@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?><Errors>
+<Error rule="3.2.5" position=" /LogicalTable[@id='DG/WF/VW/LOCATION'] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='LABEL']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(256)
+							!=
+							NVARCHAR(4000) (source type at
+							 /PhysicalTable[@id='LABEL'] /Column[@id='LABEL'])
+						</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPFTE']">
+					broken reference HEAD_FTE following references from (EOPFTE).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.15.23" position=" /CustomMeasure[@id='EOPFTE']">
+							Unclear what Custom Measure EOPFTE
+	         is referring too, did not regognize base HEAD_FTE</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='AVERAGEFTE']">
+					broken reference HEAD_FTE following references from (AVERAGEFTE).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.15.23" position=" /CustomMeasure[@id='AVERAGEFTE']">
+							Unclear what Custom Measure AVERAGEFTE
+	         is referring too, did not regognize base HEAD_FTE</Error>
+<Error rule="4.17.1" position=" /CustomMeasure[@id='PROM_IN'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='IN']">
+					@dimensionId (EVENT_REASON_ACODE) in Condition must refer to a present dimension 
+				</Error>
+<Error rule="4.17.2" position=" /CustomMeasure[@id='MOVE_IN']">
+					Custommeasure id MOVE_IN must not collide with BaseMeasure or Dimension
+				</Error>
+<Error rule="4.17.51" position=" /CustomMeasure[@id='MOVE_IN'] /Restrictions[1] /Case[1] /Then[1]">
+					 Cyclic reference with Custom Measure (MOVE_IN)
+				</Error>
+<Error rule="4.17.2" position=" /CustomMeasure[@id='TIME_DIMENSION']">
+					Custommeasure id TIME_DIMENSION must not collide with BaseMeasure or Dimension
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='TERM_OTH'] /Restrictions[1] /Case[1] /Then[1]">
+					broken reference -1234 following references from (TERM_OTH).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='TERM_OTH'] /Restrictions[1] /Case[1] /Then[2]">
+					broken reference 1234 following references from (TERM_OTH).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='TERM_OTH'] /Restrictions[1] /Case[1] /Then[3]">
+					broken reference TERMIO
+ following references from (TERM_OTH).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='TERM_OTH'] /Restrictions[1] /Case[1] /Then[4]">
+					broken reference TERMIO following references from (TERM_OTH).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.15.23" position=" /CustomMeasure[@id='TERM_OTH']">
+							Unclear what Custom Measure TERM_OTH
+	         is referring too, did not regognize base -1234</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='TERM_OTH'] /Restrictions[1] /Case[1] /Then[4]">
+					CustomMeasure[@id="TERM_OTH"] has strange Restrictions/Case/Then 
+					value :(TERMIO), reference to base measure expected
+					</Error>
+</Errors>

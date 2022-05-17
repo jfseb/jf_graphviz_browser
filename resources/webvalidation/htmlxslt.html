@@ -1,0 +1,194 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+
+<title>separate domain iframe event driven xslt processor (in iframe or in window.open) </title>
+</style>
+
+<script type="text/javascript" charset="utf-8" src="https://syssgx.github.io/xml.js/js/xmllint.js" >
+</script>
+
+<script language="JavaScript">
+var xslStylesheet;
+var xsltProcessor = new XSLTProcessor();
+var myDOM;
+var xmlDoc;
+
+function toAscii(s) {
+	res = [];
+	last = 0;
+	i = 0;
+    for( i = 0; i < s.length; ++i) {
+    	if( s.charCodeAt(i) > 127 ) {
+    		res.push(s.substring(last,i));
+    		res.push('X');
+    		last = i+1;
+    	}
+    }
+    if( i > last ) {
+    	res.push(s.substring(last,i));
+    }
+    return res.join('');
+}
+
+function parseXML(s) {
+var sMyString = toAscii(s); ///'<a id="a"><b id="b">hey!</b></a>';
+
+var oParser = new DOMParser();
+var oDOM = oParser.parseFromString(sMyString, "application/xml");
+// print the name of the root element or error message
+console.log(oDOM.documentElement.nodeName == "parsererror" ? "error while parsing" : oDOM.documentElement.nodeName);
+return oDOM;
+}
+
+var xsltErrorsToHTML = null;
+var xsltConfigCheck = null;
+var xsltConfigToTyped = null;
+var xsltConfigToCheckTyped = null;
+
+var xsd;  
+
+function checkSchema(resolvedConfig) {
+  resolvedConfig = toAscii(resolvedConfig);
+  var Module = {
+    xml: resolvedConfig,
+    schema: xsd,
+    arguments: ["--noout", "--schema", "config.xsd", "config.xml"]
+	};
+	var xmllint = validateXML(Module);
+    xmllint = "" + xmllint;
+    xmllint = xmllint.trim();
+ 	return xmllint;
+}
+
+function transformDocument(xdoc, xsl) {
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsl);
+    var xmlDocTyped = xsltProcessor.transformToDocument(xdoc);
+    return xmlDocTyped;
+}
+
+
+function transformStringToString(s, stylesheet)  {	
+   var xmlDoc =  parseXML(s); 
+   var xmlDocTransformed = transformDocument(xmlDoc, stylesheet);
+   return  new XMLSerializer().serializeToString(xmlDocTransformed);
+}
+
+function checkDocumentPM(sResolved)
+{
+    xmlDoc =  parseXML(sResolved); 
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsltConfigToTyped);
+
+    // do this at least 4 times for proper type inference    
+    var xmlDocTyped = transformDocument(xmlDoc, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    document.getElementById('adiv').style.display = 'none';
+    document.getElementById('adiv').innerText = "validate config #b " + counter*100;
+    document.getElementById('adiv').style.display = 'block';
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    // 10 times
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    var xmlDocCheckTyped = transformDocument(xmlDocTyped, xsltConfigToCheckTyped);
+    var xmlDocErrors = transformDocument(xmlDocCheckTyped, xsltConfigCheck);
+    return xmlDocErrors;
+}
+
+var counter = 0;
+
+function postBack(data) {
+	if(window.opener && !window.opener.closed) {
+		window.opener.postMessage(data,"*");
+	} else {
+		window.parent.postMessage(data,"*");
+	}
+  document.getElementById('adiv').innerText = "async processed #" + counter;
+}
+
+function doProcessEvent(e) {
+	xmlDocErrors = checkDocumentPM(e);
+	strXmlDocErrors = new XMLSerializer().serializeToString(xmlDocErrors);
+  postBack(["validateReponse",tok,strXmlDocErrors]);
+}
+
+var atimer = null;
+
+<!-- validation is slow and currently synchronous, we only do it when it's idle -->
+function processEventDeferred(e) {
+    if ( atimer) {
+      clearTimeout(atimer);
+    } 
+    document.getElementById('adiv').innerText = "async processed #a" + counter;
+    atimer = setTimeout(function() {
+        document.getElementById('adiv').innerText = "async processed #b" + counter;
+    	doProcessEvent(e); 
+    	}, 10);
+}
+var transforms = {};
+
+function processEvent(e) {
+	console.log("Message received" + e);
+  if ( e.data[0] == 'setData') {
+    var key = e.data[1];
+    var transformSource = e.data[2];
+    if ( key == 'xsltConfigToTyped' ) 
+    {
+      xsltConfigToTyped = parseXML(transformSource);
+      return;
+    }
+    if ( key == 'xsltConfigToCheckTyped' )
+    {
+      xsltConfigToCheckTyped = parseXML(transformSource);
+      return;
+    }
+    if ( key == 'xsltConfigCheck' ) 
+    {
+      xsltConfigCheck = parseXML(transformSource);
+      return;
+    }
+    if ( key == 'xsd' ) 
+    {
+      xsd = transformSource;
+      return;
+    }    
+  }
+  if ( e.data[0] == 'checkSchema' ) {
+    var res = checkSchema(e.data[2]);
+    postBack([key,res]);
+    return;
+  }
+	if ( e.data[0] != "validate") {
+		return;
+	}
+	tok = e.data[1];
+	processEventDeferred(e.data[2]);
+}
+
+
+//Assign handler to message event
+if ( window.addEventListener ) {
+    window.addEventListener('message', processEvent, false);
+} else if ( window.attachEvent ) { // ie8
+    window.attachEvent('onmessage', processEvent);
+}
+
+</script>
+</head>
+<body>
+<div id='adiv'>
+validate_config;
+Used for asynchronous processing
+</div>
+</body>
+</html>

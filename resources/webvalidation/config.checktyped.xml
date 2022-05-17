@@ -1,0 +1,1395 @@
+<?xml version="1.0" encoding="utf-8"?><MetricPack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WORKFORCE" prefix="E" name="Core workforce metric pack" xsi:noNamespaceSchemaLocation="../../../../main/resources/paaegenerationservice/config.xsd">
+<StartDate>2001-01-01</StartDate>
+<EndDate>2020-01-01</EndDate>
+<DefaultLocale>en_US</DefaultLocale>
+<DataSets>
+<!--physical entities-->
+<!--table created by the DA service-->
+<PhysicalTable id="DA/EM/EMPLOYMENT_INFO" sourceTableName="DA/EM/EMPLOYMENT_INFO" label="Employment Info">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/EMPLOYMENT_INFO.IDX_HIDDEN"/>
+<Column id="PERSON_ID" label="person id" semanticType="KEY" dataType="BIGINT" precision="12" scale="13" longSQLType="BIGINT" fqn="DA/EM/EMPLOYMENT_INFO.PERSON_ID"/>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DA/EM/EMPLOYMENT_INFO.USERS_SYS_ID"/>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="employment start date" dataType="DATE" longSQLType="DATE" fqn="DA/EM/EMPLOYMENT_INFO.EFFECTIVE_START_DATE"/>
+<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DA/EM/EMPLOYMENT_INFO.ASSIGNMENT_TYPE"/>
+<Column id="ORIGINAL_START_DATE" dataType="DATE" longSQLType="DATE" fqn="DA/EM/EMPLOYMENT_INFO.ORIGINAL_START_DATE"/>
+<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'GOObjectDefinition'" dataType="NVARCHAR"/>
+						<FilterValue value="'GOObjectDefinition'" dataType="NVARCHAR"/>
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+</PhysicalTable>
+<PhysicalTable id="DA/EM/JOBINFO" sourceTableName="DA/EM/JOBINFO">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.IDX_HIDDEN"/>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11" scale="0" longSQLType="NVARCHAR(11)" fqn="DA/EM/JOBINFO.USERS_SYS_ID"/>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="effective start date" dataType="DATE" longSQLType="DATE" fqn="DA/EM/JOBINFO.EFFECTIVE_START_DATE"/>
+<Column id="EFFECTIVE_END_DATE" semanticType="END_DATE" label="effective end date" dataType="DATE" longSQLType="DATE" fqn="DA/EM/JOBINFO.EFFECTIVE_END_DATE"/>
+<Column id="EVENT" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.EVENT"/>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.EVENT_REASON_ICODE"/>
+<Column id="SEQ_NR" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.SEQ_NR"/>
+<Column id="FTE" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.FTE"/>
+<Column id="WEIGHT" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.WEIGHT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)" fqn="DA/EM/JOBINFO.LOCCODE"/>
+<Column id="LOCATION" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.LOCATION"/>
+<Column id="MOVE_REASON" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DA/EM/JOBINFO.MOVE_REASON"/>
+<Column id="HIRE_REASON" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DA/EM/JOBINFO.HIRE_REASON"/>
+<Column id="EMPLOYMENT_TYPE" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.EMPLOYMENT_TYPE"/>
+<Column id="FTEX" label="FTEX" dataType="DECIMAL" precision="15" scale="3" longSQLType="DECIMAL(15,3)" fqn="DA/EM/JOBINFO.FTEX"/>
+<Column id="PAYGROUP" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/JOBINFO.PAYGROUP"/>
+<Column id="JOB_TITLE" label="Job Title" dataType="NVARCHAR" precision="17" longSQLType="NVARCHAR(17)" fqn="DA/EM/JOBINFO.JOB_TITLE"/>
+<Column id="EMPLOYMENT_STATUS" label="employment status" dataType="NVARCHAR" precision="7" longSQLType="NVARCHAR(7)" fqn="DA/EM/JOBINFO.EMPLOYMENT_STATUS"/>
+<Column id="MGR_USER_ID" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DA/EM/JOBINFO.MGR_USER_ID"/>
+<FilterOperation type="NOOP">
+				<Filter columnRef="LOCCODE" op="BETWEEN">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'GOObjectDefinition'" dataType="NVARCHAR"/>
+						<FilterValue value="'GOObjectDefinition'" dataType="NVARCHAR"/>
+						<FilterValue value="'GOObjectDefinition'" dataType="NVARCHAR"/>
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/PERSXXXONINFO" id="DA/EM/PERSONINFO">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/PERSONINFO.IDX_HIDDEN"/>
+<Column id="PERSON_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/PERSONINFO.PERSON_ID"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE" longSQLType="DATE" fqn="DA/EM/PERSONINFO.EFFECTIVE_DATE"/>
+<Column id="GENDER" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DA/EM/PERSONINFO.GENDER"/>
+<Column id="NR_CHILDREN" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/PERSONINFO.NR_CHILDREN"/>
+<Column id="FIRSTNAME" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)" fqn="DA/EM/PERSONINFO.FIRSTNAME"/>
+<Column id="LASTNAME" dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)" fqn="DA/EM/PERSONINFO.LASTNAME"/>
+<Column id="DATE_OF_BIRTH" dataType="DATE" longSQLType="DATE" fqn="DA/EM/PERSONINFO.DATE_OF_BIRTH"/>
+
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/LOCATION_HIER" id="DA/EM/LOCATION_HIER">
+<Column id="IDX_HIDDEN" dataType="BIGINT" defaultValue="'ABC'" longSQLType="BIGINT" fqn="DA/EM/LOCATION_HIER.IDX_HIDDEN"/>
+<Column id="LOCATION_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/LOCATION_HIER.LOCATION_ID"/>
+<Column id="PARENT_LOCATION_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/LOCATION_HIER.PARENT_LOCATION_ID"/>
+<Column id="LOCATION_CATEGORY" dataType="NVARCHAR" precision="13" longSQLType="NVARCHAR(13)" fqn="DA/EM/LOCATION_HIER.LOCATION_CATEGORY"/>
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/EMPLOYEE" id="DA/EM/EMPLOYEE">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/EMPLOYEE.IDX_HIDDEN"/>
+<Column id="PERSON_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/EMPLOYEE.PERSON_ID"/>
+<Column id="TAX_ID" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)" fqn="DA/EM/EMPLOYEE.TAX_ID"/>
+</PhysicalTable>
+<PhysicalTable sourceTableName="PICKLIST" id="PICKLIST" label="Picklist">
+<Column id="OPTION_ID" label="Option Id" isFactAttribute="false" dataType="DECIMAL" precision="12" scale="2" longSQLType="DECIMAL(12,2)" fqn="PICKLIST.OPTION_ID"/>
+<Column id="EXTERNAL_CODE" label="External Code" isFactAttribute="false" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="PICKLIST.EXTERNAL_CODE"/>
+<Column id="PICKLISTID" label="PICKLISTID" isFactAttribute="false" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="PICKLIST.PICKLISTID"/>
+<FilterOperation type="NOOP">
+				<Filter columnRef="OPTION_ID" op="BETWEEN">
+					<FilterValues dataType="OPTION_ID" precision="12" scale="2">
+						<FilterValue value="-123.23" dataType="OPTION_ID" precision="12" scale="2"/>
+						<FilterValue value="'GOObjectDefinition'" dataType="OPTION_ID" precision="12" scale="2"/>
+						<FilterValue value="'434'" dataType="OPTION_ID" precision="12" scale="2"/>
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/AGE_GROUPS" id="DA/EM/AGE_GROUPS" label="">
+<Column id="AGE_FROM_INCL" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/AGE_GROUPS.AGE_FROM_INCL"/>
+<Column id="AGE_TO_EXCL" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/AGE_GROUPS.AGE_TO_EXCL"/>
+<Column id="AGE_GROUP_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/AGE_GROUPS.AGE_GROUP_ID"/>
+<Column id="AGE_GROUP" dataType="NVARCHAR" precision="18" longSQLType="NVARCHAR(18)" fqn="DA/EM/AGE_GROUPS.AGE_GROUP"/>
+<Column id="AGE_GROUP_ATTR1" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)" fqn="DA/EM/AGE_GROUPS.AGE_GROUP_ATTR1"/>
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/TRAVEL_COMP_GROUPS" id="DA/EM/TRAVEL_COMP_GROUPS">
+<Column id="AGE_FROM" dataType="SMALLINT" longSQLType="SMALLINT" fqn="DA/EM/TRAVEL_COMP_GROUPS.AGE_FROM"/>
+<Column id="AGE_TO" dataType="SMALLINT" longSQLType="SMALLINT" fqn="DA/EM/TRAVEL_COMP_GROUPS.AGE_TO"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9" longSQLType="NVARCHAR(9)" fqn="DA/EM/TRAVEL_COMP_GROUPS.TRAVEL_COMP_GROUP"/>
+</PhysicalTable>
+<PhysicalTable sourceTableName="DA/EM/USERS_SYSINFO" id="DA/EM/USERS_SYSINFO" label=" users sys info">
+<Column id="USERS_SYS_ID" isFactAttribute="false" label="Users Id" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DA/EM/USERS_SYSINFO.USERS_SYS_ID"/>
+<Column id="USERS_SYS_FIRSTNAME" isFactAttribute="false" label="Users first Name" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DA/EM/USERS_SYSINFO.USERS_SYS_FIRSTNAME"/>
+<Column id="USERS_SYS_MI" isFactAttribute="false" label="Users middle Name" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/USERS_SYSINFO.USERS_SYS_MI"/>
+<Column id="USERS_SYS_LASTNAME" isFactAttribute="false" label="Users last Name" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DA/EM/USERS_SYSINFO.USERS_SYS_LASTNAME"/>
+<Column id="USERS_SYS_MANAGERUID" label="User manager Id" dataType="BIGINT" longSQLType="BIGINT" fqn="DA/EM/USERS_SYSINFO.USERS_SYS_MANAGERUID"/>
+</PhysicalTable>
+<!--table created by the DG service -->
+<PhysicalDataTable id="CFG_DATA/WEIGHT_GROUPS">
+<Column id="HIDDEN_IDX" dataType="BIGINT" longSQLType="BIGINT"/>
+<Column id="FROM_WEIGHT" dataType="BIGINT" longSQLType="BIGINT"/>
+<Column id="TO_WEIGHT" dataType="BIGINT" longSQLType="BIGINT"/>
+<Column id="WEIGHT_GROUP" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+              1,-100,5,"0+kg"
+2,50,55,"50+kg"
+3,55,60,"55+kg"
+4,60,65,"60+kg"
+5,65,70,"65+kg"
+6,70,75,"70+kg"
+6,75,80,"75+kg"
+6,80,85,"80+kg"
+
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalDataTable>
+<PhysicalDataTable id="DG/EM/VW/LOCCODE_TO_COUNTRY">
+<Column id="IDX_HIDDEN" label="event code" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)"/>
+<Column id="COUNTRY" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+              
+                1,"WDF","GER"
+                2,"ROT","GER"
+                3,"SFR","USA"
+                4,"BLR","USA"
+                5,"MUM","IND"
+                6,"DHL","IND"
+                7,"SFO","USA"
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalDataTable>
+<PhysicalTable id="DG/EM/EVENT_MAPPING">
+<Column id="IDX_HIDDEN" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.IDX_HIDDEN"/>
+<Column id="EVENT" label="event code" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.EVENT"/>
+<Column id="EVENT_REASON_ICODE" label="event reason icode" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.EVENT_REASON_ICODE"/>
+<Column id="EVENT_NR" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.EVENT_NR"/>
+<Column id="EVENT_NR2" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.EVENT_NR2"/>
+<Column id="NORM_EVENT_PRIO" label="norm event prio" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.NORM_EVENT_PRIO"/>
+<Column id="NORM_EVENT" label="norm event" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)" fqn="DG/EM/EVENT_MAPPING.NORM_EVENT"/>
+<Column id="EVENT_NR3" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/EVENT_MAPPING.EVENT_NR3"/>
+<Column id="EVENT_CODE_RC" dataType="NVARCHAR" precision="18" longSQLType="NVARCHAR(18)" fqn="DG/EM/EVENT_MAPPING.EVENT_CODE_RC"/>
+<Column id="EVENT_CODE_RS" dataType="NVARCHAR" precision="17" longSQLType="NVARCHAR(17)" fqn="DG/EM/EVENT_MAPPING.EVENT_CODE_RS"/>
+<Column id="EVENT_CODE_GASSIGN" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)" fqn="DG/EM/EVENT_MAPPING.EVENT_CODE_GASSIGN"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+                  1,10999,222,1,1,40,"TERM",1,"_Term_",,
+                      2,10949,227,1,1,30,"HIRE",1,"HIRNEW","H_HIRNEW",
+                      3,10942,216,1,0,2,"DATAC",1,"DTCNV","5",
+                      4,33388,921,1,1,21,"MOVE_OUT",1,"AGA","AGA","G_ASSIGNM"
+                      5,10937,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+  					  5,10973,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalTable>
+<LogicalTable id="DG/EM/VW/EMPLOYMENT_INFO" factTableSourceIndex="1" keySource="true">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYMENT_INFO.IDX_HIDDEN">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="IDX_HIDDEN" dataType="BIGINT" fqnRef="DA/EM/EMPLOYMENT_INFO.IDX_HIDDEN" longSQLType="BIGINT"/>
+</Column>
+<Column id="PERSON_ID" label="person id" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYMENT_INFO.PERSON_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/EMPLOYMENT_INFO.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DG/EM/VW/EMPLOYMENT_INFO.USERS_SYS_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="11" fqnRef="DA/EM/EMPLOYMENT_INFO.USERS_SYS_ID" longSQLType="NVARCHAR(11)"/>
+</Column>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="employment start date" dataType="DATE" longSQLType="DATE" fqn="DG/EM/VW/EMPLOYMENT_INFO.EFFECTIVE_START_DATE">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="EFFECTIVE_START_DATE" dataType="DATE" fqnRef="DA/EM/EMPLOYMENT_INFO.EFFECTIVE_START_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DG/EM/VW/EMPLOYMENT_INFO.ASSIGNMENT_TYPE">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2" fqnRef="DA/EM/EMPLOYMENT_INFO.ASSIGNMENT_TYPE" longSQLType="NVARCHAR(2)"/>
+</Column>
+<Column id="ORIGINAL_START_DATE" dataType="DATE" longSQLType="DATE" fqn="DG/EM/VW/EMPLOYMENT_INFO.ORIGINAL_START_DATE">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ORIGINAL_START_DATE" dataType="DATE" fqnRef="DA/EM/EMPLOYMENT_INFO.ORIGINAL_START_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="/DG/EM/NORM_EVENT" dataType="NVARCHAR" precision="11" semanticType="NORM_EVENT" longSQLType="NVARCHAR(11)" fqn="DG/EM/VW/EMPLOYMENT_INFO./DG/EM/NORM_EVENT">
+<Value value="'DATAXC'" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)"/>
+</Column>
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalTable>
+<LogicalTable id="DG/EM/VW/JOBINFO" factTableSourceIndex="1" keySource="true">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.IDX_HIDDEN">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="IDX_HIDDEN" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.IDX_HIDDEN" longSQLType="BIGINT"/>
+</Column>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DG/EM/VW/JOBINFO.USERS_SYS_ID">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="11" fqnRef="DA/EM/JOBINFO.USERS_SYS_ID" longSQLType="NVARCHAR(11)"/>
+</Column>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="effective start date" dataType="DATE" longSQLType="DATE" fqn="DG/EM/VW/JOBINFO.EFFECTIVE_START_DATE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="EFFECTIVE_START_DATE" dataType="DATE" fqnRef="DA/EM/JOBINFO.EFFECTIVE_START_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="EFFECTIVE_END_DATE" semanticType="END_DATE" label="effective end date" dataType="DATE" longSQLType="DATE" fqn="DG/EM/VW/JOBINFO.EFFECTIVE_END_DATE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="EFFECTIVE_END_DATE" dataType="DATE" fqnRef="DA/EM/JOBINFO.EFFECTIVE_END_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="EVENT" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.EVENT">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="EVENT" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.EVENT" longSQLType="BIGINT"/>
+</Column>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.EVENT_REASON_ICODE">
+</Column>
+<Column id="SEQ_NR" dataType="BIGINT" semanticType="SEQ_NR" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.SEQ_NR">
+<CustomLabels key="AAA">
+<Label locale="‎en_GB">HiThere</Label>
+</CustomLabels>
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="SEQ_NR" dataType="DECIMAL" precision="34" scale="13" fqnRef="DA/EM/JOBINFO.SEQ_NR" longSQLType="DECIMAL(34,13)"/>
+</Column>
+<Column id="FTE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.FTE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTE" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.FTE" longSQLType="BIGINT"/>
+</Column>
+<Column id="WEIGHT" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.WEIGHT">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="WEIGHT" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.WEIGHT" longSQLType="BIGINT"/>
+</Column>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)" fqn="DG/EM/VW/JOBINFO.LOCCODE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="LOCCODE" dataType="NVARCHAR" precision="3" fqnRef="DA/EM/JOBINFO.LOCCODE" longSQLType="NVARCHAR(3)"/>
+</Column>
+<Column id="LOCATION" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.LOCATION">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="LOCATION" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.LOCATION" longSQLType="BIGINT"/>
+</Column>
+<Column id="MOVE_REASON" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DG/EM/VW/JOBINFO.MOVE_REASON">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="MOVE_REASON" dataType="NVARCHAR" fqnRef="DA/EM/JOBINFO.MOVE_REASON" longSQLType="NVARCHAR()"/>
+</Column>
+<Column id="HIRE_REASON" dataType="NVARCHAR" longSQLType="NVARCHAR()" fqn="DG/EM/VW/JOBINFO.HIRE_REASON">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="HIRE_REASON" dataType="NVARCHAR" fqnRef="DA/EM/JOBINFO.HIRE_REASON" longSQLType="NVARCHAR()"/>
+</Column>
+<Column id="EMPLOYMENT_TYPE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.EMPLOYMENT_TYPE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="EMPLOYMENT_TYPE" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.EMPLOYMENT_TYPE" longSQLType="BIGINT"/>
+</Column>
+<Column id="FTEX" label="FTEX" dataType="DECIMAL" precision="15" scale="3" longSQLType="DECIMAL(15,3)" fqn="DG/EM/VW/JOBINFO.FTEX">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="DFB1" label="FTEX" dataType="DECFLOAT34" precision="15" scale="3" longSQLType="DECFLOAT34" fqn="DG/EM/VW/JOBINFO.DFB1">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="DFB2" label="FTEX" dataType="DECFLOAT34" scale="3" longSQLType="DECFLOAT34" fqn="DG/EM/VW/JOBINFO.DFB2">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="DFOK" label="FTEX" dataType="DECFLOAT34" precision="34" scale="0" longSQLType="DECFLOAT34" fqn="DG/EM/VW/JOBINFO.DFOK">
+	<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="DFOK2" label="FTEX" dataType="DECFLOAT34" longSQLType="DECFLOAT34" fqn="DG/EM/VW/JOBINFO.DFOK2">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="DFOK3" label="FTEX" dataType="DECFLOAT34" precision="0" longSQLType="DECFLOAT34" fqn="DG/EM/VW/JOBINFO.DFOK3">
+	<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="FTEX" dataType="DECIMAL" precision="15" scale="3" fqnRef="DA/EM/JOBINFO.FTEX" longSQLType="DECIMAL(15,3)"/>
+</Column>
+<Column id="PAYGROUP" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.PAYGROUP">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="PAYGROUP" dataType="BIGINT" fqnRef="DA/EM/JOBINFO.PAYGROUP" longSQLType="BIGINT"/>
+</Column>
+<Column id="JOB_TITLE" label="Job Title" dataType="NVARCHAR" precision="17" longSQLType="NVARCHAR(17)" fqn="DG/EM/VW/JOBINFO.JOB_TITLE">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="JOB_TITLE" dataType="NVARCHAR" precision="17" fqnRef="DA/EM/JOBINFO.JOB_TITLE" longSQLType="NVARCHAR(17)"/>
+</Column>
+<Column id="EMPLOYMENT_STATUS" label="employment status" dataType="NVARCHAR" precision="7" longSQLType="NVARCHAR(7)" fqn="DG/EM/VW/JOBINFO.EMPLOYMENT_STATUS">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7" fqnRef="DA/EM/JOBINFO.EMPLOYMENT_STATUS" longSQLType="NVARCHAR(7)"/>
+</Column>
+<Column id="MGR_USER_ID" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="DG/EM/VW/JOBINFO.MGR_USER_ID">
+<ColumnRef entityRef="DA/EM/JOBINFO" columnRef="MGR_USER_ID" dataType="NVARCHAR" precision="11" fqnRef="DA/EM/JOBINFO.MGR_USER_ID" longSQLType="NVARCHAR(11)"/>
+</Column>
+<Column id="" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)" fqn="DG/EM/VW/JOBINFO.">
+<ColumnRef entityRef="DG/EM/EVENT_MAPPING" columnRef="NORM_EVENT" dataType="NVARCHAR" precision="12" fqnRef="DG/EM/EVENT_MAPPING.NORM_EVENT" longSQLType="NVARCHAR(12)"/>
+</Column>
+<Column id="/DG/EM/PERSON_ID" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO./DG/EM/PERSON_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/EMPLOYMENT_INFO.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="/DG/EM/GA_TYPE" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DG/EM/VW/JOBINFO./DG/EM/GA_TYPE">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2" fqnRef="DA/EM/EMPLOYMENT_INFO.ASSIGNMENT_TYPE" longSQLType="NVARCHAR(2)"/>
+</Column>
+<Column id="DG/EM/REGION_LOCATION" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/JOBINFO.DG/EM/REGION_LOCATION">
+<ColumnRef entityRef="DA/EM/LOCATION_HIER" columnRef="PARENT_LOCATION_ID" dataType="BIGINT" fqnRef="DA/EM/LOCATION_HIER.PARENT_LOCATION_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="/DG/EM/WEIGHT_GROUP" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)" fqn="DG/EM/VW/JOBINFO./DG/EM/WEIGHT_GROUP">
+<ColumnRef entityRef="CFG_DATA/WEIGHT_GROUPS" columnRef="WEIGHT_GROUP" dataType="NVARCHAR" precision="10" fqnRef="CFG_DATA/WEIGHT_GROUPS.WEIGHT_GROUP" longSQLType="NVARCHAR(10)"/>
+</Column>
+<Column id="/DG/EM/COUNTRY_LOCATION" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)" fqn="DG/EM/VW/JOBINFO./DG/EM/COUNTRY_LOCATION">
+<ColumnRef entityRef="DG/EM/VW/LOCCODE_TO_COUNTRY" columnRef="COUNTRY" dataType="NVARCHAR" precision="3" fqnRef="DG/EM/VW/LOCCODE_TO_COUNTRY.COUNTRY" longSQLType="NVARCHAR(3)"/>
+</Column>
+<BaseTableRef entityRef="DA/EM/JOBINFO">
+<!--  optional filter -->
+</BaseTableRef>
+<BaseTableRef entityRef="DG/EM/EVENT_MAPPING"/>
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO"/>
+<BaseTableRef entityRef="DA/EM/LOCATION_HIER"/>
+<BaseTableRef entityRef="CFG_DATA/WEIGHT_GROUPS"/>
+<BaseTableRef entityRef="DG/EM/VW/LOCCODE_TO_COUNTRY"/>
+<JoinCriteria joinType="INNER">
+<LogicalOperation op="AND">
+<Condition op="EQ">
+        		<ColumnRef columnRef="EVENT" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.EVENT"/>
+	        	<ColumnRef columnRef="EVENT" entityRef="DG/EM/EVENT_MAPPING" fqnRef="DG/EM/EVENT_MAPPING.EVENT"/>
+    	    </Condition>
+<Condition op="EQ">
+        		<ColumnRef columnRef="EVENT_REASON_ICODE" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.EVENT_REASON_ICODE"/>
+	        	<ColumnRef columnRef="EVENT_REASON_ICODE" entityRef="DG/EM/EVENT_MAPPING" fqnRef="DG/EM/EVENT_MAPPING.EVENT_REASON_ICODE"/>
+    	    </Condition>
+</LogicalOperation>
+</JoinCriteria>
+<JoinCriteria joinType="INNER">
+<LogicalOperation op="NOOP">
+<Condition op="EQ">
+	        	<ColumnRef columnRef="USERS_SYS_ID" entityRef="DA/EM/JOBINFO" dataType="TINYINT" fqnRef="DA/EM/JOBINFO.USERS_SYS_ID" longSQLType="TINYINT"/>
+	        	<ColumnRef columnRef="USERS_SYS_ID" entityRef="DA/EM/EMPLOYMENT_INFO" fqnRef="DA/EM/EMPLOYMENT_INFO.USERS_SYS_ID"/>
+        	</Condition>
+</LogicalOperation>
+</JoinCriteria>
+<JoinCriteria joinType="LEFT">
+<LogicalOperation op="AND">
+<Condition op="EQ">
+	        	<ColumnRef columnRef="LOCATION" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.LOCATION"/>
+	        	<ColumnRef columnRef="LOCATION_ID" entityRef="DA/EM/LOCATION_HIER" fqnRef="DA/EM/LOCATION_HIER.LOCATION_ID"/>
+        	</Condition>
+<Condition op="EQ">
+	        	<ColumnRef columnRef="LOCATION_CATEGORY" entityRef="DA/EM/LOCATION_HIER" fqnRef="DA/EM/LOCATION_HIER.LOCATION_CATEGORY"/>
+	        	<ColumnRef value="'REGION'" dataType="NVARCHAR" precision="13"/>
+        	</Condition>
+</LogicalOperation>
+</JoinCriteria>
+<JoinCriteria joinType="INNER">
+<LogicalOperation op="AND">
+<Condition op="GE">
+	        	<ColumnRef columnRef="WEIGHT" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.WEIGHT"/>
+	        	<ColumnRef columnRef="FROM_WEIGHT" entityRef="CFG_DATA/WEIGHT_GROUPS" fqnRef="CFG_DATA/WEIGHT_GROUPS.FROM_WEIGHT"/>
+        	</Condition>
+<Condition op="LT">
+	        	<ColumnRef columnRef="WEIGHT" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.WEIGHT"/>
+	        	<ColumnRef columnRef="TO_WEIGHT" entityRef="CFG_DATA/WEIGHT_GROUPS" fqnRef="CFG_DATA/WEIGHT_GROUPS.TO_WEIGHT"/>
+      	</Condition>
+</LogicalOperation>
+</JoinCriteria>
+<JoinCriteria joinType="LEFT">
+<LogicalOperation op="NOOP">
+<Condition op="EQ">
+	        	<ColumnRef columnRef="LOCCODE" entityRef="DA/EM/JOBINFO" fqnRef="DA/EM/JOBINFO.LOCCODE"/>
+	        	<ColumnRef columnRef="LOCCODE" entityRef="DG/EM/VW/LOCCODE_TO_COUNTRY" fqnRef="DG/EM/VW/LOCCODE_TO_COUNTRY.LOCCODE"/>
+        	</Condition>
+</LogicalOperation>
+</JoinCriteria>
+</LogicalTable>
+<LogicalTable id="DG/EM/VW/EMPLOYEE" factTableSourceIndex="3" keySource="true">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYEE.IDX_HIDDEN">
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="IDX_HIDDEN" dataType="BIGINT" fqnRef="DA/EM/EMPLOYEE.IDX_HIDDEN" longSQLType="BIGINT"/>
+</Column>
+<Column id="PERSON_ID" dataType="BIGINT" semanticType="KEY" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYEE.PERSON_ID">
+<CustomLabels key="ABC">
+<Label locale="en_US">ABC</Label>
+</CustomLabels>
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/EMPLOYEE.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="TAX_ID" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)" fqn="DG/EM/VW/EMPLOYEE.TAX_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="TAX_ID" dataType="NVARCHAR" precision="20" fqnRef="DA/EM/EMPLOYEE.TAX_ID" longSQLType="NVARCHAR(20)"/>
+</Column>
+<BaseTableRef entityRef="DA/EM/EMPLOYEE">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalTable>
+
+<LogicalTable id="DG/BR/VW/LOCATION">
+	<Column id="TOWN" fqn="DG/BR/VW/LOCATION.TOWN">
+		<Value value="'MALE'" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)"/>
+	</Column>
+	<Column id="CITY" fqn="DG/BR/VW/LOCATION.CITY">
+		<Value value="'Atext'" dataType="NVARCHAR" precision="300" longSQLType="NVARCHAR(300)"/>
+	</Column>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+<LogicalTable id="DG/BR/VW/LOCATION_TEXT">
+	<Column id="TOWN" fqn="DG/BR/VW/LOCATION_TEXT.TOWN">
+		<Value value="'MALE'" dataType="NVARCHAR" precision="80" longSQLType="NVARCHAR(80)"/>
+	</Column>
+	<Column id="LANGU" semanticType="LANGUAGE" fqn="DG/BR/VW/LOCATION_TEXT.LANGU">
+		<Value value="'E'" dataType="NVARCHAR" precision="1" longSQLType="NVARCHAR(1)"/>
+	</Column>
+	<Column id="TOWN_TEXT" fqn="DG/BR/VW/LOCATION_TEXT.TOWN_TEXT">
+		<Value value="'Atext'" dataType="NVARCHAR" precision="300" longSQLType="NVARCHAR(300)"/>
+	</Column>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+
+
+<LogicalTable id="DG/DI/VW/TEST_OK_UNION">
+	<Column id="C1" fqn="DG/DI/VW/TEST_OK_UNION.C1">
+		<ColumnRef entityRef="MOGHULS" columnRef="CHILD_KEY" dataType="NVARCHAR" precision="100" fqnRef="MOGHULS.CHILD_KEY" longSQLType="NVARCHAR(100)"/>
+		<Value value="'DEF'" dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)"/>
+		<Value value="'HIJ'" dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)"/>
+	</Column>
+	<Column id="C2" fqn="DG/DI/VW/TEST_OK_UNION.C2">
+	<CustomLabels key="AAA">
+<Label locale="en_US"/>
+</CustomLabels>
+		<Value value="1" dataType="BIGINT" longSQLType="BIGINT"/>
+		<Value value="2" dataType="BIGINT" longSQLType="BIGINT"/>
+		<Value value="3" dataType="BIGINT" longSQLType="BIGINT"/>
+	</Column>
+	<BaseTableRef entityRef="MOGHULS"/>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+<LogicalTable id="DG/BR/VW/GENDER2">
+	<Column id="GENDER_KEY" fqn="DG/BR/VW/GENDER2.GENDER_KEY">
+		<Value value="'MALE'" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)"/>
+	</Column>
+	<Column id="GENDER_VALUE" fqn="DG/BR/VW/GENDER2.GENDER_VALUE">
+		<Value value="'ABC'" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)"/>
+	</Column>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+<LogicalTable id="DG/BR/VW/GENDER2_TEXT">
+	<Column id="NO_GENDER_KEY" fqn="DG/BR/VW/GENDER2_TEXT.NO_GENDER_KEY">
+		<Value value="'MALE'" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)"/>
+	</Column>
+	<Column id="LANGUAGE" semanticType="LANGUAGE" fqn="DG/BR/VW/GENDER2_TEXT.LANGUAGE">
+		<Value value="'E'" dataType="NVARCHAR" precision="1" longSQLType="NVARCHAR(1)"/>
+	</Column>
+	<Column id="GENDER_TEXT" fqn="DG/BR/VW/GENDER2_TEXT.GENDER_TEXT">
+		<Value value="'Atext'" dataType="NVARCHAR" precision="200" longSQLType="NVARCHAR(200)"/>
+	</Column>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+<LogicalTable id="DG/DI/VW/TEST_BAD_UNION">
+	<Column id="C1" fqn="DG/DI/VW/TEST_BAD_UNION.C1">
+		<ColumnRef entityRef="MOGHULS" columnRef="CHILD_KEY" dataType="NVARCHAR" precision="100" fqnRef="MOGHULS.CHILD_KEY" longSQLType="NVARCHAR(100)"/>
+		<Value value="'DEF'" dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)"/>
+		<Value value="'HIJ'" dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)"/>
+	</Column>
+	<Column id="C2" fqn="DG/DI/VW/TEST_BAD_UNION.C2">
+	<CustomLabels key="AAA">
+<Label locale="en_US"/>
+</CustomLabels>
+		<Value value="1" dataType="BIGINT" longSQLType="BIGINT"/>
+		<Value value="3" dataType="BIGINT" longSQLType="BIGINT"/>
+	</Column>
+	<BaseTableRef entityRef="MOGHULS"/>
+	<BaseTableRef entityRef="SYS.DUMMY"/>
+</LogicalTable>
+
+<LogicalTable id="DG/EM/VW/EMPLOYEE" factTableSourceIndex="3" keySource="true">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYEE.IDX_HIDDEN">
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="IDX_HIDDEN" dataType="BIGINT" fqnRef="DA/EM/EMPLOYEE.IDX_HIDDEN" longSQLType="BIGINT"/>
+</Column>
+<Column id="PERSON_ID" dataType="BIGINT" semanticType="KEY" longSQLType="BIGINT" fqn="DG/EM/VW/EMPLOYEE.PERSON_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/EMPLOYEE.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="TAX_ID" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)" fqn="DG/EM/VW/EMPLOYEE.TAX_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYEE" columnRef="TAX_ID" dataType="NVARCHAR" precision="20" fqnRef="DA/EM/EMPLOYEE.TAX_ID" longSQLType="NVARCHAR(20)"/>
+</Column>
+<BaseTableRef entityRef="DA/EM/EMPLOYEE">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalTable>
+<LogicalTable id="DG/EM/VW/PERSONINFO" factTableSourceIndex="4">
+<Column id="IDX_HIDDEN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/PERSONINFO.IDX_HIDDEN">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="IDX_HIDDEN" dataType="BIGINT" fqnRef="DA/EM/PERSONINFO.IDX_HIDDEN" longSQLType="BIGINT"/>
+</Column>
+<Column id="PERSON_ID" dataType="BIGINT" semanticType="KEY" longSQLType="BIGINT" fqn="DG/EM/VW/PERSONINFO.PERSON_ID">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/PERSONINFO.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="EFFECTIVE_DATE" dataType="DATE" semanticType="START_DATE" longSQLType="DATE" fqn="DG/EM/VW/PERSONINFO.EFFECTIVE_DATE">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="EFFECTIVE_DATE" dataType="DATE" fqnRef="DA/EM/PERSONINFO.EFFECTIVE_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="GENDER" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DG/EM/VW/PERSONINFO.GENDER">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="GENDER" dataType="NVARCHAR" precision="2" fqnRef="DA/EM/PERSONINFO.GENDER" longSQLType="NVARCHAR(2)"/>
+</Column>
+<Column id="NR_CHILDREN" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/VW/PERSONINFO.NR_CHILDREN">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT" fqnRef="DA/EM/PERSONINFO.NR_CHILDREN" longSQLType="BIGINT"/>
+</Column>
+<Column id="FIRSTNAME" dataType="NVARCHAR" precision="7000" longSQLType="NVARCHAR(7000)" fqn="DG/EM/VW/PERSONINFO.FIRSTNAME">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="FIRSTNAME" dataType="NVARCHAR" precision="7000" fqnRef="DA/EM/PERSONINFO.FIRSTNAME" longSQLType="NVARCHAR(7000)"/>
+</Column>
+<Column id="LASTNAME" dataType="DECIMAL" precision="100" longSQLType="DECIMAL(100,)" fqn="DG/EM/VW/PERSONINFO.LASTNAME">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="LASTNAME" dataType="DECIMAL" precision="100" fqnRef="DA/EM/PERSONINFO.LASTNAME" longSQLType="DECIMAL(100,)"/>
+</Column>
+<Column id="LASTNAME" dataType="DECIMAL" precision="17" scale="18" longSQLType="DECIMAL(17,18)" fqn="DG/EM/VW/PERSONINFO.LASTNAME">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="LASTNAME" dataType="DECIMAL" precision="17" scale="18" fqnRef="DA/EM/PERSONINFO.LASTNAME" longSQLType="DECIMAL(17,18)"/>
+</Column>
+<Column id="DATE_OF_BIRTH" dataType="DATE" longSQLType="DATE" fqn="DG/EM/VW/PERSONINFO.DATE_OF_BIRTH">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE" fqnRef="DA/EM/PERSONINFO.DATE_OF_BIRTH" longSQLType="DATE"/>
+</Column>
+<Column id="NR_CHILDREN" dataType="BIGINT" precision="70" longSQLType="BIGINT" fqn="DG/EM/VW/PERSONINFO.NR_CHILDREN">
+<ColumnRef entityRef="DA/EM/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT" precision="70" fqnRef="DA/EM/PERSONINFO.NR_CHILDREN" longSQLType="BIGINT"/>
+</Column>
+<BaseTableRef entityRef="DA/EM/PERSONINFO">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalTable>
+<LogicalTable id="EM/DQ/QU/MGR_LOCATION" factTableSourceIndex="5">
+<Column id="/DG/EM/USERS_SYS_ID" dataType="NVARCHAR" precision="11" longSQLType="NVARCHAR(11)" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/USERS_SYS_ID">
+<ColumnRef entityRef="EMP_JOBINFO" columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="11" fqnRef="EMP_JOBINFO.USERS_SYS_ID" longSQLType="NVARCHAR(11)"/>
+</Column>
+<Column id="/DG/EM/MGR_FROM_DATE" semanticType="START_DATE" dataType="DATE" longSQLType="DATE" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/MGR_FROM_DATE">
+<ColumnRef entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_START_DATE" dataType="DATE" fqnRef="MGR_JOBINFO.EFFECTIVE_START_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="/DG/EM/MGR_TO_DATE" dataType="DATE" longSQLType="DATE" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/MGR_TO_DATE">
+<ColumnRef entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_END_DATE" dataType="DATE" fqnRef="MGR_JOBINFO.EFFECTIVE_END_DATE" longSQLType="DATE"/>
+</Column>
+<Column id="/DG/EM/MGR_SEQ_NR" semanticType="SEQ_NR" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/MGR_SEQ_NR">
+	<Value value="123"/>
+</Column>
+<Column id="/DG/EM/MGR_SEQ_NR" semanticType="SEQ_NR" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/MGR_SEQ_NR">
+<ColumnRef entityRef="MGR_JOBINFO" columnRef="SEQ_NR" fqnRef="MGR_JOBINFO.SEQ_NR"/>
+ <Value value="12A3" dataType="BIGINT" longSQLType="BIGINT"/>
+</Column>
+<Column id="/DG/EM/MGR_LOCATION" dataType="BIGINT" longSQLType="BIGINT" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/MGR_LOCATION">
+<ColumnRef entityRef="MGR_JOBINFO" columnRef="LOCATION" dataType="BIGINT" fqnRef="MGR_JOBINFO.LOCATION" longSQLType="BIGINT"/>
+</Column>
+<Column id="/DG/EM/PERSON_ID" dataType="BIGINT" semanticType="KEY" longSQLType="BIGINT" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/PERSON_ID">
+<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" dataType="BIGINT" fqnRef="DA/EM/EMPLOYMENT_INFO.PERSON_ID" longSQLType="BIGINT"/>
+</Column>
+<Column id="/DG/EM/NORM_EVENT" dataType="NVARCHAR" precision="12" semanticType="NORM_EVENT" longSQLType="NVARCHAR(12)" fqn="EM/DQ/QU/MGR_LOCATION./DG/EM/NORM_EVENT">
+<Value value="'DATAC'" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)"/>
+</Column>
+
+<BaseTableRef entityRef="DA/EM/JOBINFO">
+</BaseTableRef>
+<BaseTableRef entityRef="DA/EM/JOBINFO"/>
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO"/>
+<JoinCriteria joinType="INNER">
+<LogicalOperation op="AND">
+<Condition op="EQ">
+				<ColumnRef columnRef="MGR_USER_ID" entityRef="EMP_JOBINFO" fqnRef="EMP_JOBINFO.MGR_USER_ID"/>
+				<ColumnRef columnRef="USERS_SYS_ID" entityRef="MGR_JOBINFO" fqnRef="MGR_JOBINFO.USERS_SYS_ID"/>
+			</Condition>
+<Condition op="timeinLHSRangeSTART" tag="START_DATE">
+				<ColumnRef columnRef="EFFECTIVE_START_DATE" entityRef="EMP_JOBINFO" fqnRef="EMP_JOBINFO.EFFECTIVE_START_DATE"/>
+				<ColumnRef columnRef="EFFECTIVE_START_DATE" entityRef="MGR_JOBINFO" fqnRef="MGR_JOBINFO.EFFECTIVE_START_DATE"/>
+			</Condition>
+<Condition op="timeinLHSRangeEND" tag="END_DATE">
+				<ColumnRef columnRef="EFFECTIVE_END_DATE" entityRef="EMP_JOBINFO" fqnRef="EMP_JOBINFO.EFFECTIVE_END_DATE"/>
+				<ColumnRef columnRef="EFFECTIVE_END_DATE" entityRef="MGR_JOBINFO" fqnRef="MGR_JOBINFO.EFFECTIVE_END_DATE"/>
+			</Condition>
+</LogicalOperation>
+</JoinCriteria>
+<JoinCriteria joinType="INNER">
+<LogicalOperation op="NOOP">
+<Condition op="LT">
+				<ColumnRef columnRef="USERS_SYS_ID" entityRef="DA/EM/EMPLOYMENT_INFO" fqnRef="DA/EM/EMPLOYMENT_INFO.USERS_SYS_ID"/>
+				<ColumnRef value="NULL" dataType="NVARCHAR" precision="11"/>
+			</Condition>
+</LogicalOperation>
+</JoinCriteria>
+</LogicalTable>
+    <LogicalTable id="" type="Generator" name="DG/EM/GE/GEN_AGE" generatorStrategy="GENERATOR_AGE" eventFrequency="YEARLY" factTableSourceIndex="6">
+      <SourcePlugBinding semanticType="START_DATE" tag="CURRENT_EVENT_DATE" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE"/>
+      <SourcePlugBinding tag="BASE_DATE" entityRef="DG/EM/VW/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE"/>    
+      <Column id="EFFECTIVE_DATE" semanticType="START_DATE" dataType="DATE" longSQLType="DATE" fqn=".EFFECTIVE_DATE"/>
+      <Column id="AGE_IN_YEARS" dataType="SMALLINT" longSQLType="SMALLINT" fqn=".AGE_IN_YEARS"/>
+      <Column id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)" fqn=".NORM_EVENT">
+<Value value="'DATAC'" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)"/>
+</Column>
+    </LogicalTable>
+    <LogicalTable id="" type="Generator" name="DG/EM/GE/GEN_TENURE" generatorStrategy="GENERATOR_TENURE" eventFrequency="MONTHLY" factTableSourceIndex="7">
+      <SourcePlugBinding tag="SRC_EVENT_STATE" semanticType="NORM_EVENT" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+      <SourcePlugBinding tag="CURRENT_EVENT_DATE" semanticType="START_DATE" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE"/>
+      <Column id="TENURE_DAYS" dataType="INTEGER" longSQLType="INTEGER" fqn=".TENURE_DAYS"/>
+      <Column id="TENURE_MONTHS" dataType="INTEGER" longSQLType="INTEGER" fqn=".TENURE_MONTHS"/>
+      <Column id="TENURE_YEARS" dataType="INTEGER" longSQLType="INTEGER" fqn=".TENURE_YEARS"/>
+      <Column id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)" fqn=".NORM_EVENT">
+<Value value="'DATAC'" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)"/>
+</Column>
+   
+</LogicalTable>
+<!--  two uncaught errors here: 
+     1) Entity ref for EXTERNAL_CODE can not be TABLE, but must be GOBJ1 to be unique! 
+     2) The filter in the first BaseTAbleRef must be entityRef qualified, 
+     (or default augment to the alias!), not the entityRef!
+     https://jira.successfactors.com/browse/AYT-32014
+      -->
+		<!--  =============================== -->
+		<LogicalTable id="DG/WU/VW/COMPANY_LATEST">
+<!-- 		<Column id="INTERNAL_CODE">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_VALUES_AT_DATE" columnRef="INTERNAL_ID"/>
+			</Column>
+-->
+			<Column id="EXTERNAL_CODE" fqn="DG/WU/VW/COMPANY_LATEST.EXTERNAL_CODE">
+				<Cast dataType="NVARCHAR" precision="100" longSQLType="NVARCHAR(100)">
+					<ColumnRef entityRef="DG/GL/VW/GOBJ_T_VALUES_AT_DATE" columnRef="EXTERNAL_CODE" fqnRef="DG/GL/VW/GOBJ_T_VALUES_AT_DATE.EXTERNAL_CODE"/>
+				</Cast>
+			</Column>
+			<Column id="COMPANY_PARENT_ID" fqn="DG/WU/VW/COMPANY_LATEST.COMPANY_PARENT_ID">
+				<ColumnRef entityRef="GOBJ2" columnRef="EXTERNAL_CODE" fqnRef="GOBJ2.EXTERNAL_CODE"/>
+			</Column>
+			<BaseTableRef entityRef="DG/GL/VW/GOBJ_T_VALUES_AT_DATE" alias="GOBJ1" aliasFQNs="|">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="OBJECT_TYPE" fqnRef=".OBJECT_TYPE"/>
+						<Value value="'company'"/>
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef columnRef="EFFECTIVE_END_DATE" fqnRef=".EFFECTIVE_END_DATE"/>
+						<Value value="9999-12-31" dataType="DATE" longSQLType="DATE"/>
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+			<BaseTableRef entityRef="DG/GL/VW/GOBJ_T_VALUES_AT_DATE" alias="GOBJ2" aliasFQNs="|"/>
+			<JoinCriteria joinType="LEFT">
+				<LogicalOperation op="AND">
+					<Condition op="EQ">
+						<ColumnRef entityRef="GOBJ1" columnRef="SF_FIELD3" fqnRef="GOBJ1.SF_FIELD3"/>
+						<Cast dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+							<ColumnRef entityRef="GOBJ2" columnRef="INTERNAL_ID" fqnRef="GOBJ2.INTERNAL_ID"/>
+						</Cast>
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef entityRef="GOBJ2" columnRef="OBJECT_TYPE" fqnRef="GOBJ2.OBJECT_TYPE"/>
+						<Value value="'company'"/>
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef entityRef="GOBJ2" columnRef="EFFECTIVE_END_DATE" fqnRef="GOBJ2.EFFECTIVE_END_DATE"/>
+						<Value value="9999-12-31" dataType="DATE" longSQLType="DATE"/>
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+</DataSets>
+ <FactTable id="DG/EM/FACT">
+    <!--  these have to be added to the interim fact table as they are a base of post calculation  
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/AGE" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/GE/GEN_AGE" sourceColumnRef="/DG/EM/AGE" ></Source>
+    </ColumnSemantic>
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/MGR_LOCATION" dataType="BIGINT">
+      <Source sourceTableRef="DG/EM/VW/MGR_LOCATION" sourceColumnRef="/DG/EM/MGR_LOCATION" ></Source>
+    </ColumnSemantic>
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="WORK_LOC" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCATION" ></Source>
+    </ColumnSemantic>
+    -->
+    <Column id="PERSON_ID" dimensionRef="PERSON_ID" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.PERSON_ID"/>
+    <Column id="START_DATE" dimensionRef="START_DATE" dataType="DATE" longSQLType="DATE" fqn="DG/EM/FACT.START_DATE"/>
+    <Column id="NORM_EVENT" dimensionRef="NORM_EVENT" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)" fqn="DG/EM/FACT.NORM_EVENT"/>
+    <Column id="PERSON_ID" dimensionRef="PERSON_ID" semanticType="START_DATE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.PERSON_ID"/>
+<!-- 
+    <FTDimension name="AGE_GROUP" >
+      <Source sourceTableRef="PC_AGE_GROUP" sourceColumnRef="AGE_GROUP" fillStrategy="POSTCALC"></Source>
+    </FTDimension>
+    -->
+
+    <!-- 
+    <FTMeasure name="DIST_WORK_HOME" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" >
+      <Source sourceTableRef="DG/EM/PC/DIST_WORK_HOME" sourceColumnRef="GEODISTANCE_KM" fillStrategy="POSTCALC"></Source>
+    </FTMeasure>
+  -->
+      <Column id="DIM_DOB" dimensionRef="DIM_DOB" dataType="DATE" longSQLType="DATE" fqn="DG/EM/FACT.DIM_DOB"/>
+    <Column id="REGULAR_TEMP" dimensionRef="REGULAR_TEMP" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)" fqn="DG/EM/FACT.REGULAR_TEMP"/>
+    <Column id="DIM_AGE" dimensionRef="DIM_AGE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.DIM_AGE"/>
+    <Column id="AGE" measureRef="AGE" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.AGE"/>
+    <Column id="TENURE_DAYS" measureRef="TENURE_DAYS" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.TENURE_DAYS"/>
+    <Column id="DIM_DAYS" dimensionRef="DIM_DAYS" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.DIM_DAYS"/>
+    <Column id="TENURE_YEARS" measureRef="TENURE_YEARS" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.TENURE_YEARS"/>
+    <Column id="DIM_TENURE_YEARS" dimensionRef="DIM_TENURE_YEARS" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.DIM_TENURE_YEARS"/>
+    <Column id="WEIGHT_GROUP" dimensionRef="WEIGHT_GROUP" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)" fqn="DG/EM/FACT.WEIGHT_GROUP"/>
+    <Column id="WEIGHT_X" measureRef="WEIGHT" dataType="BIGINT" precision="32" longSQLType="BIGINT" fqn="DG/EM/FACT.WEIGHT_X"/>
+    <Column id="NR_CHILDREN" measureRef="NR_CHILDREN" dataType="BIGINT" precision="32" scale="0" longSQLType="BIGINT" fqn="DG/EM/FACT.NR_CHILDREN"/>
+
+    <Column id="MEAS_HEADCOUNT" measureRef="MEAS_HEADCOUNT" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.MEAS_HEADCOUNT"/>
+    <Column id="MEAS_MOVE_IN" measureRef="MEAS_MOVE_IN" dataType="SMALLINT" longSQLType="SMALLINT" fqn="DG/EM/FACT.MEAS_MOVE_IN"/>
+
+    <Column id="MEAS_MOVE_OUT" measureRef="MEAS_MOVE_OUT" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.MEAS_MOVE_OUT"/>
+    <Column id="COUNTRY" dimensionRef="COUNTRY" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)" fqn="DG/EM/FACT.COUNTRY"/>
+
+    <Column id="GENDER_X" dimensionRef="GENDER" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)" fqn="DG/EM/FACT.GENDER_X"/>
+
+    <Column id="PAYGROUP" dimensionRef="PAYGROUP" dataType="BIGINT" longSQLType="BIGINT" fqn="DG/EM/FACT.PAYGROUP"/>
+
+    <Column id="LOCCODE" dimensionRef="LOCCODE" dataType="NVARCHAR" precision="14" longSQLType="NVARCHAR(14)" fqn="DG/EM/FACT.LOCCODE"/>
+
+    <Column id="REASON" dimensionRef="REASON" dataType="NVARCHAR" precision="14" longSQLType="NVARCHAR(14)" fqn="DG/EM/FACT.REASON"/>
+
+<!-- 
+    <FTDimension name="TRAVEL_COMP_GROUP" >
+      <Source sourceTableRef="DG/EM/PC/TRAVEL_COMP_GROUP" sourceColumnRef="DIM_TRAVEL_COMP_GROUP" fillStrategy="POSTCALC"></Source>
+    </FTDimension>
+    -->
+
+    <Column id="EMPLOYMENT_STATUS" dimensionRef="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7" longSQLType="NVARCHAR(7)" fqn="DG/EM/FACT.EMPLOYMENT_STATUS"/>
+
+  </FactTable>
+<EventSection>
+<EventDefinition defaultEvent="DATAC">
+			<!-- section defining the NORM_EVENTs  @eventRef refers to one of these -->
+			<Event id="TERM">
+				<GeneratedSuccessorEvent eventRef="TER2"/>
+			</Event>
+			<Event id="TER2">
+				<GeneratorSemantics generatorStrategyRef="GENERATOR_TYPO" param="GEN_TENURE" value="STOP"/>
+			</Event>
+			<Event id="HIRE">
+				<!-- stop producing age events for this person -->
+				<GeneratorSemantics generatorStrategyRef="GENERATOR_TYPO" param="GEN_AGE" value="START"/>
+				<GeneratorSemantics generatorStrategyRef="GENERATOR_AGE" param="GEN_TENURE" value="START"/>
+			</Event>
+			<Event id="MOVE_OUT"/>
+			<Event id="MOVE_IN">
+			</Event>
+			<Event id="DATAC">
+				<GeneratedSuccessorEvent eventRef="DATAB"/>
+			</Event>
+			<Event id="DATAB" code="0x0110"/>
+		</EventDefinition>
+		<ResultFilters>
+			<ResultSameButFor>
+			   <EventRemap action="REMOVE">
+			    <!--  must have a filter -->
+			   </EventRemap>
+			       <ColumnRef entityRef="DG/EM/FACT" columnRef="HEAD_COUNTX" fqnRef="DG/EM/FACT.HEAD_COUNTX"/>
+			       <ColumnRef entityRef="DG/S0/FACT" columnRef="NORM_EVENT" fqnRef="DG/S0/FACT.NORM_EVENT"/>
+			       <ColumnRef entityRef="DG/EM/FACT" columnRef="START_DATE" fqnRef="DG/EM/FACT.START_DATE"/>
+			</ResultSameButFor>
+		</ResultFilters>
+<EventStrategies>
+
+			<!-- 
+			    @eventStrategyRef refers to one of these
+			event strategies are reusable templates which can be referenced by 
+				name, and expanded when generating the config.to.connnect.xslt 
+				they are just a tool to avoid repeating the strategy at every dimension 
+				-->
+			<EventStrategy id="DIM_VALUE_COPY_CURR">
+				<!-- use current and previous values to fill the column, this is likely 
+					adequate for e.g. EVENT_REASON_ICODE, where we want to retain the HIRE icode 
+					for a HIRE followed by a DATAC event. -->
+				<EventRef eventRef="HIRE" calculation="CURR"/>
+				<EventRef eventRef="MOVE_OUT" calculation="PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="ACCUMULATE"/>
+				<EventRef eventRef="DATAC" calculation="PREV"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+				<EventRef eventRef="TERM" calculation="CURR"/>
+				<EventRef eventRef="ROLL_UP" calculation="ACCUMULATE"/>
+				<EventRef eventRef="TER2" calculation="CURR"/>
+
+			</EventStrategy>
+			<EventStrategy id="DIM_VALUE_COPY_LATEST">
+				<!-- use latest and previous values to fill the column, this is likely 
+					adequate for e.g. LOCATION where in case of a HIRE followed by a DATAC event 
+					we want to retain the "latest" relevant location, TODO: implement this -->
+				<EventRef eventRef="TERM" calculation="CURR"/>
+				<EventRef eventRef="TER2" calculation="ACCUMULATE_TEST_NON_ZERO"/>
+				<EventRef eventRef="HIRE" calculation="LATEST"/>
+				<EventRef eventRef="MOVE_OUT" calculation="PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="CURR"/>
+				<EventRef eventRef="DATAC" calculation="PREV"/>
+				<EventRef eventRef="ROLL_UP" calculation="ACCUMULATE_TEST_NON_ZERO"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+			</EventStrategy>
+
+			<EventStrategy id="MEAS_ADDITIVE">
+				<EventRef eventRef="TERM" value="0"/>
+				<EventRef eventRef="TER2" calculation="NEG_PREV"/>
+				<EventRef eventRef="HIRE" calculation="CURR">
+					<!-- may become latest !? -->
+				</EventRef>
+				<EventRef eventRef="MOVE_OUT" calculation="NEG_PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="CURR"/>
+				<EventRef eventRef="DATAC" calculation="NEG_PREV"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+			</EventStrategy>
+		</EventStrategies>
+</EventSection>
+<Dimensions>
+<Dimension id="PERSON_ID" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT"/>
+<Dimension id="START_DATE" semanticType="START_DATE" dataType="DATE" longSQLType="DATE">
+<EventRef eventRef="TERM" calculation="DAY_BEFORE">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE" fqnRef="DG/XX/INT/EVENTDRIVER.EVENT_DATE" longSQLType="DATE"/>
+			</EventRef>
+<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE" fqnRef="DG/XX/INT/EVENTDRIVER.EVENT_DATE" longSQLType="DATE"/>
+			</EventRef>
+</Dimension>
+<Dimension id="A_PERSON_ID" semanticType="KEY" dataType="BIGINT" eventStrategyRef="DIM_VALUE_COPY_CURR" longSQLType="BIGINT">
+</Dimension>
+<Dimension id="B_PERSON_ID" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT">
+<EventRef eventRef="TERM" calculation="DAY_BEFORE">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE" fqnRef="DG/XX/INT/EVENTDRIVER.EVENT_DATE" longSQLType="DATE"/>
+			</EventRef>
+<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE" fqnRef="DG/XX/INT/EVENTDRIVER.EVENT_DATE" longSQLType="DATE"/>
+			</EventRef>
+</Dimension>
+<Dimension id="C_PERSON_ID" semanticType="KEY" dataType="BIGINT" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE" fqnRef="DG/EM/VW/PERSONINFO.DATE_OF_BIRTH" longSQLType="DATE"/>
+</Dimension>
+<Dimension id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" longSQLType="NVARCHAR(12)"/>
+<Dimension id="DIM_DOB" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="DATE" longSQLType="DATE">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE" fqnRef="DG/EM/VW/PERSONINFO.DATE_OF_BIRTH" longSQLType="DATE"/>
+<EventRef eventRef="*" calculation="CURR"/>
+</Dimension>
+<Dimension id="DIM_AGE" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="BIGINT" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_AGE" columnRef="AGE_IN_YEARS" dataType="SMALLINT" fqnRef="DG/EM/GE/GEN_AGE.AGE_IN_YEARS" longSQLType="SMALLINT"/>
+<EventRef eventRef="HIRE" value="+1"/>
+</Dimension>
+<Dimension id="DIM_DAYS" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="BIGINT" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_DAYS" dataType="INTEGER" fqnRef="DG/EM/GE/GEN_TENURE.TENURE_DAYS" longSQLType="INTEGER"/>
+</Dimension>
+<Dimension id="DIM_TENURE_YEARS" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="BIGINT" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_YEARS" dataType="INTEGER" fqnRef="DG/EM/GE/GEN_TENURE.TENURE_YEARS" longSQLType="INTEGER"/>
+</Dimension>
+<Dimension id="REGULAR_TEMP" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/COUNTRY_LOCATION" dataType="NVARCHAR" precision="3" fqnRef="DG/EM/VW/JOBINFO./DG/EM/COUNTRY_LOCATION" longSQLType="NVARCHAR(3)"/>
+</Dimension>
+<Dimension id="WEIGHT_GROUP" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/WEIGHT_GROUP" dataType="NVARCHAR" precision="10" fqnRef="DG/EM/VW/JOBINFO./DG/EM/WEIGHT_GROUP" longSQLType="NVARCHAR(10)"/>
+</Dimension>
+<Dimension id="COUNTRY" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/COUNTRY_LOCATION" dataType="NVARCHAR" precision="3" fqnRef="DG/EM/VW/JOBINFO./DG/EM/COUNTRY_LOCATION" longSQLType="NVARCHAR(3)"/>
+</Dimension>
+<Dimension id="GENDER" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="2" longSQLType="NVARCHAR(2)">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="GENDER" dataType="NVARCHAR" precision="2" fqnRef="DG/EM/VW/PERSONINFO.GENDER" longSQLType="NVARCHAR(2)"/>
+</Dimension>
+<Dimension id="PAYGROUP" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="BIGINT" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="PAYGROUP" dataType="BIGINT" fqnRef="DG/EM/VW/JOBINFO.PAYGROUP" longSQLType="BIGINT"/>
+  <DimensionMasterData>
+   <Column id="PAYGROUP" semanticType="DIMENSION_KEY" defaultValue="'BC'" dataType="BIGINT" longSQLType="BIGINT">
+        <ColumnRef entityRef="DG/BR/GENDER" columnRef="GENDER_KEY" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/GENDER.GENDER_KEY" longSQLType="NVARCHAR(20)"/>
+    </Column>
+  </DimensionMasterData>
+</Dimension>
+<Dimension id="COUNTRY" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/COUNTRY_LOCATION" dataType="NVARCHAR" precision="3" fqnRef="DG/EM/VW/JOBINFO./DG/EM/COUNTRY_LOCATION" longSQLType="NVARCHAR(3)"/>
+</Dimension>
+<Dimension id="LOCCODE" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="3" longSQLType="NVARCHAR(3)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="LOCCODE" dataType="NVARCHAR" precision="3" fqnRef="DG/EM/VW/JOBINFO.LOCCODE" longSQLType="NVARCHAR(3)"/>
+</Dimension>
+<Dimension id="REASON" dataType="NVARCHAR" precision="14" longSQLType="NVARCHAR(14)">
+<EventRef eventRef="MOVE_IN" calculation="CURR">
+          <ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="MOVE_REASON" dataType="NVARCHAR" fqnRef="DG/EM/VW/JOBINFO.MOVE_REASON" longSQLType="NVARCHAR()"/>
+        </EventRef>
+<EventRef eventRef="HIRE" calculation="CURR">
+          <ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="HIRE_REASON" dataType="NVARCHAR" fqnRef="DG/EM/VW/JOBINFO.HIRE_REASON" longSQLType="NVARCHAR()"/>
+        </EventRef>
+<EventRef eventRef="*" value="NULL"/>
+</Dimension>
+<Dimension id="EMPLOYMENT_STATUS" eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR" precision="7" longSQLType="NVARCHAR(7)">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7" fqnRef="DG/EM/VW/JOBINFO.EMPLOYMENT_STATUS" longSQLType="NVARCHAR(7)"/>
+</Dimension>
+
+
+<Dimension id="GENDER" dataType="NVARCHAR" precision="4" global="true" longSQLType="NVARCHAR(4)">
+  <DimensionMasterData>
+	<Column id="GENDER" semanticType="DIMENSION_KEY" defaultValue="'BC'" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/GENDER" columnRef="GENDER_KEY" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/GENDER.GENDER_KEY" longSQLType="NVARCHAR(20)"/>
+</Column>
+	<Column id="GENDER_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/GENDER" columnRef="GENDER_VALUE" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/GENDER.GENDER_VALUE" longSQLType="NVARCHAR(20)"/>
+</Column>
+	<Column id="GENDER_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/GENDER" columnRef="GENDER_TEXT" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/GENDER.GENDER_TEXT" longSQLType="NVARCHAR(20)"/>
+</Column>
+  </DimensionMasterData>
+</Dimension>
+
+<!--  skewed KEY - key column GENDER_KEY not in DG/BR/VW/GENDER2_TEXT  -->
+<Dimension id="GENDER2" dataType="NVARCHAR" precision="4" global="true" longSQLType="NVARCHAR(4)">
+  <DimensionMasterData>
+	<Column id="GENDER2" semanticType="DIMENSION_KEY" defaultValue="'BC'" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/VW/GENDER2" columnRef="GENDER_KEY" dataType="NVARCHAR" precision="10" fqnRef="DG/BR/VW/GENDER2.GENDER_KEY" longSQLType="NVARCHAR(10)"/>
+</Column>
+	<Column id="GENDER2_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/VW/GENDER2" columnRef="GENDER_VALUE" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/VW/GENDER2.GENDER_VALUE" longSQLType="NVARCHAR(20)"/>
+</Column>
+  	<Column id="GENDER2_LANGUAGE" defaultValue="'ABC'" semanticType="LANGUAGE" dataType="NVARCHAR" precision="10" longSQLType="NVARCHAR(10)">
+<ColumnRef entityRef="DG/BR/VW/GENDER2_TEXT" columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" fqnRef="DG/BR/VW/GENDER2_TEXT.LANGUAGE" longSQLType="NVARCHAR(1)"/>
+</Column>
+	<Column id="GENDER2_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/VW/GENDER2_TEXT" columnRef="GENDER_TEXT" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/VW/GENDER2_TEXT.GENDER_TEXT" longSQLType="NVARCHAR(20)"/>
+</Column>
+  </DimensionMasterData>
+</Dimension>
+
+<Dimension id="LOCATION" dimensionType="Structural" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+		<CustomLabels key="ABC">
+				<Label locale="en_US">LOCATION</Label>
+				<Label locale="en_GB">LOCATION</Label>
+				<Label locale="es_ES">LOCATION</Label>
+		</CustomLabels>
+		<DimensionMasterData>
+				<Hierarchy type="leveled"> <!-- This is a redundant , needs to be changed in original Config XML -->
+					<Level>
+						<Column id="LOCATION_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+						<CustomLabels key="AAA">
+							<Label locale="‎en_GB">I am OK</Label>
+						</CustomLabels>
+						<ColumnRef entityRef="DG/BR/LOCATION_TEXT" columnRef="TOWN_TEXT" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION_TEXT.TOWN_TEXT" longSQLType="NVARCHAR(40)"/>
+</Column>
+						<Column id="LOCATION" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="21" longSQLType="NVARCHAR(21)">
+						 <Function name="CONCAT">
+						<ColumnRef entityRef="DG/BR/VW/LOCATION" columnRef="TOWN" dataType="NVARCHAR" precision="15" fqnRef="DG/BR/VW/LOCATION.TOWN" longSQLType="NVARCHAR(15)"/>
+						<ColumnRef entityRef="DG/BR/LOCATION" columnRef="TOWN" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.TOWN" longSQLType="NVARCHAR(20)"/>
+						 </Function>
+						</Column>
+					</Level>
+					<Level>
+<!--  types systematically too short! -->
+						<Column id="STATE_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+							<ColumnRef entityRef="DG/BR/VW/LOCATION_TEXT" columnRef="TOWN_TEXT" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/VW/LOCATION_TEXT.TOWN_TEXT" longSQLType="NVARCHAR(40)"/>
+						</Column>
+						<Column id="STATE" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+							<ColumnRef entityRef="DG/BR/VW/LOCATION" columnRef="TOWN" dataType="NVARCHAR" precision="10" defaultValue="$$KEY$$" fqnRef="DG/BR/VW/LOCATION.TOWN" longSQLType="NVARCHAR(10)"/>
+						</Column>
+						<Column id="STAT_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+					</Level>
+					<Level>
+						<Column id="LOCATION" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="COUNTRY" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.COUNTRY" longSQLType="NVARCHAR(20)"/>
+</Column>
+						<Column id="LOCATION_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="CNTRY_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.CNTRY_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+						<Column id="STATE_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+					</Level>
+					<Level>
+						<Column id="" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+						<Cast dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+							<ColumnRef entityRef="DG/BR/LOCATION" columnRef="GLOBAL_REGION" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.GLOBAL_REGION" longSQLType="NVARCHAR(20)"/>
+						</Cast>
+							</Column>
+						<Column id="LOCATION_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="GLB_REG_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.GLB_REG_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+					</Level>
+					<Level>
+						<Column id="SUPA_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+						<Column id="SUPA" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="COUNTRY" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.COUNTRY" longSQLType="NVARCHAR(20)"/>
+</Column>
+				</Level>
+				</Hierarchy>
+		</DimensionMasterData>
+</Dimension>
+<Dimension id="LUCATION" dimensionType="Structural" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+		<CustomLabels key="ABC">
+				<Label locale="en_US">LUCATION</Label>
+				<Label locale="en_GB">LUCATION</Label>
+				<Label locale="es_ES">LUCATION</Label>
+		</CustomLabels>
+		<DimensionMasterData>
+				<Hierarchy type="leveled"> <!-- This is a redundant , needs to be changed in original Config XML -->
+					<Level>
+						<Column id="STATE_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+						<Column id="STATE" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE" dataType="NVARCHAR" precision="20" defaultValue="$$KEY$$" fqnRef="DG/BR/LOCATION.STATE" longSQLType="NVARCHAR(20)"/>
+</Column>
+						<Column id="STAT_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+					</Level>
+					<Level>
+						<CustomLabels key="AAA">
+							<Label locale="en_US">I am OK</Label>
+						</CustomLabels>
+						<Column id="LUCATION" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+							<ColumnRef entityRef="DG/BR/LOCATION" columnRef="TOWN" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.TOWN" longSQLType="NVARCHAR(20)"/>
+						</Column>
+					</Level>
+					<Level>
+						<Column id="STATE" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="COUNTRY" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.COUNTRY" longSQLType="NVARCHAR(20)"/>
+</Column>
+						<Column id="STATE_TEXT" semanticType="TEXT" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+							<Function name="TRUNCATE">
+							<ColumnRef entityRef="DG/BR/LOCATION" columnRef="CNTRY_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.CNTRY_LABEL" longSQLType="NVARCHAR(40)"/>
+							</Function>
+						</Column>
+						<Column id="STATE_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="40" longSQLType="NVARCHAR(40)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE_LABEL" dataType="NVARCHAR" precision="40" fqnRef="DG/BR/LOCATION.STATE_LABEL" longSQLType="NVARCHAR(40)"/>
+</Column>
+					</Level>
+				</Hierarchy>
+		</DimensionMasterData>
+</Dimension>
+<Dimension id="LACATION" dimensionType="Structural" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+		<CustomLabels key="ABC">
+				<Label locale="en_US">LUCATION</Label>
+				<Label locale="en_GB">LUCATION</Label>
+				<Label locale="es_ES">LUCATION</Label>
+		</CustomLabels>
+		<DimensionMasterData>
+				<Hierarchy type="leveled"> <!-- This is a redundant , needs to be changed in original Config XML -->
+					<Level>
+						<Column id="STATE" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+<ColumnRef entityRef="DG/BR/LOCATION" columnRef="STATE" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.STATE" longSQLType="NVARCHAR(20)"/>
+</Column>
+					</Level>
+					<Level>
+						<CustomLabels key="AAA">
+							<Label locale="en_US">I am OK</Label>
+						</CustomLabels>
+						<Column id="LUCATION" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="20" defaultValue="'ABC'" longSQLType="NVARCHAR(20)">
+							<ColumnRef entityRef="DG/BR/LOCATION" columnRef="TOWN" dataType="NVARCHAR" precision="20" fqnRef="DG/BR/LOCATION.TOWN" longSQLType="NVARCHAR(20)"/>
+						</Column>
+					</Level>
+				</Hierarchy>
+		</DimensionMasterData>
+</Dimension>
+<Dimension id="PARCHILD" dimensionType="Structural" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+		
+		<CustomLabels key="ABC">
+				<Label locale="en_US">PARCHILD</Label>
+				<Label locale="en_GB">PARCHILD</Label>
+				<Label locale="es_ES">PARCHILD</Label>
+		</CustomLabels>
+		<DimensionMasterData>
+				<Hierarchy type="parent-child"> <!-- This is a redundant , needs to be changed in original Config XML -->
+					<Column id="PARCHILD" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+						<CustomLabels key="ABC">
+								<Label locale="en_US">PARCHILD</Label>
+								<Label locale="en_GB">PARCHILD</Label>
+								<Label locale="es_ES">PARCHILD</Label>
+						</CustomLabels>
+					<ColumnRef entityRef="MOGHULS" columnRef="CHILD_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.CHILD_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+					<Column id="PARCHILD" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+					<Column id="PARCHILD_OTHER" semanticType="DIMENSION_KEY" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+					<Column id="PARCHILD_BADOTHER" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+					<Column id="PARCHILD_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+				</Hierarchy>
+		</DimensionMasterData>
+</Dimension>
+<Dimension id="PARCHILDNOSEM" dimensionType="Structural" dataType="NVARCHAR" precision="20" longSQLType="NVARCHAR(20)">
+		
+		<CustomLabels key="ABC">
+				<Label locale="en_US">PARCHILD</Label>
+				<Label locale="en_GB">PARCHILD</Label>
+				<Label locale="es_ES">PARCHILD</Label>
+		</CustomLabels>
+		<DimensionMasterData>
+				 <!-- parent child without semantic key for parent and key -->
+				<Hierarchy type="parent-child">
+					<Column id="PARCHILDNOSEM" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+							<CustomLabels key="ABC">
+								<Label locale="en_US">PARCHILD</Label>
+								<Label locale="en_GB">PARCHILD</Label>
+								<Label locale="es_ES">PARCHILD</Label>
+							</CustomLabels>
+						<ColumnRef entityRef="MOGHULS" columnRef="CHILD_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.CHILD_KEY" longSQLType="NVARCHAR(30)"/>
+					</Column>
+					<Column id="PARCHILDNOSEM_PARENT" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+					<Column id="PARCHILDNOSEM_NAME" semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="30" longSQLType="NVARCHAR(30)">
+<ColumnRef entityRef="MOGHULS" columnRef="PARENT_KEY" dataType="NVARCHAR" precision="30" fqnRef="MOGHULS.PARENT_KEY" longSQLType="NVARCHAR(30)"/>
+</Column>
+				</Hierarchy>
+		</DimensionMasterData>
+</Dimension>
+</Dimensions>
+<Measures>
+<BaseMeasure id="AGE" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_AGE" columnRef="AGE_IN_YEARS" dataType="SMALLINT" fqnRef="DG/EM/GE/GEN_AGE.AGE_IN_YEARS" longSQLType="SMALLINT"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">AGE</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="TENURE_DAYS" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_DAYS" dataType="INTEGER" fqnRef="DG/EM/GE/GEN_TENURE.TENURE_DAYS" longSQLType="INTEGER"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">TENURE_DAYS</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="TENURE_YEARS" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_YEARS" dataType="INTEGER" fqnRef="DG/EM/GE/GEN_TENURE.TENURE_YEARS" longSQLType="INTEGER"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">TENURE_YEARS</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="WEIGHT" aggregationType="SUM" dataType="BIGINT" precision="32" eventStrategyRef="MEAS_ADDITIVE" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="WEIGHT" dataType="BIGINT" fqnRef="DG/EM/VW/JOBINFO.WEIGHT" longSQLType="BIGINT"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">WEIGHT</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="NR_CHILDREN" aggregationType="SUM" dataType="BIGINT" precision="32" scale="0" eventStrategyRef="MEAS_XADDITIVE" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT" fqnRef="DG/EM/VW/PERSONINFO.NR_CHILDREN" longSQLType="BIGINT"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">NR_CHILDREN</Label>
+</CustomLabels>
+</BaseMeasure>
+
+<BaseMeasure id="LOCATION" aggregationType="SUM" dataType="BIGINT" precision="32" longSQLType="BIGINT">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT" fqnRef="DG/EM/VW/PERSONINFO.NR_CHILDREN" longSQLType="BIGINT"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">NR_CHILDREN</Label>
+</CustomLabels>
+</BaseMeasure>
+
+<BaseMeasure id="HCDEC" aggregationType="SUM" dataType="DECIMAL" precision="10" scale="5" longSQLType="DECIMAL(10,5)">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT" fqnRef="DG/EM/VW/PERSONINFO.NR_CHILDREN" longSQLType="BIGINT"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">HC DECIMAL</Label>
+</CustomLabels>
+</BaseMeasure>
+
+<BaseMeasure id="MEAS_HEADCOUNT" aggregationType="SUM" dataType="BIGINT" longSQLType="BIGINT">
+<EventRef eventRef="HIRE" value="1"/>
+<EventRef eventRef="MOVE_OUT" value="-3"/>
+<EventRef eventRef="MOVE_IN" value="'ABC'"/>
+<!--  no child but not roll_up! -->
+<EventRef eventRef="DATAC" calculation="CURR"/>
+<EventRef eventRef="DATAB" value="+1"/>
+<EventRef eventRef="ROLL_UP" calculation="CURR"/>
+<EventRef eventRef="TERM" value="0"/>
+<EventRef eventRef="TER2" value="-1"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_HEADCOUNT</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="MEAS_MOVE_IN" aggregationType="SUM" dataType="BIGINT" longSQLType="BIGINT">
+<EventRef eventRef="MOVE_IN" value="1"/>
+<EventRef eventRef="ROLL_UP" calculation="PRIOR_FACT"/>
+<EventRef eventRef="*" value="0"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_MOVE_IN</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="MEAS_MOVE_OUT" aggregationType="SUM" dataType="BIGINT" longSQLType="BIGINT">
+<EventRef eventRef="MOVE_OUT" value="1"/>
+<EventRef eventRef="TERM" value="1"/>
+<EventRef eventRef="ROLL_UP" calculation="PREV"/>
+<EventRef eventRef="*" value="0"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_MOVE_OUT</Label>
+</CustomLabels>
+</BaseMeasure>
+	<CustomMeasure aggregationType="CUM" dataType="INTEGER" hidden="false" id="EOPHEADCOUNT" precision="13" scale="2" measureType="INPUT">
+		<CustomLabels key="EOPHEADCOUNT">
+			<Label locale="en_US">EOP Headcount</Label>
+		</CustomLabels>
+		<ExceptionAggregation>
+			<MeasureId>HEAD_COUNT</MeasureId>
+			<DimensionId>TIME_DIMENSION</DimensionId>
+			<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+			<ExceptionAggregationBehavior>LAST</ExceptionAggregationBehavior>
+		</ExceptionAggregation>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="CUM" dataType="DECIMAL" id="SOPHEADCOUNT" precision="-2" scale="-1" measureType="INPUT">
+		<CustomLabels key="">
+			<Label locale="en_US">EOP Headcount</Label>
+		</CustomLabels>
+		<ExceptionAggregation>
+			<MeasureId>HEAD_COUNT</MeasureId>
+			<DimensionId>TIME_DIMENSION</DimensionId>
+			<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+			<ExceptionAggregationBehavior>FIRST</ExceptionAggregationBehavior>
+		</ExceptionAggregation>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="CUM" dataType="INTEGER" id="AGE" precision="10" scale="7" measureType="INPUT">
+		<!-- same name as BaseMeasure? -->
+		<CustomLabels key="">
+			<Label locale="en_US">Bad narrower decimal 10-5 not &lt; 10-7 EOP Headcount</Label>
+		</CustomLabels>
+		<ExceptionAggregation>
+			<MeasureId>AGE</MeasureId>
+			<DimensionId>TIME_DIMENSION</DimensionId>
+			<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+			<ExceptionAggregationBehavior>FIRST</ExceptionAggregationBehavior>
+		</ExceptionAggregation>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="CUM" dataType="DECIMAL" id="SOPHEADCOUNTX" precision="10" scale="7" measureType="INPUT">
+		<CustomLabels key="">
+			<Label locale="en_US">Bad narrower decimal 10-5 not &lt; 10-7 EOP Headcount</Label>
+		</CustomLabels>
+		<ExceptionAggregation>
+			<MeasureId>HCDEC</MeasureId>
+			<DimensionId>TIME_DIMENSION</DimensionId>
+			<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+			<ExceptionAggregationBehavior>FIRST</ExceptionAggregationBehavior>
+		</ExceptionAggregation>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="DECIMAL" hidden="false" id="EOPHEADCOUNT_REGULAR" precision="39" scale="49" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount - Regular</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>EOPHEADCOUNT</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="DECIMAL" hidden="false" id="EOPHEADCOUNT_TEMPORARY" precision="0" scale="0" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_TEMPORARY">
+			<Label locale="en_US">EOP HEadcount - Temporary</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="LOCCODE_NIX" onHier="false">
+							<Column columnId="LOCCODE" dataType="NVARCHAR">
+								<ColumnValue value="'Temporary'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>EOPHEADCOUNT</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" hidden="false" id="EOPHEADCOUNT_REGULAR" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount duplicate, columnId does not exist </Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="LOCCODE" onHier="false">
+							<Column columnId="LOCCODE" dataType="NVARCHAR">
+								<ColumnValue value="Reg"/>
+								<ColumnValue value="Regular and way tooo long to fit"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>EOPHEADCOUNT</Then>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="DIM_DAYS" onHier="false">
+							<Column columnId="DIM_DAYS" dataType="NVARCHAR">
+								<ColumnValue value="shouldbeint"/>
+								<ColumnValue value="+123"/>
+								<ColumnValue value="-123"/>
+								<ColumnValue value="123"/>
+								<ColumnValue value="12.3"/>
+								<ColumnValue value="-12.3"/>
+							</Column>
+						</Condition>
+						<Condition op="EQ" dimensionId="DIM_TENURE_YEARS" onHier="false">
+							<Column columnId="DIM_DAYS" dataType="INTEGER">
+								<ColumnValue value="shouldbeint"/>
+								<ColumnValue value="+123"/>
+								<ColumnValue value="-123"/>
+								<ColumnValue value="123"/>
+								<ColumnValue value="12.3"/>
+								<ColumnValue value="-12.3"/>
+							</Column>
+						</Condition>
+						<Condition op="EQ" dimensionId="DIM_AGE" onHier="false">
+							<Column columnId="DIM_DAYS" dataType="DECIMAL" precision="7" scale="2">
+								<ColumnValue value="shouldbeint"/>
+								<ColumnValue value="+123"/>
+								<ColumnValue value="-123"/>
+								<ColumnValue value="123"/>
+								<ColumnValue value="12.333333333333"/>
+								<ColumnValue value="-12.3333333333333"/>
+								<ColumnValue value="+12345.3"/>
+								<ColumnValue value="+123456.3"/>
+								<ColumnValue value="12345.3"/>
+								<ColumnValue value="123456.3"/>
+								<ColumnValue value="+12.3"/>
+								<ColumnValue value="+12.3"/>
+								<ColumnValue value="12.3"/>
+								<ColumnValue value="12.3.3"/>
+								<ColumnValue value="-12.3333.3333333"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>MEAS_HEADCOUNT</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="DECIMAL" hidden="false" id="SELFREF" precision="39" scale="49" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount - Regular</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>SELFREF</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="DECIMAL" hidden="false" id="CYCLEREF_A" precision="39" scale="49" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount - Regular</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>CYCLEREF_B</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="INTEGER" hidden="false" id="CYCLEREF_B" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount - Regular</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>CYCLEREF_A</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+	<CustomMeasure aggregationType="SUM" dataType="INTEGER" hidden="false" id="AND_BEYOND_INFINITY" measureType="RESTRICTED">
+		<CustomLabels key="EOPHEADCOUNT_REGULAR">
+			<Label locale="en_US">EOP HEadcount - Regular</Label>
+		</CustomLabels>
+		<Restrictions>
+			<Case>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>EOPHEADCOUNT</Then>
+				<When>
+					<WhenOperation type="AND">
+						<Condition op="EQ" dimensionId="REGULAR_TEMP" onHier="false">
+							<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+								<ColumnValue value="'Regular'"/>
+								<RawColumnValue untypedvalue="Regular"/>
+							</Column>
+						</Condition>
+					</WhenOperation>
+				</When>
+				<Then>CYCLEREF_A</Then>
+			</Case>
+		</Restrictions>
+	</CustomMeasure>
+</Measures>
+</MetricPack>

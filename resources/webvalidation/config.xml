@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?><MetricPack  id="WORKFORCE" prefix="EM" name="Core workforce metric pack" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../main/resources/config.xsd">
+<StartDate>2001-01-01</StartDate>
+<EndDate>2020-01-01</EndDate>
+<DefaultLocale>en_US</DefaultLocale>
+
+<Entities>
+<!--physical entities-->
+<!--table created by the DA service-->
+<PhysicalEntity name="DA/EM/EMPLOYMENT_INFO" entityRef="DA/EM/EMPLOYMENT_INFO" serviceLayer="DA" label="Employment Info">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" label="person id" semanticType="KEY" dataType="BIGINT"/>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="employment start date" dataType="DATE"/>
+<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+<Column id="ORIGINAL_START_DATE" dataType="DATE"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/JOBINFO" entityRef="DA/EM/JOBINFO" serviceLayer="DA" label="Employee Job info">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE" label="effective start date" dataType="DATE"/>
+<Column id="EFFECTIVE_END_DATE" semanticType="END_DATE" label="effective end date" dataType="DATE"/>
+<Column id="EVENT" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT"/>
+<Column id="SEQ_NR" dataType="BIGINT"/>
+<Column id="FTE" dataType="BIGINT"/>
+<Column id="WEIGHT" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="LOCATION" dataType="BIGINT"/>
+<Column id="MOVE_REASON" dataType="NVARCHAR"/>
+<Column id="HIRE_REASON" dataType="NVARCHAR"/>
+<Column id="EMPLOYMENT_TYPE" dataType="BIGINT"/>
+<Column id="FTEX" label="FTEX" dataType="DECIMAL" precision="15" scale="3"/>
+<Column id="PAYGROUP" dataType="BIGINT"/>
+<Column id="JOB_TITLE" label="Job Title" dataType="NVARCHAR" precision="17"/>
+<Column id="EMPLOYMENT_STATUS" label="employment status" dataType="NVARCHAR" precision="7"/>
+<Column id="MGR_USER_ID" dataType="NVARCHAR" precision="11"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/PERSONINFO" entityRef="DA/EM/PERSONINFO" serviceLayer="DA">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE"/>
+<Column id="GENDER" dataType="NVARCHAR" precision="2"/>
+<Column id="NR_CHILDREN" dataType="BIGINT"/>
+<Column id="FIRSTNAME" dataType="NVARCHAR" precision="30"/>
+<Column id="LASTNAME" dataType="NVARCHAR" precision="100"/>
+<Column id="DATE_OF_BIRTH" dataType="DATE"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/LOCATION_HIER" entityRef="DA/EM/LOCATION_HIER" serviceLayer="DA">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="LOCATION_ID" dataType="BIGINT"/>
+<Column id="PARENT_LOCATION_ID" dataType="BIGINT"/>
+<Column id="LOCATION_CATEGORY" dataType="NVARCHAR" precision="13"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/EMPLOYEE" entityRef="DA/EM/EMPLOYEE" serviceLayer="DA">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="TAX_ID" dataType="NVARCHAR" precision="20"/>
+</PhysicalEntity>
+<PhysicalEntity name="PICKLIST" entityRef="PICKLIST" serviceLayer="DA" label="Picklist">
+<Column id="OPTION_ID" label="Option Id" isFactAttribute="false" dataType="DECIMAL"/>
+<Column id="EXTERNAL_CODE" label="External Code" isFactAttribute="false" dataType="NVARCHAR"/>
+<Column id="PICKLISTID" label="PICKLISTID" isFactAttribute="false" dataType="NVARCHAR"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/AGE_GROUPS" entityRef="DA/EM/AGE_GROUPS" serviceLayer="DA" label="">
+<Column id="AGE_FROM_INCL" dataType="BIGINT"/>
+<Column id="AGE_TO_EXCL" dataType="BIGINT"/>
+<Column id="AGE_GROUP_ID" dataType="BIGINT"/>
+<Column id="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+<Column id="AGE_GROUP_ATTR1" dataType="NVARCHAR" precision="20"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/TRAVEL_COMP_GROUPS" entityRef="DA/EM/TRAVEL_COMP_GROUPS" serviceLayer="DA">
+<Column id="AGE_FROM" dataType="SMALLINT"/>
+<Column id="AGE_TO" dataType="SMALLINT"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+</PhysicalEntity>
+<PhysicalEntity name="DA/EM/USERS_SYSINFO" entityRef="DA/EM/USERS_SYSINFO" serviceLayer="DA" label=" users sys info">
+<Column id="USERS_SYS_ID" isFactAttribute="false" label="Users Id" dataType="NVARCHAR" precision="11"/>
+<Column id="USERS_SYS_FIRSTNAME" isFactAttribute="false" label="Users first Name" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MI" isFactAttribute="false" label="Users middle Name" dataType="BIGINT"/>
+<Column id="USERS_SYS_LASTNAME" isFactAttribute="false" label="Users last Name" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MANAGERUID" label="User manager Id" dataType="BIGINT"/>
+</PhysicalEntity>
+<!--table created by the DG service -->
+<PhysicalEntity name="DG/EM/CFG_DATA/WEIGHT_GROUPS" serviceLayer="DG">
+<Column id="HIDDEN_IDX" dataType="BIGINT"/>
+<Column id="FROM_WEIGHT" dataType="BIGINT"/>
+<Column id="TO_WEIGHT" dataType="BIGINT"/>
+<Column id="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+              1,-100,5,"0+kg"
+2,50,55,"50+kg"
+3,55,60,"55+kg"
+4,60,65,"60+kg"
+5,65,70,"65+kg"
+6,70,75,"70+kg"
+6,75,80,"75+kg"
+6,80,85,"80+kg"
+
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalEntity>
+<PhysicalEntity name="DG/EM/LOCCODE_TO_COUNTRY" serviceLayer="DG">
+<Column id="IDX_HIDDEN" label="event code" semanticType="KEY" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="COUNTRY" dataType="NVARCHAR" precision="3"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+              
+                1,"WDF","GER"
+                2,"ROT","GER"
+                3,"SFR","USA"
+                4,"BLR","USA"
+                5,"MUM","IND"
+                6,"DHL","IND"
+                7,"SFO","USA"
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalEntity>
+<PhysicalEntity name="DG/EM/EVENT_MAPPING" serviceLayer="DG">
+<Column id="IDX_HIDDEN" semanticType="KEY" dataType="BIGINT"/>
+<Column id="EVENT" label="event code" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" label="event reason icode" dataType="BIGINT"/>
+<Column id="EVENT_NR" dataType="BIGINT"/>
+<Column id="EVENT_NR2" dataType="BIGINT"/>
+<Column id="NORM_EVENT_PRIO" label="norm event prio" semanticType="KEY" dataType="BIGINT"/>
+<Column id="NORM_EVENT" label="norm event" semanticType="NORM_EVENT" dataType="NVARCHAR"/>
+<Column id="EVENT_NR3" dataType="BIGINT"/>
+<Column id="EVENT_CODE_RC" dataType="NVARCHAR" precision="18"/>
+<Column id="EVENT_CODE_RS" dataType="NVARCHAR" precision="17"/>
+<Column id="EVENT_CODE_GASSIGN" dataType="NVARCHAR" precision="30"/>
+<TableDataSource>
+            <!-- could be a view definition a resource file or ... -->
+            <CsvTableData skipRow="0">
+                  1,10999,222,1,1,40,"TERM",1,"_Term_",,
+                      2,10949,227,1,1,30,"HIRE",1,"HIRNEW","H_HIRNEW",
+                      3,10942,216,1,0,2,"DATAC",1,"DTCNV","5",
+                      4,33388,921,1,1,21,"MOVE_OUT",1,"AGA","AGA","G_ASSIGNM"
+                      5,10937,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+  					  5,10973,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+            </CsvTableData>
+          </TableDataSource>
+</PhysicalEntity>
+<LogicalEntity name="DG/EM/VW/EMPLOYMENT_INFO" serviceLayer="DG" factTableSourceIndex="true" keySource="true">
+<Column id="IDX_HIDDEN" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" label="person id" semanticType="KEY" dataType="BIGINT"/>
+<Column id="USERS_SYS_ID" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="EFFECTIVE_START_DATE" semanticType="START_DATE" label="employment start date" dataType="DATE"/>
+<Column id="ASSIGNMENT_TYPE" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+<Column id="ORIGINAL_START_DATE" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ORIGINAL_START_DATE" dataType="DATE"/>
+<Column id="/DG/EM/NORM_EVENT" value="'DATAC'" dataType="NVARCHAR" precision="12" semanticType="NORM_EVENT"/>
+
+<!--
+              here we adopt Naveeds symmetric representation: 
+              all contributing tables are treated equally, the 
+              result columns list * all * columns, the semantic column 
+              info is reported on htem 
+            -->
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalEntity>
+<LogicalEntity name="DG/EM/VW/JOBINFO" serviceLayer="DG" factTableSourceIndex="true">
+<Column id="IDX_HIDDEN" entityRef="DA/EM/JOBINFO" columnRef="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="USERS_SYS_ID" entityRef="DA/EM/JOBINFO" columnRef="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" entityRef="DA/EM/JOBINFO" columnRef="EFFECTIVE_START_DATE" semanticType="START_DATE" label="effective start date" dataType="DATE"/>
+<Column id="EFFECTIVE_END_DATE" entityRef="DA/EM/JOBINFO" columnRef="EFFECTIVE_END_DATE" semanticType="END_DATE" label="effective end date" dataType="DATE"/>
+<Column id="EVENT" entityRef="DA/EM/JOBINFO" columnRef="EVENT" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" entityRef="DA/EM/JOBINFO" columnRef="EVENT_REASON_ICODE" dataType="BIGINT"/>
+<Column id="SEQ_NR" entityRef="DA/EM/JOBINFO" columnRef="SEQ_NR" dataType="BIGINT" semanticType="SEQ_NR"/>
+<Column id="FTE" entityRef="DA/EM/JOBINFO" columnRef="FTE" dataType="BIGINT"/>
+<Column id="WEIGHT" entityRef="DA/EM/JOBINFO" columnRef="WEIGHT" dataType="BIGINT"/>
+<Column id="LOCCODE" entityRef="DA/EM/JOBINFO" columnRef="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="LOCATION" entityRef="DA/EM/JOBINFO" columnRef="LOCATION" dataType="BIGINT"/>
+<Column id="MOVE_REASON" entityRef="DA/EM/JOBINFO" columnRef="MOVE_REASON" dataType="NVARCHAR"/>
+<Column id="HIRE_REASON" entityRef="DA/EM/JOBINFO" columnRef="HIRE_REASON" dataType="NVARCHAR"/>
+<Column id="EMPLOYMENT_TYPE" entityRef="DA/EM/JOBINFO" columnRef="EMPLOYMENT_TYPE" dataType="BIGINT"/>
+<Column id="FTEX" entityRef="DA/EM/JOBINFO" columnRef="FTEX" label="FTEX" dataType="DECIMAL" precision="15" scale="3"/>
+<Column id="PAYGROUP" entityRef="DA/EM/JOBINFO" columnRef="PAYGROUP" dataType="BIGINT"/>
+<Column id="JOB_TITLE" entityRef="DA/EM/JOBINFO" columnRef="JOB_TITLE" label="Job Title" dataType="NVARCHAR" precision="17"/>
+<Column id="EMPLOYMENT_STATUS" entityRef="DA/EM/JOBINFO" columnRef="EMPLOYMENT_STATUS" label="employment status" dataType="NVARCHAR" precision="7"/>
+<Column id="MGR_USER_ID" entityRef="DA/EM/JOBINFO" columnRef="MGR_USER_ID" dataType="NVARCHAR" precision="11"/>
+<Column semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" entityRef="DG/EM/EVENT_MAPPING" columnRef="NORM_EVENT"/>
+<Column id="/DG/EM/PERSON_ID" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" semanticType="KEY"/>
+<Column id="/DG/EM/GA_TYPE" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="ASSIGNMENT_TYPE"/>
+<Column id="DG/EM/REGION_LOCATION" entityRef="DA/EM/LOCATION_HIER" columnRef="PARENT_LOCATION_ID"/>
+<Column id="/DG/EM/WEIGHT_GROUP" entityRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" columnRef="WEIGHT_GROUP"/>
+<Column id="/DG/EM/COUNTRY_LOCATION" entityRef="DG/EM/LOCCODE_TO_COUNTRY" columnRef="COUNTRY"/>
+<!--
+              here we adopt Naveeds symmetric representation: 
+              all contributing tables are treated equally, the 
+              result columns list * all * columns, the semantic column 
+              info is reported on htem 
+            -->
+<BaseTableRef entityRef="DA/EM/JOBINFO">
+<!--  optional filter -->
+</BaseTableRef>
+<BaseTableRef entityRef="DG/EM/EVENT_MAPPING"/>
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO"/>
+<BaseTableRef entityRef="DA/EM/LOCATION_HIER"/>
+<BaseTableRef entityRef="DG/EM/CFG_DATA/WEIGHT_GROUPS"/>
+<BaseTableRef entityRef="DG/EM/LOCCODE_TO_COUNTRY"/>
+<EntityRelationShip leftEntityRef="DA/EM/JOBINFO" rightEntityRef="DG/EM/EVENT_MAPPING" joinType="INNER">
+<JoinCondition cond="EQ">
+        		<ColumnRef columnRef="EVENT"/>
+	        	<ColumnRef columnRef="EVENT"/>
+    	    </JoinCondition>
+<JoinCondition cond="EQ">
+        		<ColumnRef columnRef="EVENT_REASON_ICODE"/>
+	        	<ColumnRef columnRef="EVENT_REASON_ICODE"/>
+    	    </JoinCondition>
+</EntityRelationShip>
+<EntityRelationShip leftEntityRef="DA/EM/JOBINFO" rightEntityRef="DA/EM/EMPLOYMENT_INFO" joinType="INNER">
+<JoinCondition cond="EQ">
+	        	<ColumnRef columnRef="USERS_SYS_ID" entityRef="DA/EM/JOBINFO"/>
+	        	<ColumnRef columnRef="USERS_SYS_ID" entityRef="DA/EM/EMPLOYMENT_INFO"/>
+        	</JoinCondition>
+</EntityRelationShip>
+<EntityRelationShip leftEntityRef="DA/EM/JOBINFO" rightEntityRef="DA/EM/LOCATION_HIER" joinType="LEFT">
+<JoinCondition cond="EQ">
+	        	<ColumnRef columnRef="LOCATION"/>
+	        	<ColumnRef columnRef="LOCATION_ID"/>
+        	</JoinCondition>
+<JoinCondition cond="EQ">
+	        	<ColumnRef entityRef="DA/EM/LOCATION_HIER" columnRef="LOCATION_CATEGORY"/>
+	        	<ColumnRef value="'REGION'"/>
+        	</JoinCondition>
+</EntityRelationShip>
+<EntityRelationShip leftEntityRef="DA/EM/JOBINFO" rightEntityRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" joinType="INNER">
+<JoinCondition cond="GE">
+	        	<ColumnRef columnRef="WEIGHT"/>
+	        	<ColumnRef entityRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" columnRef="FROM_WEIGHT"/>
+        	</JoinCondition>
+<JoinCondition cond="LT">
+	        	<ColumnRef columnRef="WEIGHT"/>
+	        	<ColumnRef entityRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" columnRef="TO_WEIGHT"/>
+      	</JoinCondition>
+</EntityRelationShip>
+<EntityRelationShip leftEntityRef="DA/EM/JOBINFO" rightEntityRef="DG/EM/LOCCODE_TO_COUNTRY" joinType="LEFT">
+<JoinCondition cond="EQ">
+	        	<ColumnRef columnRef="LOCCODE"/>
+	        	<ColumnRef columnRef="LOCCODE"/>
+        	</JoinCondition>
+</EntityRelationShip>
+</LogicalEntity>
+<LogicalEntity name="DG/EM/VW/EMPLOYEE" serviceLayer="DG" factTableSourceIndex="true">
+<Column id="IDX_HIDDEN" entityRef="DA/EM/EMPLOYEE" columnRef="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" entityRef="DA/EM/EMPLOYEE" columnRef="PERSON_ID" dataType="BIGINT" semanticType="KEY"/>
+<Column id="TAX_ID" entityRef="DA/EM/EMPLOYEE" columnRef="TAX_ID" dataType="NVARCHAR" precision="20"/>
+<!--
+              here we adopt Naveeds symmetric representation: 
+              all contributing tables are treated equally, the 
+              result columns list * all * columns, the semantic column 
+              info is reported on htem 
+            -->
+<BaseTableRef entityRef="DA/EM/EMPLOYEE">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalEntity>
+<LogicalEntity name="DG/EM/VW/PERSONINFO" serviceLayer="DG" factTableSourceIndex="true">
+<Column id="IDX_HIDDEN" entityRef="DA/EM/PERSONINFO" columnRef="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="PERSON_ID" entityRef="DA/EM/PERSONINFO" columnRef="PERSON_ID" dataType="BIGINT" semanticType="KEY"/>
+<Column id="EFFECTIVE_DATE" entityRef="DA/EM/PERSONINFO" columnRef="EFFECTIVE_DATE" dataType="DATE" semanticType="START_DATE"/>
+<Column id="GENDER" entityRef="DA/EM/PERSONINFO" columnRef="GENDER" dataType="NVARCHAR" precision="2"/>
+<Column id="NR_CHILDREN" entityRef="DA/EM/PERSONINFO" columnRef="NR_CHILDREN" dataType="BIGINT"/>
+<Column id="FIRSTNAME" entityRef="DA/EM/PERSONINFO" columnRef="FIRSTNAME" dataType="NVARCHAR" precision="30"/>
+<Column id="LASTNAME" entityRef="DA/EM/PERSONINFO" columnRef="LASTNAME" dataType="NVARCHAR" precision="100"/>
+<Column id="DATE_OF_BIRTH" entityRef="DA/EM/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE"/>
+<!--
+              here we adopt Naveeds symmetric representation: 
+              all contributing tables are treated equally, the 
+              result columns list * all * columns, the semantic column 
+              info is reported on htem 
+            -->
+<BaseTableRef entityRef="DA/EM/PERSONINFO">
+<!--  optional filter -->
+</BaseTableRef>
+</LogicalEntity>
+<LogicalEntity name="DG/EM/VW/MGR_LOCATION" serviceLayer="DG" factTableSourceIndex="true">
+<Column id="/DG/EM/USERS_SYS_ID" entityRef="EMP_JOBINFO" columnRef="USERS_SYS_ID"/>
+<Column id="/DG/EM/MGR_FROM_DATE" entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_START_DATE" semanticType="START_DATE"/>
+<Column id="/DG/EM/MGR_TO_DATE" entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_END_DATE"/>
+<Column id="/DG/EM/MGR_SEQ_NR" entityRef="MGR_JOBINFO" columnRef="SEQ_NR" semanticType="SEQ_NR"/>
+<Column id="/DG/EM/MGR_LOCATION" entityRef="MGR_JOBINFO" columnRef="LOCATION"/>
+<Column id="/DG/EM/PERSON_ID" entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="PERSON_ID" dataType="BIGINT" semanticType="KEY"/>
+<Column id="/DG/EM/NORM_EVENT" value="'DATAC'" dataType="NVARCHAR" precision="12" semanticType="NORM_EVENT"/>
+
+<!--
+              here we adopt Naveeds symmetric representation: 
+              all contributing tables are treated equally, the 
+              result columns list * all * columns, the semantic column 
+              info is reported on htem 
+            -->
+<BaseTableRef entityRef="DA/EM/JOBINFO" alias="EMP_JOBINFO">
+</BaseTableRef>
+<BaseTableRef entityRef="DA/EM/JOBINFO" alias="MGR_JOBINFO"/>
+<BaseTableRef entityRef="DA/EM/EMPLOYMENT_INFO"/>
+<EntityRelationShip leftEntityRef="EMP_JOBINFO" rightEntityRef="MGR_JOBINFO" joinType="INNER">
+<JoinCondition cond="EQ">
+				<ColumnRef entityRef="EMP_JOBINFO" columnRef="MGR_USER_ID"/>
+				<ColumnRef entityRef="MGR_JOBINFO" columnRef="USERS_SYS_ID"/>
+			</JoinCondition>
+<JoinCondition cond="timeinLHSRangeSTART" tag="START_DATE">
+				<ColumnRef entityRef="EMP_JOBINFO" columnRef="EFFECTIVE_START_DATE"/>
+				<ColumnRef entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_START_DATE"/>
+			</JoinCondition>
+<JoinCondition cond="timeinLHSRangeEND" tag="END_DATE">
+				<ColumnRef entityRef="EMP_JOBINFO" columnRef="EFFECTIVE_END_DATE"/>
+				<ColumnRef entityRef="MGR_JOBINFO" columnRef="EFFECTIVE_END_DATE"/>
+			</JoinCondition>
+</EntityRelationShip>
+<EntityRelationShip leftEntityRef="EMP_JOBINFO" rightEntityRef="DA/EM/EMPLOYMENT_INFO" joinType="INNER">
+<JoinCondition cond="EQ">
+				<ColumnRef entityRef="EMP_JOBINFO" columnRef="USERS_SYS_ID"/>
+				<ColumnRef entityRef="DA/EM/EMPLOYMENT_INFO" columnRef="USERS_SYS_ID"/>
+			</JoinCondition>
+</EntityRelationShip>
+</LogicalEntity>
+    <LogicalEntity type="Generator" name="DG/EM/GE/GEN_AGE" generatorStrategy="GENERATOR_AGE" serviceLayer="DG" eventFrequency="YEARLY" factTableSourceIndex="true">
+      <SourcePlugBinding semanticType="START_DATE" tag="CURRENT_EVENT_DATE" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE"/>
+      <SourcePlugBinding tag="BASE_DATE" entityRef="DG/EM/VW/PERSONINFO" columnRef="DATE_OF_BIRTH" dataType="DATE"/>    
+      <Column id="EFFECTIVE_DATE" semanticType="START_DATE" dataType="DATE"/>
+      <Column id="AGE_IN_YEARS"  dataType="SMALLINT" />
+      <Column id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" value="'DATAC'" />
+    </LogicalEntity>
+    <LogicalEntity type="Generator" name="DG/EM/GE/GEN_TENURE" generatorStrategy="GENERATOR_TENURE" eventFrequency="MONTHLY" factTableSourceIndex="true" serviceLayer="DG">
+      <SourcePlugBinding tag="SRC_EVENT_STATE" semanticType="NORM_EVENT" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+      <SourcePlugBinding tag="CURRENT_EVENT_DATE" semanticType="START_DATE" entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE" dataType="DATE"/>
+      <Column id="TENURE_DAYS" dataType="INTEGER" />
+      <Column id="TENURE_MONTHS" dataType="INTEGER" />
+      <Column id="TENURE_YEARS" dataType="INTEGER" />
+      <Column id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" value="'DATAC'" />
+   
+</LogicalEntity>
+</Entities>
+ <FactTable id="DG/EM/FACT">
+    <!--  these have to be added to the interim fact table as they are a base of post calculation  
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/AGE" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/GE/GEN_AGE" sourceColumnRef="/DG/EM/AGE" ></Source>
+    </ColumnSemantic>
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/MGR_LOCATION" dataType="BIGINT">
+      <Source sourceTableRef="DG/EM/VW/MGR_LOCATION" sourceColumnRef="/DG/EM/MGR_LOCATION" ></Source>
+    </ColumnSemantic>
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="WORK_LOC" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCATION" ></Source>
+    </ColumnSemantic>
+    -->
+    <Column id="PERSON_ID" dimensionRef="PERSON_ID" semanticType="KEY" dataType="BIGINT"/>
+    <Column id="START_DATE" dimensionRef="START_DATE" semanticType="START_DATE" dataType="DATE"/>
+    <Column id="NORM_EVENT" dimensionRef="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+<!-- 
+    <FTDimension name="AGE_GROUP" >
+      <Source sourceTableRef="PC_AGE_GROUP" sourceColumnRef="AGE_GROUP" fillStrategy="POSTCALC"></Source>
+    </FTDimension>
+    -->
+
+    <!-- 
+    <FTMeasure name="DIST_WORK_HOME"  dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" >
+      <Source sourceTableRef="DG/EM/PC/DIST_WORK_HOME" sourceColumnRef="GEODISTANCE_KM" fillStrategy="POSTCALC"></Source>
+    </FTMeasure>
+  -->
+      <Column id="DIM_DOB" dimensionRef="DIM_DOB"/>
+    
+   <Column id="DIM_AGE" dimensionRef="DIM_AGE" dataType="BIGINT"/>
+   <Column id="AGE" measureRef="AGE" dataType="BIGINT"/>
+    <Column id="TENURE_DAYS" measureRef="TENURE_DAYS" dataType="BIGINT"/>
+    <Column id="DIM_DAYS" dimensionRef="DIM_DAYS" dataType="BIGINT"/>
+    <Column id="TENURE_YEARS" measureRef="TENURE_YEARS" dataType="BIGINT"/>
+    <Column id="DIM_TENURE_YEARS" dimensionRef="DIM_TENURE_YEARS" dataType="BIGINT"/>
+    <Column id="WEIGHT_GROUP" dimensionRef="WEIGHT_GROUP"/>
+    <Column id="WEIGHT" measureRef="WEIGHT" dataType="BIGINT" precision="32"/>
+    <Column id="NR_CHILDREN" measureRef="NR_CHILDREN" dataType="BIGINT" precision="32" scale="0"/>
+
+    <Column id="MEAS_HEADCOUNT" measureRef="MEAS_HEADCOUNT" dataType="BIGINT"/>
+    <Column id="MEAS_MOVE_IN" measureRef="MEAS_MOVE_IN" dataType="BIGINT"/>
+
+    <Column id="MEAS_MOVE_OUT" measureRef="MEAS_MOVE_OUT" dataType="BIGINT"/>
+    <Column id="COUNTRY" dimensionRef="COUNTRY"/>
+
+    <Column id="GENDER" dimensionRef="GENDER"/>
+
+    <Column id="PAYGROUP" dimensionRef="PAYGROUP"/>
+
+    <Column id="LOCCODE" dimensionRef="LOCCODE"/>
+
+    <Column id="REASON" dimensionRef="REASON" dataType="NVARCHAR" precision="14"/>
+
+<!-- 
+    <FTDimension name="TRAVEL_COMP_GROUP" >
+      <Source sourceTableRef="DG/EM/PC/TRAVEL_COMP_GROUP" sourceColumnRef="DIM_TRAVEL_COMP_GROUP" fillStrategy="POSTCALC"></Source>
+    </FTDimension>
+    -->
+
+    <Column id="EMPLOYMENT_STATUS" dimensionRef="EMPLOYMENT_STATUS"/>
+
+  </FactTable>
+<EventSection>
+<EventDefinition>
+			<!-- section defining the NORM_EVENTs  @eventRef refers to one of these -->
+			<Event name="TERM" code="820">
+				<GeneratedSuccessorEvent eventRef="TER2"/>
+			</Event>
+			<Event name="TER2" code="810">
+				<GeneratorSemantics param="GEN_TENURE" value="STOP"/>
+			</Event>
+			<Event name="HIRE" code="700">
+				<!-- stop producing age events for this person -->
+				<GeneratorSemantics param="GEN_AGE" value="START"/>
+				<GeneratorSemantics param="GEN_TENURE" value="START"/>
+			</Event>
+			<Event name="MOVE_OUT" code="601">
+				<SuccessorEvent eventRef="MOVE_IN"/>
+			</Event>
+			<Event name="MOVE_IN" code="501">
+			</Event>
+			<Event name="DATAC" code="120">
+				<GeneratedSuccessorEvent eventRef="DATAB"/>
+			</Event>
+			<Event name="DATAB" code="110"/>
+		</EventDefinition>
+<EventStrategies>
+
+			<!-- 
+			    @eventStrategyRef refers to one of these
+			event strategies are reusable templates which can be referenced by 
+				name, and expanded when generating the config.to.connnect.xslt 
+				they are just a tool to avoid repeating the strategy at every dimension 
+				-->
+			<EventStrategy id="DIM_VALUE_COPY_CURR">
+				<!-- use current and previous values to fill the column, this is likely 
+					adequate for e.g. EVENT_REASON_ICODE, where we want to retain the HIRE icode 
+					for a HIRE followed by a DATAC event. -->
+				<EventRef eventRef="HIRE" calculation="CURR"/>
+				<EventRef eventRef="MOVE_OUT" calculation="PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="CURR"/>
+				<EventRef eventRef="DATAC" calculation="PREV"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+				<EventRef eventRef="TERM" calculation="CURR"/>
+				<EventRef eventRef="TER2" calculation="CURR"/>
+
+			</EventStrategy>
+			<EventStrategy id="DIM_VALUE_COPY_LATEST">
+				<!-- use latest and previous values to fill the column, this is likely 
+					adequate for e.g. LOCATION where in case of a HIRE followed by a DATAC event 
+					we want to retain the "latest" relevant location, TODO: implement this -->
+				<EventRef eventRef="TERM" calculation="CURR"/>
+				<EventRef eventRef="TER2" calculation="CURR"/>
+				<EventRef eventRef="HIRE" calculation="LATEST"/>
+				<EventRef eventRef="MOVE_OUT" calculation="PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="CURR"/>
+				<EventRef eventRef="DATAC" calculation="PREV"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+			</EventStrategy>
+
+			<EventStrategy id="MEAS_ADDITIVE">
+				<EventRef eventRef="TERM" value="0"/>
+				<EventRef eventRef="TER2" calculation="NEG_PREV"/>
+				<EventRef eventRef="HIRE" calculation="CURR">
+					<!-- may become latest !? -->
+				</EventRef>
+				<EventRef eventRef="MOVE_OUT" calculation="NEG_PREV"/>
+				<EventRef eventRef="MOVE_IN" calculation="CURR"/>
+				<EventRef eventRef="DATAC" calculation="NEG_PREV"/>
+				<EventRef eventRef="DATAB" calculation="CURR"/>
+			</EventStrategy>
+		</EventStrategies>
+</EventSection>
+<Dimensions>
+<Dimension id="PERSON_ID" semanticType="KEY" dataType="BIGINT"/>
+<Dimension id="START_DATE" semanticType="START_DATE" dataType="DATE">
+<EventRef eventRef="TERM" calculation="DAY_BEFORE">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE"/>
+			</EventRef>
+<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" columnRef="EVENT_DATE"/>
+			</EventRef>
+</Dimension>
+<Dimension id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+<Dimension id="DIM_DOB" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="DATE_OF_BIRTH"/>
+</Dimension>
+<Dimension id="DIM_AGE" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/GE/GEN_AGE" columnRef="AGE_IN_YEARS"/>
+</Dimension>
+<Dimension id="DIM_DAYS" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_DAYS"/>
+</Dimension>
+<Dimension id="DIM_TENURE_YEARS" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_YEARS"/>
+</Dimension>
+<Dimension id="WEIGHT_GROUP" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/WEIGHT_GROUP"/>
+</Dimension>
+<Dimension id="COUNTRY" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="/DG/EM/COUNTRY_LOCATION"/>
+</Dimension>
+<Dimension id="GENDER" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="GENDER"/>
+</Dimension>
+<Dimension id="PAYGROUP" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="PAYGROUP"/>
+</Dimension>
+<Dimension id="LOCCODE" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="LOCCODE"/>
+</Dimension>
+<Dimension id="REASON">
+<EventRef eventRef="MOVE_IN" calculation="CURR">
+          <ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="MOVE_REASON"/>
+        </EventRef>
+<EventRef eventRef="HIRE" calculation="CURR">
+          <ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="HIRE_REASON"/>
+        </EventRef>
+<EventRef eventRef="*" value="NULL"/>
+</Dimension>
+<Dimension id="EMPLOYMENT_STATUS" eventStrategyRef="DIM_VALUE_COPY_CURR">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="EMPLOYMENT_STATUS"/>
+</Dimension>
+</Dimensions>
+<Measures>
+<BaseMeasure id="AGE" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE">
+<ColumnRef entityRef="DG/EM/GE/GEN_AGE" columnRef="AGE_IN_YEARS"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">AGE</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="TENURE_DAYS" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_DAYS"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">TENURE_DAYS</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="TENURE_YEARS" aggregationType="SUM" dataType="BIGINT" eventStrategyRef="MEAS_ADDITIVE">
+<ColumnRef entityRef="DG/EM/GE/GEN_TENURE" columnRef="TENURE_YEARS"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">TENURE_YEARS</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="WEIGHT" aggregationType="SUM" dataType="BIGINT" precision="32" eventStrategyRef="MEAS_ADDITIVE">
+<ColumnRef entityRef="DG/EM/VW/JOBINFO" columnRef="WEIGHT"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">WEIGHT</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="NR_CHILDREN" aggregationType="SUM" dataType="BIGINT" precision="32" scale="0" eventStrategyRef="MEAS_ADDITIVE">
+<ColumnRef entityRef="DG/EM/VW/PERSONINFO" columnRef="NR_CHILDREN"/>
+
+<CustomLabels key="ABC">
+<Label locale="en_US">NR_CHILDREN</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="MEAS_HEADCOUNT" aggregationType="SUM" dataType="BIGINT">
+<EventRef eventRef="HIRE" value="+1"/>
+<EventRef eventRef="MOVE_OUT" value="-1"/>
+<EventRef eventRef="MOVE_IN" value="+1"/>
+<EventRef eventRef="DATAC" value="-1"/>
+<EventRef eventRef="DATAB" value="+1"/>
+<EventRef eventRef="TERM" value="0"/>
+<EventRef eventRef="TER2" value="-1"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_HEADCOUNT</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="MEAS_MOVE_IN" aggregationType="SUM" dataType="BIGINT">
+<EventRef eventRef="MOVE_IN" value="1"/>
+<EventRef eventRef="*" value="0"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_MOVE_IN</Label>
+</CustomLabels>
+</BaseMeasure>
+<BaseMeasure id="MEAS_MOVE_OUT" aggregationType="SUM" dataType="BIGINT">
+<EventRef eventRef="MOVE_OUT" value="1"/>
+<EventRef eventRef="TERM" value="1"/>
+<EventRef eventRef="*" value="0"/>
+<CustomLabels key="ABC">
+<Label locale="en_US">MEAS_MOVE_OUT</Label>
+</CustomLabels>
+</BaseMeasure>
+</Measures>
+</MetricPack>

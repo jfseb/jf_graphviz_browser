@@ -1,0 +1,1120 @@
+<?xml version="1.0" encoding="utf-8"?><mp:NormalizedDGMP xmlns:mp="http://schemas.sap.com/sfsf/aa/mp" id="WORKFORCE" prefix="EM" name="Core workforce metric pack" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../main/resources/config.xsd">
+<DGFactTableSource cat="VIEW" type="tableView" tablenamebearer="true" name="EM/VW/EMP_EMPLOYMENT_INFO" sourceTableRef="DA/EM/EMPLOYMENT_INFO" timeDependent="EffectiveDate" DotNodeName="NEM_QU_EMP_EMPLOYMENT_INFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="PERSON_ID" semanticType="KEY" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="USERS_SYS_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="USERS_SYS_ID" DotPortName="NUSERS_SYS_ID"/>
+<Column src="DA" name="EFFECTIVE_START_DATE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="EFFECTIVE_START_DATE" semanticType="START_DATE" DotPortName="NEFFECTIVE_START_DATE"/>
+<Column src="DA" name="ASSIGNMENT_TYPE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ASSIGNMENT_TYPE" DotPortName="NASSIGNMENT_TYPE"/>
+<Column src="DA" name="ORIGINAL_START_DATE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ORIGINAL_START_DATE" DotPortName="NORIGINAL_START_DATE"/>
+<!-- add augmented columns (if any ) -->
+<!--Pull in fixed values-->
+<Column id="/DG/EM/NORM_EVENT" semanticType="NORM_EVENT" fixedValue="true" value="DATA_C" dataType="NVARCHAR" DotPortName="N_EM_DG_NORM_EVENT"/>
+            
+            
+            
+              
+            
+          </DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="tableView" tablenamebearer="true" name="DG/EM/VW/JOBINFO" sourceTableRef="DA/EM/JOBINFO" timeDependent="EffectiveDate" DotNodeName="NEM_DG_QU_JOBINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="USERS_SYS_ID" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="USERS_SYS_ID" DotPortName="NUSERS_SYS_ID"/>
+<Column src="DA" name="EFFECTIVE_START_DATE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EFFECTIVE_START_DATE" semanticType="START_DATE" DotPortName="NEFFECTIVE_START_DATE"/>
+<Column src="DA" name="EFFECTIVE_END_DATE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EFFECTIVE_END_DATE" semanticType="END_DATE" DotPortName="NEFFECTIVE_END_DATE"/>
+<Column src="DA" name="EMPLOYMENT_STATUS" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EMPLOYMENT_STATUS" DotPortName="NEMPLOYMENT_STATUS"/>
+<Column src="DA" name="JOB_TITLE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="JOB_TITLE" DotPortName="NJOB_TITLE"/>
+<Column src="DA" name="FTE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="FTE" DotPortName="NFTE"/>
+<Column src="DA" name="EVENT" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EVENT" DotPortName="NEVENT"/>
+<Column src="DA" name="EVENT_REASON_ICODE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EVENT_REASON_ICODE" DotPortName="NEVENT_REASON_ICODE"/>
+<Column src="DA" name="SEQ_NR" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="SEQ_NR" semanticType="SEQ_NR" DotPortName="NSEQ_NR"/>
+<Column src="DA" name="FTE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="FTE" DotPortName="NFTE"/>
+<Column src="DA" name="WEIGHT" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="WEIGHT" DotPortName="NWEIGHT"/>
+<Column src="DA" name="LOCCODE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="LOCCODE" DotPortName="NLOCCODE"/>
+<Column src="DA" name="LOCATION" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="LOCATION" DotPortName="NLOCATION"/>
+<Column src="DA" name="MOVE_REASON" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="MOVE_REASON" DotPortName="NMOVE_REASON"/>
+<Column src="DA" name="HIRE_REASON" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="HIRE_REASON" DotPortName="NHIRE_REASON"/>
+<Column src="DA" name="EMPLOYMENT_TYPE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EMPLOYMENT_TYPE" DotPortName="NEMPLOYMENT_TYPE"/>
+<Column src="DA" name="PAYGROUP" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="PAYGROUP" DotPortName="NPAYGROUP"/>
+<Column src="DA" name="MGR_USER_ID" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="MGR_USER_ID" DotPortName="NMGR_USER_ID"/>
+<!-- add augmented columns (if any ) -->
+<Column src="CALC" name="/DG/EM/NORM_EVENT" sourceTagRef="" DotPortName="N_EM_DG_NORM_EVENT" semanticType="NORM_EVENT_PRIO"/>
+<Column src="CALC" name="/DG/EM/NORM_EVENT_PRIO" sourceTagRef="" DotPortName="N_EM_DG_NORM_EVENT_PRIO" semanticType="NORM_EVENT_PRIO"/>
+<Column src="CALC" name="/DG/EM/PERSON_ID" sourceTagRef="" DotPortName="N_EM_DG_PERSON_ID" semanticType="KEY"/>
+<Column src="CALC" name="/DG/EM/GA_TYPE" sourceTagRef="" DotPortName="N_EM_DG_GA_TYPE"/>
+<Column src="CALC" name="DG/EM/REGION_LOCATION" sourceTagRef="" DotPortName="NEM_DG_REGION_LOCATION"/>
+<Column src="CALC" name="/DG/EM/WEIGHT_GROUP" sourceTagRef="" DotPortName="N_EM_DG_WEIGHT_GROUP"/>
+<Column src="CALC" name="/DG/EM/COUNTRY_LOCATION" sourceTagRef="" DotPortName="N_EM_DG_COUNTRY_LOCATION"/>
+<!--Pull in fixed values-->
+            
+            
+            
+            
+            
+            
+
+
+            
+            <JoinBox name="Join_to_DG/EM/EVENT_MAPPING" cat="join" type="box" category="EVENT_NORMALIZATION" DotNodeName="Njoin20" leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/EVENT_MAPPING" joinType="INNER" unique="true">
+<Plug at="GEN" dir="inout" name="/DG/EM/NORM_EVENT" tag="/DG/EM/NORM_EVENT" dataType="" sourceColumnRef="NORM_EVENT" semanticType="NORM_EVENT" sourceTableRef="DG/EM/EVENT_MAPPING" DotPortName="Njoinin_EM_DG_NORM_EVENT"/>
+<InternalCrossConnect targetTag="/DG/EM/NORM_EVENT" sourceTag="/DG/EM/NORM_EVENT"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/NORM_EVENT_PRIO" tag="/DG/EM/NORM_EVENT_PRIO" dataType="" sourceColumnRef="NORM_EVENT" semanticType="NORM_EVENT_PRIO" sourceTableRef="DG/EM/EVENT_MAPPING" DotPortName="Njoinin_EM_DG_NORM_EVENT_PRIO"/>
+<InternalCrossConnect targetTag="/DG/EM/NORM_EVENT_PRIO" sourceTag="/DG/EM/NORM_EVENT_PRIO"/>
+<JoinConds>
+<Plug cond="EQ" dir="join" DotPortName="join_20" firstColumnRef="EVENT" secondColumnRef="EVENT" secondTableRef="DG/EM/EVENT_MAPPING" firstTableRef="DA/EM/JOBINFO"/>
+<Plug cond="EQ" dir="join" DotPortName="join_21" firstColumnRef="EVENT_REASON_ICODE" secondColumnRef="EVENT_REASON_ICODE" secondTableRef="DG/EM/EVENT_MAPPING" firstTableRef="DA/EM/JOBINFO"/>
+</JoinConds>
+</JoinBox> 
+
+
+
+
+            <JoinBox name="AugmentKeyViaEmploymentInfo" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin28" leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/EMPLOYMENT_INFO" joinType="INNER">
+<Plug at="GEN" dir="inout" name="/DG/EM/PERSON_ID" tag="/DG/EM/PERSON_ID" dataType="" sourceColumnRef="PERSON_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" DotPortName="Njoinin_EM_DG_PERSON_ID"/>
+<InternalCrossConnect targetTag="/DG/EM/PERSON_ID" sourceTag="/DG/EM/PERSON_ID"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/GA_TYPE" tag="/DG/EM/GA_TYPE" dataType="" sourceColumnRef="ASSIGNMENT_TYPE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" DotPortName="Njoinin_EM_DG_GA_TYPE"/>
+<InternalCrossConnect targetTag="/DG/EM/GA_TYPE" sourceTag="/DG/EM/GA_TYPE"/>
+<JoinConds>
+<Plug cond="EQ" dir="join" DotPortName="join_28" firstTableRef="DA/EM/JOBINFO" firstColumnRef="USERS_SYS_ID" secondColumnRef="USERS_SYS_ID" secondTableRef="DA/EM/EMPLOYMENT_INFO"/>
+</JoinConds>
+</JoinBox> 
+
+
+              
+            <JoinBox name="lookup_by_REGION_LOCATION" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin35" leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/LOCATION_HIER">
+<Plug at="GEN" dir="inout" name="DG/EM/REGION_LOCATION" tag="DG/EM/REGION_LOCATION" dataType="" sourceColumnRef="PARENT_LOCATION" sourceTableRef="DA/EM/LOCATION_HIER" DotPortName="NjoininEM_DG_REGION_LOCATION"/>
+<InternalCrossConnect targetTag="DG/EM/REGION_LOCATION" sourceTag="DG/EM/REGION_LOCATION"/>
+<JoinConds>
+<Plug cond="EQ" dir="join" DotPortName="join_36" secondValue="REGION" secondColumnRef="LOCATION_CATEGORY" secondTableRef="DA/EM/LOCATION_HIER" firstTableRef="DA/EM/JOBINFO"/>
+<Plug cond="LT" dir="join" DotPortName="join_38" firstTableRef="LOCATION" secondColumnRef="LOCATION_ID" secondTableRef="DA/EM/LOCATION_HIER"/>
+</JoinConds>
+</JoinBox> 
+
+
+              
+              <JoinBox name="" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin43" leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" joinType="INNER">
+<Plug at="GEN" dir="inout" name="/DG/EM/WEIGHT_GROUP" tag="/DG/EM/WEIGHT_GROUP" dataType="" sourceColumnRef="WEIGHT_GROUP" sourceTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" DotPortName="Njoinin_EM_DG_WEIGHT_GROUP"/>
+<InternalCrossConnect targetTag="/DG/EM/WEIGHT_GROUP" sourceTag="/DG/EM/WEIGHT_GROUP"/>
+<JoinConds>
+<Plug cond="GE" dir="join" DotPortName="join_43" firstColumnRef="WEIGHT" secondColumnRef="FROM_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+<Plug cond="LT" dir="join" DotPortName="join_44" firstColumnRef="WEIGHT" secondColumnRef="TO_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+</JoinConds>
+</JoinBox> 
+
+
+            <JoinBox name="lookup_LOCCODE_TO_COUNTRY" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin56" leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/LOCCODE_TO_COUNTRY" joinType="LEFT">
+<Plug at="GEN" dir="inout" name="/DG/EM/COUNTRY_LOCATION" tag="/DG/EM/COUNTRY_LOCATION" dataType="" sourceColumnRef="COUNTRY" sourceTableRef="DG/EM/LOCCODE_TO_COUNTRY" DotPortName="Njoinin_EM_DG_COUNTRY_LOCATION"/>
+<InternalCrossConnect targetTag="/DG/EM/COUNTRY_LOCATION" sourceTag="/DG/EM/COUNTRY_LOCATION"/>
+<JoinConds>
+<Plug cond="EQ" dir="join" DotPortName="join_56" firstColumnRef="LOCCODE" secondColumnRef="LOCCODE" secondTableRef="DG/EM/LOCCODE_TO_COUNTRY" firstTableRef="DA/EM/JOBINFO"/>
+</JoinConds>
+</JoinBox> 
+
+
+        
+         </DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="tableView" tablenamebearer="true" name="DG/EM/VW/EMPLOYEE" sourceTableRef="DA/EM/EMPLOYEE" timeDependent="STATIC" DotNodeName="NEM_DG_QU_EMPLOYEE">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" semanticType="KEY" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="TAX_ID" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="TAX_ID" DotPortName="NTAX_ID"/>
+<!-- add augmented columns (if any ) -->
+<!--Pull in fixed values-->
+      
+    </DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="tableView" tablenamebearer="true" name="DG/EM/VW/PERSONINFO" sourceTableRef="DA/EM/PERSONINFO" timeDependent="EFFECTIVE_DATE" DotNodeName="NEM_DG_QU_PERSONINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="PERSON_ID" semanticType="KEY" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="EFFECTIVE_DATE" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="EFFECTIVE_DATE" semanticType="START_DATE" DotPortName="NEFFECTIVE_DATE"/>
+<Column src="DA" name="GENDER" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="GENDER" DotPortName="NGENDER"/>
+<Column src="DA" name="NR_CHILDREN" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="NR_CHILDREN" DotPortName="NNR_CHILDREN"/>
+<Column src="DA" name="FIRSTNAME" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="FIRSTNAME" DotPortName="NFIRSTNAME"/>
+<Column src="DA" name="LASTNAME" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="LASTNAME" DotPortName="NLASTNAME"/>
+<Column src="DA" name="DATE_OF_BIRTH" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="DATE_OF_BIRTH" DotPortName="NDATE_OF_BIRTH"/>
+<!-- add augmented columns (if any ) -->
+<!--Pull in fixed values-->
+      
+      
+    </DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="tableView" tablenamebearer="true" name="DG/EM/VW/MGR_LOCATION" DotNodeName="NEM_DG_QU_MGR_LOCATION">
+<!--Pull in source columns if any -->
+<!-- add augmented columns (if any ) -->
+<Column src="CALC" name="/DG/EM/PERSON_ID" sourceTagRef="" DotPortName="N_EM_DG_PERSON_ID" semanticType="KEY"/>
+<Column src="CALC" name="/DG/EM/MGR_FROM_DATE" sourceTagRef="" DotPortName="N_EM_DG_MGR_FROM_DATE" semanticType="START_DATE"/>
+<Column src="CALC" name="/DG/EM/MGR_TO_DATE" sourceTagRef="" DotPortName="N_EM_DG_MGR_TO_DATE" semanticType="END_DATE"/>
+<Column src="CALC" name="/DG/EM/SEQ_NR" sourceTagRef="" DotPortName="N_EM_DG_SEQ_NR"/>
+<Column src="CALC" name="/DG/EM/MGR_LOCATION" sourceTagRef="" DotPortName="N_EM_DG_MGR_LOCATION"/>
+<Column src="CALC" name="/DG/EM/NORM_EVENT" sourceTagRef="" DotPortName="N_EM_DG_NORM_EVENT"/>
+<!--Pull in fixed values-->
+      
+      
+      
+      
+      
+
+      <JoinBox name="Join_To_DA/EM/JOBINFO" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin77" leftTableRef="DG/EM/JOBINFO" leftTableAlias="EMP_JOBINFO" unique="true" rightTableRef="DG/EM/JOBINFO" rightTableAlias="MGR_JOBINFO" joinType="INNER">
+<Plug at="GEN" dir="inout" name="/DG/EM/PERSON_ID" tag="/DG/EM/PERSON_ID" dataType="" sourceColumnRef="PERSON_ID" sourceTableRef="EMP_JOBINFO" DotPortName="Njoinin_EM_DG_PERSON_ID"/>
+<InternalCrossConnect targetTag="/DG/EM/PERSON_ID" sourceTag="/DG/EM/PERSON_ID"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/MGR_FROM_DATE" tag="/DG/EM/MGR_FROM_DATE" dataType="" sourceColumnRef="EFFECTIVE_DATE_FROM" sourceTableRef="MGR_JOBINFO" DotPortName="Njoinin_EM_DG_MGR_FROM_DATE"/>
+<InternalCrossConnect targetTag="/DG/EM/MGR_FROM_DATE" sourceTag="/DG/EM/MGR_FROM_DATE"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/MGR_TO_DATE" tag="/DG/EM/MGR_TO_DATE" dataType="" sourceColumnRef="EFFECTIVE_DATE_TO" sourceTableRef="MGR_JOBINFO" DotPortName="Njoinin_EM_DG_MGR_TO_DATE"/>
+<InternalCrossConnect targetTag="/DG/EM/MGR_TO_DATE" sourceTag="/DG/EM/MGR_TO_DATE"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/SEQ_NR" tag="/DG/EM/SEQ_NR" dataType="" sourceColumnRef="SEQ_NR" sourceTableRef="MGR_JOBINFO" DotPortName="Njoinin_EM_DG_SEQ_NR"/>
+<InternalCrossConnect targetTag="/DG/EM/SEQ_NR" sourceTag="/DG/EM/SEQ_NR"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/MGR_LOCATION" tag="/DG/EM/MGR_LOCATION" dataType="" sourceColumnRef="LOCATION" sourceTableRef="MGR_JOBINFO" DotPortName="Njoinin_EM_DG_MGR_LOCATION"/>
+<InternalCrossConnect targetTag="/DG/EM/MGR_LOCATION" sourceTag="/DG/EM/MGR_LOCATION"/>
+<Plug at="GEN" dir="inout" name="/DG/EM/NORM_EVENT" tag="/DG/EM/NORM_EVENT" dataType="NVARCHAR" sourceColumnRef="" fixedValue="true" value="'DATAC'" DotPortName="Njoinin_EM_DG_NORM_EVENT" sourceTableRef="DG/EM/JOBINFO"/>
+<InternalCrossConnect targetTag="/DG/EM/NORM_EVENT" sourceTag="/DG/EM/NORM_EVENT"/>
+<JoinConds>
+<Plug cond="EQ" dir="join" DotPortName="join_77" firstTableRef="EMP_JOBINFO" firstColumnRef="MGR_ID" secondTableRef="MGR_JOBINFO" secondColumnRef="PERSON_ID"/>
+<Plug cond="timeinLHSRangeSTART" dir="join" DotPortName="join_78" columnSemantic="START_DATE" firstTableRef="EMP_JOBINFO" tag="START_DATE" firstColumnRef="EFFECTIVE_START_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_START_DATE"/>
+<Plug cond="timeinLHSRangeEND" dir="join" DotPortName="join_79" firstTableRef="EMP_JOBINFO" tag="END_DATE" firstColumnRef="EFFECTIVE_END_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_END_DATE"/>
+</JoinConds>
+</JoinBox> 
+
+
+    </DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="Generator" tablenamebearer="true" name="DG/EM/GE/GEN_AGE" generatorStrategy="GENSTRATGY_ELAPSED_TIME_SINCE" eventFrequency="YEARLY" DotNodeName="NEM_DG_GE_GEN_AGE">
+<!--Pull in source columns if any -->
+<!-- add augmented columns (if any ) -->
+<Column src="CALC" name="/DG/EM/PERSON_ID" sourceTagRef="" DotPortName="N_EM_DG_PERSON_ID" semanticType="KEY"/>
+<Column src="CALC" name="EFFECTIVE_DATE" sourceTagRef="" DotPortName="NEFFECTIVE_DATE" semanticType="START_DATE"/>
+<Column src="CALC" name="/DG/EM/AGE" sourceTagRef="" DotPortName="N_EM_DG_AGE"/>
+<!--Pull in fixed values-->
+<Column id="/DG/EM/NORM_EVENT" semanticType="NORM_EVENT" fixedValue="true" value="'DATAC'" dataType="NVARCHAR" DotPortName="N_EM_DG_NORM_EVENT"/>
+<GeneratorBox name="DG/EM/GE/GEN_AGE" cat="generator" type="Generator" DotNodeName="NBOX_EM_DG_GE_GEN_AGE" generatorStrategy="GENSTRATGY_ELAPSED_TIME_SINCE" eventFrequency="YEARLY">
+<Plug at="GEN" dir="intern" tag="KEY" name="/DG/EM/PERSON_ID" dataType="" targetTableRef="" targetColumnRef="" DotPortName="NKEY"/>
+<Plug at="GEN" dir="intern" tag="EVENT_DATE" name="EFFECTIVE_DATE" dataType="DATE" targetTableRef="" targetColumnRef="" DotPortName="NEVENT_DATE"/>
+<Plug at="GEN" dir="intern" tag="AGE_IN_YEARS" name="/DG/EM/AGE" dataType="SMALLINT" targetTableRef="" targetColumnRef="" DotPortName="NAGE_IN_YEARS"/>
+<Plug at="GEN" dir="in" tag="CURRENT_EVENT_DATE" dataType="" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="EVENT_DATE" DotPortName="NinCURRENT_EVENT_DATE"/>
+<Plug at="GEN" dir="in" tag="KEY" dataType="" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" DotPortName="NinKEY"/>
+<Plug at="GEN" dir="in" tag="BASE_DATE" dataType="" sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="DATE_OF_BIRTH" DotPortName="NinBASE_DATE"/>
+<!--
+      testing DG/EM/GE/GEN_AGE-->
+<InternalCrossConnect targetTag="KEY" sourceTag="KEY"/>
+</GeneratorBox>
+</DGFactTableSource>
+<DGFactTableSource cat="VIEW" type="Generator" tablenamebearer="true" name="DG/EM/GEN_DAYS_SINCE_HIRE" generatorStrategy="GEN_STRAT_DAYS_HIRE_STATUS" eventFrequency="MONTHLY" DotNodeName="NEM_DG_GEN_DAYS_SINCE_HIRE">
+<!--Pull in source columns if any -->
+<!-- add augmented columns (if any ) -->
+<Column src="CALC" name="/DG/EM/PERSON_ID" sourceTagRef="" DotPortName="N_EM_DG_PERSON_ID" semanticType="KEY"/>
+<Column src="CALC" name="EFFECTIVE_DATE" sourceTagRef="" DotPortName="NEFFECTIVE_DATE" semanticType="START_DATE"/>
+<Column src="CALC" name="/DG/EM/DAYS_SINCE_HIRE" sourceTagRef="" DotPortName="N_EM_DG_DAYS_SINCE_HIRE"/>
+<Column src="CALC" name="/DG/EM/MONTHS_SINCE_HIRE" sourceTagRef="" DotPortName="N_EM_DG_MONTHS_SINCE_HIRE"/>
+<!--Pull in fixed values-->
+<Column id="/DG/EM/NORM_EVENT" semanticType="NORM_EVENT" fixedValue="true" value="'DATAC'" dataType="" DotPortName="N_EM_DG_NORM_EVENT"/>
+<GeneratorBox name="DG/EM/GEN_DAYS_SINCE_HIRE" cat="generator" type="Generator" DotNodeName="NBOX_EM_DG_GEN_DAYS_SINCE_HIRE" generatorStrategy="GEN_STRAT_DAYS_HIRE_STATUS" eventFrequency="MONTHLY">
+<Plug at="GEN" dir="intern" tag="KEY" name="/DG/EM/PERSON_ID" dataType="" targetTableRef="" targetColumnRef="" DotPortName="NKEY"/>
+<Plug at="GEN" dir="intern" tag="EVENT_DATE" name="EFFECTIVE_DATE" dataType="DATE" targetTableRef="" targetColumnRef="" DotPortName="NEVENT_DATE"/>
+<Plug at="GEN" dir="intern" tag="DAYS_SINCE_HIRE" name="/DG/EM/DAYS_SINCE_HIRE" dataType="INTEGER" targetTableRef="" targetColumnRef="" DotPortName="NDAYS_SINCE_HIRE"/>
+<Plug at="GEN" dir="intern" tag="MONTHS_SINCE_HIRE" name="/DG/EM/MONTHS_SINCE_HIRE" dataType="INTEGER" targetTableRef="" targetColumnRef="" DotPortName="NMONTHS_SINCE_HIRE"/>
+<Plug at="GEN" dir="in" tag="" dataType="" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="NORM_EVENT" DotPortName="Nin"/>
+<Plug at="GEN" dir="in" tag="CURRENT_EVENT_DATE" dataType="" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="EVENT_DATE" DotPortName="NinCURRENT_EVENT_DATE"/>
+<Plug at="GEN" dir="in" tag="KEY" dataType="" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" DotPortName="NinKEY"/>
+<!--
+      testing DG/EM/GEN_DAYS_SINCE_HIRE-->
+</GeneratorBox>
+</DGFactTableSource>
+<EventBox name="DG/EM/INT/EVENTDRIVER" type="box" DotNodeName="EventBox" tablenamebearer="true">
+<!--
+        connects to all SemanticViews and Generators
+        These ports can take multiple inputs!
+      -->
+<Column dir="out" name="KEY" DotPortName="TGT_KEY" targetTableName="DG/EM/FACT" targetColumnName="PERSON_ID"/>
+<Column dir="out" name="EVENT_DATE" DotPortName="TGT_EVENT_DATE" targetTableName="DG/EM/FACT" targetColumnName="START_DATE"/>
+<Column dir="out" name="NORM_EVENT" DotPortName="TGT_NORM_EVENT" targetTableName="DG/EM/FACT" targetColumnName="NORM_EVENT"/>
+<Plug dir="in" tag="IN_KEY" DotPortName="IN_KEY" semanticType="KEY"/>
+<Plug dir="in" tag="IN_START_DATE" DotPortName="IN_START_DATE" semanticType="START_DATE"/>
+<Plug dir="in" tag="IN_END_DATE" DotPortName="IN_END_DATE" semanticType="END_DATE"/>
+<Plug dir="in" tag="IN_SEQ_NR" DotPortName="IN_SEQ_NR" semanticType="SEQ_NR"/>
+<Plug dir="in" tag="IN_NORM_EVENT" DotPortName="IN_NORM_EVENT" semanticType="NORM_EVENT"/>
+<Plug dir="in" tag="IN_NORM_EVENT_PRIO" DotPortName="IN_NORM_EVENT_PRIO" semanticType="NORM_EVENT_PRIO"/>
+</EventBox>
+<PostCalculation type="box" name="DG/EM/PC/DIST_WORK_HOME" tablenamebearer="true" DotNodeName="NPC_EM_DG_PC_DIST_WORK_HOME">
+<Column src="CALC" name="GEODISTANCE_KM" sourceTagRef="" DotPortName="NGEODISTANCE_KM"/>
+<!--Pull in fixed values-->
+<Plug cat="PC" dir="out" tag="GEODISTANCE_KM" name="GEODISTANCE_KM" dataType="DECIMAL" DotPortName="NGEODISTANCE_KM"/>
+<Plug cat="genbox" dir="in" tag="LOC_1" sourceTableRef="DG/EM/FACT" sourceColumnRef="/DG/EM/MGR_LOCATION" DotPortName="NLOC_1"/>
+<Plug cat="genbox" dir="in" tag="LOC_2" sourceTableRef="DG/EM/FACT" sourceColumnRef="WORK_LOC" DotPortName="NLOC_2"/>
+</PostCalculation>
+<PostCalculation type="box" name="DG/EM/PC/TRAVEL_COMP_GROUP" tablenamebearer="true" DotNodeName="NPC_EM_DG_PC_TRAVEL_COMP_GROUP">
+<Column src="CALC" name="DIM_TRAVEL_COMP_GROUP" sourceTagRef="" DotPortName="NDIM_TRAVEL_COMP_GROUP"/>
+<!--Pull in fixed values-->
+<JoinBox name="" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin117" leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/TRAVEL_COMP_GROUPS" joinType="LEFT">
+<Plug at="GEN" dir="inout" name="DIM_TRAVEL_COMP_GROUP" tag="OUT_TRAVEL_COMP_GROUP" dataType="" sourceColumnRef="TRAVEL_COMP_GROUP" sourceTableRef="DA/EM/TRAVEL_COMP_GROUPS" DotPortName="NjoininDIM_TRAVEL_COMP_GROUP"/>
+<InternalCrossConnect targetTag="DIM_TRAVEL_COMP_GROUP" sourceTag="DIM_TRAVEL_COMP_GROUP"/>
+<JoinConds>
+<Plug cond="GE" dir="join" DotPortName="join_117" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+<Plug cond="LT" dir="join" DotPortName="join_118" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+</JoinConds>
+</JoinBox> 
+
+<JoinBox name="" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin117" leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/TRAVEL_COMP_GROUPS" joinType="LEFT">
+<Plug at="GEN" dir="inout" name="DIM_TRAVEL_COMP_GROUP" tag="OUT_TRAVEL_COMP_GROUP" dataType="" sourceColumnRef="TRAVEL_COMP_GROUP" sourceTableRef="DA/EM/TRAVEL_COMP_GROUPS" DotPortName="NjoininDIM_TRAVEL_COMP_GROUP"/>
+<InternalCrossConnect targetTag="DIM_TRAVEL_COMP_GROUP" sourceTag="DIM_TRAVEL_COMP_GROUP"/>
+<JoinConds>
+<Plug cond="GE" dir="join" DotPortName="join_117" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+<Plug cond="LT" dir="join" DotPortName="join_118" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+</JoinConds>
+</JoinBox> 
+
+</PostCalculation>
+<PostCalculation type="box" name="PC_AGE_GROUP" tablenamebearer="true" DotNodeName="NPC_PC_AGE_GROUP">
+<Column src="CALC" name="AGE_GROUP" sourceTagRef="" DotPortName="NAGE_GROUP"/>
+<!--Pull in fixed values-->
+<JoinBox name="resolve_age_group" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin124" leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/AGE_GROUPS" joinType="INNER" unique="true">
+<Plug at="GEN" dir="inout" name="AGE_GROUP" tag="OUT_AGE_GROUP" dataType="" sourceColumnRef="AGE_GROUP" sourceTableRef="DA/EM/AGE_GROUPS" DotPortName="NjoininAGE_GROUP"/>
+<InternalCrossConnect targetTag="AGE_GROUP" sourceTag="AGE_GROUP"/>
+<JoinConds>
+<Plug cond="LE" dir="join" DotPortName="join_124" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM_INCL" secondTableRef="DA/EM/AGE_GROUPS" firstTableRef="DG/EM/FACT"/>
+<Plug cond="GT" dir="join" DotPortName="join_125" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO_EXCL" secondTableRef="DA/EM/AGE_GROUPS" firstTableRef="DG/EM/FACT"/>
+</JoinConds>
+</JoinBox> 
+
+<JoinBox name="resolve_age_group" cat="join" type="box" category="AUXILIARY_FIELD" DotNodeName="Njoin124" leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/AGE_GROUPS" joinType="INNER" unique="true">
+<Plug at="GEN" dir="inout" name="AGE_GROUP" tag="OUT_AGE_GROUP" dataType="" sourceColumnRef="AGE_GROUP" sourceTableRef="DA/EM/AGE_GROUPS" DotPortName="NjoininAGE_GROUP"/>
+<InternalCrossConnect targetTag="AGE_GROUP" sourceTag="AGE_GROUP"/>
+<JoinConds>
+<Plug cond="LE" dir="join" DotPortName="join_124" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM_INCL" secondTableRef="DA/EM/AGE_GROUPS" firstTableRef="DG/EM/FACT"/>
+<Plug cond="GT" dir="join" DotPortName="join_125" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO_EXCL" secondTableRef="DA/EM/AGE_GROUPS" firstTableRef="DG/EM/FACT"/>
+</JoinConds>
+</JoinBox> 
+
+</PostCalculation>
+ <FactTable id="DG/EM/FACTFIN" cat="table" dottag="FIN" tablenamebearer="true" DotNodeName="FACT_0FIN">
+<Column id="PERSON_ID" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="PERSON_ID" DotPortName="NPERSON_ID"/>
+<Column id="START_DATE" dataType="DATE" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="START_DATE" DotPortName="NSTART_DATE"/>
+<Column id="NORM_EVENT" dataType="NVARCHAR" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="NORM_EVENT" DotPortName="NNORM_EVENT"/>
+<Column id="AGE_GROUP" dataType="" type="DIM" sourceTableRef="PC_AGE_GROUP" sourceColumnRef="AGE_GROUP" DotPortName="NAGE_GROUP"/>
+<Column id="WEIGHT_GROUP" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="WEIGHT_GROUP" DotPortName="NWEIGHT_GROUP"/>
+<Column id="COUNTRY" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="COUNTRY" DotPortName="NCOUNTRY"/>
+<Column id="GENDER" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="GENDER" DotPortName="NGENDER"/>
+<Column id="COUNTRY_LOCATION" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="COUNTRY_LOCATION" DotPortName="NCOUNTRY_LOCATION"/>
+<Column id="PAYGROUP" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="PAYGROUP" DotPortName="NPAYGROUP"/>
+<Column id="LOCCODE" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="LOCCODE" DotPortName="NLOCCODE"/>
+<Column id="REASON" dataType="NVARCHAR" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="REASON" DotPortName="NREASON"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="" type="DIM" sourceTableRef="DG/EM/PC/TRAVEL_COMP_GROUP" sourceColumnRef="DIM_TRAVEL_COMP_GROUP" DotPortName="NTRAVEL_COMP_GROUP"/>
+<Column id="EMPLOYMENT_STATUS" dataType="" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="EMPLOYMENT_STATUS" DotPortName="NEMPLOYMENT_STATUS"/>
+<Column id="WEIGHT" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="WEIGHT" DotPortName="NWEIGHT"/>
+<Column id="DIST_WORK_HOME" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/PC/DIST_WORK_HOME" sourceColumnRef="GEODISTANCE_KM" DotPortName="NDIST_WORK_HOME"/>
+<Column id="MONTHS_SINCE_HIRE" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="MONTHS_SINCE_HIRE" DotPortName="NMONTHS_SINCE_HIRE"/>
+<Column id="NR_CHILDREN" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="NR_CHILDREN" DotPortName="NNR_CHILDREN"/>
+<Column id="MEAS_HEADCOUNT" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="MEAS_HEADCOUNT" DotPortName="NMEAS_HEADCOUNT"/>
+<Column id="MEAS_MOVE_IN" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="MEAS_MOVE_IN" DotPortName="NMEAS_MOVE_IN"/>
+<Column id="MEAS_MOVE_OUT" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="MEAS_MOVE_OUT" DotPortName="NMEAS_MOVE_OUT"/>
+<Column id="EOPHeadcount" dataType="DECIMAL" type="DIM" sourceTableRef="DG/EM/FACT" sourceColumnRef="EOPHeadcount" DotPortName="NEOPHeadcount"/>
+</FactTable>
+ <FactTable id="DG/EM/FACT" cat="table" tablenamebearer="true" DotNodeName="FACT_0">
+<Column id="PERSON_ID" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="KEY" DotPortName="NPERSON_ID"/>
+<Column id="START_DATE" dataType="DATE" type="DIM" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="EVENT_DATE" DotPortName="NSTART_DATE"/>
+<Column id="NORM_EVENT" dataType="NVARCHAR" type="DIM" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="NORM_EVENT" DotPortName="NNORM_EVENT"/>
+<Column id="WEIGHT_GROUP" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/WEIGHT_GROUP" DotPortName="NWEIGHT_GROUP"/>
+<Column id="COUNTRY" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/COUNTRY_LOCATION" DotPortName="NCOUNTRY"/>
+<Column id="GENDER" dataType="" type="DIM" sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="GENDER" DotPortName="NGENDER"/>
+<Column id="COUNTRY_LOCATION" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/COUNTRY_LOCATION" DotPortName="NCOUNTRY_LOCATION"/>
+<Column id="PAYGROUP" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="PAYGROUP" DotPortName="NPAYGROUP"/>
+<Column id="LOCCODE" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCCODE" DotPortName="NLOCCODE"/>
+<Column id="REASON" dataType="NVARCHAR" type="DIM" sourceTableRef="" sourceColumnRef="" DotPortName="NREASON"/>
+<Column id="EMPLOYMENT_STATUS" dataType="" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="EMPLOYMENT_STATUS" DotPortName="NEMPLOYMENT_STATUS"/>
+<Column id="WEIGHT" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="WEIGHT" DotPortName="NWEIGHT"/>
+<Column id="MONTHS_SINCE_HIRE" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/GEN_DAYS_SINCE_HIRE" sourceColumnRef="/DG/EM/MONTHS_SINCE_HIRE" DotPortName="NMONTHS_SINCE_HIRE"/>
+<Column id="NR_CHILDREN" dataType="BIGINT" type="DIM" sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="NR_CHILDREN" DotPortName="NNR_CHILDREN"/>
+<Column id="MEAS_HEADCOUNT" dataType="BIGINT" type="DIM" sourceTableRef="" sourceColumnRef="" DotPortName="NMEAS_HEADCOUNT">
+<FillStrategyBox name="HEAD_COUNT_01" cat="fillstrategy" type="box" tablenamebearer="true" DotNodeName="NBOX_HEAD_COUNT_01" fillStrategy="HEADCOUNT_WITH_MOVE">
+<Plug at="GEN" dir="out" tag="TGT_HC" name="" dataType="" targetTableRef="" targetColumnRef="MEAS_HEADCOUNT" DotPortName="NTGT_HC"/>
+<Plug at="GEN" dir="out" tag="TGT_MOVE_IN" name="" dataType="" targetTableRef="" targetColumnRef="MEAS_MOVE_IN" DotPortName="NTGT_MOVE_IN"/>
+<Plug at="GEN" dir="out" tag="TGT_MOVE_OUT" name="" dataType="" targetTableRef="" targetColumnRef="MEAS_MOVE_OUT" DotPortName="NTGT_MOVE_OUT"/>
+<Plug at="GEN" dir="out" tag="TGT_REASON" name="" dataType="" targetTableRef="" targetColumnRef="REASON" DotPortName="NTGT_REASON"/>
+<Plug at="GEN" dir="in" tag="SRC_0" dataType="" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="MOVE_REASON" DotPortName="NinSRC_0"/>
+<Plug at="GEN" dir="in" tag="SRC_1" dataType="" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="HIRE_REASON" DotPortName="NinSRC_1"/>
+</FillStrategyBox>
+</Column>
+<Column id="MEAS_MOVE_IN" dataType="BIGINT" type="DIM" sourceTableRef="" sourceColumnRef="" DotPortName="NMEAS_MOVE_IN"/>
+<Column id="MEAS_MOVE_OUT" dataType="BIGINT" type="DIM" sourceTableRef="" sourceColumnRef="" DotPortName="NMEAS_MOVE_OUT"/>
+<Column id="EOPHeadcount" dataType="DECIMAL" type="DIM" sourceTableRef="" sourceColumnRef="" DotPortName="NEOPHeadcount"/>
+<Column id="/DG/EM/AGE" sourceTableRef="DG/EM/GE/GEN_AGE" sourceColumnRef="/DG/EM/AGE" semanticType="POSTCALCULATION_BASE" dataType="SMALLINT" DotPortName="N_EM_DG_AGE"/>
+<Column id="/DG/EM/MGR_LOCATION" sourceTableRef="DG/EM/VW/MGR_LOCATION" sourceColumnRef="/DG/EM/MGR_LOCATION" semanticType="POSTCALCULATION_BASE" dataType="BIGINT" DotPortName="N_EM_DG_MGR_LOCATION"/>
+<Column id="WORK_LOC" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCATION" semanticType="POSTCALCULATION_BASE" dataType="SMALLINT" DotPortName="NWORK_LOC"/>
+</FactTable>
+<SourceTable cat="defined" tablenamebearer="true" name="DG/EM/CFG_DATA/WEIGHT_GROUPS" DotNodeName="NEM_DG_CFG_DATA_WEIGHT_GROUPS">
+<!--Pull in source columns if any -->
+<Column src="DEF" name="HIDDEN_IDX" dataType="BIGINT" DotPortName="NHIDDEN_IDX"/>
+<Column src="DEF" name="FROM_WEIGHT" dataType="BIGINT" DotPortName="NFROM_WEIGHT"/>
+<Column src="DEF" name="TO_WEIGHT" dataType="BIGINT" DotPortName="NTO_WEIGHT"/>
+<Column src="DEF" name="WEIGHT_GROUP" dataType="NVARCHAR" DotPortName="NWEIGHT_GROUP"/>
+</SourceTable>
+<SourceTable cat="defined" tablenamebearer="true" name="DG/EM/LOCCODE_TO_COUNTRY" DotNodeName="NEM_DG_LOCCODE_TO_COUNTRY">
+<!--Pull in source columns if any -->
+<Column src="DEF" name="IDX_HIDDEN" dataType="BIGINT" DotPortName="NIDX_HIDDEN"/>
+<Column src="DEF" name="LOCCODE" dataType="NVARCHAR" DotPortName="NLOCCODE"/>
+<Column src="DEF" name="COUNTRY" dataType="NVARCHAR" DotPortName="NCOUNTRY"/>
+</SourceTable>
+<SourceTable cat="defined" tablenamebearer="true" name="DG/EM/EVENT_MAPPING" DotNodeName="NEM_DG_EVENT_MAPPING">
+<!--Pull in source columns if any -->
+<Column src="DEF" name="IDX_HIDDEN" dataType="BIGINT" DotPortName="NIDX_HIDDEN"/>
+<Column src="DEF" name="EVENT" dataType="BIGINT" DotPortName="NEVENT"/>
+<Column src="DEF" name="EVENT_REASON_ICODE" dataType="BIGINT" DotPortName="NEVENT_REASON_ICODE"/>
+<Column src="DEF" name="EVENT_NR" dataType="BIGINT" DotPortName="NEVENT_NR"/>
+<Column src="DEF" name="EVENT_NR2" dataType="BIGINT" DotPortName="NEVENT_NR2"/>
+<Column src="DEF" name="NORM_EVENT_PRIO" dataType="BIGINT" DotPortName="NNORM_EVENT_PRIO"/>
+<Column src="DEF" name="NORM_EVENT" dataType="NVARCHAR" DotPortName="NNORM_EVENT"/>
+<Column src="DEF" name="EVENT_NR3" dataType="BIGINT" DotPortName="NEVENT_NR3"/>
+<Column src="DEF" name="EVENT_CODE_RC" dataType="BIGINT" DotPortName="NEVENT_CODE_RC"/>
+<Column src="DEF" name="EVENT_CODE_RS" dataType="NVARCHAR" DotPortName="NEVENT_CODE_RS"/>
+<Column src="DEF" name="EVENT_CODE_GASSIGN" dataType="NVARCHAR" DotPortName="NEVENT_CODE_GASSIGN"/>
+</SourceTable>
+<SourceTable name="DA/EM/EMPLOYMENT_INFO" tablenamebearer="true" id="DA/EM/EMPLOYMENT_INFO" label="Employment Info" DotNodeName="NEM_DA_EMPLOYMENT_INFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="USERS_SYS_ID" DotPortName="NUSERS_SYS_ID"/>
+<Column src="DA" name="EFFECTIVE_START_DATE" DotPortName="NEFFECTIVE_START_DATE"/>
+<Column src="DA" name="ASSIGNMENT_TYPE" DotPortName="NASSIGNMENT_TYPE"/>
+<Column src="DA" name="ORIGINAL_START_DATE" DotPortName="NORIGINAL_START_DATE"/>
+</SourceTable>
+<SourceTable name="DA/EM/JOBINFO" tablenamebearer="true" label="Employee Job info" DotNodeName="NEM_DA_JOBINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="USERS_SYS_ID" DotPortName="NUSERS_SYS_ID"/>
+<Column src="DA" name="EFFECTIVE_START_DATE" DotPortName="NEFFECTIVE_START_DATE"/>
+<Column src="DA" name="EFFECTIVE_END_DATE" DotPortName="NEFFECTIVE_END_DATE"/>
+<Column src="DA" name="EMPLOYMENT_STATUS" DotPortName="NEMPLOYMENT_STATUS"/>
+<Column src="DA" name="JOB_TITLE" DotPortName="NJOB_TITLE"/>
+<Column src="DA" name="FTE" DotPortName="NFTE"/>
+<Column src="DA" name="EVENT" DotPortName="NEVENT"/>
+<Column src="DA" name="EVENT_REASON_ICODE" DotPortName="NEVENT_REASON_ICODE"/>
+<Column src="DA" name="SEQ_NR" DotPortName="NSEQ_NR"/>
+<Column src="DA" name="FTE" DotPortName="NFTE"/>
+<Column src="DA" name="WEIGHT" DotPortName="NWEIGHT"/>
+<Column src="DA" name="LOCCODE" DotPortName="NLOCCODE"/>
+<Column src="DA" name="LOCATION" DotPortName="NLOCATION"/>
+<Column src="DA" name="MOVE_REASON" DotPortName="NMOVE_REASON"/>
+<Column src="DA" name="HIRE_REASON" DotPortName="NHIRE_REASON"/>
+<Column src="DA" name="EMPLOYMENT_TYPE" DotPortName="NEMPLOYMENT_TYPE"/>
+<Column src="DA" name="PAYGROUP" DotPortName="NPAYGROUP"/>
+<Column src="DA" name="MGR_USER_ID" DotPortName="NMGR_USER_ID"/>
+</SourceTable>
+<SourceTable name="DA/EM/PERSONINFO" tablenamebearer="true" DotNodeName="NEM_DA_PERSONINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="EFFECTIVE_DATE" DotPortName="NEFFECTIVE_DATE"/>
+<Column src="DA" name="GENDER" DotPortName="NGENDER"/>
+<Column src="DA" name="NR_CHILDREN" DotPortName="NNR_CHILDREN"/>
+<Column src="DA" name="FIRSTNAME" DotPortName="NFIRSTNAME"/>
+<Column src="DA" name="LASTNAME" DotPortName="NLASTNAME"/>
+<Column src="DA" name="DATE_OF_BIRTH" DotPortName="NDATE_OF_BIRTH"/>
+</SourceTable>
+<SourceTable name="DA/EM/LOCATION_HIER" tablenamebearer="true" DotNodeName="NEM_DA_LOCATION_HIER">
+<!--Pull in source columns if any -->
+<Column src="DA" name="IDX_HIDDEN" DotPortName="NIDX_HIDDEN"/>
+<Column src="DA" name="LOCATION_ID" DotPortName="NLOCATION_ID"/>
+<Column src="DA" name="PARENT_LOCATION" DotPortName="NPARENT_LOCATION"/>
+<Column src="DA" name="LOCATION_CATEGORY" DotPortName="NLOCATION_CATEGORY"/>
+</SourceTable>
+<SourceTable name="DA/EM/EMPLOYEE" tablenamebearer="true" DotNodeName="NEM_DA_EMPLOYEE">
+<!--Pull in source columns if any -->
+<Column src="DA" name="PERSON_ID" DotPortName="NPERSON_ID"/>
+<Column src="DA" name="TAX_ID" DotPortName="NTAX_ID"/>
+</SourceTable>
+<SourceTable name="PICKLIST" tablenamebearer="true" id="PICKLIST" label="Picklist" DotNodeName="NPICKLIST">
+<!--Pull in source columns if any -->
+<Column src="DA" name="OPTION_ID" DotPortName="NOPTION_ID"/>
+<Column src="DA" name="EXTERNAL_CODE" DotPortName="NEXTERNAL_CODE"/>
+<Column src="DA" name="PICKLISTID" DotPortName="NPICKLISTID"/>
+</SourceTable>
+<SourceTable name="DA/EM/AGE_GROUPS" tablenamebearer="true" label="" DotNodeName="NEM_DA_AGE_GROUPS">
+<!--Pull in source columns if any -->
+<Column src="DA" name="AGE_FROM_INCL" DotPortName="NAGE_FROM_INCL"/>
+<Column src="DA" name="AGE_TO_EXCL" DotPortName="NAGE_TO_EXCL"/>
+<Column src="DA" name="AGE_GROUP_ID" DotPortName="NAGE_GROUP_ID"/>
+<Column src="DA" name="AGE_GROUP" DotPortName="NAGE_GROUP"/>
+<Column src="DA" name="AGE_GROUP_ATTR1" DotPortName="NAGE_GROUP_ATTR1"/>
+</SourceTable>
+<SourceTable name="DA/EM/TRAVEL_COMP_GROUPS" tablenamebearer="true" DotNodeName="NEM_DA_TRAVEL_COMP_GROUPS">
+<!--Pull in source columns if any -->
+<Column src="DA" name="AGE_FROM" DotPortName="NAGE_FROM"/>
+<Column src="DA" name="AGE_TO" DotPortName="NAGE_TO"/>
+<Column src="DA" name="TRAVEL_COMP_GROUP" DotPortName="NTRAVEL_COMP_GROUP"/>
+</SourceTable>
+<SourceTable name="GENERIC_OBJECT_T" tablenamebearer="true" id="GENERIC_OBJECT_T" label="" DotNodeName="NGENERIC_OBJECT_T">
+<!--Pull in source columns if any -->
+<Column src="DA" name="SF_FIELD1" DotPortName="NSF_FIELD1"/>
+<Column src="DA" name="SF_FIELD2" DotPortName="NSF_FIELD2"/>
+<Column src="DA" name="SF_FIELD3" DotPortName="NSF_FIELD3"/>
+<Column src="DA" name="SF_FIELD4" DotPortName="NSF_FIELD4"/>
+<Column src="DA" name="EFFECTIVE_STATUS" DotPortName="NEFFECTIVE_STATUS"/>
+</SourceTable>
+<SourceTable name="GENERIC_OBJECT_T" tablenamebearer="true" id="GOT_POSITION" label="" DotNodeName="NGENERIC_OBJECT_T">
+<!--Pull in source columns if any -->
+<Column src="DA" name="SF_FIELD1" DotPortName="NSF_FIELD1"/>
+<Column src="DA" name="SF_FIELD2" DotPortName="NSF_FIELD2"/>
+<Column src="DA" name="SF_FIELD3" DotPortName="NSF_FIELD3"/>
+<Column src="DA" name="SF_FIELD4" DotPortName="NSF_FIELD4"/>
+</SourceTable>
+<SourceTable name="DA/EM/USERS_SYSINFO" tablenamebearer="true" id="DA/EM/USERS_SYSINFO" isFactAttribute="false" label=" users sys info" DotNodeName="NEM_DA_USERS_SYSINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="USERS_SYS_ID" DotPortName="NUSERS_SYS_ID"/>
+<Column src="DA" name="USERS_SYS_FIRSTNAME" DotPortName="NUSERS_SYS_FIRSTNAME"/>
+<Column src="DA" name="USERS_SYS_MI" DotPortName="NUSERS_SYS_MI"/>
+<Column src="DA" name="USERS_SYS_LASTNAME" DotPortName="NUSERS_SYS_LASTNAME"/>
+<Column src="DA" name="USERS_SYS_MANAGERUID" DotPortName="NUSERS_SYS_MANAGERUID"/>
+</SourceTable>
+<SourceTable name="DA/EM/USERS_SYSINFO" tablenamebearer="true" id="DA/EM/MGR_USERS_SYSINFO" isFactAttribute="false" label=" managers info" DotNodeName="NEM_DA_USERS_SYSINFO">
+<!--Pull in source columns if any -->
+<Column src="DA" name="SF_FIELD1" DotPortName="NSF_FIELD1"/>
+<Column src="DA" name="USERS_SYS_FIRSTNAME" DotPortName="NUSERS_SYS_FIRSTNAME"/>
+</SourceTable>
+<FactTable dottag="ALIAS" name="EMP_JOBINFO" tablenamebearer="true" DotNodeName="AliasLE77">
+<Column id="MGR_ID" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="MGR_ID" DotPortName="DCAN65948"/>
+<Column id="EFFECTIVE_START_DATE" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="EFFECTIVE_START_DATE" DotPortName="DCAN65958"/>
+<Column id="EFFECTIVE_END_DATE" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="EFFECTIVE_END_DATE" DotPortName="DCAN65966"/>
+</FactTable>
+<FactTable dottag="ALIAS" name="MGR_JOBINFO" tablenamebearer="true" DotNodeName="AliasRE77">
+<Column id="PERSON_ID" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="PERSON_ID" DotPortName="DCBN65951"/>
+<Column id="EFFECTIVE_START_DATE" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="EFFECTIVE_START_DATE" DotPortName="DCBN65960"/>
+<Column id="EFFECTIVE_END_DATE" sourceTableRef="DG/EM/JOBINFO" sourceColumnRef="EFFECTIVE_END_DATE" DotPortName="DCBN65968"/>
+</FactTable>
+<what/>
+<!--
+      every join result column must have either a fixed value or
+      a source table
+    -->
+<!-- every sourceColumnRef must refer to a present Column -->
+<!-- identify broken reference -->
+<!-- every sourceColumnRef must refer to a present Column -->
+<!--
+            Column /DG/EM/AGE not found in file
+          -->
+<!--
+            Column /DG/EM/MGR_LOCATION not found in file
+          -->
+<!--
+            Column NORM_EVENT not found in file
+          -->
+<!--
+            Column NORM_EVENT not found in file
+          -->
+<!--
+            Column WEIGHT_GROUP not found in file
+          -->
+<!--
+            Column COUNTRY not found in file
+          -->
+<!--
+            Column EFFECTIVE_DATE_FROM not found in file
+          -->
+<!--
+            Column EFFECTIVE_DATE_TO not found in file
+          -->
+<!--
+            Column EVENT_DATE not found in file
+          -->
+<!--
+            Column NORM_EVENT not found in file
+          -->
+<!--
+            Column EVENT_DATE not found in file
+          -->
+<!--
+            Column /DG/EM/MGR_LOCATION not found in file
+          -->
+<!--
+            Column WORK_LOC not found in file
+          -->
+<!--
+            Column /DG/EM/WEIGHT_GROUP not found in file
+          -->
+<!--
+            Column /DG/EM/COUNTRY_LOCATION not found in file
+          -->
+<!--
+            Column /DG/EM/COUNTRY_LOCATION not found in file
+          -->
+<!--
+            Column DIM_TRAVEL_COMP_GROUP not found in file
+          -->
+<!--
+            Column GEODISTANCE_KM not found in file
+          -->
+<!--
+            Column /DG/EM/MONTHS_SINCE_HIRE not found in file
+          -->
+<!--
+            Table Reference EMP_JOBINFO not found in file
+          -->
+<!--
+            Table Reference MGR_JOBINFO not found in file
+          -->
+<!--
+            Table Reference MGR_JOBINFO not found in file
+          -->
+<!--
+            Table Reference MGR_JOBINFO not found in file
+          -->
+<!--
+            Table Reference MGR_JOBINFO not found in file
+          -->
+<!--
+            Table Reference DG/EM/INT/EVENTDRIVER not found in file
+          -->
+<!--
+            Table Reference DG/EM/INT/EVENTDRIVER not found in file
+          -->
+<!--
+            Table Reference DG/EM/INT/EVENTDRIVER not found in file
+          -->
+<!--
+            Table Reference DG/EM/FACT not found in file
+          -->
+<!--
+            Table Reference DG/EM/FACT not found in file
+          -->
+<!--
+            Table Reference PC_AGE_GROUP not found in file
+          -->
+<!--
+            Table Reference DG/EM/PC/TRAVEL_COMP_GROUP not found in file
+          -->
+<!--
+            Table Reference DG/EM/PC/DIST_WORK_HOME not found in file
+          -->
+<TablesOrViews>
+<Table type="TableDefinition" name="EM/VW/EMP_EMPLOYMENT_INFO"/>
+<Table type="TableDefinition" name="DG/EM/VW/JOBINFO"/>
+<Table type="TableDefinition" name="DG/EM/VW/EMPLOYEE"/>
+<Table type="TableDefinition" name="DG/EM/VW/PERSONINFO"/>
+<Table type="TableDefinition" name="DG/EM/VW/MGR_LOCATION"/>
+<Table type="TableDefinition" name="DG/EM/GE/GEN_AGE"/>
+<Table type="TableDefinition" name="DG/EM/GEN_DAYS_SINCE_HIRE"/>
+<Table type="Generators" name="DG/EM/GE/GEN_AGE"/>
+<Table type="Generators" name="DG/EM/GEN_DAYS_SINCE_HIRE"/>
+<Table type="sourceTable" name="DA/EM/EMPLOYMENT_INFO"/>
+<Table type="sourceTable" name="DA/EM/JOBINFO"/>
+<Table type="sourceTable" name="DA/EM/PERSONINFO"/>
+<Table type="sourceTable" name="DA/EM/LOCATION_HIER"/>
+<Table type="sourceTable" name="DA/EM/EMPLOYEE"/>
+<Table type="sourceTable" name="PICKLIST"/>
+<Table type="sourceTable" name="DA/EM/AGE_GROUPS"/>
+<Table type="sourceTable" name="DA/EM/TRAVEL_COMP_GROUPS"/>
+<Table type="sourceTable" name="DA/EM/USERS_SYSINFO"/>
+<Table type="sourceTable" name="DA/EM/USERS_SYSINFO"/>
+</TablesOrViews>
+
+      - <others>
+  2001-01-01
+  EC
+  Mobility
+
+  
+    
+       
+        
+    
+       
+        
+    
+       
+        
+  
+  
+  
+    
+  
+  
+    
+          
+            
+            
+            
+              
+            
+          
+          
+            
+            
+            
+            
+            
+            
+
+
+            
+            
+              
+                
+                
+                
+              
+              
+                
+                
+              
+            
+
+
+            
+              
+              
+                
+                  
+                  
+                
+                
+                  
+                  
+                
+            
+              
+            
+              
+                
+                  
+                  
+                  
+                  
+                
+                
+                  
+                
+            
+              
+              
+                
+                  
+                    
+                    
+                  
+                  
+                    
+                  
+                  
+                    
+                    
+                    
+                    
+                    
+                      
+                      
+                        1,-100,5,"0+kg"
+2,50,55,"50+kg"
+3,55,60,"55+kg"
+4,60,65,"60+kg"
+5,65,70,"65+kg"
+6,70,75,"65+kg"
+
+                      
+                      
+                    
+                  
+              
+            
+                
+                
+                  
+                
+                
+                  
+                
+
+                
+                  
+                  
+                  
+                  
+                    
+                    
+                      
+                1,"WDF","GER"
+                2,"ROT","GER"
+                3,"SFR","USA"
+                4,"BLR","USA"
+                5,"MUM","IND"
+                6,"DHL","IND"
+                    
+                  
+                
+            
+        
+         
+    
+      
+    
+    
+      
+      
+    
+    
+      
+      
+      
+      
+      
+
+      
+        
+          
+          
+          
+          
+          
+        
+        
+          
+          
+          
+          
+          
+          
+        
+      
+    
+
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+      
+      
+      
+      
+      
+                  
+      
+      
+    
+      
+      
+      
+      
+      
+    
+    
+
+    
+      
+
+      
+        
+          
+          
+          
+          
+          
+        
+      
+      
+        
+          
+            
+            
+          
+          
+            
+          
+        
+      
+      
+              
+              
+                
+                  
+                  
+                  
+                
+                
+                  
+                
+              
+      
+    
+   
+    
+     
+		 
+  
+    
+    
+      
+      
+      
+      
+      ;
+    
+    
+
+     
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+    
+    
+      
+      
+      
+      
+      
+      
+      ;
+    
+    
+      
+      
+      
+      
+    
+    
+      
+      
+      
+    
+    
+      
+      
+      
+    
+    
+      
+      
+      
+      
+      
+    
+    
+      
+      
+      
+    
+
+    
+    
+      
+      
+        
+          
+          
+          
+          
+          
+          
+          
+        
+      
+    
+    
+      
+        
+          
+          
+          
+          
+          
+        
+      
+    
+    
+      
+      
+        
+          
+          
+          
+          
+          
+        
+        
+          
+          
+        
+        
+      
+    
+  
+          
+            
+              
+              
+              
+                
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+
+                  
+                    
+                    
+                      1,-100,5,"0+kg"
+&lt;![CDATA[
+                      1,10999,222,1,1,40,"TERM",1,"_Term_",,
+                      2,10949,227,1,1,30,"HIRE",1,"HIRNEW","H_HIRNEW",
+                      3,10942,216,1,0,2,"DATAC_OUT",1,"DTCNV","5",
+                      4,33388,921,1,1,21,"MOVE_OUT",1,"AGA","AGA","G_ASSIGNM"
+                      5,10973,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+--&gt;
+                        
+                  
+                
+              
+            
+            
+          
+
+
+
+  
+
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    
+      
+    
+    
+    
+      
+    
+
+    
+      
+    
+    
+    
+      
+    
+
+    
+      
+       
+    
+    
+
+    
+      
+            
+        
+        
+    
+      
+        Employment status
+        Employment status
+        Employment status
+      
+      
+      
+        
+          
+            
+          
+        
+        
+          
+        
+      
+    
+    
+  
+         
+            
+              
+            
+            
+                  
+            
+           
+            
+                  
+            
+            
+            
+                  
+            
+           
+            
+               
+                  Headcount Us
+                  Headcount Uk
+               
+                  
+                    
+                      
+                      
+                      
+                      
+                      
+                      
+                    
+                  
+            
+           
+             
+               Headcount Us
+               Headcount Uk
+             
+             
+           
+           
+           
+             
+               Headcount Us
+               Headcount Uk
+             
+             
+           
+
+           
+               
+                  End of the period headcount Us
+                  End of the period headcount Uk
+               
+               
+                  Headocunt
+                  Calendar
+                  true
+                  SUM
+               
+            
+         
+      </others>
+</mp:NormalizedDGMP>

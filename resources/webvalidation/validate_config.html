@@ -1,0 +1,726 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+
+<title>config xml validator </title>
+<!--   this is the config validator page, 
+   this one tries to use the resources from main, 
+   once all broken links are fixed, it shall substitute validate_config.html 
+  -->
+  
+  <!--  processing is slow, thus running the validation 
+  	in a separate thread would be interesting. 
+  	  Web Workers do not support XMLTransformer etc. 
+  	  => need separate window. 
+  	  => Iframes from different domains run in different thread on chrome. 
+  	  
+  	  => separate window (but requires popup-blocker to be off).
+  
+   -->
+  <!--  this page uses ace and xsllint  -->
+<style type="text/css">
+    #editor { 
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width:100%;
+        height:100%;
+    }
+    
+  table, th, 
+  td { 
+  cell-padding: 0px;
+  cell-spacing: 0px;
+  border-collapse: collapse;
+  			border: 1px solid black;
+  			font-size:normal; 
+  		}
+  th { background-color:lightgray; }
+  td.headerok { background-color:lightgreen; }
+  td.headererror { background-color:orange; }
+  td.error { color:red; font-weight:bold; }
+  div.schemaErrors { color:red; font-weight:bold; }
+  row_number { background-color:lightgray; }
+</style>
+
+<script language="JavaScript">
+
+var relativePathToSrcMainResources = "../../../main/resources/paaeconfigservice/"
+var relativePathToSrcMainXSLTResources = "../../../main/resources/paaeconfigservice/xslt/"
+var relativePathToSrcTestResources = "../../../test/resources/"
+var relativePathToScenario = "../scenarios/"
+
+
+var xslStylesheet;
+var xsltProcessor = new XSLTProcessor();
+var myDOM;
+var xmlDoc;
+
+function makeRelative(path) {
+    return path; 
+}
+
+
+// Function to download data to a file
+// https://stackoverflow.com/questions/13405129/javascript-create-and-save-file
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        var a = document.createElement("a"),
+                url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0); 
+    }
+}
+
+
+function downloadDAJSON() {
+    var dajson = document.getElementById('dajson').value;
+    var s = editor.getValue();
+    
+    download(dajson, "config.dajson.json","text");
+}
+
+
+
+
+function downloadXML() {
+    var s = editor.getValue();
+    download(s, "config.xml","text");
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&#]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+//https://github.wdf.sap.corp/pages/bizx/au-paaegenerationservice/au-paaegenerationservice-service/src/test/resources/scenarios/"
+var relativeGenerationService = '../../../../../../au-paaegenerationservice/au-paaegenerationservice-service/src/test/resources/scenarios/';
+
+function loadConfig( url )
+{
+ 	if ( url.startsWith("../scenarios") ) {
+ 		url = relativeGenerationService + url;
+ 	}
+	if ( url.indexOf(':') < 0)
+	{
+	 	url = makeRelative(url);
+	}
+	var nextpath = document.location.pathname + "?configurl=" + encodeURIComponent(url) + document.location.hash;
+	document.location = nextpath; 
+}
+
+function loadOnStart() {
+    var url = getParameterByName("configurl" , document.location.href);
+    if( !url )
+	{
+	    url = "config.flawed.xml";
+	}
+    try {
+    	loadAndSetDocument(url);
+    } catch(e) {
+        loadAndSetDocument("config.flawed.xml");
+    }
+}
+function loadAndSetDocument(url) {
+    myXMLHTTPRequest = new XMLHttpRequest();
+    console.log("loading document " + url);
+    myXMLHTTPRequest.open("GET", url, false);
+    myXMLHTTPRequest.send(null);
+    xmlDoc =  myXMLHTTPRequest.responseXML;
+    editor.setValue( new XMLSerializer().serializeToString(xmlDoc.documentElement) );
+ 
+}
+
+function toAscii(s) {
+	res = [];
+	last = 0;
+	i = 0;
+    for( i = 0; i < s.length; ++i) {
+    	if( s.charCodeAt(i) > 127 ) {
+    		res.push(s.substring(last,i));
+    		res.push('X');
+    		last = i+1;
+    	}
+    }
+    if( i > last ) {
+    	res.push(s.substring(last,i));
+    }
+    return res.join('');
+}
+
+function parseXML(s) {
+var sMyString = toAscii(s); ///'<a id="a"><b id="b">hey!</b></a>';
+
+var oParser = new DOMParser();
+var oDOM = oParser.parseFromString(sMyString, "application/xml");
+// print the name of the root element or error message
+console.log(oDOM.documentElement.nodeName == "parsererror" ? "error while parsing" : oDOM.documentElement.nodeName);
+return oDOM;
+}
+
+
+function loadStyleSheet(url, callback) {
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function (e) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          callback(xhr.responseXML);
+        } else {
+          console.error(xhr.statusText);
+        }
+      }
+    };
+    xhr.onerror = function (e) {
+      console.error(xhr.statusText);
+    };
+    xhr.send(null)
+}
+
+function parseSampleDGSchemaTxt(txt) {
+  pairs = txt.split("\n")
+  .map( function(s) { return s.trim(); })
+  .filter( function(a) { return !a.startsWith("--") && a.split(":").length == 2;} )
+  .map( function(a) { return a.split(":"); } );
+  return pairs.reduce( function(prev,a) { prev[a[0]] = a[1]; return prev; },{});
+}
+
+// loads type replacement
+// -- comment
+// $abc:123
+//
+// returns a json "map"  {"$abc": "123"}
+function loadTypeReplacements(url, callback) {
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onload = function (e) {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          obj = parseSampleDGSchemaTxt(xhr.responseText);
+          console.log(obj);
+          callback(obj);
+        } else {
+          console.error(xhr.statusText);
+        }
+      }
+    };
+    xhr.onerror = function (e) {
+      console.error(xhr.statusText);
+    };
+    xhr.send(null)
+}
+
+
+var xsltErrorsToHTML;  loadStyleSheet("errors.to.html.xslt", function ( resp ) {
+    xsltErrorsToHTML = resp;
+    });
+var xsltConfigCheck;  loadStyleSheet(relativePathToSrcMainXSLTResources + "config.check.xslt", function ( resp ) { xsltConfigCheck = resp; });
+
+var xsltConfigToTyped = null;
+loadStyleSheet(relativePathToSrcMainXSLTResources + "config.to.typed.xslt", function( resp ) { 
+    xsltConfigToTyped = resp; 
+ });
+
+
+var xsltConfigToCheckTyped = null;
+loadStyleSheet(relativePathToSrcMainXSLTResources + "config.to.checktyped.xslt", function( resp ) { 
+	xsltConfigToCheckTyped = resp; 
+ });
+
+var xsltConfigToDAJson = null;
+loadStyleSheet(relativePathToSrcTestResources + "webvalidation/config.to.da.json.xslt", function( resp ) { 
+    xsltConfigToDAJson = resp; 
+ });
+
+var xsltConfigToExcel = null;
+loadStyleSheet(relativePathToSrcTestResources + "webvalidation/config.to.dacolumns.excel.xslt", function( resp ) { 
+    xsltConfigToExcel = resp; 
+ });
+
+var typeReplacements = null;
+loadTypeReplacements(relativePathToSrcTestResources + "webvalidation/sample.dg.schema.txt", function( resp ) { 
+	typeReplacements = resp; 
+ });
+ 
+ 
+function serializeXMLToString(xml) {
+	return new XMLSerializer().serializeToString(xml);
+}
+
+var xsd;  
+loadStyleSheet(relativePathToSrcMainResources + "schema/config.xsd", function ( resp ) { 
+	var xsdtmp = new XMLSerializer().serializeToString(resp);
+	// cut out the non-ascii stuff which the xsdjs has trouble with
+	var start = xsdtmp.indexOf("Supported Locales by Successfactors -");
+	var end = xsdtmp.indexOf("(Traditional Chinese) zh_TW");
+	xsd =  xsdtmp.substring(0,start) + xsdtmp.substring(end);
+	});
+
+function checkSchema(resolvedConfig) {
+
+  resolvedConfig = toAscii(resolvedConfig);
+  var Module = {
+    xml: resolvedConfig,
+    schema: xsd,
+    arguments: ["--noout", "--schema", "config.xsd", "config.xml"]
+	};
+	var xmllint = validateXML(Module);
+    xmllint = "" + xmllint;
+    xmllint = xmllint.trim();
+ 	if(">"+ xmllint + "<" == ">config.xml validates<") {
+ 	   document.getElementById("schemaErrors").innerText = "";
+ 	   return "";
+ 	}
+	document.getElementById("schemaErrors").innerText = xmllint;
+ 	return xmllint;
+}
+
+function transformDocument(xdoc, xsl) {
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsl);
+    var xmlDocTyped = xsltProcessor.transformToDocument(xdoc);
+    return xmlDocTyped;
+}
+
+function loadAndCheck() {
+    <!-- this is slightly off -->
+    var nrerr = parseInt(getParameterByName("nrerr", document.location.hash) || 10);
+    document.getElementById("nrerr").value = nrerr;
+    var nrwarn = parseInt(getParameterByName("nrwarn", document.location.hash) || 10);
+    document.getElementById("nrwarn").value = nrwarn;
+    loadOnStart();
+	checkDocument();
+	if (document.location.hash && getParameterByName("da", document.location.hash) == "visible") {
+	 	showDAJSON();
+	} else {
+		hideDAJSON();
+	}
+}
+
+var atimer = null;
+
+<!-- validation is slow and currently synchronous, we only do it when it's idle -->
+function checkDocumentDeferred() {
+    if ( atimer) {
+      clearTimeout(atimer);
+    } 
+    atimer = setTimeout(function() { checkDocument(); }, 1500);
+}
+
+function replaceInHash(tag, value) {
+    var hash = window.location.hash;
+    newTagValue = tag + "=" + encodeURIComponent(value);
+    if( hash.indexOf(tag +"=") >= 0)
+    {
+        re = new RegExp(tag + "=" + "([^&]+)");
+        hash = hash.replace(re, newTagValue)
+    } else {
+        hash += "&" + newTagValue;
+    }
+    window.location.hash= hash;
+}
+
+function transformStringToString(s, stylesheet)  {	
+   var xmlDoc =  parseXML(s); 
+   var xmlDocTransformed = transformDocument(xmlDoc, stylesheet);
+   return  new XMLSerializer().serializeToString(xmlDocTransformed);
+}
+
+function downloadExcel() {
+	var s = editor.getValue(); 
+	var sExcel ='<?xml version="1.0"?>'+ transformStringToString(s,xsltConfigToExcel); 
+    console.log(sExcel);
+    var xx = '<?mso-application progid="Excel.Sheet"?>';
+	download(sExcel, "config.dacolumn.xml","text");
+    
+}
+
+function downloadDatasets() {
+	var s = editor.getValue(); 
+    download(s, "config.datasets.xml","text");
+}
+
+function getResolvedConfig() {
+  var oldStr = editor.getValue();
+  Object.getOwnPropertyNames(typeReplacements).forEach(function(key) {
+	var val = typeReplacements[key];
+	console.log("replace" + key + " " + val);
+	oldStr = oldStr.replaceAll(key,val);
+  });
+  // collect all unreplaced placeholders
+  var keys = {};
+  var keysprecision = {};
+  var keysscale = {};
+  var dt = /dataType\=\"([$][A-Z_a-z0-9_]+)\"/g;
+  while(null !=  (m = dt.exec(oldStr))) {
+	  keys[m[1]] = "NVARCHAR";
+  }
+  var dt = /precision\=\"([$][A-Z_a-z0-9_]+)\"/g;
+  while(null !=  (m = dt.exec(oldStr))) {
+	  keysprecision[m[1]] = "32";
+  }
+  var dt = /scale\=\"([$][A-Z_a-z0-9_]+)\"/g;
+  while(null !=  (m = dt.exec(oldStr))) {
+	  keysscale[m[1]] = "0";
+  }
+  var str = "";
+  Object.getOwnPropertyNames(keys).forEach(function(key) {
+	  str = str +  key + ":NVARCHAR\n";
+  });
+  Object.getOwnPropertyNames(keysprecision).forEach(function(key) {
+	  str = str + key + ":123\n";
+  });
+  Object.getOwnPropertyNames(keysscale).forEach(function(key) {
+	  str = str + key + ":0\n";
+  });
+  console.log(str);
+  var strbr = str.replaceAll("\n","<br></br>");
+  if ( strbr.length > 10) {
+	  strbr = "Missing types ...<br/>" + strbr;
+  }
+  document.getElementById('missingTypes').innerHTML = strbr;
+  
+  //console.log("post replacement" + oldStr);
+  // replace remainders  
+  return oldStr.replace(/scale=\"\$[A-Z_a-z0-9_]+\"/g, "scale=\"2\"")
+               .replace(/dataType=\"\$[A-Z_a-z0-9_]+\"/g, "dataType=\"DECIMAL\"")
+               .replace(/(dataType\=\"[^$]+(CHAR|char)\"[ ]+.*precision=\")\$[A-Z_a-z0-9_]+(\")/g, "$142$3")
+               .replace(/(precision=\")\$[A-Z_a-z0-9_]+(\"[ ]+.*dataType\=\"[^$]+(CHAR|char)\")/g, "$142$2")
+               .replace(/precision=\"\$[A-Z_a-z0-9_]+\"/g, "precision=\"23\"");
+}
+
+// worker do not support XSTLProcessor
+// thus we use an iframe
+
+function processEvent(e) {
+	console.log('Got worker result');
+	var xmlDoc = parseXML(e.data[2]); 
+	presentMessages(xmlDoc);
+}
+
+//Assign handler to message event
+if ( window.addEventListener ) {
+    window.addEventListener('message', processEvent, false);
+} else if ( window.attachEvent ) { // ie8
+    window.attachEvent('onmessage', processEvent);
+}
+
+function checkDocumentPM(sResolved)
+{
+    xmlDoc =  parseXML(sResolved); 
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsltConfigToTyped);
+	console.log('Main transforming ...')
+    // do this at least 4 times for proper type inference    
+    var xmlDocTyped = transformDocument(xmlDoc, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    // 10 times
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    xmlDocTyped = transformDocument(xmlDocTyped, xsltConfigToTyped);
+    var xmlDocCheckTyped = transformDocument(xmlDocTyped, xsltConfigToCheckTyped);
+
+    var xmlDocErrors = transformDocument(xmlDocCheckTyped, xsltConfigCheck);
+    
+    return xmlDocErrors;
+}
+var myWorker = null;
+function checkDocument()
+{
+    var sResolved = getResolvedConfig();
+    var schema = checkSchema(sResolved);
+    var sRaw = editor.getValue();
+    xmlDoc =  parseXML(sResolved); 
+    if ( (myWorker == null)) {
+  		myWorker = window.document.getElementById('iframeworker').contentWindow;
+  		myWorker.postMessage(['setData','xsltConfigToTyped',serializeXMLToString(xsltConfigToTyped)],"*");
+  		myWorker.postMessage(['setData','xsltConfigToCheckTyped',serializeXMLToString(xsltConfigToCheckTyped)],"*");
+  		myWorker.postMessage(['setData','xsltConfigCheck',serializeXMLToString(xsltConfigCheck)],"*");
+  		myWorker.postMessage(['setData','xsd',xsd],"*");
+    	//myWorker = window.open('worker_validate_config.html', "", "width=200,height=100")
+    }
+    if ( myWorker && !myWorker.closed) {
+    	var tok = 123;
+  		myWorker.postMessage(["validate",tok,sResolved],"*");
+		console.log('awaiting results ');
+    } else {
+   	  xmlDocErrors = checkDocumentPM(sResolved);
+  	  presentMessages(xmlDocErrors)
+    }
+}
+
+function presentMessages(xmlDocErrors) {
+    var xsltProcessor2 = new XSLTProcessor();
+    xsltProcessor2.importStylesheet(xsltErrorsToHTML);
+
+    var nrerr = parseInt(document.getElementById("nrerr").value);
+    if (nrerr != 10) {
+        replaceInHash("nrerr",nrerr);
+    }
+    xsltProcessor2.setParameter("","nrerr", nrerr);
+    var nrwarn = parseInt(document.getElementById("nrwarn").value);
+    xsltProcessor2.setParameter("","nrwarn", nrwarn);
+    if (nrwarn != 5) {
+        replaceInHash("nrwarn",nrwarn);
+    }
+
+    var fragment = xsltProcessor2.transformToFragment(xmlDocErrors, document);
+    
+    //console.log(" errors " + new XMLSerializer().serializeToString(fragment));
+    
+    document.getElementById("errors").innerHTML = "";
+    myDOM = fragment;
+    
+   	document.getElementById("errors").innerHTML = "";
+	//myDOM = fragment;
+	document.getElementById("errors").appendChild(fragment);
+	
+	calcDAJSON();
+}
+
+function serializeElement(element)
+{
+   var targetParent = {};
+   element.getAttributeNames().forEach( function(attrName) 
+   {
+                if ( attrName.indexOf(":") == -1 && attrName.startsWith("_") == false) {
+                    var memberName = "_" + attrName;
+               		targetParent[memberName] = element.getAttribute(attrName);
+                }
+   });
+   return targetParent; 
+}
+
+function addToParent( targetParent, ch , newElement )
+{
+    var elName = ch.localName;
+	if( ch.getAttribute("_asArrayMember") == "true") 
+	{
+
+	    if ( !targetParent.hasOwnProperty(elName)) {
+	        targetParent[elName] =[];
+	    }
+	     targetParent[elName].push(newElement)
+	} else {
+   		 targetParent[elName] = newElement;
+	}
+}
+
+function serialize(element) {
+ 	var targetParent = {};
+    element.getAttributeNames().forEach( function(attrName) 
+    {
+        if ( attrName.indexOf(":") == -1 && attrName.startsWith("_") == false) {
+            var memberName = "_" + attrName;
+       		targetParent[memberName] = element.getAttribute(attrName);
+        }
+    });
+    var ch = element.firstElementChild;
+    while( ch != null)
+    {
+        var newElement = serialize(ch);
+      	addToParent(targetParent, ch, newElement);
+      	ch = ch.nextElementSibling;
+    };
+    return targetParent;
+}
+
+function serializeToJSON( xmlDocDA ) {
+	
+    var res = {};
+    addToParent(res, xmlDocDA.documentElement, serialize(xmlDocDA.documentElement));
+	return res;
+}
+
+function updateDAJSON()
+{ 
+    if ( document.getElementById("divdajson").style.visibility != "hidden")
+    {
+    	hideDAJSON();
+    	return;	
+    }
+    showDAJSON();
+}
+
+function showDAJSON() {
+    calcDAJSON();
+    document.getElementById("btnDAJSON").value="Hide DA JSON";
+    document.getElementById("divdajson").style.height="50%";
+    document.getElementById("divdajson").style.visibility="visible";
+    replaceInHash("da","visible");
+}
+
+function calcDAJSON() {
+    var s = editor.getValue();
+    xmlDoc =  parseXML(s); 
+    var xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsltConfigToTyped);
+
+    var xmlDocDA = transformDocument(xmlDoc, xsltConfigToDAJson);
+    var res = serializeToJSON( xmlDocDA);
+    //console.log(new XMLSerializer().serializeToString(xmlDocDA));
+	document.getElementById("dajson").value = JSON.stringify(res,null,2);
+}
+
+function hideDAJSON() { 
+	document.getElementById("btnDAJSON").value="Show DA JSON";
+	document.getElementById("divdajson").style.height="0px";
+	document.getElementById("divdajson").style.visibility="hidden";
+	replaceInHash("da","hidden");
+}
+
+function selectFile() {
+    document.getElementById('dafile').value = null;
+    document.getElementById('dafile').click();
+}    
+function loadFile() {
+
+    afile = document.getElementById('dafile').files[0];
+    var reader = new FileReader();
+
+    // Closure to capture the file information.
+    reader.onload = function(e) {
+        editor.setValue(e.target.result);
+      };
+    reader.readAsText(afile);
+
+}
+
+
+window.addEventListener("beforeunload", function(event) { 
+	if ( myWorker && !myWorker.closed) {
+		myWorker.close();
+	}
+});
+//window.onbeforeunload = function(event) { ... };
+
+</script>
+</head>
+
+<body onload="setTimeout(loadAndCheck, 200)">
+<!-- <iframe id="iframeworker" width=100 height=100 src="htmlxslt.html">
+</iframe> -->
+<iframe id="iframeworker" width=100 height=10 src="https://jfseb.github.io/xsltransform/htmlxslt.html">
+</iframe>
+<b>Config validator &nbsp;&nbsp; <a href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/schema/config.xsd">schema</a> &nbsp;&nbsp;
+&nbsp;
+<INPUT TYPE="button" VALUE="upload cfg" ONCLICK="selectFile()">
+<INPUT TYPE="file" id="dafile" style="visibility:hidden" onChange="loadFile()"/>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/WB/config.xml')">WB</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/WF/config.xml')">WF</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/NG/config.xml')">NG</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/WU/config.xml')">WU</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/WT/config.xml')">WT</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/W2/config.xml')">W2</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../paaeconfigservice/semdims/S1/semdims.config.xml')">semdims.config.xml</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/NG/config.1.xml')">NG 1</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/NG/config.2.xml')">NG 2</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/W2/config.xml')">W2</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/W1/config.xml')">W1</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/W4/config.xml')">W4</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/S0/config.xml')">S0</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/S1/config.xml')">S1</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/S3/config.xml')">S3</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/E1/config.xml')">E1</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/W4/config.xml')">W4</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../scenarios/MX/config.xml')">MX</a>
+&nbsp;<a href="javascript:void(0)" onclick="javascript:loadConfig('../scenarios/DI/config.xml')">DI</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../b2005/base_config.xml')">b2005 base_config</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../min/base_config.xml')">min base_config</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('../b2005/config.xml')">config</a>
+&nbsp;<a href="javascript:void(0)" onclick="loadConfig('config.flawed.xml')">flawed</a>
+ <a style="font-size:small" href="https://github.wdf.sap.corp/pages/bizx/au-paaeconfigservice/"> back to base... </a>
+<br/> 
+</b>
+
+<INPUT TYPE="button" id="btnDAJSON" VALUE="hide DA JSON!" ONCLICK="updateDAJSON()">
+<INPUT TYPE="button" VALUE="download da json" ONCLICK="downloadDAJSON()">
+<INPUT TYPE="button" VALUE="download cfg" ONCLICK="downloadXML()">
+<INPUT TYPE="button" VALUE="download datasets" ONCLICK="downloadDatasets()">
+<INPUT TYPE="button" VALUE="download columns excel" ONCLICK="downloadExcel()">
+<!-- 
+<INPUT TYPE="button" VALUE="load flawed config" ONCLICK="loadConfig('config.flawed.xml')">
+<INPUT TYPE="button" VALUE="load config W1" ONCLICK="loadConfig('../scenarios/W1/config.xml')">
+<INPUT TYPE="button" VALUE="load config S1" ONCLICK="loadConfig('../scenarios/S1/config.xml')">
+<INPUT TYPE="button" VALUE="load config S0" ONCLICK="loadConfig('../scenarios/S0/config.xml')">
+<INPUT TYPE="button" VALUE="load config BR" ONCLICK="loadConfig('../scenarios/BR/config.xml')">
+<INPUT TYPE="button" VALUE="load config DI" ONCLICK="loadConfig('../scenarios/DI/config.xml')"> -->
+first <input id="nrerr" type="number" min="0" step="1" max="999" value="10" onchange="checkDocumentDeferred()"/> errors;
+<input id="nrwarn" type="number" min="0" step="1" max="999" value="5" onchange="checkDocumentDeferred()"/> warnings
+
+<div id="divdajson" style="width:100%">
+<TEXTAREA id="dajson" COLS=200 ROWS=20 style="resize:none;" ></TEXTAREA>
+</div>
+
+<div id="schemaErrors" class="schemaErrors">
+</div>
+<div id="errors">
+</div>
+<div id="missingTypes">
+</div>
+<!--  this is replaced by the ace editor  -->
+<div id="editor"> half the game is 90% mental.</div>
+
+
+  <script src="https://pagecdn.io/lib/ace/1.4.7/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://syssgx.github.io/xml.js/js/xmllint.js" type="text/javascript" charset="utf-8"></script>
+<!--  <script src="xmllint.js" type="text/javascript" charset="utf-8"></script> -->
+
+<!--  instantiate ace editor -->
+<script>
+    window.editor = ace.edit("editor");
+    editor.setTheme("ace/theme/xcode");
+    editor.session.setMode("ace/mode/xml");
+
+    editor.getSession().on('change', function() {
+        checkDocumentDeferred();
+      });
+</script>
+  Beware, this is an convenience offering w.o. guarantee to work in the future. 
+  <br/>
+  This is internal code: 
+  Services offered on this page do not constitute a part of the product, may not be used in production.
+    
+  As is no warranty and may be removed at any time. 
+  ... you know the drill. 
+  <br/>
+  Known issues: only us-ascii/single byte unicode due to a flaw in teh xmllint.js version used.
+  
+  <p/>
+  Contributions welcome: code submissions <a href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice" > here </a>; 
+  ; chocolate; beer ...
+  <p align="left"><font size="2">by <a href="mailto:gerd.forstmann@sap.com">gerd.forstmann@sap.com</a></font></p>
+
+
+ <p> We gratefully acknowledge the use of <a href="https://github.com/ajaxorg/ace"> ace web editor </a> and 
+     <a href="https://github.com/kripken/xml.js/">https://github.com/kripken/xml.js/</a>
+
+</body>
+</html>

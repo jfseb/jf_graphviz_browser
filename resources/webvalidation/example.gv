@@ -1,0 +1,205 @@
+# http://www.graphviz.org/content/cluster
+#engine:dot
+
+digraph G {
+
+
+subgraph cluster_legend {
+     label="legend, color: document location"
+    metadataservice[shape=note;width=2.5;style=filled;color="green;0.1:white"];
+    configservice[shape=note;width=2.5;style=filled;color="yellow;0.1:white"];
+    DG[label="DG";shape=note;width=2.5;style=filled;color="lightblue;0.1:white"];
+    Result[shape=cylinder,style=filled;fillcolor=gold];
+    Source[shape=cylinder,style=filled;fillcolor=green];
+    Source->configservice;
+    DG->Result;
+    
+}
+
+BeanSerialization[shape=box];
+ErrorMsgLst1[shape=note];
+ErrorMsgLst2[shape=note];
+ErrorMsgLst[shape=note];
+concat[shape=circle];
+InjectDoc[shape=circle];
+dot[shape=box;style=filled;fillcolor=orange];
+
+DGDBProvisioning[shape=cylinder,style=filled;fillcolor=gold];
+DGDBTables[shape=cylinder,style=filled;fillcolor=gold];
+
+ 
+ PaaeDimValueMapping[shape="cylinder",style=filled;fillcolor=green];
+ PaaeMetricPack[shape=cylinder,style=filled;fillcolor=green];
+ PaaeBaseMetricPack[shape=cylinder;style=filled;fillcolor=green];
+ PaaeQValues[shape=cylinder;style=filled;fillcolor=green];
+ MDFSerialize[shape=box];
+ InjectDoc[shape=box];
+ AppendRestrictions[shape=box];
+ JAXBCfg[shape=box];
+ 
+
+ 
+ # documents 
+ node[shape=note;width=2.5];
+ config_connect_xsd;
+ config_gv;
+ svg;
+ config_typed_xml;
+ base_config_xml[shape=note;width=2.5,style=filled;fillcolor=green];
+ config_xml[shape=note;width=2.5];
+ config_connect_xml[shape=note;width=2.5];
+ config_tabledefs_xml[shape=note;width=2.5];
+ config_gv[shape=note;width=2.5];
+ config_errors_xml[shape=note;width=2.5];
+ config_errors_xml[shape=note;width=2.5];
+ resolveDBTypes[shape=box];
+ 
+ BizXSchema[shape=cylinder,style=filled;fillcolor=green];
+ BizXMsgBundles[shape=cylinder,style=filled;fillcolor=green];
+
+
+ config_typed_xml[shape=note;width=2.5];
+ 
+ CSN[label="CSN.json",shape=note;width=2.5;style=filled;fillcolor="gold"]
+ config_cv_fact_xml[shape=note;width=2.5;style=filled;fillcolor="gold"]
+ config_cv_dim_xml[shape=note;width=2.5;style=filled;fillcolor="gold"]
+ 
+ # xslt 
+ 
+ # xslt DG
+ node[shape=note;width=2.5;style=filled;color="lightblue;0.1:white"];
+ config_to_tabledefs_xslt
+ config_to_dimdefs_xslt
+ config_to_connect_xslt
+ config_augdot_to_graphviz_xslt
+ config_to_augdot_xslt
+
+ # xslt ConfigService
+ node[shape=note;width=2.5;style=filled;color="yellow;0.1:white"];
+ 
+ config_to_typed_xslt[shape=note;width=2.5;style=filled;color="yellow;0.1:white",href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/xslt/config.to.typed.xslt"]
+ config_to_checktyped_xslt[shape=note;width=2.5;style=filled;color="yellow;0.1:white";href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/xslt/config.checktyped.xslt"]
+ config_check_xslt[shape=note;width=2.5;style=filled;color="yellow;0.1:white";href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/xslt/config.check.xslt"]
+ config_tabledefs_to_calcviews_xslt[shape=note;width=2.5;style=filled;color="lightblue;0.1:white"]
+ base_config_to_config_xslt[shape=note;width=2.5;style=filled;color="lightblue;0.1:white"]
+
+# schemas 
+
+# xsd Configservices
+node[shape=note;width=2.5;style=filled;color="yellow;0.1:white"];
+node[shape="note";width=2.5;style=filled;color="yellow;0.1:white"];
+config_xsd[shape="note";width=2.5;style=filled;color="yellow;0.1:white",href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/schema/config.xsd"];
+base_config_xsd[shape="note";width=2.5;style=filled;color="yellow;0.1:white",href="https://github.wdf.sap.corp/bizx/au-paaeconfigservice/blob/master/au-paaeconfigservice-service/src/main/resources/paaeconfigservice/schema/base_config.xsd"];
+
+# xsd DG
+node[shape=note;width=2.5;style=filled;color="lightblue;0.1:white"];
+config_tabledefs_xsd[href="https://github.wdf.sap.corp/bizx/au-paaegenerationservice/blob/master/au-paaegenerationservice-service/src/main/resources/paaegenerationservice/config.tabledefs.xsd"];
+config_connect_xsd[href="https://github.wdf.sap.corp/bizx/au-paaegenerationservice/blob/master/au-paaegenerationservice-service/src/main/resources/paaegenerationservice/config.connect.xsd"];
+
+#processed configservice 
+node[shape=box;width=2.5;style=filled;color="yellow;0.1:white"]; 
+CheckSchema;
+
+#processed DG
+
+ node[shape=box;width=2.5;style=filled;color="lightblue;0.1:white"]; 
+ ExtractCVDeploy2[label="Extract CVs\n and deploy"]
+ 
+ #
+node[shape=box;fillcolor=white];
+JAXBConnect[shape=box];
+JAXBTabledefs[shape=box];
+ConfigCheck[shape=box];
+CFGBean[shape=box];
+BeanSerialization[shape=box];
+XMLParse[shape=box];
+resolveKeys; 
+
+# 
+# missed or misspelled nodes.... 
+node[shape=doublecircle];
+
+# schema -> validated object
+ config_xsd -> config_xml[arrowhead=icurve;color=red];
+ config_tabledefs_xsd -> config_tabledefs_xml[arrowhead=icurve,color=red];
+ config_connect_xsd -> config_connect_xml[arrowhead=icurve,color=red];
+ base_config_xsd -> base_config_xml[arrowhead=icurve,color=red];
+ 
+# related schemas
+ base_config_xsd -> config_xsd[arrowhead=none;style=dotted;label="very close"];
+
+ config_typed_xml -> CheckSchema -> ErrorMsgLst1;
+ config_xsd -> CheckSchema;
+ 
+# schema to generated jaxb
+ config_connect_xsd -> JAXBConnect[arrowhead=vee;color=blue;style=bold];
+ config_tabledefs_xsd -> JAXBTabledefs[arrowhead=vee;color=blue;style=bold];
+ config_connect_xml -> JAXBConnect;
+
+# aggregations 
+ PaaeBaseMetricPack -> PaaeQValues[arrowhead=diamond];
+ PaaeBaseMetricPack -> base_config_xml[arrowhead=diamond];
+
+#association
+PaaeMetricPack -> PaaeBaseMetricPack[arrowhead=odiamond];
+PaaeMetricPack -> PaaeDimValueMapping[arrowhead=odiamond];
+
+## current messgae blending during base metric pack xml upload
+## (qvalue extraction);
+
+ BizXMsgBundles -> resolveKeys;
+ base_config_xml -> resolveKeys -> PaaeQValues;
+ 
+
+## initial fusing and xml creaation 
+    
+PaaeMetricPack -> MDFSerialize -> AppendRestrictions -> InjectDoc
+PaaeDimValueMapping -> AppendRestrictions;
+
+ 
+ 
+   base_config_xml -> 
+   resolveDBTypes -> 
+   InjectDoc -> base_config_to_config_xslt
+   -> config_xml ->
+   config_to_typed_xslt -> config_typed_xml ->
+   { config_to_connect_xslt, 
+      config_to_dimdefs_xslt, config_to_checktyped_xslt , JAXBCfg, config_to_augdot_xslt} ;
+   config_to_connect_xslt -> config_connect_xml -> JAXBConnect -> DGDBProvisioning
+   
+ 
+ ## DG Calcview generation 
+ config_to_dimdefs_xslt -> config_to_tabledefs_xslt -> config_tabledefs_xml
+    ->{ config_tabledefs_to_calcviews_xslt , JAXBTabledefs} -> DGDBTables;
+    
+    config_tabledefs_to_calcviews_xslt -> {config_cv_fact_xml,
+    config_cv_dim_xml};
+    
+    config_cv_fact_xml -> ExtractCVDeploy2
+    config_cv_dim_xml -> ExtractCVDeploy2
+    
+    BizXSchema -> resolveDBTypes;
+   
+ ## DG Tabledefs 
+ 
+    JAXBTabledefs-> DGDBTables;
+    
+    
+   
+    
+# error checking
+ config_to_checktyped_xslt ->                   
+ config_check_xslt ->                
+ config_errors_xml  -> XMLParse -> ErrorMsgLst1 -> concat;                
+ ConfigCheck -> ErrorMsgLst2 -> concat -> ErrorMsgLst;                   
+                   
+# aux error checking via bean                    
+  JAXBCfg -> { ConfigCheck,  CFGBean };
+  CFGBean ->BeanSerialization -> CSN; 
+
+# dot generation 
+ config_typed_xml -> config_to_augdot_xslt -> config_augdot_to_graphviz_xslt 
+ -> config_gv -> dot -> svg  
+    
+
+}

@@ -1,0 +1,2864 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MetricPack
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WORKFORCE"
+	xsi:noNamespaceSchemaLocation="../../../../main/resources/paaegenerationservice/config.xsd"
+	name="Core workforce metric pack" prefix="WF">
+	<StartDate>2001-01-01</StartDate>
+	<EndDate>2020-01-01</EndDate>
+	<DefaultLocale>en_US</DefaultLocale>
+
+	<DataSets>
+	<!--physical entities -->
+		<!--table created by the DA service -->
+		<PhysicalTable id="GENERIC_OBJECT_T_GOObjectDefinition"
+			sourceTableName="GENERIC_OBJECT_T">
+			<Column id="ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="OBJECT_TYPE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="PARENT_ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="INTERNAL_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				notNull="true" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" notNull="true" />
+			<Column id="TRANSACTION_SEQUENCE" dataType="DECIMAL"
+				precision="38" scale="0" notNull="true" />
+			<Column id="EFFECTIVE_STATUS" dataType="NVARCHAR"
+				precision="32" notNull="true" />
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="ENTITY_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="RECORD_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="SF_FIELD1" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD2" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD3" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD4" dataType="NVARCHAR" precision="4000" />
+			<Column id="CREATED_DATE" dataType="SECONDDATE" notNull="true" />
+			<Column id="CREATED_BY" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_DATE" dataType="SECONDDATE"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_BY" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="RECORD_STATUS" dataType="NVARCHAR" precision="32"
+				notNull="true" />
+			<Column id="EXTERNAL_CODE_UPPER" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="OBJECT_TYPE_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OPTIMISTIC_LOCK_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="VERSION_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="VISIBILITY" dataType="VARCHAR" precision="1" />
+			<Column id="OPTIMISTIC_LOCK_UUID" dataType="NVARCHAR"
+				precision="32" />
+			<Column id="EFFECTIVE_LATEST_CHANGE" dataType="VARCHAR"
+				precision="1" />
+			<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'GOObjectDefinition'" />
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+		</PhysicalTable>
+		<PhysicalTable id="GENERIC_OBJECT_T_GOFieldDefinition"
+			sourceTableName="GENERIC_OBJECT_T">
+			<Column id="ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="OBJECT_TYPE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="PARENT_ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="INTERNAL_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				notNull="true" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" notNull="true" />
+			<Column id="TRANSACTION_SEQUENCE" dataType="DECIMAL"
+				precision="38" scale="0" notNull="true" />
+			<Column id="EFFECTIVE_STATUS" dataType="NVARCHAR"
+				precision="32" notNull="true" />
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="ENTITY_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="RECORD_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="SF_FIELD1" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD2" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD3" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD4" dataType="NVARCHAR" precision="4000" />
+			<Column id="CREATED_DATE" dataType="SECONDDATE" notNull="true" />
+			<Column id="LAST_MODIFIED_DATE" dataType="SECONDDATE"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_BY" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="RECORD_STATUS" dataType="NVARCHAR" precision="32"
+				notNull="true" />
+			<Column id="EXTERNAL_CODE_UPPER" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="OBJECT_TYPE_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OPTIMISTIC_LOCK_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="VERSION_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="VISIBILITY" dataType="VARCHAR" precision="1" />
+			<Column id="OPTIMISTIC_LOCK_UUID" dataType="NVARCHAR"
+				precision="32" />
+			<Column id="EFFECTIVE_LATEST_CHANGE" dataType="VARCHAR"
+				precision="1" />
+			<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'GOFieldDefinition'" />
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+		</PhysicalTable>
+		<PhysicalTable id="GENERIC_OBJECT_T_GOLocalizedData"
+			sourceTableName="GENERIC_OBJECT_T">
+			<Column id="ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="OBJECT_TYPE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="PARENT_ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="INTERNAL_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				notNull="true" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" notNull="true" />
+			<Column id="TRANSACTION_SEQUENCE" dataType="DECIMAL"
+				precision="38" scale="0" notNull="true" />
+			<Column id="EFFECTIVE_STATUS" dataType="NVARCHAR"
+				precision="32" notNull="true" />
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="ENTITY_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="RECORD_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="SF_FIELD1" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD2" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD3" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD4" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD200" dataType="NVARCHAR" precision="4000" />
+			<Column id="CUSTOM_FIELD1" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD2" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD3" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD4" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD5" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD6" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD7" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD8" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD9" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD10" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD11" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD12" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD13" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD14" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD15" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD16" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD17" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD18" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD19" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD20" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD21" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD22" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD23" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD24" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD25" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD26" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD27" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD28" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD29" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD30" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD31" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD32" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD33" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD34" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD35" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD36" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD37" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD38" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD39" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD40" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD41" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD42" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD43" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD44" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD45" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD46" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD47" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD48" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD49" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD50" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD51" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD52" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD53" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD54" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD55" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD56" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD57" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD58" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD59" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD60" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD61" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD62" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD63" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD64" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD65" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD66" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD67" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD68" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD69" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD70" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD71" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD72" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD73" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD74" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD75" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD76" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD77" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD78" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD79" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD80" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD81" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD82" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD83" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD84" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD85" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD86" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD87" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD88" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD89" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD90" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD91" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD92" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD93" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD94" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD95" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD96" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD97" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD98" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD99" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD100" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD101" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD102" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD103" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD104" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD105" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD106" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD107" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD108" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD109" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD110" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD111" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD112" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD113" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD114" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD115" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD116" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD117" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD118" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD119" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD120" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD121" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD122" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD123" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD124" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD125" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD126" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD127" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD128" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD129" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD130" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD131" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD132" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD133" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD134" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD135" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD136" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD137" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD138" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD139" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD140" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD141" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD142" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD143" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD144" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD145" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD146" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD147" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD148" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD149" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD150" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD151" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD152" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD153" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD154" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD155" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD156" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD157" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD158" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD159" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD160" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD161" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD162" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD163" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD164" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD165" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD166" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD167" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD168" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD169" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD170" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD171" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD172" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD173" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD174" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD175" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD176" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD177" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD178" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD179" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD180" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD181" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD182" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD183" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD184" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD185" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD186" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD187" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD188" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD189" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD190" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD191" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD192" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD193" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD194" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD195" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD196" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD197" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD198" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD199" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CUSTOM_FIELD200" dataType="NVARCHAR"
+				precision="4000" />
+			<Column id="CREATED_DATE" dataType="SECONDDATE" notNull="true" />
+			<Column id="LAST_MODIFIED_DATE" dataType="SECONDDATE"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_BY" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="RECORD_STATUS" dataType="NVARCHAR" precision="32"
+				notNull="true" />
+			<Column id="EXTERNAL_CODE_UPPER" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="OBJECT_TYPE_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OPTIMISTIC_LOCK_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="VERSION_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="VISIBILITY" dataType="VARCHAR" precision="1" />
+			<Column id="OPTIMISTIC_LOCK_UUID" dataType="NVARCHAR"
+				precision="32" />
+			<Column id="EFFECTIVE_LATEST_CHANGE" dataType="VARCHAR"
+				precision="1" />
+			<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'GOLocalizedData'" />
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+
+		</PhysicalTable>
+		<PhysicalTable id="GENERIC_OBJECT_T_PickList"
+			sourceTableName="GENERIC_OBJECT_T">
+			<Column id="ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="OBJECT_TYPE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="PARENT_ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="INTERNAL_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				notNull="true" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" notNull="true" />
+			<Column id="TRANSACTION_SEQUENCE" dataType="DECIMAL"
+				precision="38" scale="0" notNull="true" />
+			<Column id="EFFECTIVE_STATUS" dataType="NVARCHAR"
+				precision="32" notNull="true" />
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="ENTITY_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="RECORD_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="SF_FIELD1" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD2" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD3" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD4" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD200" dataType="NVARCHAR" precision="4000" />
+			<Column id="CREATED_DATE" dataType="SECONDDATE" notNull="true" />
+			<Column id="LAST_MODIFIED_DATE" dataType="SECONDDATE"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_BY" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="RECORD_STATUS" dataType="NVARCHAR" precision="32"
+				notNull="true" />
+			<Column id="EXTERNAL_CODE_UPPER" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="OBJECT_TYPE_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OPTIMISTIC_LOCK_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="VERSION_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="VISIBILITY" dataType="VARCHAR" precision="1" />
+			<Column id="OPTIMISTIC_LOCK_UUID" dataType="NVARCHAR"
+				precision="32" />
+			<Column id="EFFECTIVE_LATEST_CHANGE" dataType="VARCHAR"
+				precision="1" />
+			<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'PickList'" />
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+		</PhysicalTable>
+		<!-- it is essential that PickList and PickListValue have exactly the same 
+			columns and types an ORDER, as they are unioned via SELECT * first thing, 
+			to have a single view for GOBJ_LABELS -->
+		<PhysicalTable id="GENERIC_OBJECT_T_PickListValue"
+			sourceTableName="GENERIC_OBJECT_T">
+			<Column id="ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="OBJECT_TYPE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="PARENT_ROW_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="INTERNAL_ID" dataType="DECIMAL" precision="38"
+				scale="0" notNull="true" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				notNull="true" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" notNull="true" />
+			<Column id="TRANSACTION_SEQUENCE" dataType="DECIMAL"
+				precision="38" scale="0" notNull="true" />
+			<Column id="EFFECTIVE_STATUS" dataType="NVARCHAR"
+				precision="32" notNull="true" />
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR" precision="128"
+				notNull="true" />
+			<Column id="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="ENTITY_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="RECORD_ID" dataType="NVARCHAR" precision="32" />
+			<Column id="SF_FIELD1" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD2" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD3" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD4" dataType="NVARCHAR" precision="4000" />
+			<Column id="SF_FIELD200" dataType="NVARCHAR" precision="4000" />
+			<Column id="CREATED_DATE" dataType="SECONDDATE" notNull="true" />
+			<Column id="LAST_MODIFIED_DATE" dataType="SECONDDATE"
+				notNull="true" />
+			<Column id="LAST_MODIFIED_BY" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="RECORD_STATUS" dataType="NVARCHAR" precision="32"
+				notNull="true" />
+			<Column id="EXTERNAL_CODE_UPPER" dataType="NVARCHAR"
+				precision="128" notNull="true" />
+			<Column id="OBJECT_TYPE_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OPTIMISTIC_LOCK_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="VERSION_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="VISIBILITY" dataType="VARCHAR" precision="1" />
+			<Column id="OPTIMISTIC_LOCK_UUID" dataType="NVARCHAR"
+				precision="32" />
+			<Column id="EFFECTIVE_LATEST_CHANGE" dataType="VARCHAR"
+				precision="1" />
+			<FilterOperation type="NOOP">
+				<Filter columnRef="OBJECT_TYPE" op="EQ">
+					<FilterValues dataType="NVARCHAR">
+						<FilterValue value="'PickListValue'" />
+					</FilterValues>
+				</Filter>
+			</FilterOperation>
+		</PhysicalTable>
+		<!-- for the location hierarchy roughly based on xXXXX -->
+		<PhysicalTable id="EMP_ADDR_INFO_T"
+			sourceTableName="EMP_ADDR_INFO_T">
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100" />
+			<Column id="ADDRESS_TYPE" dataType="NVARCHAR" precision="30" />
+			<Column id="ADDRESS_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="CITY" dataType="NVARCHAR" precision="256" />
+			<Column id="STATE" dataType="NVARCHAR" precision="256" />
+			<Column id="COUNTRY" dataType="NVARCHAR" precision="256" />
+			<Column id="PROVINCE" dataType="NVARCHAR" precision="256" />
+		</PhysicalTable>
+		<PhysicalTable id="FO_LOCATION_T"
+			sourceTableName="FO_LOCATION_T">
+			<!-- connect via EMP_ADDR_INFO_T.ADDRESS_ID > FO_LOCATION_T.ADDRESS_ID 
+				and FO_LOCATION_T.INTERNAL_CODE = EMP_JOB_INFO_T.JOB_LOCATION -->
+			<Column id="INTERNAL_CODE" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="ADDRESS_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+		</PhysicalTable>
+		<PhysicalTable id="EMP_PERSONAL_INFO_T"
+			sourceTableName="EMP_PERSONAL_INFO_T">
+			<Column id="PERSONAL_INFO_ID" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="PERSON_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				precision="0" scale="0" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" precision="0"
+				scale="0" />
+			<Column id="FIRST_NAME" dataType="NVARCHAR" precision="128" />
+			<Column id="GENDER" dataType="NVARCHAR" precision="2"
+				scale="0" />
+			<Column id="DOB" dataType="DATE" />
+			<Column id="ETHINIC_GROUP" dataType="NVARCHAR" precision="256"
+				scale="0" />
+			<Column id="LAST_NAME" dataType="NVARCHAR" precision="128" />
+		</PhysicalTable>
+		<PhysicalTable id="EMP_JOB_INFO_T"
+			sourceTableName="EMP_JOB_INFO_T">
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+				scale="0" />
+			<Column id="EVENT" dataType="NVARCHAR" precision="32"
+				scale="0" />
+			<Column id="EVENT_REASON_ICODE" dataType="DECIMAL"
+				precision="38" scale="0" />
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				precision="0" scale="0" />
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE" precision="0"
+				scale="0" />
+			<Column id="TRANSACTION_SEQUENCE_NUMBER" dataType="DECIMAL"
+				precision="34" scale="0" />
+			<Column id="FTE" dataType="DECIMAL" precision="34" scale="0" />
+			<Column id="JOB_LOCATION" dataType="NVARCHAR" precision="128"
+				scale="0" />
+			<Column id="MANAGER_ID" dataType="NVARCHAR" precision="100"
+				scale="0" />
+			<Column id="EMPLOYEE_CLASS" dataType="NVARCHAR"
+				precision="256" scale="0" />
+			<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR"
+				precision="32" scale="0" />
+			<Column id="EMPLOYMENT_TYPE" dataType="NVARCHAR"
+				precision="32" scale="0" />
+			<Column id="EMPLOYEE_TYPE" dataType="NVARCHAR" precision="100"
+				scale="0" />
+			<Column id="FLSA_STATUS" dataType="NVARCHAR" precision="256"
+				scale="0" />
+			<Column id="PAY_GRADE" dataType="NVARCHAR" precision="256"
+				scale="0" />
+			<Column id="REGULAR_TEMP" dataType="NVARCHAR" precision="32"
+				scale="0" />
+			<Column id="EMPLOYMENT_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="COST_CENTER" dataType="DECIMAL" precision="38"
+				scale="0" />
+		</PhysicalTable>
+		<PhysicalTable id="EMP_EMPLOYMENT_INFO"
+			sourceTableName="EMP_EMPLOYMENT_INFO">
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+				scale="0" />
+			<Column id="PERSON_ID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR"
+				precision="128" scale="0" />
+			<Column id="ORIGINAL_START_DATE" dataType="DATE" precision="0"
+				scale="0" />
+		</PhysicalTable>
+		<PhysicalTable id="FO_EVENT_REASON_T"
+			sourceTableName="FO_EVENT_REASON_T">
+			<Column id="INTERNAL_CODE" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="OBJECT_NAME" dataType="NVARCHAR" precision="90"
+				scale="0" />
+			<Column id="CODE" dataType="NVARCHAR" precision="32" />
+		</PhysicalTable>
+		<PhysicalTable id="SM_USER_INFO"
+			sourceTableName="SM_USER_INFO">
+			<Column id="FUTURELEADER" dataType="DECIMAL" precision="4"
+				scale="0" />
+			<Column id="IMPACTOFLOSS" dataType="NVARCHAR" precision="256"
+				scale="0" />
+			<Column id="RISKOFLOSS" dataType="NVARCHAR" precision="256"
+				scale="0" />
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+				scale="0" />
+		</PhysicalTable>
+		<PhysicalTable id="PICKLIST" sourceTableName="PICKLIST">
+			<Column id="EXTERNAL_CODE" dataType="NVARCHAR"
+				precision="4000" scale="0" />
+			<Column id="OPTIONID" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="PICKLISTID" dataType="NVARCHAR" precision="4000"
+				scale="0" />
+		</PhysicalTable>
+		<PhysicalTable id="LABEL" sourceTableName="LABEL">
+			<Column id="LOCALE" dataType="NVARCHAR" precision="32"
+				scale="0" />
+			<Column id="LABEL" dataType="NVARCHAR" precision="4000"
+				scale="0" />
+			<Column id="OPTIONID" dataType="DECIMAL" precision="38"
+				scale="0" />
+		</PhysicalTable>
+		<!--table created by the DG service -->
+		<PhysicalDataTable id="DG/WF/EVENT_MAPPING">
+			<Column id="IDX_HIDDEN" label="event code" dataType="BIGINT" />
+			<Column id="INTERNAL_CODE" dataType="DECIMAL" precision="38"
+				scale="0" />
+			<Column id="NORM_EVENT" dataType="NVARCHAR" precision="12" />
+			<TableDataSource>
+				<!-- could be a view definition a resource file or ... 2,"216","DATAC" 
+					3,"217","DATAC" -->
+				<CsvTableData skipRow="0">
+					1,39,HIRE
+					2,145,HIRE
+					3,151,TERM
+					4,34,MOVE_OUT
+					5,201,HIRE
+					6,167,TERM
+					7,36,HIRE
+					8,246,HIRE
+					9,46,MOVE_OUT
+					10,152,TERM
+					11,37,HIRE
+					12,38,HIRE
+					13,226,HIRE
+					14,156,TERM
+					15,53,MOVE_OUT
+					16,140,MOVE_OUT
+					17,161,TERM
+					18,162,TERM
+					19,176,TERM
+					20,55,MOVE_OUT
+					21,171,TERM
+					22,25,MOVE_OUT
+					23,202,HIRE
+					24,442,HIRE
+					25,107,MOVE_OUT
+					26,153,TERM
+					27,158,TERM
+					28,166,TERM
+					29,168,TERM
+					30,169,TERM
+					31,177,TERM
+					32,178,TERM
+					33,179,TERM
+					34,187,MOVE_OUT
+					35,42,MOVE_OUT
+					36,33,MOVE_OUT
+					37,40,HIRE
+					38,203,HIRE
+					39,212,HIRE
+					40,228,HIRE
+					41,421,HIRE
+					42,144,HIRE
+					43,147,HIRE
+					44,164,TERM
+					45,165,TERM
+					46,173,TERM
+					47,175,TERM
+				</CsvTableData>
+			</TableDataSource>
+		</PhysicalDataTable>
+		<PhysicalDataTable id="DG/GL/LOCALE_TO_LANGUAGE">
+			<Column id="LOCALE_ID" dataType="NVARCHAR" precision="20" />
+			<Column id="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			<Column id="LANGUAGE_NAME" dataType="NVARCHAR" precision="40" />
+			<TableDataSource>
+				<!-- could be a view definition a resource file or ... -->
+				<CsvTableData skipRow="0">
+					de_DE,D,"German"
+					en_US,E,English
+					en_GB,E,English
+					fr_CA,F,"French"
+					pt_BR,P,Portuguese
+					zh_CN,1,"Chinese"
+					pl_PL,L,Polish
+					ru_RU,R,Russian
+				</CsvTableData>
+			</TableDataSource>
+		</PhysicalDataTable>
+		<!--Logical Entities -->
+		<LogicalTable id="DG/WF/VW/EMP_EMPLOYMENT_INFO"
+			factTableSourceIndex="1" keySource="true">
+			<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR"
+				precision="128" scale="0">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="128"
+					scale="0" />
+			</Column>
+			<Column id="ORIGINAL_START_DATE" dataType="DATE">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="ORIGINAL_START_DATE" dataType="DATE" />
+			</Column>
+			<Column id="PERSON_ID" dataType="DECIMAL" precision="38"
+				scale="0" semanticType="KEY">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="PERSON_ID" dataType="DECIMAL" precision="38" scale="0" />
+			</Column>
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+				scale="0">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+					scale="0" />
+			</Column>
+			<Column id="/DG/WF/NORM_EVENT" dataType="NVARCHAR"
+				precision="12" semanticType="NORM_EVENT">
+				<Value value="'DATAC'" dataType="NVARCHAR" precision="12" />
+			</Column>
+			<BaseTableRef entityRef="EMP_EMPLOYMENT_INFO">
+				<!-- optional filter -->
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/EMP_PERSONAL_INFO_T"
+			factTableSourceIndex="2">
+			<Column id="PERSON_ID" dataType="DECIMAL" precision="38"
+				scale="0" semanticType="KEY">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSON_ID" dataType="DECIMAL" precision="38" scale="0" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				semanticType="START_DATE">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="EFFECTIVE_START_DATE" dataType="DATE" />
+			</Column>
+			<Column id="FIRST_NAME" dataType="NVARCHAR" precision="128"
+				scale="0">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="FIRST_NAME" dataType="NVARCHAR" precision="128"
+					scale="0" />
+			</Column>
+			<Column id="LAST_NAME" dataType="NVARCHAR" precision="128">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="LAST_NAME" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="GENDER" dataType="NVARCHAR" precision="2"
+				scale="0">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="GENDER" dataType="NVARCHAR" precision="2" />
+			</Column>
+			<Column id="PERSONAL_INFO_ID" dataType="DECIMAL"
+				precision="38" scale="0">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSONAL_INFO_ID" dataType="DECIMAL" precision="38"
+					scale="0" />
+			</Column>
+			<Column id="/DG/WF/NORM_EVENT" dataType="NVARCHAR"
+				precision="12" semanticType="NORM_EVENT">
+				<Value value="'DATAC'" dataType="NVARCHAR" precision="12" />
+			</Column>
+			<BaseTableRef entityRef="EMP_PERSONAL_INFO_T">
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/EMP_JOB_INFO_T"
+			factTableSourceIndex="3">
+			<Column id="PERSON_ID" semanticType="KEY">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="USERS_SYS_ID" semanticType="COL1">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="100" />
+			</Column>
+			<Column id="/DG/WF/NORM_EVENT" semanticType="NORM_EVENT">
+				<Function name="COALESCE">
+					<ColumnRef entityRef="DG/WF/EVENT_MAPPING"
+						columnRef="NORM_EVENT" />
+					<Value value="'DATAC'" dataType="NVARCHAR" precision="12" />
+				</Function>
+			</Column>
+			<Column id="EVENT" dataType="NVARCHAR" precision="32"
+				scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T" columnRef="EVENT"
+					dataType="NVARCHAR" precision="32" />
+			</Column>
+			<Column id="EVENT_REASON_ICODE" dataType="DECIMAL"
+				precision="38" scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EVENT_REASON_ICODE" dataType="DECIMAL" precision="38"
+					scale="0" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE"
+				semanticType="START_DATE">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EFFECTIVE_START_DATE" dataType="DATE" />
+			</Column>
+			<Column id="EFFECTIVE_END_DATE" dataType="DATE"
+				semanticType="END_DATE">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EFFECTIVE_END_DATE" dataType="DATE" />
+			</Column>
+			<Column id="JOB_LOCATION" dataType="NVARCHAR" precision="128"
+				scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="JOB_LOCATION" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="PAY_GRADE">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="PAY_GRADE" />
+			</Column>
+			<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR"
+				precision="32" scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="32" />
+			</Column>
+			<Column id="FTE" dataType="DECIMAL" precision="34" scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T" columnRef="FTE"
+					dataType="DECIMAL" precision="34" scale="0" />
+			</Column>
+			<Column id="EMPLOYEE_CLASS" dataType="NVARCHAR"
+				precision="256" scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EMPLOYEE_CLASS" dataType="NVARCHAR" precision="256"
+					scale="0" />
+			</Column>
+			<Column id="REGULAR_TEMP" dataType="NVARCHAR" precision="32"
+				scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="REGULAR_TEMP" dataType="NVARCHAR" precision="32"
+					scale="0" />
+			</Column>
+			<Column id="TRANSACTION_SEQUENCE_NUMBER" dataType="DECIMAL"
+				precision="34" scale="0" semanticType="SEQ_NR">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="TRANSACTION_SEQUENCE_NUMBER" dataType="DECIMAL"
+					precision="34" scale="0" />
+			</Column>
+			<Column id="MANAGER_ID" dataType="NVARCHAR" precision="100"
+				scale="0">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="MANAGER_ID" dataType="NVARCHAR" precision="100"
+					scale="0" />
+			</Column>
+			<BaseTableRef entityRef="EMP_JOB_INFO_T">
+				<!-- optional filter -->
+			</BaseTableRef>
+			<BaseTableRef entityRef="DG/WF/EVENT_MAPPING" />
+			<BaseTableRef entityRef="EMP_EMPLOYMENT_INFO" />
+			<JoinCriteria joinType="LEFT">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="EVENT_REASON_ICODE"
+							entityRef="EMP_JOB_INFO_T" />
+						<ColumnRef columnRef="INTERNAL_CODE"
+							entityRef="DG/WF/EVENT_MAPPING" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_JOB_INFO_T" />
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_EMPLOYMENT_INFO" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/SM_USER_INFO"
+			factTableSourceIndex="4">
+			<Column id="FUTURELEADER" dataType="DECIMAL" precision="4"
+				scale="0">
+				<ColumnRef entityRef="SM_USER_INFO"
+					columnRef="FUTURELEADER" dataType="DECIMAL" precision="4" scale="0" />
+			</Column>
+			<Column id="IMPACTOFLOSS" dataType="NVARCHAR" precision="128"
+				scale="0">
+				<Cast dataType="NVARCHAR" precision="128"><!-- why truncate here? -->
+					<ColumnRef entityRef="SM_USER_INFO"
+						columnRef="IMPACTOFLOSS" />
+				</Cast>
+			</Column>
+			<Column id="RISKOFLOSS">
+				<ColumnRef entityRef="SM_USER_INFO" columnRef="RISKOFLOSS" />
+			</Column>
+			<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+				scale="0">
+				<ColumnRef entityRef="SM_USER_INFO"
+					columnRef="USERS_SYS_ID" dataType="NVARCHAR" precision="100"
+					scale="0" />
+			</Column>
+			<Column id="/DG/W3/NORM_EVENT" dataType="NVARCHAR"
+				precision="12" semanticType="NORM_EVENT">
+				<Value value="'DATAC'" dataType="NVARCHAR" precision="12" />
+			</Column>
+			<Column id="/DG/W3/PERSON_ID" semanticType="KEY">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="PERSON_ID" />
+			</Column>
+			<BaseTableRef entityRef="SM_USER_INFO" />
+			<BaseTableRef entityRef="EMP_EMPLOYMENT_INFO" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="SM_USER_INFO" />
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_EMPLOYMENT_INFO" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+		<!-- Assure the key is present in FactTable Source views... Validation 
+			TODO -->
+		<!-- OLD Picklist Definition <LogicalTable id="DG/WF/VW/PICKLIST_WITHLABEL"> 
+			<Column id="EXTERNAL_CODE" entityRef="PICKLIST" columnRef="EXTERNAL_CODE" 
+			dataType="NVARCHAR" precision="128"/> <Column id="OPTIONID" entityRef="PICKLIST" 
+			columnRef="OPTIONID" dataType="DECIMAL" precision="38" semanticType="KEY"/> 
+			<Column id="PICKLISTID" entityRef="PICKLIST" columnRef="PICKLISTID" dataType="NVARCHAR" 
+			precision="100" scale="0"/> <Column id="LOCALE" entityRef="LABEL" columnRef="LOCALE" 
+			dataType="NVARCHAR" precision="32"/> <Column id="LABEL" entityRef="LABEL" 
+			columnRef="LABEL" dataType="NVARCHAR" precision="255"/> <Column 
+			id="LANGUAGE" entityRef="DG/GL/LOCALE_TO_LANGUAGE" columnRef="LANGUAGE" dataType="NVARCHAR" 
+			precision="1" scale="0"/> <BaseTableRef entityRef="PICKLIST"> </BaseTableRef> 
+			<BaseTableRef entityRef="LABEL"> </BaseTableRef> <BaseTableRef entityRef="DG/GL/LOCALE_TO_LANGUAGE"> 
+			</BaseTableRef> <EntityRelationShip leftEntityRef="PICKLIST" rightEntityRef="LABEL" 
+			joinType="LEFT"> <JoinCondition cond="EQ"> <ColumnRef columnRef="OPTIONID"/> 
+			<ColumnRef columnRef="OPTIONID"/> </JoinCondition> </EntityRelationShip> 
+			<EntityRelationShip leftEntityRef="LABEL" rightEntityRef="DG/GL/LOCALE_TO_LANGUAGE" 
+			joinType="INNER"> <JoinCondition cond="EQ"> <ColumnRef columnRef="LOCALE"/> 
+			<ColumnRef columnRef="LOCALE_ID"/> </JoinCondition> </EntityRelationShip> 
+			</LogicalTable> <LogicalTable id="DG/WF/VW/EMPLOYEE_CLASS"> <Column id="EXTERNAL_CODE" 
+			entityRef="PICKLIST" columnRef="EXTERNAL_CODE" dataType="NVARCHAR" precision="128" 
+			scale="0"/> <Column id="OPTIONID" entityRef="PICKLIST" columnRef="OPTIONID" 
+			dataType="DECIMAL" precision="38" semanticType="KEY"/> <EntityRef entityRef="PICKLIST"> 
+			<Filter columnRef="PICKLISTID" value="'EMPLOYEECLASS'" dataType="NVARCHAR" 
+			precision="100" scale="0"/> </EntityRef> <BaseTableRef entityRef="PICKLIST"/> 
+			</LogicalTable> <LogicalTable id="DG/WF/VW/EMPLOYEE_CLASS_TEXT"> <Column 
+			id="EXTERNAL_CODE" entityRef="DG/WF/VW/PICKLIST_WITHLABEL" columnRef="EXTERNAL_CODE" 
+			dataType="NVARCHAR" precision="128"/> <Column id="OPTIONID" entityRef="DG/WF/VW/PICKLIST_WITHLABEL" 
+			columnRef="OPTIONID" dataType="DECIMAL" precision="38" semanticType="KEY"/> 
+			<Column id="LABEL" entityRef="DG/WF/VW/PICKLIST_WITHLABEL" columnRef="LABEL" 
+			dataType="NVARCHAR" precision="255"/> <Column id="LANGUAGE" entityRef="DG/WF/VW/PICKLIST_WITHLABEL" 
+			columnRef="LANGUAGE" dataType="NVARCHAR" precision="1"/> <EntityRef 
+			entityRef="DG/WF/VW/PICKLIST_WITHLABEL"> <Filter columnRef="PICKLISTID" value="'EMPLOYEECLASS'" 
+			dataType="NVARCHAR" precision="100"/> </EntityRef> <BaseTableRef 
+			entityRef="DG/WF/VW/PICKLIST_WITHLABEL"/> </LogicalTable> -->
+		<LogicalTable id="DG/WF/VW/EMPLOYEE_CLASS">
+			<Column id="EMPLOYEE_CLASS" dataType="NVARCHAR"
+				precision="256">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="OPTION_ID" />
+			</Column>
+			<Column id="EMPLOYEE_CLASS_NAME" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="EXTERNAL_NAME" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'EMPLOYEECLASS~1'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/EMPLOYEE_CLASS_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="EMPLOYEE_CLASS" dataType="NVARCHAR"
+				precision="256">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="EMPLOYEE_CLASS_TEXT" dataType="NVARCHAR"
+				precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'EMPLOYEECLASS~1'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/REGULAR_TEMP">
+			<Column id="REGULAR_TEMP" dataType="NVARCHAR" precision="32">
+				<Cast dataType="NVARCHAR" precision="32">
+					<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+						columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+				</Cast>
+			</Column>
+			<Column id="REGULAR_TEMP_NAME" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'regular-temp'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/REGULAR_TEMP_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="REGULAR_TEMP">
+				<Cast dataType="NVARCHAR" precision="32">
+					<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+						columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+				</Cast>
+			</Column>
+			<Column id="REGULAR_TEMP_TEXT" dataType="NVARCHAR"
+				precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'regular-temp'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/EMPLOYMENT_STATUS">
+			<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR"
+				precision="32">
+				<Cast dataType="NVARCHAR" precision="32">
+					<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+						columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+				</Cast>
+			</Column>
+			<Column id="EMPLOYMENT_STATUS_NAME" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="EXTERNAL_NAME" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'employee-status'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/EMPLOYMENT_STATUS_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="EMPLOYMENT_STATUS_TEXT" dataType="NVARCHAR"
+				precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'employee-status'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/IMPACTOFLOSS">
+			<Column id="IMPACTOFLOSS" dataType="NVARCHAR" precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="IMPACTOFLOSS_NAME" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="EXTERNAL_CODE" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'impactOfLoss'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/IMPACTOFLOSS_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="IMPACTOFLOSS" dataType="NVARCHAR" precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="IMPACTOFLOSS_TEXT" dataType="NVARCHAR"
+				precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'impactOfLoss'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/RISKOFLOSS">
+			<Column id="RISKOFLOSS" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="RISKOFLOSS_NAME" dataType="NVARCHAR"
+				precision="128">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES"
+					columnRef="EXTERNAL_CODE" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_VALUES">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'riskOfLoss'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/RISKOFLOSS_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="RISKOFLOSS" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="OPTION_ID" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="RISKOFLOSS_TEXT" dataType="NVARCHAR"
+				precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME" />
+						<Value value="'riskOfLoss'" dataType="NVARCHAR"
+							precision="128" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/LOCATION">
+			<Column id="JOB_LOCATION" dataType="NVARCHAR" precision="128">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="JOB_LOCATION" dataType="NVARCHAR" precision="128" />
+			</Column>
+			<Column id="CITY" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="EMP_ADDR_INFO_T" columnRef="CITY"
+					dataType="NVARCHAR" precision="256" />
+			</Column>
+			<!-- in ENGXSA_ANAKANJ CITY and COUNTRY contain a legigible name, e.g. 
+				Novisibirsk, Argenitna, DOM, USA BUT STATE is an integer code!!!!! -->
+			<Column id="STATE" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="EMP_ADDR_INFO_T" columnRef="STATE"
+					dataType="NVARCHAR" precision="256" />
+			</Column>
+			<Column id="STATE_NAME" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="LABEL" columnRef="LABEL" dataType="NVARCHAR" precision="256"/>
+			</Column>
+			<Column id="COUNTRY" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="EMP_ADDR_INFO_T" columnRef="COUNTRY"
+					dataType="NVARCHAR" precision="256" />
+			</Column>
+			<BaseTableRef entityRef="EMP_JOB_INFO_T" />
+			<BaseTableRef entityRef="FO_LOCATION_T" />
+			<BaseTableRef entityRef="EMP_ADDR_INFO_T" />
+			<BaseTableRef entityRef="LABEL" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="JOB_LOCATION"
+							entityRef="EMP_JOB_INFO_T" />
+						<Cast dataType="NVARCHAR" precision="128">
+							<ColumnRef columnRef="INTERNAL_CODE"
+								entityRef="FO_LOCATION_T" />
+						</Cast>
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="ADDRESS_ID"
+							entityRef="FO_LOCATION_T" />
+						<ColumnRef columnRef="ADDRESS_ID"
+							entityRef="EMP_ADDR_INFO_T" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<JoinCriteria joinType="LEFT">
+				<LogicalOperation op="AND">
+					<Condition op="EQ">
+						<ColumnRef columnRef="STATE" entityRef="EMP_ADDR_INFO_T" />
+						<Cast dataType="NVARCHAR" precision="128">
+							<ColumnRef columnRef="OPTIONID" entityRef="LABEL" />
+						</Cast>
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef columnRef="LOCALE" entityRef="LABEL" />
+						<Value value="$$COMPANY_LOCALE_ID$$" dataType="NVARCHAR"
+							precision="20" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/LOCATION_COUNTRY_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="COUNTRY" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="EMP_ADDR_INFO_T" columnRef="COUNTRY"
+					dataType="NVARCHAR" precision="256" />
+			</Column>
+			<Column id="TEXT" dataType="NVARCHAR" precision="4000">
+				<ColumnRef entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS"
+					columnRef="TEXT" dataType="NVARCHAR" precision="4000" />
+			</Column>
+			<BaseTableRef entityRef="EMP_ADDR_INFO_T" />
+			<BaseTableRef
+				entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="AND">
+					<Condition op="EQ">
+						<ColumnRef columnRef="COUNTRY"
+							entityRef="EMP_ADDR_INFO_T" />
+						<ColumnRef columnRef="EXTERNAL_CODE"
+							entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS" />
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef columnRef="PICKLIST_NAME"
+							entityRef="DG/GL/VW/GOBJ_T_PICKLIST_LABELS" />
+						<Value value="'ISOCountryList'" dataType="NVARCHAR"
+							precision="120" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/LOCATION_STATE_TEXT">
+			<Column id="LANGUAGE" semanticType="LANGUAGE"
+				dataType="NVARCHAR" precision="1">
+				<ColumnRef entityRef="DG/GL/LOCALE_TO_LANGUAGE"
+					columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+			</Column>
+			<Column id="STATE" dataType="NVARCHAR" precision="256">
+				<ColumnRef entityRef="EMP_ADDR_INFO_T" columnRef="STATE"
+					dataType="NVARCHAR" precision="256" />
+			</Column>
+			<Column id="TEXT" dataType="NVARCHAR" precision="256">
+				<Cast dataType="NVARCHAR" precision="256">
+					<ColumnRef entityRef="LABEL" columnRef="LABEL" />
+				</Cast>
+			</Column>
+			<BaseTableRef entityRef="EMP_ADDR_INFO_T">
+			</BaseTableRef>
+			<BaseTableRef entityRef="LABEL">
+			</BaseTableRef>
+			<BaseTableRef entityRef="DG/GL/LOCALE_TO_LANGUAGE">
+			</BaseTableRef>
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="STATE" entityRef="EMP_ADDR_INFO_T" />
+						<Cast dataType="NVARCHAR" precision="128">
+							<ColumnRef columnRef="OPTIONID" entityRef="LABEL" />
+						</Cast>
+						<!-- beware , joining DECIMAL(38,0) with NVARCHAR(256) , may require 
+							dedicated view with casting! -->
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="LOCALE" entityRef="LABEL" />
+						<ColumnRef columnRef="LOCALE_ID"
+							entityRef="DG/GL/LOCALE_TO_LANGUAGE" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+		<LogicalTable id="DG/WF/VW/JOB_INFO_MGR_BY_PERSON">
+			<!-- -->
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="EMP_EMPLOYMENT_INFO"
+					columnRef="PERSON_ID" dataType="DECIMAL" precision="38" scale="0" />
+			</Column>
+			<Column id="USERS_SYS_ID">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="USERS_SYS_ID" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE" semanticType="START_DATE"
+				dataType="DATE">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EFFECTIVE_START_DATE" dataType="DATE" />
+			</Column>
+			<Column id="EFFECTIVE_END_DATE" semanticType="END_DATE"
+				dataType="DATE">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="EFFECTIVE_END_DATE" dataType="DATE" />
+			</Column>
+			<Column id="TRANSACTION_SEQ_NR" semanticType="SEQ_NR">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="TRANSACTION_SEQUENCE_NUMBER" />
+			</Column>
+			<Column id="MANAGER_ID">
+				<ColumnRef entityRef="EMP_JOB_INFO_T"
+					columnRef="MANAGER_ID" />
+			</Column>
+			<Column id="MANAGER_PERSON_ID">
+				<ColumnRef entityRef="EMP_4_MANAGER" columnRef="PERSON_ID" />
+			</Column>
+			<BaseTableRef entityRef="EMP_EMPLOYMENT_INFO" />
+			<BaseTableRef entityRef="EMP_JOB_INFO_T" />
+			<BaseTableRef entityRef="EMP_EMPLOYMENT_INFO"
+				alias="EMP_4_MANAGER" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_EMPLOYMENT_INFO" />
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_JOB_INFO_T" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<!-- for some, this is NULL, thus a left outer join! -->
+			<JoinCriteria joinType="LEFT">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="USERS_SYS_ID"
+							entityRef="EMP_4_MANAGER" />
+						<ColumnRef columnRef="MANAGER_ID"
+							entityRef="EMP_JOB_INFO_T" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+
+
+		<LogicalTable id="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1">
+			<!-- latest (START_DATE, SEQ_NR) PERSON_ID, MANAGER_ID from JOB_INFO_T 
+				WE TAKE MANAGER_ID NOT NULL ( this is more of an exercise, not a real requirement) -->
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="TRANSACTION_SEQ_NR">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+						columnRef="TRANSACTION_SEQ_NR" />
+				</Function>
+			</Column>
+			<Column id="EFFECTIVE_START_DATE">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+						columnRef="EFFECTIVE_START_DATE" />
+				</Function>
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON">
+				<LogicalOperation op="NOOP">
+					<Condition op="NE">
+						<ColumnRef columnRef="EFFECTIVE_END_DATE" />
+						<Value value="NULL" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+			<GroupBy>
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="PERSON_ID" />
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="EFFECTIVE_END_DATE" />
+			</GroupBy>
+		</LogicalTable>
+
+		<LogicalTable id="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V2">
+
+			<!-- for a given PERSON_ID, this picks the latest associated information 
+				e.g. FIRST_NAME, LAST_NAME, DOB, GENDER from EMP_PERSON_INFO_T (SET OF KEY 
+				COLUMNS) ( EFFECTIVE_DATE_TO, MAX_SEQ_NR ) -> construct a view with a) for 
+				every key exactly one line, CREATE VIEW V1 = SELECT KEY1, ... , KEYN, END_DATE, 
+				MAX(SEQ_NR) AS SEQ_NR GROUP BY KEY1 ,...KEYN, END_DATE; CREATE VIEW V2 = 
+				SELECT KEY1, ... , KEYN, MAX(END_DATE), SEQ_NR GROUP BY KEY1 ,...KEYN, SEQ_NR; -->
+
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="TRANSACTION_SEQ_NR">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1"
+					columnRef="TRANSACTION_SEQ_NR" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1"
+						columnRef="EFFECTIVE_START_DATE" dataType="DATE" />
+				</Function>
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1" />
+			<GroupBy>
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1"
+					columnRef="PERSON_ID" />
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V1"
+					columnRef="TRANSACTION_SEQ_NR" />
+			</GroupBy>
+		</LogicalTable>
+
+		<LogicalTable id="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3">
+			<!-- CREATE VIEW V3 AS SELECT A.* INNER JOIN V2 ON A.KEY1 = V2.KEY1 AND 
+				... B.KEY1 = V2.KEYN AND A.EFFECTIVE_END_DATE = V2.END_DATE AND A.SEQ_NR 
+				= V2.SEQ_NR -->
+
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="USERS_SYS_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="USERS_SYS_ID" />
+			</Column>
+			<Column id="MANAGER_PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="MANAGER_PERSON_ID" />
+			</Column>
+			<Column id="MANAGER_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+					columnRef="MANAGER_ID" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON" />
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V2" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="AND">
+					<Condition op="EQ">
+						<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+							columnRef="PERSON_ID" />
+						<ColumnRef
+							entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V2"
+							columnRef="PERSON_ID" />
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+							columnRef="EFFECTIVE_START_DATE" />
+						<ColumnRef
+							entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V2"
+							columnRef="EFFECTIVE_START_DATE" />
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON"
+							columnRef="TRANSACTION_SEQ_NR" />
+						<ColumnRef
+							entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V2"
+							columnRef="TRANSACTION_SEQ_NR" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+
+
+		<LogicalTable id="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_LATEST">
+			<!-- for a given PERSON_ID, this picks the latest associated information 
+				PERSON_ID, MANAGER_ID -->
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="USERS_SYS_ID">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3"
+						columnRef="USERS_SYS_ID" />
+				</Function>
+			</Column>
+			<Column id="MANAGER_PERSON_ID">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3"
+						columnRef="MANAGER_PERSON_ID" />
+				</Function>
+			</Column>
+			<Column id="MANAGER_ID">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3"
+						columnRef="MANAGER_ID" />
+				</Function>
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3" />
+			<GroupBy>
+				<ColumnRef entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_V3"
+					columnRef="PERSON_ID" />
+			</GroupBy>
+		</LogicalTable>
+
+
+		<LogicalTable id="DG/WF/VW/LATEST_PERSONAL_INFO_1">
+			<!-- for a given PERSON_ID, this picks the latest associated information 
+				e.g. FIRST_NAME, LAST_NAME, DOB, GENDER from EMP_PERSON_INFO_T -->
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="GENDER" dataType="NVARCHAR" precision="20">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="GENDER" dataType="NVARCHAR" precision="20" />
+			</Column>
+			<Column id="FIRST_NAME" dataType="NVARCHAR" precision="128">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="FIRST_NAME" />
+			</Column>
+			<Column id="LAST_NAME">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="LAST_NAME" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE" dataType="DATE">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="EFFECTIVE_START_DATE" />
+			</Column>
+			<BaseTableRef entityRef="EMP_PERSONAL_INFO_T">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="EFFECTIVE_END_DATE" />
+						<Value value="9999-12-31" dataType="DATE" />
+					</Condition>
+				</LogicalOperation>
+			</BaseTableRef>
+		</LogicalTable>
+
+
+		<LogicalTable id="DG/WF/VW/LATEST_PERSONAL_INFO_V1">
+			<!-- for a given PERSON_ID, this picks the latest associated information 
+				e.g. FIRST_NAME, LAST_NAME, DOB, GENDER from EMP_PERSON_INFO_T (SET OF KEY 
+				COLUMNS) ( EFFECTIVE_START_DATE, MAX_SEQ_NR ) -> construct a view with a) 
+				for every key exactly one line, CREATE VIEW V1 = SELECT KEY1, ... , KEYN, 
+				END_DATE, MAX(SEQ_NR) AS SEQ_NR GROUP BY KEY1 ,...KEYN, END_DATE; -->
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="EFFECTIVE_START_DATE">
+				<Function name="MAX">
+					<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+						columnRef="EFFECTIVE_START_DATE" />
+				</Function>
+			</Column>
+			<BaseTableRef entityRef="EMP_PERSONAL_INFO_T" />
+			<GroupBy>
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSON_ID" />
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="EFFECTIVE_END_DATE" />
+			</GroupBy>
+		</LogicalTable>
+
+
+		<LogicalTable id="DG/WF/VW/LATEST_PERSONAL_INFO_V2">
+			<!-- CREATE VIEW V3 AS SELECT A.* INNER JOIN V2 ON A.KEY1 = V2.KEY1 AND 
+				... B.KEY1 = V2.KEYN AND A.EFFECTIVE_START_DATE = V2.END_DATE AND A.SEQ_NR 
+				= V2.SEQ_NR -->
+
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="FIRST_NAME">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="FIRST_NAME" />
+			</Column>
+			<Column id="LAST_NAME">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="LAST_NAME" />
+			</Column>
+			<Column id="GENDER">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+					columnRef="GENDER" />
+			</Column>
+			<Column id="DATE_OF_BIRTH">
+				<ColumnRef entityRef="EMP_PERSONAL_INFO_T" columnRef="DOB" />
+			</Column>
+			<BaseTableRef entityRef="EMP_PERSONAL_INFO_T">
+			</BaseTableRef>
+			<BaseTableRef
+				entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V1" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="AND">
+					<Condition op="EQ">
+						<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+							columnRef="PERSON_ID" />
+						<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V1"
+							columnRef="PERSON_ID" />
+					</Condition>
+					<Condition op="EQ">
+						<ColumnRef entityRef="EMP_PERSONAL_INFO_T"
+							columnRef="EFFECTIVE_START_DATE" />
+						<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V1"
+							columnRef="EFFECTIVE_START_DATE" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+
+
+
+		<LogicalTable id="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST">
+
+			<!-- for a given PERSON_ID, this picks the latest associated information 
+				This will be joined e.g. to the MANAGER / SUPERVISOR / PERSON dimensions 
+				to provide the attributes FIRSTNAME, LASTNAME, DOB, GENDER A similar sequence 
+				will construct the view on the JOB_INFO table selecting a subset of PERSON_ID, 
+				MANAGER_ID tuples. e.g. FIRST_NAME, LAST_NAME, DOB, GENDER from EMP_PERSON_INFO_T 
+				(SET OF KEY COLUMNS) ( EFFECTIVE_DATE_TO, MAX_SEQ_NR ) -> construct a view 
+				with a) for every key exactly one line, CREATE VIEW V1 = SELECT KEY1, ... 
+				, KEYN, END_DATE, MAX(SEQ_NR) AS SEQ_NR GROUP BY KEY1 ,...KEYN, END_DATE; 
+				CREATE VIEW V2 = SELECT KEY1, ... , KEYN, MAX(END_DATE), SEQ_NR GROUP BY 
+				KEY1 ,...KEYN, SEQ_NR; CREATE VIEW V3 AS SELECT A.* INNER JOIN V2 ON A.KEY1 
+				= V2.KEY1 AND ... B.KEY1 = V2.KEYN AND A.EFFECTIVE_END_DATE = V2.END_DATE 
+				AND A.SEQ_NR = V2.SEQ_NR SELECT SINGLE_LATEST FROM KEY1... KEYN, MAX( C1 
+				), ..... MAX( C(N) ) FROM V3 GROUP BY KEY1...KEYN ; -->
+
+			<Column id="PERSON_ID">
+				<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+					columnRef="PERSON_ID" />
+			</Column>
+			<Column id="GENDER">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+						columnRef="GENDER" dataType="NVARCHAR" precision="20" />
+				</Function>
+			</Column>
+			<Column id="FIRST_NAME">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+						columnRef="FIRST_NAME" />
+				</Function>
+			</Column>
+			<Column id="LAST_NAME">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+						columnRef="LAST_NAME" />
+				</Function>
+			</Column>
+			<Column id="DATE_OF_BIRTH">
+				<Function name="MAX">
+					<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+						columnRef="DATE_OF_BIRTH" dataType="DATE" />
+				</Function>
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2" />
+			<GroupBy>
+				<ColumnRef entityRef="DG/WF/VW/LATEST_PERSONAL_INFO_V2"
+					columnRef="PERSON_ID" />
+			</GroupBy>
+		</LogicalTable>
+
+		<!-- ***************************** -->
+
+		<!-- supervisor and manager the original connect is via USERS_SYS_ID / 
+			MANAGER_ID ( both USERS_SYS_ID ) a) recover all managers, or just the latest? 
+			b) latest by USERS_SYS_ID, or by PERSON_ID ? -->
+
+		<LogicalTable id="DG/WF/VW/SUPERVISOR">
+			<!-- the supervisor hierarchy, a parent child hierarchy off all employees 
+				which show up as manager in one of the "latest" entries of a person. (but 
+				not the leafs) FIRSTNAME, LASTNAME is selected by joining a latest USERS_SYS_ID 
+				for the same PERSON_ID, not necessarily the USERS_SYS_ID of the last manager 
+				entry. See snowdens cat above. -->
+			<Column id="MANAGER_ID">
+				<ColumnRef entityRef="MGR_REC" columnRef="USERS_SYS_ID" />
+			</Column>
+			<Column id="MANAGER_PERSON_ID">
+				<ColumnRef entityRef="MGR_REC" columnRef="PERSON_ID" />
+			</Column>
+			<Column id="FIRST_NAME">
+				<ColumnRef entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+					columnRef="FIRST_NAME" />
+			</Column>
+			<Column id="LAST_NAME">
+				<ColumnRef entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+					columnRef="LAST_NAME" />
+			</Column>
+			<Column id="MANAGER_ID_PARENT">
+				<ColumnRef entityRef="MGR_REC" columnRef="MANAGER_ID" />
+			</Column>
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_LATEST"
+				alias="MGR_AS_MGR" />
+			<BaseTableRef
+				entityRef="DG/WF/VW/JOB_INFO_MGR_BY_PERSON_LATEST" alias="MGR_REC" />
+			<BaseTableRef
+				entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST" />
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="MANAGER_PERSON_ID"
+							entityRef="MGR_AS_MGR" />
+						<ColumnRef columnRef="PERSON_ID" entityRef="MGR_REC" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+			<JoinCriteria joinType="INNER">
+				<LogicalOperation op="NOOP">
+					<Condition op="EQ">
+						<ColumnRef columnRef="PERSON_ID" entityRef="MGR_REC" />
+						<ColumnRef columnRef="PERSON_ID"
+							entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST" />
+					</Condition>
+				</LogicalOperation>
+			</JoinCriteria>
+		</LogicalTable>
+
+	</DataSets>
+	<FactTable id="DG/WF/FACT_METRIC1">
+		<!-- Not a Dimension,But required in FactTable -->
+		<Column id="IDX" dimensionRef="IDX" semanticType="INDEX"
+			dataType="BIGINT" />
+		<Column id="PERSON_ID" dimensionRef="PERSON_ID"
+			semanticType="KEY" dataType="DECIMAL" precision="38" scale="0" />
+		<Column id="USERS_SYS_ID" dimensionRef="USERS_SYS_ID" />
+		<Column id="FIRST_NAME" dimensionRef="FIRST_NAME" />
+		<Column id="LAST_NAME" dimensionRef="LAST_NAME" />
+		<Column id="FTE" dimensionRef="FTE" />
+		<Column id="NORM_EVENT" dimensionRef="NORM_EVENT"
+			semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12" />
+		<Column id="EVENT" dimensionRef="EVENT" />
+		<Column id="EVENT_REASON_ICODE"
+			dimensionRef="EVENT_REASON_ICODE" />
+		<Column id="CALDAY" dimensionRef="CALDAY"
+			semanticType="START_DATE" dataType="DATE" />
+		<!-- Base Measures -->
+		<Column id="HEAD_COUNT" measureRef="HEAD_COUNT"
+			dataType="BIGINT" />
+		<Column id="HIRE" measureRef="HIRE" dataType="BIGINT" />
+		<Column id="MOVE_IN" measureRef="MOVE_IN" dataType="BIGINT" />
+		<Column id="MOVE_OUT" measureRef="MOVE_OUT" dataType="BIGINT" />
+		<Column id="TERM" measureRef="TERM" dataType="BIGINT" />
+		<!-- Dimensions -->
+		<Column id="EMPLOYEE_CLASS" dimensionRef="EMPLOYEE_CLASS" />
+		<Column id="EMPLOYMENT_STATUS" dimensionRef="EMPLOYMENT_STATUS" />
+		<Column id="REGULAR_TEMP" dimensionRef="REGULAR_TEMP" />
+		<Column id="IMPACTOFLOSS" dimensionRef="IMPACTOFLOSS" />
+		<Column id="RISKOFLOSS" dimensionRef="RISKOFLOSS" />
+		<Column id="JOB_LOCATION" dimensionRef="JOB_LOCATION" />
+		<Column id="MANAGER_ID" dimensionRef="MANAGER_ID" />
+		<Column id="SUPERVISOR" dimensionRef="SUPERVISOR" />
+	</FactTable>
+	<EventSection>
+		<EventDefinition group="COL1">
+			<State id="HIRED" />
+
+			<Event id="USYS_CHANGE" hidden="true" />
+			<Event id="HIRE" setStateRefs="HIRED" />
+			<Event id="TERM" />
+			<Event id="MOVE_OUT">
+				<GeneratedSuccessorEvent eventRef="MOVE_IN" />
+			</Event>
+			<Event id="MOVE_IN" />
+			<Event id="DATAC">
+				<GeneratedSuccessorEvent eventRef="DATAB" />
+			</Event>
+			<Event id="DATAB" />
+			<!-- ===================================== -->
+			<OnChangeOf columnRef="USERS_SYS_ID"
+				entityRef="DG/WF/VW/EMP_JOB_INFO_T" eventsRef="USYS_CHANGE" />
+
+			<EventRemap action="IGNORE">
+				<EventRemapFilter cond="EVENT" eventRefs="DATAC" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					anyOf="HIRE,TERM" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					not="HIRE,TERM" />
+			</EventRemap>
+
+			<EventRemap action="IGNORE">
+				<EventRemapFilter cond="EVENTS_ON_DATE" not="HIRE" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					anyOf="TERM,MOVE_IN,MOVE_OUT,DATAC" />
+				<EventRemapFilter cond="STATE" not="HIRED" />
+			</EventRemap>
+
+			<EventRemap action="IGNORE">
+				<EventRemapFilter cond="EVENT" eventRefs="DATAC" />
+				<EventRemapFilter cond="SUCCESSOR" anyOf="DATAC" />
+			</EventRemap>
+
+			<EventRemap action="IGNORE">
+				<EventRemapFilter cond="EVENT" eventRefs="HIRE" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					allOf="HIRE,TERM" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					not="USYS_CHANGE" />
+			</EventRemap>
+
+			<EventRemap action="IGNORE">
+				<EventRemapFilter cond="EVENT" eventRefs="TERM" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					allOf="HIRE,TERM" />
+				<EventRemapFilter cond="EVENTS_ON_DATE"
+					not="USYS_CHANGE" />
+			</EventRemap>
+		</EventDefinition>
+
+		<FactTableSourceSortOrder>
+			<SourceOrder semanticType="START_DATE" />
+			<SourceOrder semanticType="SEQ_NR" />
+			<SourceOrder semanticType="NORM_EVENT" sortOrder="DESC" />
+			<SourceOrder semanticType="FACTTABLESOURCE_INDEX" />
+		</FactTableSourceSortOrder>
+
+		<ResultFilters>
+			<ResultSameButFor>
+				<EventRemap action="REMOVE">
+					<EventRemapFilter cond="EVENTS_ON_DATE"
+						allOf="DATAC,DATAB" />
+					<EventRemapFilter cond="EVENT" anyOf="DATAC,DATAB" />
+				</EventRemap>
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="HEAD_COUNT" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="MOVE_IN" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="MOVE_OUT" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1" columnRef="HIRE" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1" columnRef="TERM" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="EVENT" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="EVENT_REASON_ICODE" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1"
+					columnRef="NORM_EVENT" />
+				<ColumnRef entityRef="DG/WF/FACT_METRIC1" columnRef="IDX" />
+			</ResultSameButFor>
+		</ResultFilters>
+
+		<EventStrategies>
+			<!-- @eventStrategyRef refers to one of these event strategies are reusable 
+				templates which can be referenced by id, and expanded when generating the 
+				config.to.connnect.xslt they are just a tool to avoid repeating the strategy 
+				at every dimension -->
+			<EventStrategy id="DIM_VALUE_COPY_CURR">
+				<!-- use current and previous values to fill the column, this is likely 
+					adequate for e.g. EVENT_REASON_ICODE, where we want to retain the HIRE icode 
+					for a HIRE followed by a DATAC event. -->
+				<EventRef eventRef="HIRE" calculation="CURR" />
+				<EventRef eventRef="MOVE_OUT" calculation="PRIOR_FACT" />
+				<EventRef eventRef="MOVE_IN" calculation="CURR" />
+				<EventRef eventRef="DATAC" calculation="PREV_FACT" />
+				<EventRef eventRef="DATAB" calculation="LATEST" />
+				<EventRef eventRef="TERM" calculation="CURR" />
+			</EventStrategy>
+			<EventStrategy id="DIM_VALUE_COPY_LATEST">
+				<!-- use latest and previous values to fill the column, this is likely 
+					adequate for e.g. LOCATION where in case of a HIRE followed by a DATAC event 
+					we want to retain the "latest" relevant location, TODO: implement this -->
+				<EventRef eventRef="HIRE" calculation="LATEST" />
+				<EventRef eventRef="MOVE_OUT" calculation="PRIOR_FACT" />
+				<EventRef eventRef="MOVE_IN" calculation="CURR" />
+				<EventRef eventRef="DATAC" calculation="PREV_FACT" />
+				<EventRef eventRef="DATAB" calculation="LATEST" />
+				<EventRef eventRef="TERM" calculation="PREV_FACT" />
+			</EventStrategy>
+			<EventStrategy id="NULLABLE_EVENT_COLUMN">
+				<EventRef eventRef="DATAB" value="NULL" />
+				<EventRef eventRef="DATAC" value="NULL" />
+				<EventRef eventRef="*" calculation="CURR" />
+			</EventStrategy>
+			<EventStrategy id="EMPLOYMENT_STATUS">
+				<EventRef eventRef="MOVE_OUT" calculation="PREV" />
+				<EventRef eventRef="DATAC" calculation="PREV" />
+				<EventRef eventRef="TERM" calculation="PREV" />
+				<EventRef eventRef="*" calculation="CURR" />
+			</EventStrategy>
+			<EventStrategy id="VALUE_WHEN_HEAD_COUNT">
+				<EventRef eventRef="HIRE" value="+1" />
+				<EventRef eventRef="DATAC" value="-1" />
+				<EventRef eventRef="DATAB" value="+1" />
+				<EventRef eventRef="MOVE_OUT" value="-1" />
+				<EventRef eventRef="MOVE_IN" value="+1" />
+				<EventRef eventRef="TERM" value="-1" />
+				<EventRef eventRef="*" value="0" />
+			</EventStrategy>
+			<EventStrategy id="VALUE_WHEN_HIRE">
+				<EventRef eventRef="HIRE" value="+1" />
+				<EventRef eventRef="*" value="0" />
+			</EventStrategy>
+			<EventStrategy id="VALUE_WHEN_TERM">
+				<EventRef eventRef="TERM" value="+1" />
+				<EventRef eventRef="*" value="0" />
+			</EventStrategy>
+			<EventStrategy id="VALUE_WHEN_MOVE_IN">
+				<EventRef eventRef="HIRE" value="+1" />
+				<EventRef eventRef="MOVE_IN" value="+1" />
+				<EventRef eventRef="*" value="0" />
+			</EventStrategy>
+			<EventStrategy id="VALUE_WHEN_MOVE_OUT">
+				<EventRef eventRef="TERM" value="+1" />
+				<EventRef eventRef="MOVE_OUT" value="+1" />
+				<EventRef eventRef="*" value="0" />
+			</EventStrategy>
+		</EventStrategies>
+	</EventSection>
+	<Dimensions>
+		<Dimension id="IDX" dataType="BIGINT" semanticType="INDEX" />
+		<Dimension id="PERSON_ID" semanticType="KEY"
+			dimensionType="Structural" dataType="DECIMAL" precision="38"
+			scale="0">
+			<CustomLabels key="ABC">
+				<Label locale="en_US"> a parent child hierarchy for supervisors</Label>
+				<Label locale="de_DE"> </Label>
+				<Label locale="es_ES">no habla espanol</Label>
+			</CustomLabels>
+			<DimensionMasterData>
+				<Column id="PERSON_ID" semanticType="DIMENSION_KEY">
+					<ColumnRef
+						entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+						columnRef="PERSON_ID" />
+				</Column>
+				<Column id="FIRST_NAME">
+					<ColumnRef
+						entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+						columnRef="FIRST_NAME" />
+				</Column>
+				<Column id="LAST_NAME">
+					<ColumnRef
+						entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+						columnRef="LAST_NAME" />
+				</Column>
+				<Column id="GENDER">
+					<ColumnRef
+						entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST" columnRef="GENDER" />
+				</Column>
+				<Column id="DATE_OF_BIRTH">
+					<ColumnRef
+						entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T_LATEST"
+						columnRef="DATE_OF_BIRTH" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="USERS_SYS_ID"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="USERS_SYS_ID" />
+		</Dimension>
+		<Dimension id="CALDAY" semanticType="START_DATE"
+			dataType="DATE">
+			<!-- <EventRef eventRef="TERM" calculation="DAY_BEFORE"> <ColumnRef entityRef="DG/XX/INT/EVENTDRIVER" 
+				columnRef="EVENT_DATE"/> </EventRef> -->
+			<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/XX/INT/EVENTDRIVER"
+					columnRef="EVENT_DATE" />
+			</EventRef>
+		</Dimension>
+		<Dimension id="NORM_EVENT" semanticType="NORM_EVENT" />
+		<Dimension id="EVENT_REASON_ICODE">
+			<EventRef eventRef="DATAB" value="NULL" />
+			<EventRef eventRef="DATAC" value="NULL" />
+			<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EVENT_REASON_ICODE" />
+			</EventRef>
+		</Dimension>
+		<Dimension id="EVENT">
+			<EventRef eventRef="DATAB" value="NULL" />
+			<EventRef eventRef="DATAC" value="NULL" />
+			<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EVENT" />
+			</EventRef>
+		</Dimension>
+		<!-- <Dimension id="GENDER" eventStrategyRef="DIM_VALUE_COPY_CURR"> <ColumnRef 
+			entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T" columnRef="GENDER" /> </Dimension> -->
+		<Dimension id="EMPLOYEE_CLASS"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="EMPLOYEE_CLASS" />
+			<DimensionMasterData>
+				<Column id="EMPLOYEE_CLASS" semanticType="DIMENSION_KEY">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYEE_CLASS"
+						columnRef="EMPLOYEE_CLASS" />
+				</Column>
+				<Column id="EMPLOYEE_CLASS_NAME"
+					semanticType="DIMENSION_NAME" dataType="NVARCHAR" precision="128">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYEE_CLASS"
+						columnRef="EMPLOYEE_CLASS_NAME" dataType="NVARCHAR"
+						precision="128" />
+				</Column>
+				<Column id="EMPLOYEE_CLASS_TEXT" semanticType="TEXT">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYEE_CLASS_TEXT"
+						columnRef="EMPLOYEE_CLASS_TEXT" />
+				</Column>
+				<Column id="EMPLOYEE_CLASS_LANGU" semanticType="LANGUAGE"
+					dataType="NVARCHAR" precision="1">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYEE_CLASS_TEXT"
+						columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="EMPLOYMENT_STATUS">
+			<EventRef eventRef="MOVE_OUT" calculation="PREV">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EMPLOYMENT_STATUS" />
+			</EventRef>
+			<EventRef eventRef="DATAC" calculation="PREV">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EMPLOYMENT_STATUS" />
+			</EventRef>
+			<EventRef eventRef="TERM" calculation="PREV">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EMPLOYMENT_STATUS" />
+			</EventRef>
+			<EventRef eventRef="*" calculation="CURR">
+				<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+					columnRef="EMPLOYMENT_STATUS" />
+			</EventRef>
+			<DimensionMasterData>
+				<Column id="EMPLOYMENT_STATUS" semanticType="DIMENSION_KEY"
+					defaultValue="'??'">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYMENT_STATUS"
+						columnRef="EMPLOYMENT_STATUS" />
+				</Column>
+				<Column id="EMPLOYMENT_STATUS_NAME"
+					semanticType="DIMENSION_NAME">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYMENT_STATUS"
+						columnRef="EMPLOYMENT_STATUS_NAME" />
+				</Column>
+				<Column id="EMPLOYMENT_STATUS_TEXT" semanticType="TEXT">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYMENT_STATUS_TEXT"
+						columnRef="EMPLOYMENT_STATUS_TEXT" />
+				</Column>
+				<Column id="EMPLOYMENT_STATUS_LANGU" semanticType="LANGUAGE"
+					dataType="NVARCHAR" precision="1">
+					<ColumnRef entityRef="DG/WF/VW/EMPLOYMENT_STATUS_TEXT"
+						columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="REGULAR_TEMP"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="REGULAR_TEMP" />
+			<DimensionMasterData>
+				<Column id="REGULAR_TEMP" semanticType="DIMENSION_KEY"
+					dataType="NVARCHAR" precision="32">
+					<ColumnRef entityRef="DG/WF/VW/REGULAR_TEMP"
+						columnRef="REGULAR_TEMP" />
+				</Column>
+				<Column id="REGULAR_TEMP_NAME" semanticType="DIMENSION_NAME"
+					dataType="NVARCHAR" precision="128">
+					<ColumnRef entityRef="DG/WF/VW/REGULAR_TEMP"
+						columnRef="REGULAR_TEMP_NAME" dataType="NVARCHAR" precision="128" />
+				</Column>
+				<Column id="REGULAR_TEMP_TEXT" semanticType="TEXT">
+					<ColumnRef entityRef="DG/WF/VW/REGULAR_TEMP_TEXT"
+						columnRef="REGULAR_TEMP_TEXT" />
+				</Column>
+				<Column id="REGULAR_TEMP_LANGU" semanticType="LANGUAGE"
+					dataType="NVARCHAR" precision="1">
+					<ColumnRef entityRef="DG/WF/VW/REGULAR_TEMP_TEXT"
+						columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="IMPACTOFLOSS"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/SM_USER_INFO"
+				columnRef="IMPACTOFLOSS" />
+			<DimensionMasterData>
+				<Column id="IMPACTOFLOSS" semanticType="DIMENSION_KEY"
+					defaultValue="'??'">
+					<ColumnRef entityRef="DG/WF/VW/IMPACTOFLOSS"
+						columnRef="IMPACTOFLOSS" />
+				</Column>
+				<Column id="IMPACTOFLOSS_NAME" semanticType="DIMENSION_NAME"
+					dataType="NVARCHAR" precision="128">
+					<ColumnRef entityRef="DG/WF/VW/IMPACTOFLOSS"
+						columnRef="IMPACTOFLOSS_NAME" dataType="NVARCHAR" precision="128" />
+				</Column>
+				<Column id="IMPACTOFLOSS_TEXT" semanticType="TEXT">
+					<ColumnRef entityRef="DG/WF/VW/IMPACTOFLOSS_TEXT"
+						columnRef="IMPACTOFLOSS_TEXT" />
+				</Column>
+				<Column id="IMPACTOFLOSS_LANGU" semanticType="LANGUAGE"
+					dataType="NVARCHAR" precision="1">
+					<ColumnRef entityRef="DG/WF/VW/IMPACTOFLOSS_TEXT"
+						columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="RISKOFLOSS"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/SM_USER_INFO"
+				columnRef="RISKOFLOSS" />
+			<DimensionMasterData>
+				<Column id="RISKOFLOSS" semanticType="DIMENSION_KEY"
+					defaultValue="'??'">
+					<ColumnRef entityRef="DG/WF/VW/RISKOFLOSS"
+						columnRef="RISKOFLOSS" />
+				</Column>
+				<Column id="RISKOFLOSS_NAME" semanticType="DIMENSION_NAME"
+					dataType="NVARCHAR" precision="128">
+					<ColumnRef entityRef="DG/WF/VW/RISKOFLOSS"
+						columnRef="RISKOFLOSS_NAME" />
+				</Column>
+				<Column id="RISKOFLOSS_TEXT" semanticType="TEXT">
+					<ColumnRef entityRef="DG/WF/VW/RISKOFLOSS_TEXT"
+						columnRef="RISKOFLOSS_TEXT" dataType="NVARCHAR" precision="4000" />
+				</Column>
+				<Column id="RISKOFLOSS_LANGU" semanticType="LANGUAGE"
+					dataType="NVARCHAR" precision="1">
+					<ColumnRef entityRef="DG/WF/VW/RISKOFLOSS_TEXT"
+						columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="FIRST_NAME"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T"
+				columnRef="FIRST_NAME" />
+		</Dimension>
+		<Dimension id="LAST_NAME"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_PERSONAL_INFO_T"
+				columnRef="LAST_NAME" />
+		</Dimension>
+		<!--
+		<Dimension id="ORIGINAL_START_DATE"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_EMPLOYMENT_INFO"
+				columnRef="ORIGINAL_START_DATE" />
+		</Dimension>-->
+		<Dimension id="JOB_LOCATION"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="JOB_LOCATION" />
+
+			<DimensionMasterData>
+				<Hierarchy type="leveled">
+					<Level>
+						<!-- COUNTRY *is* the language neutral text TODO: @Naveed, we probably 
+							need to add annotations for this to make this discernable for you when generating 
+							the CSN files, sth like visible=true false etc. -->
+						<Column id="COUNTRY" semanticType="DIMENSION_KEY"
+							dataType="NVARCHAR" precision="256">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION"
+								columnRef="COUNTRY" dataType="NVARCHAR" precision="256" />
+						</Column>
+						<Column id="COUNTRY_TEXT" semanticType="TEXT">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION_COUNTRY_TEXT"
+								columnRef="TEXT" />
+						</Column>
+						<Column id="COUNTRY_LANGUAGE" semanticType="LANGUAGE"
+							dataType="NVARCHAR" precision="1">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION_COUNTRY_TEXT"
+								columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+						</Column>
+					</Level>
+					<Level>
+						<!-- STATE shall be invisible, as it is a code, instead NAME is to 
+							be used -->
+						<Column id="STATE" semanticType="DIMENSION_KEY"
+							dataType="NVARCHAR" precision="256">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION"
+								columnRef="STATE" dataType="NVARCHAR" precision="256" />
+						</Column>
+						<Column id="STATE_NAME" semanticType="DIMENSION_NAME"
+							dataType="NVARCHAR" precision="256">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION"
+								columnRef="STATE_NAME" dataType="NVARCHAR" precision="256" />
+						</Column>
+						<Column id="STATE_TEXT" semanticType="TEXT"
+							dataType="NVARCHAR" precision="256">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION_STATE_TEXT"
+								columnRef="TEXT" dataType="NVARCHAR" precision="256" />
+						</Column>
+						<Column id="STATE_LANGUAGE" semanticType="LANGUAGE"
+							dataType="NVARCHAR" precision="1">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION_STATE_TEXT"
+								columnRef="LANGUAGE" dataType="NVARCHAR" precision="1" />
+						</Column>
+					</Level>
+					<Level>
+						<Column id="CITY" dataType="NVARCHAR"
+							semanticType="DIMENSION_KEY" precision="256">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION"
+								columnRef="CITY" dataType="NVARCHAR" precision="256" />
+						</Column>
+						<!-- <ColumnRef name="CITY_TEXT" entityRef="DG/WF/LOCATION" columnRef="GLB_REG_LABEL" 
+							semanticType="TEXT" dataType="NVARCHAR" precision="40" /> -->
+					</Level>
+					<Level>
+						<!-- this, the lowest level key is the connect to the dimension! (same 
+							type!) -->
+						<Column id="JOB_LOCATION" semanticType="DIMENSION_KEY"
+							dataType="NVARCHAR" precision="128" defaultValue="'NOLOC'">
+							<ColumnRef entityRef="DG/WF/VW/LOCATION"
+								columnRef="JOB_LOCATION" dataType="NVARCHAR" precision="128" />
+						</Column>
+					</Level>
+				</Hierarchy>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="MANAGER_ID" dimensionType="Structural"
+			eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="MANAGER_ID" />
+			<CustomLabels key="ABC">
+				<Label locale="en_US"> manager dimension</Label>
+				<Label locale="de_DE"> </Label>
+				<Label locale="es_ES">no habla espanol</Label>
+			</CustomLabels>
+			<DimensionMasterData>
+				<Column id="MANAGER_ID" semanticType="DIMENSION_KEY">
+					<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+						columnRef="MANAGER_ID" />
+				</Column>
+				<Column id="LAST_NAME">
+					<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+						columnRef="LAST_NAME" />
+				</Column>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="SUPERVISOR" dimensionType="Structural"
+			eventStrategyRef="DIM_VALUE_COPY_CURR" dataType="NVARCHAR"
+			precision="100">
+			<!-- secondaryDimensionForDimensionRef="MANAGER_ID" -->
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="MANAGER_ID" />
+			<CustomLabels key="ABC">
+				<Label locale="en_US"> a parent child hierarchy of supervisors</Label>
+				<Label locale="de_DE"> </Label>
+				<Label locale="es_ES">no habla espanol</Label>
+			</CustomLabels>
+			<DimensionMasterData>
+				<Hierarchy type="parent-child">
+					<Column id="SUPERVISOR" semanticType="DIMENSION_KEY">
+						<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+							columnRef="MANAGER_ID" />
+					</Column>
+					<Column id="FIRST_NAME">
+						<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+							columnRef="FIRST_NAME" />
+					</Column>
+					<Column id="LAST_NAME">
+						<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+							columnRef="LAST_NAME" />
+					</Column>
+					<Column id="SUPERVISOR_PARENT"
+						semanticType="DIMENSION_PARENT_KEY">
+						<ColumnRef entityRef="DG/WF/VW/SUPERVISOR"
+							columnRef="MANAGER_ID_PARENT" />
+					</Column>
+				</Hierarchy>
+			</DimensionMasterData>
+		</Dimension>
+		<Dimension id="FTE" eventStrategyRef="DIM_VALUE_COPY_CURR">
+			<ColumnRef entityRef="DG/WF/VW/EMP_JOB_INFO_T"
+				columnRef="FTE" />
+		</Dimension>
+		<Dimension id="TIME_DIMENSION" dimensionType="Standard"/>
+	</Dimensions>
+	<Measures>
+		<BaseMeasure id="HEAD_COUNT" aggregationType="SUM"
+			dataType="BIGINT" eventStrategyRef="VALUE_WHEN_HEAD_COUNT">
+			<CustomLabels key="MEAS_HEAD_COUNT">
+				<Label locale="en_US">MEAS_HEAD_COUNT</Label>
+			</CustomLabels>
+		</BaseMeasure>
+		<BaseMeasure id="HIRE" aggregationType="SUM"
+			dataType="BIGINT" eventStrategyRef="VALUE_WHEN_HIRE">
+			<CustomLabels key="MEAS_HIRE">
+				<Label locale="en_US">MEAS_HIRE</Label>
+			</CustomLabels>
+		</BaseMeasure>
+		<BaseMeasure id="MOVE_IN" aggregationType="SUM"
+			dataType="BIGINT" eventStrategyRef="VALUE_WHEN_MOVE_IN">
+			<CustomLabels key="MEAS_MOVE_IN">
+				<Label locale="en_US">MEAS_MOVE_IN</Label>
+			</CustomLabels>
+		</BaseMeasure>
+		<BaseMeasure id="MOVE_OUT" aggregationType="SUM"
+			dataType="BIGINT" eventStrategyRef="VALUE_WHEN_MOVE_OUT">
+			<CustomLabels key="MEAS_MOVE_OUT">
+				<Label locale="en_US">MEAS_MOVE_OUT</Label>
+			</CustomLabels>
+		</BaseMeasure>
+		<BaseMeasure id="TERM" aggregationType="SUM"
+			dataType="BIGINT" eventStrategyRef="VALUE_WHEN_TERM">
+			<CustomLabels key="MEAS_TERM">
+				<Label locale="en_US">MEAS_TERM</Label>
+			</CustomLabels>
+		</BaseMeasure>
+
+			<CustomMeasure aggregationType="CUM" dataType="DECIMAL"
+			hidden="false" id="EOPFTE" precision="38" scale="10"
+			measureType="INPUT">
+			<CustomLabels key="EOP FTE">
+				<Label locale="en_US">EOP FTE</Label>
+			</CustomLabels>
+			<ExceptionAggregation>
+				<MeasureId>HEAD_FTE</MeasureId>
+				<DimensionId>TIME_DIMENSION</DimensionId>
+				<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+				<ExceptionAggregationBehavior>LAST</ExceptionAggregationBehavior>
+			</ExceptionAggregation>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="CUM" dataType="DECIMAL"
+			hidden="false" id="AVERAGEFTE" precision="38" scale="10"
+			measureType="INPUT">
+			<CustomLabels key="Average FTE">
+				<Label locale="en_US">Average FTE</Label>
+			</CustomLabels>
+			<ExceptionAggregation>
+				<MeasureId>HEAD_FTE</MeasureId>
+				<DimensionId>TIME_DIMENSION</DimensionId>
+				<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+				<ExceptionAggregationBehavior>AVERAGE</ExceptionAggregationBehavior>
+			</ExceptionAggregation>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="CUM" dataType="DECIMAL"
+			hidden="false" id="EOPHEADCOUNT" precision="0" scale="0"
+			measureType="INPUT">
+			<CustomLabels key="EOP Headcount">
+				<Label locale="en_US">EOP Headcount</Label>
+			</CustomLabels>
+			<ExceptionAggregation>
+				<MeasureId>HEAD_COUNT</MeasureId>
+				<DimensionId>TIME_DIMENSION</DimensionId>
+				<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+				<ExceptionAggregationBehavior>LAST</ExceptionAggregationBehavior>
+			</ExceptionAggregation>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="CUM" dataType="DECIMAL"
+			id="SOPHEADCOUNT" precision="0" scale="0" measureType="INPUT">
+			<CustomLabels key="SOP Headcount">
+				<Label locale="en_US">SOP Headcount</Label>
+			</CustomLabels>
+			<ExceptionAggregation>
+				<MeasureId>HEAD_COUNT</MeasureId>
+				<DimensionId>TIME_DIMENSION</DimensionId>
+				<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+				<ExceptionAggregationBehavior>FIRST</ExceptionAggregationBehavior>
+			</ExceptionAggregation>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="CUM" dataType="DECIMAL"
+			id="AVERAGE_HEADCOUNT" precision="0" scale="0" measureType="INPUT">
+			<CustomLabels key="Average Headcount">
+				<Label locale="en_US">Average Headcount</Label>
+			</CustomLabels>
+			<ExceptionAggregation>
+				<MeasureId>HEAD_COUNT</MeasureId>
+				<DimensionId>TIME_DIMENSION</DimensionId>
+				<ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+				<ExceptionAggregationBehavior>AVERAGE</ExceptionAggregationBehavior>
+			</ExceptionAggregation>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="EOPHEADCOUNT_REGULAR" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="EOP Headcount - Regular">
+				<Label locale="en_US">EOP Headcount - Regular</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="AND">
+							<Condition op="EQ" dimensionId="REGULAR_TEMP"
+								onHier="false">
+								<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+									<ColumnValue value="1859" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>EOPHEADCOUNT</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="EOPHEADCOUNT_TEMPORARY" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="EOP Headcount - Temporary">
+				<Label locale="en_US">EOP Headcount - Temporary</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="AND">
+							<Condition op="EQ" dimensionId="REGULAR_TEMP"
+								onHier="false">
+								<Column columnId="REGULAR_TEMP" dataType="NVARCHAR">
+									<ColumnValue value="1860" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>EOPHEADCOUNT</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="HIRE_INT" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Internal Hire">
+				<Label locale="en_US">Internal Hire</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="AND">
+							<Condition op="IN" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="53" />
+									<ColumnValue value="401" />
+									<ColumnValue value="187" />
+									<ColumnValue value="129" />
+									<ColumnValue value="46" />
+									<ColumnValue value="46" />
+									<ColumnValue value="185" />
+									<ColumnValue value="144" />
+									<ColumnValue value="25" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>MOVE_IN</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="PROM_IN" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Promotion In">
+				<Label locale="en_US">Promotion In</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="IN" dimensionId="EVENT_REASON_ACODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="140" />
+									<ColumnValue value="107" />
+									<ColumnValue value="55" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>MOVE_IN</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="DEMOT_IN" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Demotion">
+				<Label locale="en_US">Demotion</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="EQ" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="33" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>MOVE_IN</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="MOVE_IN" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Demotion">
+				<Label locale="en_US">Demotion</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="EQ" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="33" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>MOVE_IN</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="TIME_DIMENSION" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Demotion">
+				<Label locale="en_US">Demotion</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="EQ" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="33" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>MOVE_IN</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="TERM_VOL" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Voluntary Termination">
+				<Label locale="en_US">Voluntary Termination</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="IN" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="178" />
+									<ColumnValue value="177" />
+									<ColumnValue value="176" />
+									<ColumnValue value="175" />
+									<ColumnValue value="173" />
+									<ColumnValue value="169" />
+									<ColumnValue value="171" />
+									<ColumnValue value="179" />
+									<ColumnValue value="151" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>TERM</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="TERM_INV" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Involuntary Termination">
+				<Label locale="en_US">Involuntary Termination</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="IN" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="166" />
+									<ColumnValue value="167" />
+									<ColumnValue value="165" />
+									<ColumnValue value="164" />
+									<ColumnValue value="161" />
+									<ColumnValue value="153" />
+									<ColumnValue value="158" />
+									<ColumnValue value="162" />
+									<ColumnValue value="152" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>TERM</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+		<CustomMeasure aggregationType="SUM" dataType="DECIMAL"
+			hidden="false" id="TERM_OTH" precision="0" scale="0"
+			measureType="RESTRICTED">
+			<CustomLabels key="Other Termination">
+				<Label locale="en_US">Other Termination</Label>
+			</CustomLabels>
+			<Restrictions>
+				<Case>
+					<When>
+						<WhenOperation type="NOOP">
+							<Condition op="IN" dimensionId="EVENT_REASON_ICODE"
+								onHier="false">
+								<Column columnId="EVENT_REASON_ICODE" dataType="DECIMAL">
+									<ColumnValue value="168" />
+									<ColumnValue value="156" />
+								</Column>
+							</Condition>
+						</WhenOperation>
+					</When>
+					<Then>-1234</Then>
+					<Then>1234</Then>
+					<Then>TERMIO<A/></Then>
+					<Then>TERMIO</Then>
+					<Then>TERM</Then>
+				</Case>
+			</Restrictions>
+		</CustomMeasure>
+   	</Measures>
+</MetricPack>

@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?><MetricPack xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WORKFORCE" prefix="EM" name="Core workforce metric pack" xsi:noNamespaceSchemaLocation="../../../../main/resources/config.xsd">
+  <StartDate>2001-01-01</StartDate>
+  <moduleType>EC</moduleType>
+  <moduleSubType>Mobility</moduleSubType>
+
+  <DGFactTable name="DG/EM/FACT">
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/AGE" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/GE/GEN_AGE" sourceColumnRef="/DG/EM/AGE"/> 
+    </ColumnSemantic>    
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="/DG/EM/MGR_LOCATION" dataType="BIGINT">
+      <Source sourceTableRef="DG/EM/VW/MGR_LOCATION" sourceColumnRef="/DG/EM/MGR_LOCATION"/> 
+    </ColumnSemantic>    
+    <ColumnSemantic semanticType="POSTCALCULATION_BASE" name="WORK_LOC" dataType="SMALLINT">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCATION"/> 
+    </ColumnSemantic>    
+  
+  
+  </DGFactTable>
+    <!-- implicit via dimensions -->
+  
+  <DGSemanticDataViews>
+    <!-- there result of this computations are a set of view which contain 
+        all fields which comprise the fact table. 
+           in multiple "acending in time" views . 
+           Iterating over htem one shoudl be able to determine ( or compute solely from before and after values)
+           for each relevant time the DIM and MEAS values to be inserted into the fact table. 
+           describes how to augment relevant tables for fact table computation 
+                -where are the time dependent fields
+                -where are the key fields
+                -where are the (normalized) EVENT fields an other like SEQ_NR
+                
+                - which fields are to be computed (per row for these fields)
+         
+          a semantic data view annotates a set of source tables, establishing semantic relations between them
+            information on whether the table is
+            - time dependent, (how: event based, simple effective date, ... ) 
+            - key ( PERSON_ID) dependent and which columns refere to the data 
+       -->
+          <SourceTableSemantic name="EM/VW/EMP_EMPLOYMENT_INFO" sourceTableRef="DA/EM/EMPLOYMENT_INFO" timeDependent="EffectiveDate">
+            <ColumnSemantic semanticType="KEY" name="PERSON_ID" dataType="BIGINT"/>
+            <ColumnSemantic semanticType="START_DATE" name="EFFECTIVE_START_DATE" dataType="DATE"/>
+            <ColumnSemantic semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" fixedValue="true" dataType="NVARCHAR" precision="12" value="DATA_C">
+              <!-- afixed value, every event here is considered -->
+            </ColumnSemantic>
+          </SourceTableSemantic>
+          <SourceTableSemantic name="DG/EM/VW/JOBINFO" sourceTableRef="DA/EM/JOBINFO" timeDependent="EffectiveDate">
+            <ColumnSemantic semanticType="KEY" name="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+            <ColumnSemantic semanticType="START_DATE" name="EFFECTIVE_START_DATE" dataType="DATE"/>
+            <ColumnSemantic semanticType="END_DATE" name="EFFECTIVE_END_DATE" dataType="DATE"/>
+            <ColumnSemantic semanticType="SEQ_NR" name="SEQ_NR" dataType="BIGINT"/>
+            <ColumnSemantic semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+            <ColumnSemantic semanticType="NORM_EVENT_PRIO" name="/DG/EM/NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+
+
+            <!--          // @formatter:off
+             Table table = TableFactory.makeTable(Tables.EM_DG_QU_JOBINFO)
+             <SourceColumnRef name="IDX_HIDDEN"" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EC_DG_KEY" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.USERS_SYS_ID" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EC_DG_NORM_EVENT" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EFFECTIVE_START_DATE" dataType="DATE" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EFFECTIVE_END_DATE" dataType="DATE" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EVENT" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EVENT_REASON_ICODE" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.SEQ_NR" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.FTE" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.WEIGHT" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EC_DG_WEIGHT_GROUP" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.LOCCODE" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EC_DG_COUNTRY" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.LOCATION" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.MOVE_REASON" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.HIRE_REASON" dataType="NVARCHAR" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EMPLOYMENT_STATUS" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.EMPLOYMENT_TYPE" dataType="BIGINT" />
+             <SourceColumnRef name=ColumnNames.EM_DG_QU_JOBINFO.PAYGROUP" dataType="BIGINT" />
+             ;
+-->
+            <FieldLookup name="Join_to_DG/EM/EVENT_MAPPING" category="EVENT_NORMALIZATION">
+              <Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/EVENT_MAPPING" joinType="INNER" unique="true">
+                <JoinCondition firstColumnRef="EVENT" secondColumnRef="EVENT" cond="EQ" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/EVENT_MAPPING"/>
+                <JoinCondition firstColumnRef="EVENT_REASON_ICODE" secondColumnRef="EVENT_REASON_ICODE" cond="EQ" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/EVENT_MAPPING"/>
+                <TieBreaker resolveBy="MIN"/>
+              </Join>
+              <Result>
+                <ResultColumn semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" sourceTableRef="DG/EM/EVENT_MAPPING" sourceColumnRef="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+                <ResultColumn semanticType="NORM_EVENT_PRIO" name="/DG/EM/NORM_EVENT_PRIO" sourceTableRef="DG/EM/EVENT_MAPPING" sourceColumnRef="NORM_EVENT" dataType="NVARCHAR"/>
+              </Result>
+            </FieldLookup>
+
+
+            <FieldLookup name="AugmentKeyViaEmploymentInfo" category="AUXILIARY_FIELD">
+              <!-- this could be alternatively listed as part of TableAugmentations -->
+              <!-- we assume it is always present ( danger or loosing a person id )-->
+                <Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/EMPLOYMENT_INFO" joinType="INNER">
+                  <JoinCondition firstTableRef="DA/EM/JOBINFO" firstColumnRef="USERS_SYS_ID" cond="EQ" secondColumnRef="USERS_SYS_ID" secondTableRef="DA/EM/EMPLOYMENT_INFO"/>
+                  <TieBreaker resolveBy="MIN"/>
+                </Join>
+                <Result>
+                  <ResultColumn name="/DG/EM/PERSON_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="PERSON_ID" dataType="DECIMAL" precision="10"/>
+                  <ResultColumn name="/DG/EM/GA_TYPE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+                </Result>
+            </FieldLookup>
+              <!-- auxiliary fileds calculated , will be made part of the canonic query view if generated (and used)-->
+            <FieldLookup category="AUXILIARY_FIELD" name="lookup_by_REGION_LOCATION">
+              <!-- add a field DG/EM/REGION_LOCATION representing the COUNTRY calculated from the present field LOCATION_ID 
+                using a LOCATION_HIERARY_TABLE
+              -->
+                <Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/LOCATION_HIER">
+                  <connectByPrior firstTableRef="DA/EM/LOCATION_HIER" childColumnRef="LOCATION_ID" parentColumnRef="PARENT_LOCATION"/>
+                  <JoinCondition secondValue="'REGION'" dataType="NVARCHAR" precision="14" cond="EQ" firstTableRef="DA/EM/LOCATION_HIER" firstColumnRef="LOCATION_CATEGORY"/>
+                  <Depth value_from="1" value_to="4"/>
+                  <JoinCondition firstColumnRef="LOCATION" cond="LT" secondColumnRef="LOCATION_ID" firstTableRef="DA/EM/JOBINFO" secondTableRef="DA/EM/LOCATION_HIER"/>
+                </Join>
+                <Result>
+                  <ResultColumn name="DG/EM/REGION_LOCATION" sourceTableRef="DA/EM/LOCATION_HIER" sourceColumnRef="PARENT_LOCATION" dataType="BIGINT"/>
+                </Result>
+            </FieldLookup>
+              <!-- auxiliary fields calculated , will be made part of the canonic query view if generated (and used)-->
+              <FieldLookup category="AUXILIARY_FIELD">
+                <!-- here this binding table is only used once -->
+                  <Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" joinType="INNER">
+                    <JoinCondition firstColumnRef="WEIGHT" cond="GE" secondColumnRef="FROM_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+                    <JoinCondition firstColumnRef="WEIGHT" cond="LT" secondColumnRef="TO_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+                  </Join>
+                  <Result>
+                    <ResultColumn name="/DG/EM/WEIGHT_GROUP" sourceTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" sourceColumnRef="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+                  </Result>
+                  <TableDefinition name="DG/EM/CFG_DATA/WEIGHT_GROUPS">
+                    <ColumnDefinition name="HIDDEN_IDX" dataType="BIGINT"/>
+                    <ColumnDefinition name="FROM_WEIGHT" dataType="BIGINT"/>
+                    <ColumnDefinition name="TO_WEIGHT" dataType="BIGINT"/>
+                    <ColumnDefinition name="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+                    <TableDataSource>
+                      <!-- could be a view definition a resource file or ... -->
+                      <CsvTableData skipRow="0">
+                        1,-100,5,"0+kg"
+2,50,55,"50+kg"
+3,55,60,"55+kg"
+4,60,65,"60+kg"
+5,65,70,"65+kg"
+6,70,75,"65+kg"
+
+                      </CsvTableData>
+                      </TableDataSource>
+                    </TableDefinition>
+                  
+              </FieldLookup>
+            <FieldLookup category="AUXILIARY_FIELD" name="lookup_LOCCODE_TO_COUNTRY">
+                <!-- add a field DG/EM/COUNTRY_LOCATION COUNTRY calculated from the present field LOCCODE 
+                    via a simple table lookup to a table provided here
+              -->
+                <Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/LOCCODE_TO_COUNTRY" joinType="LEFT">
+                  <JoinCondition firstColumnRef="LOCCODE" cond="EQ" secondColumnRef="LOCCODE" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/LOCCODE_TO_COUNTRY"/>
+                </Join>
+                <Result>
+                  <ResultColumn name="/DG/EM/COUNTRY_LOCATION" sourceTableRef="DG/EM/LOCCODE_TO_COUNTRY" sourceColumnRef="COUNTRY" dataType="NVARCHAR" precision="3"/>
+                </Result>
+
+                <TableDefinition name="DG/EM/LOCCODE_TO_COUNTRY">
+                  <ColumnDefinition name="IDX_HIDDEN" label="event code" isKey="true" dataType="BIGINT"/>
+                  <ColumnDefinition name="LOCCODE" dataType="NVARCHAR" precision="3"/>
+                  <ColumnDefinition name="COUNTRY" dataType="NVARCHAR" precision="3"/>
+                  <TableDataSource>
+                    <!-- could be a view definition a resource file or ... -->
+                    <CsvTableData skipRow="0">
+                      
+                1,"WDF","GER"
+                2,"ROT","GER"
+                3,"SFR","USA"
+                4,"BLR","USA"
+                5,"MUM","IND"
+                6,"DHL","IND"
+                    </CsvTableData>
+                  </TableDataSource>
+                </TableDefinition>
+            </FieldLookup>
+        
+         </SourceTableSemantic>
+    <SourceTableSemantic name="DG/EM/VW/EMPLOYEE" sourceTableRef="DA/EM/EMPLOYEE" timeDependent="STATIC">
+      <ColumnSemantic semanticType="KEY" name="PERSON_ID" dataType="BIGINT"/>
+    </SourceTableSemantic>
+    <SourceTableSemantic name="DG/EM/VW/PERSONINFO" sourceTableRef="DA/EM/PERSONINFO" timeDependent="EFFECTIVE_DATE">
+      <ColumnSemantic semanticType="KEY" name="PERSON_ID" dataType="BIGINT"/>
+      <ColumnSemantic semanticType="START_DATE" name="EFFECTIVE_DATE" dataType="DATE"/>
+    </SourceTableSemantic>
+    <SourceTableSemantic name="DG/EM/VW/MGR_LOCATION">
+      <!-- assume the location of the (current) manager shall be an important reporing dimension. 
+        This generate new stream of Event based on the JOBINFO event for the (current) manager. 
+        treated as DATAC events ... 
+        we need an "invactive before image" (oc reate 
+        
+        EMLOYEE         MGR_1          LOC1 
+        
+        EMLOYEE         MGR_2          LOC1 
+                        MGR_2          LOC2
+        EMLOYEE         MGR_2          LOC1 
+        
+        
+        
+      -->
+      <ColumnSemantic semanticType="KEY" name="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+      <ColumnSemantic semanticType="START_DATE" name="/DG/EM/MGR_FROM_DATE" dataType="DATE"/>
+      <ColumnSemantic semanticType="END_DATE" name="/DG/EM/MGR_TO_DATE"/>
+      <ColumnSemantic semanticType="SEQ_NR" name="/DG/EM/MGR_SEQ_NR"/>
+
+      <FieldLookup name="Join_To_DA/EM/JOBINFO" category="AUXILIARY_FIELD">
+        <Join leftTableRef="DG/EM/JOBINFO" leftTableAlias="EMP_JOBINFO" unique="true" rightTableRef="DG/EM/JOBINFO" rightTableAlias="MGR_JOBINFO" joinType="INNER">
+          <JoinCondition firstTableRef="EMP_JOBINFO" firstColumnRef="MGR_ID" cond="EQ" secondTableRef="MGR_JOBINFO" secondColumnRef="PERSON_ID"/>
+          <JoinCondition cond="timeinLHSRangeSTART" columnSemantic="START_DATE" firstTableRef="EMP_JOBINFO" tag="START_DATE" firstColumnRef="EFFECTIVE_START_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_START_DATE"/>
+          <JoinCondition cond="timeinLHSRangeEND" firstTableRef="EMP_JOBINFO" tag="END_DATE" firstColumnRef="EFFECTIVE_END_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_END_DATE"/>
+          <TieBreaker firstTableRef="MGF_JOBINFO" firstColumnRef="SEQ_NR" resolveBy="MAX"/>
+          <!-- <defaultValue>/*empty= NULL*/</defaultValue> -->
+        </Join>
+        <Result>
+          <ResultColumn name="/DG/EM/PERSON_ID" sourceTableRef="EMP_JOBINFO" sourceColumnRef="PERSON_ID"/>
+          <ResultColumn name="/DG/EM/MGR_FROM_DATE" sourceTableRef="MGR_JOBINFO" sourceColumnRef="EFFECTIVE_DATE_FROM"/>
+          <ResultColumn name="/DG/EM/MGR_TO_DATE" sourceTableRef="MGR_JOBINFO" sourceColumnRef="EFFECTIVE_DATE_TO"/>
+          <ResultColumn name="/DG/EM/SEQ_NR" sourceTableRef="MGR_JOBINFO" sourceColumnRef="SEQ_NR"/>
+          <ResultColumn name="/DG/EM/MGR_LOCATION" sourceTableRef="MGR_JOBINFO" sourceColumnRef="LOCATION"/>
+          <ResultColumn name="/DG/EM/NORM_EVENT" fixedValue="true" dataType="NVARCHAR" value="'DATAC'"/>
+        </Result>
+      </FieldLookup>
+    </SourceTableSemantic>
+
+    <SourceTableSemantic type="Generator" name="DG/EM/GE/GEN_AGE" generatorStrategy="GENSTRATGY_ELAPSED_TIME_SINCE" eventFrequency="YEARLY">
+      <ColumnSemantic semanticType="KEY" name="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+      <ColumnSemantic semanticType="START_DATE" name="EFFECTIVE_DATE" dataType="DATE"/>
+      <ColumnSemantic semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" fixedValue="true" dataType="NVARCHAR" precision="12" value="'DATAC'">
+      </ColumnSemantic>
+      <SourcePlugBinding name="CURRENT_EVENT_DATE" tag="CURRENT_EVENT_DATE" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="EVENT_DATE"/>
+      <SourcePlugBinding name="KEY" tag="KEY" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" dataType="BIGINT"/>
+      <SourcePlugBinding name="BASE_DATE" tag="BASE_DATE" sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="DATE_OF_BIRTH" dataType="DATE"/>
+      <ResultColumn name="/DG/EM/PERSON_ID" tag="KEY" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" dataType="BIGINT"/>
+      <ResultColumn name="EFFECTIVE_DATE" tag="EVENT_DATE" dataType="DATE"/>
+      <ResultColumn name="/DG/EM/AGE" tag="AGE_IN_YEARS" dataType="SMALLINT"/>
+    </SourceTableSemantic>
+    <SourceTableSemantic type="Generator" name="DG/EM/GEN_DAYS_SINCE_HIRE" generatorStrategy="GEN_STRAT_DAYS_HIRE_STATUS" eventFrequency="MONTHLY">
+      <ColumnSemantic semanticType="KEY" name="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+      <ColumnSemantic semanticType="START_DATE" name="EFFECTIVE_DATE" dataType="DATE"/>
+      <ColumnSemantic semanticType="NORM_EVENT" name="/DG/EM/NORM_EVENT" fixedValue="true" value="'DATAC'" dataType="NVARCHAR" precision="12">
+      </ColumnSemantic>
+      <SourcePlugBinding name="SRC_EVENT_STATE" semanticType="NORM_EVENT" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="NORM_EVENT">
+                  <!-- optional bind to a table once we have more than one NORM_EVENT processing -->
+      </SourcePlugBinding>
+      <SourcePlugBinding name="CURRENT_EVENT_DATE" tag="CURRENT_EVENT_DATE" sourceTableRef="DG/EM/INT/EVENTDRIVER" sourceColumnRef="EVENT_DATE"/>
+    
+      <SourcePlugBinding tag="KEY" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" dataType="BIGINT"/>
+      <ResultColumn tag="KEY" semanticType="KEY" name="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+      <ResultColumn name="EFFECTIVE_DATE" tag="EVENT_DATE" dataType="DATE"/>
+      <ResultColumn tag="DAYS_SINCE_HIRE" name="/DG/EM/DAYS_SINCE_HIRE" dataType="INTEGER"/>
+      <ResultColumn tag="MONTHS_SINCE_HIRE" name="/DG/EM/MONTHS_SINCE_HIRE" dataType="INTEGER"/>
+    </SourceTableSemantic>
+    <!-- 
+      SELECT P.PERSON as PERSON_ID, 
+                             LOCATION AS MGR_LOCATION, 
+                             
+                             FROM DA/EC/JOBINFO  AS MRG_EVENTS
+                                WHERE  MGR_EVENT.PERSON_ID =   EMP_EVENT.MGR_ID
+                                 AND     EMP_EVENT.FROM_DATE < MGR_EVENT_TO_DATE AND EMP_EVENT.TO_DATE 
+                                           DA/EC/JOBINFO 
+    -->
+
+    <PostCalculations>
+      <!-- post calculations are values to be calculated when("after") computing 
+      actual events in the fact able
+      
+      As an example we take a company who has to report on the distance between
+      HomeLocation and WorkLocation, coupled with employee age, as employees 
+      in a certain age group get differnent travel expenses, 
+         The change events are driven from separte tables, atual relevant tuples
+            (HOME_LOC, WORK_LOC , AGE_GROUP =>  MEAS_DISTANCE , TRAVEL_COMP_GROUP ) 
+          As discussed, age group is only generated and let's assume 
+          calculating all tuples before is prohibitively expensive, thus
+          it is to be done once per value tuple in the fact table. 
+          -->
+
+      <PostCalculation name="DG/EM/PC/DIST_WORK_HOME">
+        <Function name="GEO_DISTANCE">
+          <SourcePlugBinding tag="LOC_1" sourceTableRef="DG/EM/FACT" sourceColumnRef="/DG/EM/MGR_LOCATION">
+          </SourcePlugBinding>
+          <SourcePlugBinding tag="LOC_2" sourceTableRef="DG/EM/FACT" sourceColumnRef="WORK_LOC">
+          </SourcePlugBinding>
+          <ResultColumn name="GEODISTANCE_KM" dataType="DECIMAL" tag="GEODISTANCE_KM"/>
+        </Function>
+      </PostCalculation>
+      <PostCalculation name="DG/EM/PC/TRAVEL_COMP_GROUP">
+        <FieldLookup category="AUXILIARY_FIELD">
+          <Join leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/TRAVEL_COMP_GROUPS" joinType="LEFT">
+            <JoinCondition cond="GE" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+            <JoinCondition cond="LT" firstTableRef="DG/EM/FACT" firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO" secondTableRef="DA/EM/TRAVEL_COMP_GROUPS"/>
+          </Join>
+          <Result>
+            <ResultColumn tag="OUT_TRAVEL_COMP_GROUP" name="DIM_TRAVEL_COMP_GROUP" sourceTableRef="DA/EM/TRAVEL_COMP_GROUPS" sourceColumnRef="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+          </Result>
+        </FieldLookup>
+      </PostCalculation>
+      <PostCalculation name="PC_AGE_GROUP">
+              <!-- generators can be agumented like any other view, here we calculate
+                 AGE group from the age
+                 technically this may lead to *fewer* relevant events,
+                 but we cannot do a lookup during the event processing 
+                     -->
+              <FieldLookup category="AUXILIARY_FIELD" name="resolve_age_group">
+                <Join leftTableRef="DG/EM/FACT" rightTableRef="DA/EM/AGE_GROUPS" joinType="INNER" unique="true">
+                  <JoinCondition firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_FROM_INCL" cond="LE" firstTableRef="DG/EM/FACT" secondTableRef="DA/EM/AGE_GROUPS"/>
+                  <JoinCondition firstColumnRef="/DG/EM/AGE" secondColumnRef="AGE_TO_EXCL" cond="GT" firstTableRef="DG/EM/FACT" secondTableRef="DA/EM/AGE_GROUPS"/>
+                  <TieBreaker resolveBy="MIN"/>
+                </Join>
+                <Result>
+                  <ResultColumn tag="OUT_AGE_GROUP" name="AGE_GROUP" sourceTableRef="DA/EM/AGE_GROUPS" sourceColumnRef="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+                </Result>
+              </FieldLookup>
+      </PostCalculation>
+    </PostCalculations>
+   
+    </DGSemanticDataViews>
+     
+		 <!-- This complete section will be given as input to Data Aquisition Service and Data generation service-->
+  <Dataset>
+    <!-- Source table describes the physical tables/columns directly from OLTP schema-->
+    <SourceTable id="DA/EM/EMPLOYMENT_INFO" name="DA/EM/EMPLOYMENT_INFO" label="Employment Info">
+      <SourceColumnRef id="PERSON_ID" name="PERSON_ID" label="person id" isKey="true" dataType="DECIMAL" precision="10"/>
+      <SourceColumnRef name="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+      <SourceColumnRef id="EFFECTIVE_START_DATE" name="EFFECTIVE_START_DATE" isTimeColumn="START" label="employment start date" dataType="DATE"/>
+      <SourceColumnRef name="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+      <SourceColumnRef name="ORIGINAL_START_DATE" dataType="DATE"/>;
+    </SourceTable>
+    <SourceTable name="DA/EM/JOBINFO" label="Employee Job info">
+
+     <!--  <JoinCriteria leftColumnRef="USERS_SYS_ID" leftTableRef="EMP_JOB_INFO_T" rightColumnRef="USERS_SYS_ID" rightTableRef="EMP_EMPLOYMENT_INFO" joinType="INNER"/>
+-->
+      <SourceColumnRef name="USERS_SYS_ID" label="Users sys id" dataType="NVARCHAR" precision="11"/>
+      <SourceColumnRef name="EFFECTIVE_START_DATE" isTimeColumn="start" label="effective start date" dataType="DATE"/>
+      <SourceColumnRef name="EFFECTIVE_END_DATE" isTimeColumn="end" label="effective end date" dataType="DATE"/>
+      <SourceColumnRef id="EMPLOYMENT_STATUS" name="EMPLOYMENT_STATUS" label="employment status" dataType="NVARCHAR" precision="7"/>
+      <SourceColumnRef id="JOB_TITLE" name="JOB_TITLE" label="Job Title" dataType="NVARCHAR" precision="17"/>
+      <SourceColumnRef id="FTE" name="FTE" label="FTE" dataType="DECIMAL" precision="15" scale="3"/>
+      <SourceColumnRef name="EVENT" dataType="BIGINT"/>
+      <SourceColumnRef name="EVENT_REASON_ICODE" dataType="BIGINT"/>
+      <SourceColumnRef name="SEQ_NR" dataType="BIGINT"/>
+      <SourceColumnRef name="FTE" dataType="BIGINT"/>
+      <SourceColumnRef name="WEIGHT" dataType="BIGINT"/>
+      <SourceColumnRef name="LOCCODE" dataType="NVARCHAR" precision="3"/>
+      <SourceColumnRef name="LOCATION" dataType="BIGINT"/>
+      <SourceColumnRef name="MOVE_REASON" dataType="NVARCHAR"/>
+      <SourceColumnRef name="HIRE_REASON" dataType="NVARCHAR"/>
+      <SourceColumnRef name="EMPLOYMENT_TYPE" dataType="BIGINT"/>
+      <SourceColumnRef name="PAYGROUP" dataType="BIGINT"/>
+      <SourceColumnRef name="MGR_USER_ID" dataType="BIGINT"/>
+
+
+    </SourceTable>
+    <SourceTable name="DA/EM/PERSONINFO">
+      <SourceColumnRef name="PERSON_ID" dataType="BIGINT"/>
+      <SourceColumnRef name="EFFECTIVE_DATE" dataType="DATE"/>
+      <SourceColumnRef name="GENDER" dataType="NVARCHAR" precision="2"/>
+      <SourceColumnRef name="NR_CHILDREN" dataType="BIGINT"/>
+      <SourceColumnRef name="FIRSTNAME" dataType="NVARCHAR" precision="30"/>
+      <SourceColumnRef name="LASTNAME" dataType="NVARCHAR" precision="100"/>
+      <SourceColumnRef name="DATE_OF_BIRTH" dataType="DATE"/>;
+    </SourceTable>
+    <SourceTable name="DA/EM/LOCATION_HIER">
+      <SourceColumnRef name="IDX_HIDDEN" dataType="BIGINT"/>
+      <SourceColumnRef name="LOCATION_ID" dataType="BIGINT"/>
+      <SourceColumnRef name="PARENT_LOCATION" dataType="BIGINT"/>
+      <SourceColumnRef name="LOCATION_CATEGORY" dataType="NVARCHAR" precision="13"/>
+    </SourceTable>
+    <SourceTable name="DA/EM/EMPLOYEE">
+      <!-- a static column which is not time dependent, as , but for entry errors the 
+    information is immutable -->
+      <SourceColumnRef name="PERSON_ID" dataType="BIGINT"/>
+      <SourceColumnRef name="TAX_ID" dataType="BIGINT"/>
+    </SourceTable>
+    <SourceTable id="PICKLIST" name="PICKLIST" label="Picklist">
+      <SourceColumnRef id="OPTION_ID" name="OPTION_ID" label="Option Id" isFactAttribute="false" dataType="DECIMAL"/>
+      <SourceColumnRef id="EXTERNAL_CODE" name="EXTERNAL_CODE" label="External Code" isFactAttribute="false" dataType="NVARCHAR"/>
+      <SourceColumnRef id="PICKLISTID" name="PICKLISTID" label="PICKLISTID" isFactAttribute="false" dataType="NVARCHAR"/>
+    </SourceTable>
+    <SourceTable name="DA/EM/AGE_GROUPS" label="">
+      <SourceColumnRef name="AGE_FROM_INCL" dataType="DATE"/>
+      <SourceColumnRef name="AGE_TO_EXCL" dataType="DATE"/>
+      <SourceColumnRef name="AGE_GROUP_ID" dataType="BIGINT"/>
+      <SourceColumnRef name="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+      <SourceColumnRef name="AGE_GROUP_ATTR1" dataType="NVARCHAR"/>
+    </SourceTable>
+    <SourceTable name="DA/EM/TRAVEL_COMP_GROUPS">
+      <SourceColumnRef name="AGE_FROM" dataType="SMALLINT"/>
+      <SourceColumnRef name="AGE_TO" dataType="SMALLINT"/>
+      <SourceColumnRef name="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+    </SourceTable>
+
+    <!-- Logical table describes the Logical view to be created from OLTP schema tables-->
+    <LogicalTable id="position" name="Position" label="Position">
+      <!-- THis logical table is created from Generic_object_t which is an MDF object then physical table created by SDI-->
+      <SourceTables>
+        <SourceTableRef id="GENERIC_OBJECT_T" name="GENERIC_OBJECT_T" label="">
+          <SourceColumnRef id="SF_FIELD_1" name="SF_FIELD1" label="position Id" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_2" name="SF_FIELD2" label="position Name" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_3" name="SF_FIELD3" label="Incumbent" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_4" name="SF_FIELD4" label="Parent position Id" dataType="BIGINT"/>
+          <SourceColumnRef id="EFFECTIVE_STATUS" name="EFFECTIVE_STATUS" label=" Effective status" dataType="BIGINT"/>
+          <Filter columnId="object_type" columnValue="Position"/>
+          <Filter columnId="EFFECTIVE_STATUS" columnValue="A"/>
+        </SourceTableRef>
+      </SourceTables>
+    </LogicalTable>
+    <LogicalTable id="Division" name="Division" label="Division">
+      <SourceTables>
+        <SourceTableRef id="GOT_POSITION" name="GENERIC_OBJECT_T" label="">
+          <SourceColumnRef id="SF_FIELD_1" name="SF_FIELD1" isFactAttribute="false" label="Division Id" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_2" name="SF_FIELD2" isFactAttribute="false" label="Division Name" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_3" name="SF_FIELD3" isFactAttribute="false" label="Division Head" dataType="BIGINT"/>
+          <SourceColumnRef id="SF_FIELD_4" name="SF_FIELD4" isFactAttribute="false" label="Parent Division Id" dataType="BIGINT"/>
+          <Filter columnId="object_type" columnValue="Division"/>
+        </SourceTableRef>
+      </SourceTables>
+    </LogicalTable>
+    <LogicalTable id="Manager" name="Manager" label="Manager">
+      <!-- This logical table is created by joining 2 physical table by SDI-->
+      <SourceTables>
+        <SourceTable id="DA/EM/USERS_SYSINFO" name="DA/EM/USERS_SYSINFO" isFactAttribute="false" label=" users sys info">
+          <SourceColumnRef id="USERS_SYS_ID" name="USERS_SYS_ID" isFactAttribute="false" label="Users Id" dataType="BIGINT"/>
+          <SourceColumnRef id="USERS_SYS_FIRSTNAME" name="USERS_SYS_FIRSTNAME" isFactAttribute="false" label="Users first Name" dataType="NVARCHAR"/>
+          <SourceColumnRef id="USERS_SYS_MI" name="USERS_SYS_MI" isFactAttribute="false" label="Users middle Name" dataType="BIGINT"/>
+          <SourceColumnRef id="USERS_SYS_LASTNAME" name="USERS_SYS_LASTNAME" isFactAttribute="false" label="Users last Name" dataType="NVARCHAR"/>
+          <SourceColumnRef id="USERS_SYS_MANAGERUID" name="USERS_SYS_MANAGERUID" label="User manager Id" dataType="BIGINT"/>
+        </SourceTable>
+        <SourceTable id="DA/EM/MGR_USERS_SYSINFO" name="DA/EM/USERS_SYSINFO" isFactAttribute="false" label=" managers info">
+          <SourceColumnRef id="USERS_SYS_ID" name="SF_FIELD1" isFactAttribute="false" label="manager Id" dataType="BIGINT"/>
+          <SourceColumnRef id="USERS_SYS_FIRSTNAME" name="USERS_SYS_FIRSTNAME" isFactAttribute="false" label="manager Name" dataType="NVARCHAR"/>
+        </SourceTable>
+       <!-- currently dg can only refer to source tables, need to add the name of the resulting table
+       we should also *spell out the generated colun names *
+        <JoinCriteria sourceTableRef="USERS_SYSINFO" sourceColumn="USERS_SYS_MANAGERUID" targetTable="MGR_USERS_SYSINFO" joinType="INNER"/>
+         --> 
+      </SourceTables>
+    </LogicalTable>
+  </Dataset>
+          <EventMapping>
+            <EventBindings>
+              <!-- this binds the eventcodes in the concrete tables to 
+                (assumed predefined fixed?) evens defined by us with 
+                predfined semantic, (HIRE, TERM, MOVE, DATAC) 
+                and associated policies Behaviour e.g. for Generators 
+                
+                IF this mapping target is to be extensible, 
+                this would require more configuraitons here, e.g. a small 
+                state machine (which event lead to termination of processing and 
+                extension to the fill strategies. (and ecent oder override rules etc.)
+                
+                -->
+              <!-- currently typically one but potentially more than one -->
+              <EventBinding>
+                <TableDefinition name="DG/EM/EVENT_MAPPING">
+                  <ColumnDefinition name="IDX_HIDDEN" isKey="true" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT" label="event code" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT_REASON_ICODE" label="event reason icode" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT_NR" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT_NR2" dataType="BIGINT"/>
+                  <ColumnDefinition name="NORM_EVENT_PRIO" label="norm event prio" isKey="true" dataType="BIGINT"/>
+                  <ColumnDefinition name="NORM_EVENT" label="norm event" dataType="NVARCHAR"/>
+                  <ColumnDefinition name="EVENT_NR3" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT_CODE_RC" dataType="BIGINT"/>
+                  <ColumnDefinition name="EVENT_CODE_RS" dataType="NVARCHAR"/>
+                  <ColumnDefinition name="EVENT_CODE_GASSIGN" dataType="NVARCHAR"/>
+
+                  <TableDataSource>
+                    <!-- could be a view definition a resource file or ... -->
+                    <CsvTableData skipRow="0">
+                      1,-100,5,"0+kg"
+&lt;![CDATA[
+                      1,10999,222,1,1,40,"TERM",1,"_Term_",,
+                      2,10949,227,1,1,30,"HIRE",1,"HIRNEW","H_HIRNEW",
+                      3,10942,216,1,0,2,"DATAC_OUT",1,"DTCNV","5",
+                      4,33388,921,1,1,21,"MOVE_OUT",1,"AGA","AGA","G_ASSIGNM"
+                      5,10973,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+--&gt;
+                        </CsvTableData>
+                  </TableDataSource>
+                </TableDefinition>
+              </EventBinding>
+            </EventBindings>
+            <!-- need to decide -->
+          </EventMapping>
+
+
+
+  <Dimensions>
+
+    <Dimension id="PERSON_ID" semanticType="KEY" dataType="BIGINT"/>
+    <Dimension id="START_DATE" semanticType="START_DATE" dataType="DATE"/>
+    <Dimension id="NORM_EVENT" semanticType="NORM_EVENT" dataType="NVARCHAR" precision="12">
+    </Dimension>
+    
+    <Dimension id="AGE_GROUP" dataType="NVARCHAR" precision="18">
+      <Source sourceTableRef="PC_AGE_GROUP" sourceColumnRef="AGE_GROUP" fillStrategy="POSTCALC"/>
+    </Dimension>
+    
+    <Dimension id="WEIGHT_GROUP" dataType="NVARCHAR" precision="10">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/WEIGHT_GROUP" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+
+    <Dimension id="COUNTRY" dataType="NVARCHAR" precision="3">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/COUNTRY_LOCATION" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+
+    <Dimension id="GENDER" dataType="NVARCHAR" precision="2">
+      <Source sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="GENDER" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+    
+    <Dimension id="COUNTRY_LOCATION" dataType="NVARCHAR" precision="3">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="/DG/EM/COUNTRY_LOCATION" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+
+    <Dimension id="PAYGROUP" dataType="BIGINT">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="PAYGROUP" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+    
+    <Dimension id="LOCCODE" dataType="NVARCHAR" precision="3">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="LOCCODE" fillStrategy="DIM_VALUE_COPY"/>
+    </Dimension>
+
+    <Dimension id="REASON" dataType="NVARCHAR" precision="14">
+      <Source see="MEAS_HEADCOUNT"/>
+       <!-- appears as a side effect of the HEAdcouNt withmove computation, bound there
+        -->
+    </Dimension>
+    
+
+    <Dimension id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9">
+      <Source sourceTableRef="DG/EM/PC/TRAVEL_COMP_GROUP" sourceColumnRef="DIM_TRAVEL_COMP_GROUP" fillStrategy="POSTCALC"/>
+    </Dimension>        
+        
+        <!-- 
+            <Dimension id="JobTitle" name="JObTitle" label="Job Title" dimensionType="Analysis">
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="JOB_TITLE" fillStrategy="DIM_VALUE_COPY"></Source>
+
+      <labels>
+        <label locale="en_US">JobTitle us</label>
+        <label locale="en_GB">JobTitle uk</label>
+        <label locale="es_ES">JobTitle es</label>
+      </labels>
+      <SourceReferences>
+        <SourceReference isCalculated="false">
+
+          <TableRef id="EMP_JOB_INFO_T">
+            <ColumnRef id="JOB_TITLE"/>
+          </TableRef>
+
+        </SourceReference>
+        <Hierarchy type="parent-child">
+          <ParentChildHierarchy sourceTable="EMP_JOB_INFO_T" column="JOB_TITLE" parentColumn=""/>
+        </Hierarchy>
+      </SourceReferences>
+    </Dimension>
+    <Dimension id="Division" name="Division" label="Division" dimensionType="Structual">
+      <labels>
+        <label locale="en_US">Division</label>
+        <label locale="en_GB">Division</label>
+        <label locale="es_ES">Division</label>
+      </labels>
+      <SourceReferences>
+        <SourceReference isCalculated="false">
+
+          <TableRef id="Division">
+            <ColumnRef id="SF_FIELD_1"/>
+          </TableRef>
+
+        </SourceReference>
+        <Hierarchy type="parent-child">
+          <ParentChildHierarchy sourceTable="Division" column="SF_FIELD_1" parentColumn="SF_FIELD_4"/>
+        </Hierarchy>
+      </SourceReferences>
+    </Dimension> -->
+    <Dimension id="Employment status" name="EMPLOYMENT_STATUS" label="Employment status" dimensionType="Analysis" dataType="NVARCHAR" precision="7">
+      <labels>
+        <label locale="en_US">Employment status</label>
+        <label locale="en_GB">Employment status</label>
+        <label locale="es_ES">Employment status</label>
+      </labels>
+      <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="EMPLOYMENT_STATUS"/>
+      <SourceReferences>
+        <SourceReference isCalculated="false">
+          <TableRef id="EMP_JOB_INFO_T">
+            <ColumnRef id="EMPLOYMENT_STATUS" label="status"/>
+          </TableRef>
+        </SourceReference>
+        <Hierarchy type="parent-child" isPicklistSourced="true">
+          <ParentChildHierarchy sourceTable="EMP_JOB_INFO_T" column="EMPLOYMENT_STATUS" parentColumn=""/>
+        </Hierarchy>
+      </SourceReferences>
+    </Dimension>
+    <!-- 
+    <Dimension id="Calendar" name="Calendar" label="Calendar" dimensionType="Standard">
+      <labels>
+        <label locale="en_US">Calendar Us</label>
+        <label locale="en_GB">Calendar Uk</label>
+      </labels>
+      <SourceReferences>
+        <Hierarchy type="leveled" />
+      </SourceReferences>
+    </Dimension>
+    -->
+  </Dimensions>
+         <Measures>
+            <Measure id="WEIGHT" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" length="32">
+              <Source sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="WEIGHT"/>
+            </Measure>
+            <Measure id="DIST_WORK_HOME" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM">
+                  <Source sourceTableRef="DG/EM/PC/DIST_WORK_HOME" sourceColumnRef="GEODISTANCE_KM" fillStrategy="POSTCALC"/>
+            </Measure>
+           
+            <Measure id="MONTHS_SINCE_HIRE" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" length="32" scale="0">
+                  <Source sourceTableRef="DG/EM/GEN_DAYS_SINCE_HIRE" sourceColumnRef="/DG/EM/MONTHS_SINCE_HIRE" fillStrategy="MEAS_ADDITIVE"/>
+            </Measure>
+            
+            <Measure id="NR_CHILDREN" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" length="32" scale="0">
+                  <Source sourceTableRef="DG/EM/VW/PERSONINFO" sourceColumnRef="NR_CHILDREN" fillStrategy="MEAS_ADDITIVE"/>
+            </Measure>
+           
+            <Measure id="MEAS_HEADCOUNT" label="Headcount" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" length="32" scale="0">
+               <labels>
+                  <label locale="en_US">Headcount Us</label>
+                  <label locale="en_GB">Headcount Uk</label>
+               </labels>
+                  <Source>
+                    <FillStrategy name="HEAD_COUNT_01" fillStrategy="HEADCOUNT_WITH_MOVE">
+                      <ResultColumn tag="TGT_HC" targetColumnRef="MEAS_HEADCOUNT"/>
+                      <ResultColumn tag="TGT_MOVE_IN" targetColumnRef="MEAS_MOVE_IN"/>
+                      <ResultColumn tag="TGT_MOVE_OUT" targetColumnRef="MEAS_MOVE_OUT"/>
+                      <ResultColumn tag="TGT_REASON" targetColumnRef="REASON"/>
+                      <SourcePlugBinding tag="SRC_0" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="MOVE_REASON" dataType="NVARCHAR"/>
+                      <SourcePlugBinding tag="SRC_1" sourceTableRef="DG/EM/VW/JOBINFO" sourceColumnRef="HIRE_REASON" dataType="NVARCHAR"/>
+                    </FillStrategy>
+                  </Source>
+            </Measure>
+           <Measure id="MEAS_MOVE_IN" label="Headcount" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" scale="0">
+             <labels>
+               <label locale="en_US">Headcount Us</label>
+               <label locale="en_GB">Headcount Uk</label>
+             </labels>
+             <Source see="MEAS_HEADCOUNT"/>
+           </Measure>
+           
+           <Measure id="MEAS_MOVE_OUT" label="Headcount" dataType="BIGINT" column="" measureType="BASE" aggregationType="SUM" precision="32" length="32" scale="0">
+             <labels>
+               <label locale="en_US">Headcount Us</label>
+               <label locale="en_GB">Headcount Uk</label>
+             </labels>
+             <Source see="MEAS_HEADCOUNT"/>
+           </Measure>
+
+           <Measure id="EOPHeadcount" label="End of the Period Headcount" measureType="CUSTOM" dataType="DECIMAL" precision="32" aggregationType="CUM" length="32" scale="2">
+               <labels>
+                  <label locale="en_US">End of the period headcount Us</label>
+                  <label locale="en_GB">End of the period headcount Uk</label>
+               </labels>
+               <ExceptionAggregation>
+                  <MeasureId>Headocunt</MeasureId>
+                  <DimensionId>Calendar</DimensionId>
+                  <ExcludeLeafLevelDelta>true</ExcludeLeafLevelDelta>
+                  <ExceptionAggregationBehavior>SUM</ExceptionAggregationBehavior>
+               </ExceptionAggregation>
+            </Measure>
+         </Measures>
+      </MetricPack>

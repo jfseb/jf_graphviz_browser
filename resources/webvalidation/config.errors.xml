@@ -1,0 +1,2279 @@
+<?xml version="1.0" encoding="utf-8"?><Errors>
+<Error rule="3.0.0">
+				exactly one SourceTableSemantic with keySource must be present
+
+				<br/>
+					found on
+					DG/EM/VW/EMPLOYMENT_INFO<br/>
+<br/>
+					found on
+					DG/EM/VW/JOBINFO<br/>
+<br/>
+					found on
+					DG/EM/VW/EMPLOYEE<br/>
+<br/>
+					found on
+					DG/EM/VW/EMPLOYEE<br/>
+</Error>
+<Error rule="2.2.1" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='PERSON_ID']">
+							START_DATE columns must be of DATE type
+					</Error>
+<Error rule="2.3.0" position=" /PhysicalTable[@id='DA/EM/EMPLOYMENT_INFO'] /Column[@id='PERSON_ID']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.1" position=" /PhysicalTable[@id='DA/EM/EMPLOYMENT_INFO'] /Column[@id='PERSON_ID']">
+						scale may not be specified for type
+						BIGINT</Error>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='DA/EM/JOBINFO'] /Column[@id='MOVE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='DA/EM/JOBINFO'] /Column[@id='HIRE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='PICKLIST'] /Column[@id='EXTERNAL_CODE']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='PICKLIST'] /Column[@id='PICKLISTID']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Error rule="2.3.0" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1]">
+						precision may not be specified for data Type
+						OPTION_ID</Error>
+<Error rule="2.3.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1]">
+						scale may not be specified for type
+						OPTION_ID</Error>
+<Error rule="2.3.0" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[1]">
+						precision may not be specified for data Type
+						OPTION_ID</Error>
+<Error rule="2.3.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[1]">
+						scale may not be specified for type
+						OPTION_ID</Error>
+<Error rule="2.3.0" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[2]">
+						precision may not be specified for data Type
+						OPTION_ID</Error>
+<Error rule="2.3.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[2]">
+						scale may not be specified for type
+						OPTION_ID</Error>
+<Error rule="2.3.0" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[3]">
+						precision may not be specified for data Type
+						OPTION_ID</Error>
+<Error rule="2.3.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[3]">
+						scale may not be specified for type
+						OPTION_ID</Error>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='DA/EM/USERS_SYSINFO'] /Column[@id='USERS_SYS_FIRSTNAME']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /PhysicalTable[@id='DA/EM/USERS_SYSINFO'] /Column[@id='USERS_SYS_LASTNAME']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='MOVE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='MOVE_REASON'] /ColumnRef[@columnRef='MOVE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='HIRE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='HIRE_REASON'] /ColumnRef[@columnRef='HIRE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Error rule="2.3.32"> DECFLOAT34 scale must be 0</Error>
+<Error rule="2.3.32"> DECFLOAT34 prec/scale must be 0/0 or 34/0</Error>
+<Error rule="2.3.32"> DECFLOAT34 scale must be 0</Error>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='FIRSTNAME']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='FIRSTNAME'] /ColumnRef[@columnRef='FIRSTNAME']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.4" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME']">
+					precision out of range 1...38 for for DECIMAL
+				</Warning>
+<Warning rule="2.3.4" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME'] /ColumnRef[@columnRef='LASTNAME']">
+					precision out of range 1...38 for for DECIMAL
+				</Warning>
+<Error rule="2.3.3"> Scale may not exceed precision for DECIMAL </Error>
+<Error rule="2.3.3"> Scale may not exceed precision for DECIMAL </Error>
+<Error rule="2.3.0" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='NR_CHILDREN']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.0" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='NR_CHILDREN'] /ColumnRef[@columnRef='NR_CHILDREN']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.0" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='WEIGHT_X']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.0" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='NR_CHILDREN']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Warning rule="2.3.2" position=" /Dimension[@id='REASON'] /EventRef[@eventRef='MOVE_IN'] /ColumnRef[@columnRef='MOVE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Warning rule="2.3.2" position=" /Dimension[@id='REASON'] /EventRef[@eventRef='HIRE'] /ColumnRef[@columnRef='HIRE_REASON']">
+					precision out of range 1...5000 for NVARCHAR
+				</Warning>
+<Error rule="2.3.0" position=" /BaseMeasure[@id='WEIGHT']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.0" position=" /BaseMeasure[@id='NR_CHILDREN']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="2.3.0" position=" /BaseMeasure[@id='LOCATION']">
+						precision may not be specified for data Type
+						BIGINT</Error>
+<Error rule="1.2.3" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME']">
+						DECIMAL type requires @scale 
+					</Error>
+<Error rule="1.2.3" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME'] /ColumnRef[@columnRef='LASTNAME']">
+						DECIMAL type requires @scale 
+					</Error>
+<Error rule="2.3.6" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[1]">@value  is "-123.23"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="1.0.1.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[2]">
+					value is quoted
+					'GOObjectDefinition'
+					but type is
+					OPTION_ID</Error>
+<Error rule="1.0.1.1" position=" /PhysicalTable[@id='PICKLIST'] /FilterOperation[1] /Filter[@columnRef='OPTION_ID'] /FilterValues[1] /FilterValue[3]">
+					value is quoted
+					'434'
+					but type is
+					OPTION_ID</Error>
+<Error rule="2.3.6" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /Value[1]">@value  is "123"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="2.3.6" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /Value[1]">@value  is "12A3"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="2.3.6" position=" /Event[@id='TER2'] /GeneratorSemantics[1]">@value  is "STOP"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="2.3.6" position=" /Event[@id='HIRE'] /GeneratorSemantics[1]">@value  is "START"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="2.3.6" position=" /Event[@id='HIRE'] /GeneratorSemantics[2]">@value  is "START"
+					 not quoted !? must be either "'MYVALue'" or "1234" or
+					"2001-02-01" or "$$COMPANY_LOCALE_ID$$"
+				</Error>
+<Error rule="1.0.1.1" position=" /PhysicalTable[@id='DA/EM/LOCATION_HIER'] /Column[@id='IDX_HIDDEN']">
+					value is quoted
+					'ABC'
+					but type is
+					BIGINT</Error>
+<Error rule="1.0.1.1" position=" /Dimension[@id='PAYGROUP'] /DimensionMasterData[1] /Column[@id='PAYGROUP']">
+					value is quoted
+					'BC'
+					but type is
+					BIGINT</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='/DG/EM/WEIGHT_GROUP'] /ColumnRef[@columnRef='WEIGHT_GROUP']">
+						Entity ref
+						CFG_DATA/WEIGHT_GROUPS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='/DG/EM/COUNTRY_LOCATION'] /ColumnRef[@columnRef='COUNTRY']">
+						Entity ref
+						DG/EM/VW/LOCCODE_TO_COUNTRY
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /BaseTableRef[@entityRef='CFG_DATA/WEIGHT_GROUPS']">
+						Entity ref
+						CFG_DATA/WEIGHT_GROUPS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /BaseTableRef[@entityRef='DG/EM/VW/LOCCODE_TO_COUNTRY']">
+						Entity ref
+						DG/EM/VW/LOCCODE_TO_COUNTRY
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='FROM_WEIGHT']">
+						Entity ref
+						CFG_DATA/WEIGHT_GROUPS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='TO_WEIGHT']">
+						Entity ref
+						CFG_DATA/WEIGHT_GROUPS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[5] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']">
+						Entity ref
+						DG/EM/VW/LOCCODE_TO_COUNTRY
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /BaseTableRef[@entityRef='MOGHULS']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /BaseTableRef[@entityRef='MOGHULS']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/USERS_SYS_ID'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Entity ref
+						EMP_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_FROM_DATE'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_TO_DATE'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /ColumnRef[@columnRef='SEQ_NR']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_LOCATION'] /ColumnRef[@columnRef='LOCATION']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='MGR_USER_ID']">
+						Entity ref
+						EMP_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Entity ref
+						EMP_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Entity ref
+						EMP_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Entity ref
+						MGR_JOBINFO
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE'] /Cast[1] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						Entity ref
+						DG/GL/VW/GOBJ_T_VALUES_AT_DATE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE']">
+						Entity ref
+						DG/GL/VW/GOBJ_T_VALUES_AT_DATE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE']">
+						Entity ref
+						DG/GL/VW/GOBJ_T_VALUES_AT_DATE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position="">
+						Entity ref
+						DG/S0/FACT
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='DIM_AGE'] /ColumnRef[@columnRef='AGE_IN_YEARS']">
+						Entity ref
+						DG/EM/GE/GEN_AGE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='DIM_DAYS'] /ColumnRef[@columnRef='TENURE_DAYS']">
+						Entity ref
+						DG/EM/GE/GEN_TENURE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='DIM_TENURE_YEARS'] /ColumnRef[@columnRef='TENURE_YEARS']">
+						Entity ref
+						DG/EM/GE/GEN_TENURE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PAYGROUP'] /DimensionMasterData[1] /Column[@id='PAYGROUP'] /ColumnRef[@columnRef='GENDER_KEY']">
+						Entity ref
+						DG/BR/GENDER
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER'] /ColumnRef[@columnRef='GENDER_KEY']">
+						Entity ref
+						DG/BR/GENDER
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER_NAME'] /ColumnRef[@columnRef='GENDER_VALUE']">
+						Entity ref
+						DG/BR/GENDER
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER_TEXT'] /ColumnRef[@columnRef='GENDER_TEXT']">
+						Entity ref
+						DG/BR/GENDER
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='TOWN_TEXT']">
+						Entity ref
+						DG/BR/LOCATION_TEXT
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION'] /Function[1] /ColumnRef[@columnRef='TOWN']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION'] /ColumnRef[@columnRef='COUNTRY']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='CNTRY_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id=''] /Cast[1] /ColumnRef[@columnRef='GLOBAL_REGION']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='GLB_REG_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA'] /ColumnRef[@columnRef='COUNTRY']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE_TEXT'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE'] /ColumnRef[@columnRef='STATE']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='LUCATION'] /ColumnRef[@columnRef='TOWN']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE'] /ColumnRef[@columnRef='COUNTRY']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_TEXT'] /Function[1] /ColumnRef[@columnRef='CNTRY_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LACATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE'] /ColumnRef[@columnRef='STATE']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='LACATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='LUCATION'] /ColumnRef[@columnRef='TOWN']">
+						Entity ref
+						DG/BR/LOCATION
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='CHILD_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_OTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_BADOTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM'] /ColumnRef[@columnRef='CHILD_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_PARENT'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						Entity ref
+						MOGHULS
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /BaseMeasure[@id='AGE'] /ColumnRef[@columnRef='AGE_IN_YEARS']">
+						Entity ref
+						DG/EM/GE/GEN_AGE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /BaseMeasure[@id='TENURE_DAYS'] /ColumnRef[@columnRef='TENURE_DAYS']">
+						Entity ref
+						DG/EM/GE/GEN_TENURE
+						is not present in document
+					</Error>
+<Error rule="4.2.0" position=" /BaseMeasure[@id='TENURE_YEARS'] /ColumnRef[@columnRef='TENURE_YEARS']">
+						Entity ref
+						DG/EM/GE/GEN_TENURE
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /PhysicalTable[@id='DA/EM/EMPLOYMENT_INFO'] /FilterOperation[1] /Filter[@columnRef='OBJECT_TYPE']">
+						column Reference
+						OBJECT_TYPE
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						column Reference
+						CHILD_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						column Reference
+						CHILD_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						column Reference
+						OBJECT_TYPE
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='SF_FIELD3']">
+						column Reference
+						SF_FIELD3
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /Cast[1] /ColumnRef[@columnRef='INTERNAL_ID']">
+						column Reference
+						INTERNAL_ID
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						column Reference
+						OBJECT_TYPE
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position="">
+						column Reference
+						HEAD_COUNTX
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='CNTRY_LABEL']">
+						column Reference
+						CNTRY_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id=''] /Cast[1] /ColumnRef[@columnRef='GLOBAL_REGION']">
+						column Reference
+						GLOBAL_REGION
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='GLB_REG_LABEL']">
+						column Reference
+						GLB_REG_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE_TEXT'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_TEXT'] /Function[1] /ColumnRef[@columnRef='CNTRY_LABEL']">
+						column Reference
+						CNTRY_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						column Reference
+						STATE_LABEL
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='CHILD_KEY']">
+						column Reference
+						CHILD_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_OTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_BADOTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM'] /ColumnRef[@columnRef='CHILD_KEY']">
+						column Reference
+						CHILD_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_PARENT'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="1.2.1" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						column Reference
+						PARENT_KEY
+						is not present in document
+					</Error>
+<Error rule="4.7.1" position=" /EventStrategy[@id='DIM_VALUE_COPY_CURR'] /EventRef[@eventRef='ROLL_UP']">
+						Referenced attribute @eventRef="
+						ROLL_UP
+						is not found as name on Event
+					</Error>
+<Error rule="4.7.1" position=" /EventStrategy[@id='DIM_VALUE_COPY_LATEST'] /EventRef[@eventRef='ROLL_UP']">
+						Referenced attribute @eventRef="
+						ROLL_UP
+						is not found as name on Event
+					</Error>
+<Error rule="4.7.1" position=" /BaseMeasure[@id='MEAS_HEADCOUNT'] /EventRef[@eventRef='ROLL_UP']">
+						Referenced attribute @eventRef="
+						ROLL_UP
+						is not found as name on Event
+					</Error>
+<Error rule="4.7.1" position=" /BaseMeasure[@id='MEAS_MOVE_IN'] /EventRef[@eventRef='ROLL_UP']">
+						Referenced attribute @eventRef="
+						ROLL_UP
+						is not found as name on Event
+					</Error>
+<Error rule="4.7.1" position=" /BaseMeasure[@id='MEAS_MOVE_OUT'] /EventRef[@eventRef='ROLL_UP']">
+						Referenced attribute @eventRef="
+						ROLL_UP
+						is not found as name on Event
+					</Error>
+<Error rule="3.1.3" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO']">
+                    factTableSourceIndex index must be unique, @
+                    1
+                    also present on
+                    DG/EM/VW/JOBINFO</Error>
+<Error rule="3.1.3" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYEE']">
+                    factTableSourceIndex index must be unique, @
+                    3
+                    also present on
+                    DG/EM/VW/EMPLOYEE</Error>
+<Error rule="4.6.0" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='COUNTRY']">
+						Referenced attribute @
+						dimensionRef="
+						COUNTRY
+						found more than once on
+						Dimension</Error>
+<Error rule="4.6.0" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='GENDER_X']">
+						Referenced attribute @
+						dimensionRef="
+						GENDER
+						found more than once on
+						Dimension</Error>
+<Error rule="4.12.1" position=" /BaseMeasure[@id='NR_CHILDREN']">
+						Referenced attribute @
+						eventStrategyRef="
+						MEAS_XADDITIVE"
+						is not found as name on
+						EventStrategy</Error>
+<Error rule="3.11.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1]">
+					Dimension Key must be the first Column in each Level of levelled
+					hierarchy
+					LOCATION</Error>
+<Error rule="3.11.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2]">
+					Dimension Key must be the first Column in each Level of levelled
+					hierarchy
+					LOCATION</Error>
+<Error rule="3.11.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4]">
+					Dimension Key must be the first Column in each Level of levelled
+					hierarchy
+					LOCATION</Error>
+<Error rule="3.11.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5]">
+					Dimension Key must be the first Column in each Level of levelled
+					hierarchy
+					LOCATION</Error>
+<Error rule="3.11.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1]">
+					Dimension Key must be the first Column in each Level of levelled
+					hierarchy
+					LUCATION</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYMENT_INFO']">
+				bad name for logical entity
+				DG/EM/VW/EMPLOYMENT_INFO
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO']">
+				bad name for logical entity
+				DG/EM/VW/JOBINFO
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.1" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='EVENT_REASON_ICODE']">
+				Column definition must have a child, e.g. ColumnRef,
+				Value, etc.
+				 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='EVENT_REASON_ICODE']</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='SEQ_NR']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						BIGINT
+						!=
+						DECIMAL(34,13)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='SEQ_NR'] /CustomLabels[3])
+					</Error>
+<Error rule="2.16.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='SEQ_NR'] /CustomLabels[1] /Label[1]">
+						CustomLabel may only be part of a Dimension or measure declaration
+					</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFB1']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						DECFLOAT34
+						!=
+						DECIMAL(15,3)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFB1'] /ColumnRef[@columnRef='FTEX'])
+					</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFB2']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						DECFLOAT34
+						!=
+						DECIMAL(15,3)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFB2'] /ColumnRef[@columnRef='FTEX'])
+					</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						DECFLOAT34
+						!=
+						DECIMAL(15,3)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK'] /ColumnRef[@columnRef='FTEX'])
+					</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK2']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						DECFLOAT34
+						!=
+						DECIMAL(15,3)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK2'] /ColumnRef[@columnRef='FTEX'])
+					</Error>
+<Error rule="3.2.2" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK3']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						DECFLOAT34
+						!=
+						DECIMAL(15,3)(source type at
+							 /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='DFOK3'] /ColumnRef[@columnRef='FTEX'])
+					</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='/DG/EM/WEIGHT_GROUP'] /ColumnRef[@columnRef='WEIGHT_GROUP']">
+						unsatisfied reference to
+	 					CFG_DATA/WEIGHT_GROUPS
+						.
+						WEIGHT_GROUP
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /Column[@id='/DG/EM/COUNTRY_LOCATION'] /ColumnRef[@columnRef='COUNTRY']">
+						unsatisfied reference to
+	 					DG/EM/VW/LOCCODE_TO_COUNTRY
+						.
+						COUNTRY
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT_REASON_ICODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT_REASON_ICODE']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT_REASON_ICODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EVENT_REASON_ICODE']</Error>
+<Error rule="3.2.5" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							TINYINT
+							!=
+							NVARCHAR(11) (source type at
+							 /PhysicalTable[@id='DA/EM/JOBINFO'] /Column[@id='USERS_SYS_ID'])
+						</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[3] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[3] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION_ID']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION_ID']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[3] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION_CATEGORY']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCATION_CATEGORY']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='WEIGHT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='WEIGHT']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='FROM_WEIGHT']">
+						unsatisfied reference to
+	 					CFG_DATA/WEIGHT_GROUPS
+						.
+						FROM_WEIGHT
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='FROM_WEIGHT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='GE'] /ColumnRef[@columnRef='FROM_WEIGHT']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='WEIGHT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='WEIGHT']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='TO_WEIGHT']">
+						unsatisfied reference to
+	 					CFG_DATA/WEIGHT_GROUPS
+						.
+						TO_WEIGHT
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[4] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='TO_WEIGHT']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='LT'] /ColumnRef[@columnRef='TO_WEIGHT']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[5] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[5] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']">
+						unsatisfied reference to
+	 					DG/EM/VW/LOCCODE_TO_COUNTRY
+						.
+						LOCCODE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[5] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/EM/VW/JOBINFO'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='LOCCODE']</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYEE']">
+				bad name for logical entity
+				DG/EM/VW/EMPLOYEE
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="2.16.2" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYEE'] /Column[@id='PERSON_ID'] /CustomLabels[1] /Label[1]">
+						CustomLabel may only be part of a Dimension or measure declaration
+					</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/BR/VW/LOCATION']">
+				bad name for logical entity
+				DG/BR/VW/LOCATION
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/LOCATION'] /Column[@id='TOWN']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/LOCATION'] /Column[@id='CITY']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/BR/VW/LOCATION_TEXT']">
+				bad name for logical entity
+				DG/BR/VW/LOCATION_TEXT
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/LOCATION_TEXT'] /Column[@id='TOWN']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/LOCATION_TEXT'] /Column[@id='LANGU']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/LOCATION_TEXT'] /Column[@id='TOWN_TEXT']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION']">
+				bad name for logical entity
+				DG/DI/VW/TEST_OK_UNION
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C1']">
+						Type for Column unknown 
+				</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						CHILD_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C2']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.16.2" position=" /LogicalTable[@id='DG/DI/VW/TEST_OK_UNION'] /Column[@id='C2'] /CustomLabels[1] /Label[1]">
+						CustomLabel may only be part of a Dimension or measure declaration
+					</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/BR/VW/GENDER2']">
+				bad name for logical entity
+				DG/BR/VW/GENDER2
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/GENDER2'] /Column[@id='GENDER_KEY']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/GENDER2'] /Column[@id='GENDER_VALUE']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT']">
+				bad name for logical entity
+				DG/BR/VW/GENDER2_TEXT
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT'] /Column[@id='NO_GENDER_KEY']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT'] /Column[@id='LANGUAGE']">
+						Type for Column unknown 
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT'] /Column[@id='GENDER_TEXT']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION']">
+				bad name for logical entity
+				DG/DI/VW/TEST_BAD_UNION
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="2.13.2" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C2']">
+						Columns in Union must have same number of children:
+					C1(3) != 
+					C2(2)
+				</Error>
+<Error rule="2.13.3" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1']">
+						Columns number in union (e.g. in column 
+					C1(3) 
+					shall correspond to number of BaseTableRefs (2)
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1']">
+						Type for Column unknown 
+				</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1'] /ColumnRef[@columnRef='CHILD_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						CHILD_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.13.1" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C1']">
+						Columns in Union must have same number of children:
+					C2(2) != 
+					C1(3)
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C2']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.16.2" position=" /LogicalTable[@id='DG/DI/VW/TEST_BAD_UNION'] /Column[@id='C2'] /CustomLabels[1] /Label[1]">
+						CustomLabel may only be part of a Dimension or measure declaration
+					</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYEE']">
+				bad name for logical entity
+				DG/EM/VW/EMPLOYEE
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="4.1.11" position=" /LogicalTable[@id='DG/EM/VW/EMPLOYEE']">
+				Duplicate LogicalTableName "
+				DG/EM/VW/EMPLOYEE"
+			</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO']">
+				bad name for logical entity
+				DG/EM/VW/PERSONINFO
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.5" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME'] /ColumnRef[@columnRef='LASTNAME']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							DECIMAL(100,)
+							!=
+							NVARCHAR(100) (source type at
+							 /PhysicalTable[@id='DA/EM/PERSONINFO'] /Column[@id='LASTNAME'])
+						</Error>
+<Error rule="2.0.0" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME']">
+				Name
+				LASTNAME
+				is not unique in
+				LogicalTable
+				[@id='
+				DG/EM/VW/PERSONINFO
+				']
+				/
+				Column[@id='
+				LASTNAME
+				']
+			</Error>
+<Error rule="3.2.5" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='LASTNAME'] /ColumnRef[@columnRef='LASTNAME']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							DECIMAL(17,18)
+							!=
+							NVARCHAR(100) (source type at
+							 /PhysicalTable[@id='DA/EM/PERSONINFO'] /Column[@id='LASTNAME'])
+						</Error>
+<Error rule="2.0.0" position=" /LogicalTable[@id='DG/EM/VW/PERSONINFO'] /Column[@id='NR_CHILDREN']">
+				Name
+				NR_CHILDREN
+				is not unique in
+				LogicalTable
+				[@id='
+				DG/EM/VW/PERSONINFO
+				']
+				/
+				Column[@id='
+				NR_CHILDREN
+				']
+			</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION']">
+				bad name for logical entity
+				EM/DQ/QU/MGR_LOCATION
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/USERS_SYS_ID'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Link outside of BaseTableRefs: reference to
+						EMP_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/USERS_SYS_ID'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						unsatisfied reference to
+	 					EMP_JOBINFO
+						.
+						USERS_SYS_ID
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_FROM_DATE'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_FROM_DATE'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						EFFECTIVE_START_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_TO_DATE'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_TO_DATE'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						EFFECTIVE_END_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR']">
+						Type for Column unknown 
+				</Error>
+<Error rule="2.3.5" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /Value[1]">
+				Value should be typed 
+			</Error>
+<Error rule="2.0.0" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR']">
+				Name
+				/DG/EM/MGR_SEQ_NR
+				is not unique in
+				LogicalTable
+				[@id='
+				EM/DQ/QU/MGR_LOCATION
+				']
+				/
+				Column[@id='
+				/DG/EM/MGR_SEQ_NR
+				']
+			</Error>
+<Error rule="2.13.1" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/USERS_SYS_ID']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/USERS_SYS_ID(1)
+				</Error>
+<Error rule="2.13.1" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_FROM_DATE']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/MGR_FROM_DATE(1)
+				</Error>
+<Error rule="2.13.1" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_TO_DATE']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/MGR_TO_DATE(1)
+				</Error>
+<Error rule="2.13.1" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/MGR_SEQ_NR(1)
+				</Error>
+<Error rule="2.13.2" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_LOCATION']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/MGR_LOCATION(1)
+				</Error>
+<Error rule="2.13.2" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/PERSON_ID']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/PERSON_ID(1)
+				</Error>
+<Error rule="2.13.2" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/NORM_EVENT']">
+						Columns in Union must have same number of children:
+					/DG/EM/MGR_SEQ_NR(2) != 
+					/DG/EM/NORM_EVENT(1)
+				</Error>
+<Error rule="2.13.3" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR']">
+						Columns number in union (e.g. in column 
+					/DG/EM/MGR_SEQ_NR(2) 
+					shall correspond to number of BaseTableRefs (3)
+				</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR']">
+						Type for Column unknown 
+				</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /ColumnRef[@columnRef='SEQ_NR']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /ColumnRef[@columnRef='SEQ_NR']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						SEQ_NR
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /ColumnRef[@columnRef='SEQ_NR']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_SEQ_NR'] /ColumnRef[@columnRef='SEQ_NR']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_LOCATION'] /ColumnRef[@columnRef='LOCATION']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /Column[@id='/DG/EM/MGR_LOCATION'] /ColumnRef[@columnRef='LOCATION']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						LOCATION
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='MGR_USER_ID']">
+						Link outside of BaseTableRefs: reference to
+						EMP_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='MGR_USER_ID']">
+						unsatisfied reference to
+	 					EMP_JOBINFO
+						.
+						MGR_USER_ID
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='MGR_USER_ID']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='MGR_USER_ID']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						USERS_SYS_ID
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='USERS_SYS_ID']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Link outside of BaseTableRefs: reference to
+						EMP_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						unsatisfied reference to
+	 					EMP_JOBINFO
+						.
+						EFFECTIVE_START_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						EFFECTIVE_START_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeSTART'] /ColumnRef[@columnRef='EFFECTIVE_START_DATE']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Link outside of BaseTableRefs: reference to
+						EMP_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						unsatisfied reference to
+	 					EMP_JOBINFO
+						.
+						EFFECTIVE_END_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']</Error>
+<Error rule="4.2.8" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Link outside of BaseTableRefs: reference to
+						MGR_JOBINFO</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						unsatisfied reference to
+	 					MGR_JOBINFO
+						.
+						EFFECTIVE_END_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='timeinLHSRangeEND'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='LT'] /ColumnRef[@columnRef='USERS_SYS_ID']">
+						Type for Column unknown  /LogicalTable[@id='EM/DQ/QU/MGR_LOCATION'] /JoinCriteria[2] /LogicalOperation[@op='NOOP'] /Condition[@op='LT'] /ColumnRef[@columnRef='USERS_SYS_ID']</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='']">
+				bad name for logical entity
+				
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='']">
+				bad name for logical entity
+				
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="4.1.11" position=" /LogicalTable[@id='']">
+				Duplicate LogicalTableName "
+				"
+			</Error>
+<Error rule="2.1.1" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST']">
+				bad name for logical entity
+				DG/WU/VW/COMPANY_LATEST
+				must be DG/GL/VW/... or DG/E/...
+			</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE']">
+						Type for Column unknown 
+				</Error>
+<Error rule="4.2.11" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE'] /Cast[1] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						reference to 'DG/GL/VW/GOBJ_T_VALUES_AT_DATE' via alias
+					    e.g. 'GOBJ1' 
+					</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE'] /Cast[1] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						unsatisfied reference to
+	 					DG/GL/VW/GOBJ_T_VALUES_AT_DATE
+						.
+						EXTERNAL_CODE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE'] /Cast[1] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='EXTERNAL_CODE'] /Cast[3] /ColumnRef[@columnRef='EXTERNAL_CODE']</Error>
+<Error rule="3.2.3" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='COMPANY_PARENT_ID']">
+						Type for Column unknown 
+				</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='COMPANY_PARENT_ID'] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						unsatisfied reference to
+	 					GOBJ2
+						.
+						EXTERNAL_CODE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='COMPANY_PARENT_ID'] /ColumnRef[@columnRef='EXTERNAL_CODE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /Column[@id='COMPANY_PARENT_ID'] /ColumnRef[@columnRef='EXTERNAL_CODE']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						unsatisfied reference to
+	 					
+						.
+						OBJECT_TYPE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']</Error>
+<Error rule="2.3.5" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /Value[1]">
+				Value should be typed 
+			</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						unsatisfied reference to
+	 					
+						.
+						EFFECTIVE_END_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /BaseTableRef[@entityRef='DG/GL/VW/GOBJ_T_VALUES_AT_DATE'] /LogicalOperation[@op='NOOP'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='SF_FIELD3']">
+						unsatisfied reference to
+	 					GOBJ1
+						.
+						SF_FIELD3
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='SF_FIELD3']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='SF_FIELD3']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /Cast[1] /ColumnRef[@columnRef='INTERNAL_ID']">
+						unsatisfied reference to
+	 					GOBJ2
+						.
+						INTERNAL_ID
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /Cast[1] /ColumnRef[@columnRef='INTERNAL_ID']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /Cast[5] /ColumnRef[@columnRef='INTERNAL_ID']</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						unsatisfied reference to
+	 					GOBJ2
+						.
+						OBJECT_TYPE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='OBJECT_TYPE']</Error>
+<Error rule="2.3.5" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /Value[1]">
+				Value should be typed 
+			</Error>
+<Error rule="4.2.9" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						unsatisfied reference to
+	 					GOBJ2
+						.
+						EFFECTIVE_END_DATE
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position=" /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[1] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']">
+						Type for Column unknown  /LogicalTable[@id='DG/WU/VW/COMPANY_LATEST'] /JoinCriteria[2] /LogicalOperation[@op='AND'] /Condition[@op='EQ'] /ColumnRef[@columnRef='EFFECTIVE_END_DATE']</Error>
+<Error rule="2.1.1" position=" /FactTable[@id='DG/EM/FACT']">
+				bad name for fact table
+				DG/EM/FACT
+				must be DG/
+				E
+				/...
+			</Error>
+<Error rule="2.0.0" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='PERSON_ID']">
+				Name
+				PERSON_ID
+				is not unique in
+				FactTable
+				[@id='
+				DG/EM/FACT
+				']
+				/
+				Column[@id='
+				PERSON_ID
+				']
+			</Error>
+<Error rule="2.2.2" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='WEIGHT_X']">
+				Name
+				(WEIGHT_X)
+				and measureRef (WEIGHT) must be identical
+				 /FactTable[@id='DG/EM/FACT'] /Column[@id='WEIGHT_X']</Error>
+<Error rule="3.15.1" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='WEIGHT_X']">
+						different types between fact table column and base measure
+						BIGINT
+						!=
+						(source type at
+							)
+					</Error>
+<Error rule="3.15.1" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='MEAS_MOVE_IN']">
+						different types between fact table column and base measure
+						SMALLINT
+						!=
+						BIGINT(source type at
+							 /BaseMeasure[@id='MEAS_MOVE_IN'])
+					</Error>
+<Error rule="2.2.1" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='GENDER_X']">
+				Name
+				GENDER_X
+				and dimensionRef (GENDER) must be identical
+			</Error>
+<Error rule="3.11.4" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='GENDER_X']">
+						different types between fact table column and dimension
+						NVARCHAR(2)
+						!=
+						(source type at
+							)
+					</Error>
+<Error rule="3.11.4" position=" /FactTable[@id='DG/EM/FACT'] /Column[@id='LOCCODE']">
+						different types between fact table column and dimension
+						NVARCHAR(14)
+						!=
+						NVARCHAR(3)(source type at
+							 /Dimension[@id='LOCCODE'])
+					</Error>
+<Error rule="3.1.17" position=" /FactTable[@id='DG/EM/FACT']">
+					Need exactly one Column marked as @semanticType='KEY' in FactTable
+				</Error>
+<Error rule="3.1.18" position=" /FactTable[@id='DG/EM/FACT']">
+					Need exactly one Column marked as @semanticType='START_DATE' with @dataType DATE in fact table
+				</Error>
+<Error rule="3.1.19" position=" /FactTable[@id='DG/EM/FACT']">
+					Need exactly one Column marked as @semanticType='NORM_EVENT' in fact table
+				</Error>
+<Error rule="4.2.7" position="">
+					ColumnRef in ResultFilters must refer to FactTable
+					Column
+					HEAD_COUNTX
+					not found.
+				</Error>
+<Error rule="4.2.9" position="">
+						unsatisfied reference to
+	 					DG/EM/FACT
+						.
+						HEAD_COUNTX
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position="">
+						Type for Column unknown  /ResultSameButFor[1] /ColumnRef[@columnRef='HEAD_COUNTX']</Error>
+<Error rule="4.2.6" position="">
+					ColumnRef in ResultFilters must refer to FactTable
+					Column
+					Bad EntityRef
+					DG/S0/FACT</Error>
+<Error rule="4.2.9" position="">
+						unsatisfied reference to
+	 					DG/S0/FACT
+						.
+						NORM_EVENT
+						.
+						Typo?
+					</Error>
+<Error rule="3.2.4" position="">
+						Type for Column unknown  /ResultSameButFor[1] /ColumnRef[@columnRef='NORM_EVENT']</Error>
+<Error rule="3.2.4" position="">
+						Type for Column unknown  /ResultSameButFor[1] /ColumnRef[@columnRef='START_DATE']</Error>
+<Error rule="2.7.7" position=" /EventStrategy[@id='DIM_VALUE_COPY_CURR'] /EventRef[@eventRef='MOVE_IN']">
+					@calculation ACCUMULATE may only be used on @eventRef=ROLL_UP or @eventRef=AGGR
+			</Error>
+<Error rule="2.7.7" position=" /EventStrategy[@id='DIM_VALUE_COPY_LATEST'] /EventRef[@eventRef='TER2']">
+					@calculation ACCUMULATE_TEST_NON_ZERO may only be used on @eventRef=ROLL_UP or @eventRef=AGGR
+			</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='A_PERSON_ID']">
+						Dimension A_PERSON_ID must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='B_PERSON_ID']">
+						Dimension B_PERSON_ID must refer to fact table column of same name
+					</Error>
+<Error rule="2.11.11" position=" /Dimension[@id='C_PERSON_ID']">
+				Direct ColumnRef requires @eventStrategyRef or EventRef
+			</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='C_PERSON_ID']">
+						Dimension C_PERSON_ID must refer to fact table column of same name
+					</Error>
+<Error rule="2.7.4" position=" /Dimension[@id='DIM_DOB'] /EventRef[@eventRef='*']">
+					   @calculation=CURR needs child
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='DIM_AGE'] /ColumnRef[@columnRef='AGE_IN_YEARS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_AGE
+						.
+						AGE_IN_YEARS
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='DIM_DAYS'] /ColumnRef[@columnRef='TENURE_DAYS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_TENURE
+						.
+						TENURE_DAYS
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='DIM_TENURE_YEARS'] /ColumnRef[@columnRef='TENURE_YEARS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_TENURE
+						.
+						TENURE_YEARS
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='GENDER']">
+						Dimension GENDER must refer to fact table column of same name
+					</Error>
+<Error rule="3.2.2" position=" /Dimension[@id='PAYGROUP'] /DimensionMasterData[1] /Column[@id='PAYGROUP']">
+						Inconvertible types in reference, requires CAST etc.
+						(To:)
+						BIGINT
+						!=
+						NVARCHAR(20)(source type at
+							 /Dimension[@id='PAYGROUP'] /DimensionMasterData[2] /Column[@id='PAYGROUP'] /ColumnRef[@columnRef='GENDER_KEY'])
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PAYGROUP'] /DimensionMasterData[1] /Column[@id='PAYGROUP'] /ColumnRef[@columnRef='GENDER_KEY']">
+						unsatisfied reference to
+	 					DG/BR/GENDER
+						.
+						GENDER_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.10" position=" /Dimension[@id='COUNTRY']">
+				Name
+				COUNTRY
+				is not unique in
+				 /Dimension[@id='COUNTRY']</Error>
+<Error rule="2.11.11" position=" /Dimension[@id='COUNTRY']">
+				Direct ColumnRef requires @eventStrategyRef or EventRef
+			</Error>
+<Error rule="2.11.10" position=" /Dimension[@id='GENDER']">
+				Name
+				GENDER
+				is not unique in
+				 /Dimension[@id='GENDER']</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='GENDER']">
+						Dimension GENDER must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='GENDER']">
+						Dimension GENDER must refer to source column via a ColumnRef
+					</Error>
+<Error rule="3.11.5" position=" /Dimension[@id='GENDER']">
+						different types between dimension and column and dimension
+						NVARCHAR(4)
+						!=
+						NVARCHAR(20)(source type at
+							 /Dimension[@id='GENDER'] /DimensionMasterData[2] /Column[@id='GENDER'])
+					</Error>
+<Error rule="2.11.3" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1]">
+						Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+					</Error>
+<Error rule="2.11.2" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1]">
+				TEXT column required LANGUAGE column
+				 /Dimension[@id='GENDER'] /DimensionMasterData[2]</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER'] /ColumnRef[@columnRef='GENDER_KEY']">
+						unsatisfied reference to
+	 					DG/BR/GENDER
+						.
+						GENDER_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER_NAME'] /ColumnRef[@columnRef='GENDER_VALUE']">
+						unsatisfied reference to
+	 					DG/BR/GENDER
+						.
+						GENDER_VALUE
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER_TEXT']">
+					The column "GENDER_KEY"
+					must be present in LogicalTable[@id="DG/BR/GENDER] which is used to build the language dependent
+					table for dimension "GENDER""
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='GENDER'] /DimensionMasterData[1] /Column[@id='GENDER_TEXT'] /ColumnRef[@columnRef='GENDER_TEXT']">
+						unsatisfied reference to
+	 					DG/BR/GENDER
+						.
+						GENDER_TEXT
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='GENDER2']">
+						Dimension GENDER2 must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='GENDER2']">
+						Dimension GENDER2 must refer to source column via a ColumnRef
+					</Error>
+<Error rule="3.11.5" position=" /Dimension[@id='GENDER2']">
+						different types between dimension and column and dimension
+						NVARCHAR(4)
+						!=
+						NVARCHAR(20)(source type at
+							 /Dimension[@id='GENDER2'] /DimensionMasterData[2] /Column[@id='GENDER2'])
+					</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='GENDER2'] /DimensionMasterData[1] /Column[@id='GENDER2'] /ColumnRef[@columnRef='GENDER_KEY']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(10)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/GENDER2'] /Column[@id='GENDER_KEY'])
+						</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='GENDER2'] /DimensionMasterData[1] /Column[@id='GENDER2_NAME'] /ColumnRef[@columnRef='GENDER_VALUE']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(20)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/GENDER2'] /Column[@id='GENDER_VALUE'])
+						</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='GENDER2'] /DimensionMasterData[1] /Column[@id='GENDER2_LANGUAGE'] /ColumnRef[@columnRef='LANGUAGE']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(1)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT'] /Column[@id='LANGUAGE'])
+						</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='GENDER2'] /DimensionMasterData[1] /Column[@id='GENDER2_TEXT']">
+					The column "GENDER_KEY"
+					must be present in LogicalTable[@id="DG/BR/VW/GENDER2_TEXT] which is used to build the language dependent
+					table for dimension "GENDER2""
+				</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='GENDER2'] /DimensionMasterData[1] /Column[@id='GENDER2_TEXT'] /ColumnRef[@columnRef='GENDER_TEXT']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(20)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/GENDER2_TEXT'] /Column[@id='GENDER_TEXT'])
+						</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='LOCATION']">
+						Dimension LOCATION must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='LOCATION']">
+						Dimension LOCATION must refer to source column via a ColumnRef
+					</Error>
+<Error rule="3.11.5" position=" /Dimension[@id='LOCATION']">
+						different types between dimension and column and dimension
+						NVARCHAR(20)
+						!=
+						NVARCHAR(21)(source type at
+							 /Dimension[@id='LOCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='LOCATION'])
+					</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="4.11.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1]">
+					Leveled hierarchy in dimension LOCATION needs exactly one level 
+					with Column[@id='LOCATION' and @semanticType='DIMENSION_KEY']
+				</Error>
+<Error rule="2.11.3" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION']">
+						In a leveled hierarchy dimension connect (Column[@id='LOCATION' and @semanticType='DIMENSION_KEY'])
+						 must be the last listed level (lowest aka leaf level)
+					</Error>
+<Error rule="2.11.3" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION']">
+						In a leveled hierarchy dimension connect (Column[@id='LOCATION' and @semanticType='DIMENSION_KEY'])
+						 must be the last listed level (lowest aka leaf level)
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION_TEXT']">
+					The column ""
+					must be present in LogicalTable[@id="DG/BR/LOCATION_TEXT] which is used to build the language dependent
+					table for dimension "LOCATION""
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='TOWN_TEXT']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION_TEXT
+						.
+						TOWN_TEXT
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="2.16.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION'] /Function[1]">
+							Only ColumnRef, Value and CustomLabels can be child of a column in
+							DimensionMasterData, there must be either value of ColumnRef present!
+							 /Dimension[@id='LOCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='LOCATION'] /Function[6]</Error>
+<Error rule="2.16.3" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='LOCATION']">
+							There must be either ColumnRef or Value present as child of DimensionMasterData Column
+						 /Dimension[@id='LOCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='LOCATION']</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STATE_TEXT']">
+					The column ""
+					must be present in LogicalTable[@id="DG/BR/VW/LOCATION_TEXT] which is used to build the language dependent
+					table for dimension "LOCATION""
+				</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STATE_TEXT'] /ColumnRef[@columnRef='TOWN_TEXT']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(40)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/LOCATION_TEXT'] /Column[@id='TOWN_TEXT'])
+						</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STATE']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="3.2.5" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STATE'] /ColumnRef[@columnRef='TOWN']">
+							Inconvertible types in reference, requires CAST etc.
+							(To:)
+							NVARCHAR(10)
+							!=
+							 (source type at
+							 /LogicalTable[@id='DG/BR/VW/LOCATION'] /Column[@id='TOWN'])
+						</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STAT_NAME']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'STATE_NAME', not  'STAT_NAME_NAME'
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION'] /ColumnRef[@columnRef='COUNTRY']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						COUNTRY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION_TEXT']">
+					The column "COUNTRY"
+					must be present in LogicalTable[@id="DG/BR/LOCATION] which is used to build the language dependent
+					table for dimension "LOCATION""
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='CNTRY_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						CNTRY_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'LOCATION_NAME', not  'STATE_NAME_NAME'
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="2.16.1" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id=''] /Cast[1]">
+							Only ColumnRef, Value and CustomLabels can be child of a column in
+							DimensionMasterData, there must be either value of ColumnRef present!
+							 /Dimension[@id='LOCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id=''] /Cast[6]</Error>
+<Error rule="2.16.3" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id='']">
+							There must be either ColumnRef or Value present as child of DimensionMasterData Column
+						 /Dimension[@id='LOCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='']</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id=''] /Cast[1] /ColumnRef[@columnRef='GLOBAL_REGION']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						GLOBAL_REGION
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id='LOCATION_TEXT']">
+					The column ""
+					must be present in LogicalTable[@id="DG/BR/LOCATION] which is used to build the language dependent
+					table for dimension "LOCATION""
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[4] /Column[@id='LOCATION_TEXT'] /ColumnRef[@columnRef='GLB_REG_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						GLB_REG_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.6" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME']">
+					Columnn DIMENSION_NAME must be after @semanticType="DIMENSION_KEY"
+					SUPA_NAME
+					and dimension must be identical
+					LOCATION</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'_NAME', not  'SUPA_NAME_NAME'
+				</Error>
+<Error rule="2.11.6" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME']">
+					Columnn DIMENSION_NAME must be after @semanticType="DIMENSION_KEY"
+					SUPA_NAME
+					and dimension must be identical
+					LOCATION</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LOCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[5] /Column[@id='SUPA'] /ColumnRef[@columnRef='COUNTRY']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						COUNTRY
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='LUCATION']">
+						Dimension LUCATION must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='LUCATION']">
+						Dimension LUCATION must refer to source column via a ColumnRef
+					</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="2.11.12" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3]">
+							Need exactly one LANGUAGE column as child of DimensionMasterData when using TEXT columns
+						</Error>
+<Error rule="2.11.3" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='LUCATION']">
+						In a leveled hierarchy dimension connect (Column[@id='LUCATION' and @semanticType='DIMENSION_KEY'])
+						 must be the last listed level (lowest aka leaf level)
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE_TEXT']">
+					The column ""
+					must be present in LogicalTable[@id="DG/BR/LOCATION] which is used to build the language dependent
+					table for dimension "LUCATION""
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE_TEXT'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE'] /ColumnRef[@columnRef='STATE']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STAT_NAME']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'STATE_NAME', not  'STAT_NAME_NAME'
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STAT_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='LUCATION'] /ColumnRef[@columnRef='TOWN']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						TOWN
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE'] /ColumnRef[@columnRef='COUNTRY']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						COUNTRY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.17" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_TEXT']">
+					The column "COUNTRY"
+					must be present in LogicalTable[@id="] which is used to build the language dependent
+					table for dimension "LUCATION""
+				</Error>
+<Error rule="2.16.1" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_TEXT'] /Function[1]">
+							Only ColumnRef, Value and CustomLabels can be child of a column in
+							DimensionMasterData, there must be either value of ColumnRef present!
+							 /Dimension[@id='LUCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='STATE_TEXT'] /Function[6]</Error>
+<Error rule="2.16.3" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_TEXT']">
+							There must be either ColumnRef or Value present as child of DimensionMasterData Column
+						 /Dimension[@id='LUCATION'] /DimensionMasterData[2] /Hierarchy[3] /Level[4] /Column[@id='STATE_TEXT']</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LUCATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[3] /Column[@id='STATE_NAME'] /ColumnRef[@columnRef='STATE_LABEL']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE_LABEL
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='LACATION']">
+						Dimension LACATION must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='LACATION']">
+						Dimension LACATION must refer to source column via a ColumnRef
+					</Error>
+<Error rule="4.11.1" position=" /Dimension[@id='LACATION'] /DimensionMasterData[1]">
+					Leveled hierarchy in dimension LACATION needs exactly one level 
+					with Column[@id='LACATION' and @semanticType='DIMENSION_KEY']
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LACATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[1] /Column[@id='STATE'] /ColumnRef[@columnRef='STATE']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						STATE
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='LACATION'] /DimensionMasterData[1] /Hierarchy[1] /Level[2] /Column[@id='LUCATION'] /ColumnRef[@columnRef='TOWN']">
+						unsatisfied reference to
+	 					DG/BR/LOCATION
+						.
+						TOWN
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='PARCHILD']">
+						Dimension PARCHILD must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='PARCHILD']">
+						Dimension PARCHILD must refer to source column via a ColumnRef
+					</Error>
+<Error rule="3.11.5" position=" /Dimension[@id='PARCHILD']">
+						different types between dimension and column and dimension
+						NVARCHAR(20)
+						!=
+						NVARCHAR(30)(source type at
+							 /Dimension[@id='PARCHILD'] /DimensionMasterData[2] /Hierarchy[3] /Column[@id='PARCHILD'])
+					</Error>
+<Error rule="3.11.5" position=" /Dimension[@id='PARCHILD']">
+						different types between dimension and column and dimension
+						NVARCHAR(20)
+						!=
+						NVARCHAR(30)(source type at
+							 /Dimension[@id='PARCHILD'] /DimensionMasterData[2] /Hierarchy[3] /Column[@id='PARCHILD'])
+					</Error>
+<Error rule="2.11.4" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1]">
+				Need one DIMENSION_KEY column in a parent child hierarchy
+				 /Dimension[@id='PARCHILD'] /DimensionMasterData[2] /Hierarchy[3]</Error>
+<Error rule="2.11.5" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1]">
+				Need one DIMENSION_PARENT_KEY column in a parent child hierarchy
+				 /Dimension[@id='PARCHILD'] /DimensionMasterData[2] /Hierarchy[3]</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='CHILD_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						CHILD_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.0.0" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD']">
+				Name
+				PARCHILD
+				is not unique in
+				Hierarchy
+				[@id='
+				
+				']
+				/
+				Column[@id='
+				PARCHILD
+				']
+			</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.7" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_OTHER']">
+					Columnn DIMENSION_KEY must be first column in a level, hierarchy or dimension
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_OTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_BADOTHER']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'PARCHILD_NAME', not  'PARCHILD_BADOTHER_NAME'
+				</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_BADOTHER'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.5" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_NAME']">
+				Dimension name can only be used once per level
+				PARCHILD_NAME</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILD'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILD_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="4.11.2" position=" /Dimension[@id='PARCHILDNOSEM']">
+						Dimension PARCHILDNOSEM must refer to fact table column of same name
+					</Error>
+<Error rule="4.11.12" position=" /Dimension[@id='PARCHILDNOSEM']">
+						Dimension PARCHILDNOSEM must refer to source column via a ColumnRef
+					</Error>
+<Error rule="2.11.4" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1]">
+				Need one DIMENSION_KEY column in a parent child hierarchy
+				 /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[2] /Hierarchy[3]</Error>
+<Error rule="2.11.5" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1]">
+				Need one DIMENSION_PARENT_KEY column in a parent child hierarchy
+				 /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[2] /Hierarchy[3]</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM'] /ColumnRef[@columnRef='CHILD_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						CHILD_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_PARENT'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="2.11.6" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME']">
+					Columnn DIMENSION_NAME must be after @semanticType="DIMENSION_KEY"
+					PARCHILDNOSEM_NAME
+					and dimension must be identical
+					PARCHILDNOSEM</Error>
+<Error rule="2.11.9" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME']">
+					Name of @semanticType='DIMENSION_NAME' column must be &lt;dimension/level_key_name&gt;_NAME:
+					'_NAME', not  'PARCHILDNOSEM_NAME_NAME'
+				</Error>
+<Error rule="2.11.6" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME']">
+					Columnn DIMENSION_NAME must be after @semanticType="DIMENSION_KEY"
+					PARCHILDNOSEM_NAME
+					and dimension must be identical
+					PARCHILDNOSEM</Error>
+<Error rule="4.2.9" position=" /Dimension[@id='PARCHILDNOSEM'] /DimensionMasterData[1] /Hierarchy[1] /Column[@id='PARCHILDNOSEM_NAME'] /ColumnRef[@columnRef='PARENT_KEY']">
+						unsatisfied reference to
+	 					MOGHULS
+						.
+						PARENT_KEY
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /BaseMeasure[@id='AGE'] /ColumnRef[@columnRef='AGE_IN_YEARS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_AGE
+						.
+						AGE_IN_YEARS
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /BaseMeasure[@id='TENURE_DAYS'] /ColumnRef[@columnRef='TENURE_DAYS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_TENURE
+						.
+						TENURE_DAYS
+						.
+						Typo?
+					</Error>
+<Error rule="4.2.9" position=" /BaseMeasure[@id='TENURE_YEARS'] /ColumnRef[@columnRef='TENURE_YEARS']">
+						unsatisfied reference to
+	 					DG/EM/GE/GEN_TENURE
+						.
+						TENURE_YEARS
+						.
+						Typo?
+					</Error>
+<Error rule="4.15.1" position=" /BaseMeasure[@id='WEIGHT']">BaseMeasure: WEIGHT must refer to fact/aggregate table column of same name
+				</Error>
+<Error rule="2.0.1" position=" /BaseMeasure[@id='LOCATION']">
+				Name
+				LOCATION
+				is not unique in
+				 /BaseMeasure[@id='LOCATION']</Error>
+<Error rule="2.1.1" position=" /BaseMeasure[@id='LOCATION']">
+				Direct ColumnRef requires @eventStrategyRef
+			</Error>
+<Error rule="4.15.1" position=" /BaseMeasure[@id='LOCATION']">BaseMeasure: LOCATION must refer to fact/aggregate table column of same name
+				</Error>
+<Error rule="2.1.1" position=" /BaseMeasure[@id='HCDEC']">
+				Direct ColumnRef requires @eventStrategyRef
+			</Error>
+<Error rule="4.15.1" position=" /BaseMeasure[@id='HCDEC']">BaseMeasure: HCDEC must refer to fact/aggregate table column of same name
+				</Error>
+<Error rule="2.7.8" position=" /BaseMeasure[@id='MEAS_HEADCOUNT'] /EventRef[@eventRef='MOVE_OUT']">
+					   @value=-3 is not supported, only 
+					   +1, -1, 0 and NULL are currently supported
+					</Error>
+<Error rule="2.7.8" position=" /BaseMeasure[@id='MEAS_HEADCOUNT'] /EventRef[@eventRef='MOVE_IN']">
+					   @value='ABC' is not supported, only 
+					   +1, -1, 0 and NULL are currently supported
+					</Error>
+<Error rule="2.7.4" position=" /BaseMeasure[@id='MEAS_HEADCOUNT'] /EventRef[@eventRef='DATAC']">
+					   @calculation=CURR needs child
+					</Error>
+<Error rule="2.7.3" position=" /BaseMeasure[@id='MEAS_HEADCOUNT'] /EventRef[@eventRef='ROLL_UP']">
+						Only ACCUMULATE_TEST_NON_ZERO, ACCUMULATE or PRIOR_FACT can be used as Calculation for event ROLL_UP, not 
+						CURR</Error>
+<Error rule="4.4.22" position=" /BaseMeasure[@id='MEAS_MOVE_IN']">BaseMeasure: MEAS_MOVE_IN of BIGINT dataType must have BIGINT of INTEGER fact/aggregate table column, not
+					'SMALLINT'
+			</Error>
+<Error rule="2.7.3" position=" /BaseMeasure[@id='MEAS_MOVE_OUT'] /EventRef[@eventRef='ROLL_UP']">
+						Only ACCUMULATE_TEST_NON_ZERO, ACCUMULATE or PRIOR_FACT can be used as Calculation for event ROLL_UP, not 
+						PREV</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (EOPHEADCOUNT).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="2.17.41" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					Custom/Base measure id EOPHEADCOUNT of type Integer shall not have precision
+				</Error>
+<Error rule="4.15.23" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+							Unclear what Custom Measure EOPHEADCOUNT
+	         is referring too, did not regognize base HEAD_COUNT</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='SOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (SOPHEADCOUNT).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="2.17.5" position=" /CustomMeasure[@id='SOPHEADCOUNT']">
+						Custom/Base measure id SOPHEADCOUNT of type Decimal precision may not be smaller than scale
+					</Error>
+<Error rule="2.17.6" position=" /CustomMeasure[@id='SOPHEADCOUNT']">
+						Custom/Base measure id SOPHEADCOUNT precision out of range
+					</Error>
+<Error rule="2.17.7" position=" /CustomMeasure[@id='SOPHEADCOUNT']">
+						Custom/Base measure id SOPHEADCOUNT precision out of range
+					</Error>
+<Error rule="4.15.23" position=" /CustomMeasure[@id='SOPHEADCOUNT']">
+							Unclear what Custom Measure SOPHEADCOUNT
+	         is referring too, did not regognize base HEAD_COUNT</Error>
+<Error rule="4.17.2" position=" /CustomMeasure[@id='AGE']">
+					Custommeasure id AGE must not collide with BaseMeasure or Dimension
+				</Error>
+<Error rule="4.17.51" position=" /CustomMeasure[@id='AGE']">
+					 Cyclic reference with Custom Measure (AGE)
+				</Error>
+<Error rule="2.17.41" position=" /CustomMeasure[@id='AGE']">
+					Custom/Base measure id AGE of type Integer shall not have precision
+				</Error>
+<Error rule="4.17.23" position=" /CustomMeasure[@id='SOPHEADCOUNTX']">
+							Base measure HCDEC of Custom Measure SOPHEADCOUNTX can not have narrower type precision
+							Decimal(10,7)
+							Decimal(,)
+							must refer to fact table column of same name
+					</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (EOPHEADCOUNT_REGULAR).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="2.17.5" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR']">
+						Custom/Base measure id EOPHEADCOUNT_REGULAR of type Decimal precision may not be smaller than scale
+					</Error>
+<Error rule="2.17.6" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR']">
+						Custom/Base measure id EOPHEADCOUNT_REGULAR precision out of range
+					</Error>
+<Error rule="2.17.7" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR']">
+						Custom/Base measure id EOPHEADCOUNT_REGULAR precision out of range
+					</Error>
+<Error rule="4.17.1" position=" /CustomMeasure[@id='EOPHEADCOUNT_TEMPORARY'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (LOCCODE_NIX) in Condition must refer to a present dimension 
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (EOPHEADCOUNT_TEMPORARY).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (LOCCODE) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (DIM_DAYS) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (DIM_TENURE_YEARS) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (DIM_AGE) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (EOPHEADCOUNT_REGULAR).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="2.17.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR']">
+				Custom/Base measure id EOPHEADCOUNT_REGULAR must have a type
+			</Error>
+<Error rule="15.2.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[1]">shouldbeint does not fit type INTEGER</Error>
+<Error rule="15.2.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[5]">12.3 does not fit type INTEGER</Error>
+<Error rule="15.2.3" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[6]">-12.3 does not fit type INTEGER</Error>
+<Error rule="15.2.12" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[1]">
+					Illegal Decimal literal shouldbeint, for DECIMAL(7,2)
+					
+				</Error>
+<Error rule="15.2.13" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[8]">
+					Illegal Decimal literal +123456.3, value too large for DECIMAL(7,2)
+				</Error>
+<Error rule="15.2.12" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[10]">
+					Illegal Decimal literal 123456.3, for DECIMAL(7,2)
+					
+				</Error>
+<Error rule="15.2.10" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[14]">
+					Illegal Decimal literal 12.3.3 for DECIMAL(7,2)
+				</Error>
+<Error rule="15.2.10" position=" /CustomMeasure[@id='EOPHEADCOUNT_REGULAR'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /ColumnValue[15]">
+					Illegal Decimal literal -12.3333.3333333 for DECIMAL(7,2)
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='SELFREF'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.51" position=" /CustomMeasure[@id='SELFREF'] /Restrictions[1] /Case[1] /Then[1]">
+					 Cyclic reference with Custom Measure (SELFREF)
+				</Error>
+<Error rule="2.17.5" position=" /CustomMeasure[@id='SELFREF']">
+						Custom/Base measure id SELFREF of type Decimal precision may not be smaller than scale
+					</Error>
+<Error rule="2.17.6" position=" /CustomMeasure[@id='SELFREF']">
+						Custom/Base measure id SELFREF precision out of range
+					</Error>
+<Error rule="2.17.7" position=" /CustomMeasure[@id='SELFREF']">
+						Custom/Base measure id SELFREF precision out of range
+					</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='CYCLEREF_A'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.51" position=" /CustomMeasure[@id='CYCLEREF_B'] /Restrictions[1] /Case[1] /Then[1]">
+					 Cyclic reference with Custom Measure (CYCLEREF_A)
+				</Error>
+<Error rule="2.17.5" position=" /CustomMeasure[@id='CYCLEREF_A']">
+						Custom/Base measure id CYCLEREF_A of type Decimal precision may not be smaller than scale
+					</Error>
+<Error rule="2.17.6" position=" /CustomMeasure[@id='CYCLEREF_A']">
+						Custom/Base measure id CYCLEREF_A precision out of range
+					</Error>
+<Error rule="2.17.7" position=" /CustomMeasure[@id='CYCLEREF_A']">
+						Custom/Base measure id CYCLEREF_A precision out of range
+					</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='CYCLEREF_B'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.51" position=" /CustomMeasure[@id='CYCLEREF_A'] /Restrictions[1] /Case[1] /Then[1]">
+					 Cyclic reference with Custom Measure (CYCLEREF_B)
+				</Error>
+<Error rule="4.15.32" position=" /CustomMeasure[@id='CYCLEREF_B']">
+							of Custom Measure CYCLEREF_B (Integer type) must have Integer as base type in Base measure CYCLEREF_A, not
+							DECIMAL</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='AND_BEYOND_INFINITY'] /Restrictions[1] /Case[1] /When[1] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.3" position=" /CustomMeasure[@id='AND_BEYOND_INFINITY'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ']">
+					@dimensionId (REGULAR_TEMP) in condition must refer to a present dimension with DimensionMasterData modelling.
+					(This may be a temporary limitation overcome by CSN generation adjustments) 
+				</Error>
+<Error rule="4.17.52" position=" /CustomMeasure[@id='EOPHEADCOUNT']">
+					broken reference HEAD_COUNT following references from (AND_BEYOND_INFINITY).
+					Hint: Either add the measure to selected measures or check for typos in base measure references;
+				</Error>
+<Error rule="4.17.41" position=" /CustomMeasure[@id='CYCLEREF_A']">
+				 reference depth exceeded following custom measure (AND_BEYOND_INFINITY)
+			</Error>
+<Error rule="4.17.4" position=" /CustomMeasure[@id='AND_BEYOND_INFINITY'] /Restrictions[1] /Case[1] /When[2] /WhenOperation[1] /Condition[@op='EQ'] /Column[1] /RawColumnValue[1]">
+					CustomMeasure[@id="AND_BEYOND_INFINITY"] has untyped Restrictions/Case/Then
+					dimension: 'REGULAR_TEMP' 
+					column: 'REGULAR_TEMP'
+					value: 'Regular' ),
+					</Error>
+</Errors>

@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?><Entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../main/resources/config.tabledefs.xsd">
+<Entity name="DG/EM/FACTFIN" type="TABLE" serviceLayer="DG">
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="START_DATE" dataType="DATE"/>
+<Column id="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+<Column id="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+<Column id="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+<Column id="COUNTRY" dataType="NVARCHAR" precision="3"/>
+<Column id="GENDER" dataType="NVARCHAR" precision="2"/>
+<Column id="COUNTRY_LOCATION" dataType="NVARCHAR" precision="3"/>
+<Column id="PAYGROUP" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="REASON" dataType="NVARCHAR" precision="14"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7"/>
+<Column id="WEIGHT" dataType="BIGINT"/>
+<Column id="DIST_WORK_HOME" dataType="BIGINT"/>
+<Column id="MONTHS_SINCE_HIRE" dataType="BIGINT" scale="0"/>
+<Column id="NR_CHILDREN" dataType="BIGINT" scale="0"/>
+<Column id="MEAS_HEADCOUNT" dataType="BIGINT" scale="0"/>
+<Column id="MEAS_MOVE_IN" dataType="BIGINT" scale="0"/>
+<Column id="MEAS_MOVE_OUT" dataType="BIGINT" precision="32" scale="0"/>
+<Column id="EOPHeadcount" dataType="DECIMAL" precision="32" scale="2"/>
+</Entity>
+<DeleteEntity type="VIEW" name="EM/VW/EMP_EMPLOYMENT_INFO" serviceLayer="DG"/>
+<Entity name="EM/VW/EMP_EMPLOYMENT_INFO" type="VIEW" serviceLayer="DG" sourceTableRef="DA/EM/EMPLOYMENT_INFO">
+<Column id="PERSON_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="PERSON_ID"/>
+<Column id="USERS_SYS_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="USERS_SYS_ID"/>
+<Column id="EFFECTIVE_START_DATE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="EFFECTIVE_START_DATE"/>
+<Column id="ASSIGNMENT_TYPE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ASSIGNMENT_TYPE"/>
+<Column id="ORIGINAL_START_DATE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ORIGINAL_START_DATE"/>
+<!-- add augmented columns (if any ) -->
+<Column id="/DG/EM/NORM_EVENT" fixedValue="true" value="DATA_C" dataType="NVARCHAR" precision="12"/>
+</Entity>
+<DeleteEntity type="VIEW" name="DG/EM/VW/JOBINFO" serviceLayer="DG"/>
+<Entity name="DG/EM/VW/JOBINFO" type="VIEW" serviceLayer="DG" sourceTableRef="DA/EM/JOBINFO">
+<Column id="USERS_SYS_ID" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="USERS_SYS_ID"/>
+<Column id="EFFECTIVE_START_DATE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EFFECTIVE_START_DATE"/>
+<Column id="EFFECTIVE_END_DATE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EFFECTIVE_END_DATE"/>
+<Column id="EMPLOYMENT_STATUS" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EMPLOYMENT_STATUS"/>
+<Column id="JOB_TITLE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="JOB_TITLE"/>
+<Column id="FTE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="FTE"/>
+<Column id="EVENT" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EVENT"/>
+<Column id="EVENT_REASON_ICODE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EVENT_REASON_ICODE"/>
+<Column id="SEQ_NR" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="SEQ_NR"/>
+<Column id="FTE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="FTE"/>
+<Column id="WEIGHT" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="WEIGHT"/>
+<Column id="LOCCODE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="LOCCODE"/>
+<Column id="LOCATION" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="LOCATION"/>
+<Column id="MOVE_REASON" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="MOVE_REASON"/>
+<Column id="HIRE_REASON" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="HIRE_REASON"/>
+<Column id="EMPLOYMENT_TYPE" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="EMPLOYMENT_TYPE"/>
+<Column id="PAYGROUP" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="PAYGROUP"/>
+<Column id="MGR_USER_ID" sourceTableRef="DA/EM/JOBINFO" sourceColumnRef="MGR_USER_ID"/>
+<!-- add augmented columns (if any ) -->
+<Column id="/DG/EM/NORM_EVENT" sourceTableRef="DG/EM/EVENT_MAPPING" sourceColumnRef="NORM_EVENT" dataType="NVARCHAR" precision="12"/>
+<Column id="/DG/EM/NORM_EVENT_PRIO" sourceTableRef="DG/EM/EVENT_MAPPING" sourceColumnRef="NORM_EVENT" dataType="NVARCHAR"/>
+<Column id="/DG/EM/PERSON_ID" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="PERSON_ID" dataType="DECIMAL" precision="10"/>
+<Column id="/DG/EM/GA_TYPE" sourceTableRef="DA/EM/EMPLOYMENT_INFO" sourceColumnRef="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+<Column id="DG/EM/REGION_LOCATION" sourceTableRef="DA/EM/LOCATION_HIER" sourceColumnRef="PARENT_LOCATION" dataType="BIGINT"/>
+<Column id="/DG/EM/WEIGHT_GROUP" sourceTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" sourceColumnRef="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+<Column id="/DG/EM/COUNTRY_LOCATION" sourceTableRef="DG/EM/LOCCODE_TO_COUNTRY" sourceColumnRef="COUNTRY" dataType="NVARCHAR" precision="3"/>
+<Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/EVENT_MAPPING" joinType="INNER" unique="true">
+<JoinCondition firstColumnRef="EVENT" secondColumnRef="EVENT" cond="EQ" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/EVENT_MAPPING"/>
+<JoinCondition firstColumnRef="EVENT_REASON_ICODE" secondColumnRef="EVENT_REASON_ICODE" cond="EQ" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/EVENT_MAPPING"/>
+</Join>
+<Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/EMPLOYMENT_INFO" joinType="INNER">
+<JoinCondition firstTableRef="DA/EM/JOBINFO" firstColumnRef="USERS_SYS_ID" cond="EQ" secondColumnRef="USERS_SYS_ID" secondTableRef="DA/EM/EMPLOYMENT_INFO"/>
+</Join>
+<Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DA/EM/LOCATION_HIER">
+<JoinCondition secondValue="'REGION'" dataType="NVARCHAR" precision="14" cond="EQ" firstTableRef="DA/EM/LOCATION_HIER" firstColumnRef="LOCATION_CATEGORY"/>
+<JoinCondition firstColumnRef="LOCATION" cond="LT" secondColumnRef="LOCATION_ID" firstTableRef="DA/EM/JOBINFO" secondTableRef="DA/EM/LOCATION_HIER"/>
+</Join>
+<Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" joinType="INNER">
+<JoinCondition firstColumnRef="WEIGHT" cond="GE" secondColumnRef="FROM_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+<JoinCondition firstColumnRef="WEIGHT" cond="LT" secondColumnRef="TO_WEIGHT" secondTableRef="DG/EM/CFG_DATA/WEIGHT_GROUPS" firstTableRef="DA/EM/JOBINFO"/>
+</Join>
+<Join leftTableRef="DA/EM/JOBINFO" rightTableRef="DG/EM/LOCCODE_TO_COUNTRY" joinType="LEFT">
+<JoinCondition firstColumnRef="LOCCODE" cond="EQ" secondColumnRef="LOCCODE" firstTableRef="DA/EM/JOBINFO" secondTableRef="DG/EM/LOCCODE_TO_COUNTRY"/>
+</Join>
+</Entity>
+<DeleteEntity type="VIEW" name="DG/EM/VW/EMPLOYEE" serviceLayer="DG"/>
+<Entity name="DG/EM/VW/EMPLOYEE" type="VIEW" serviceLayer="DG" sourceTableRef="DA/EM/EMPLOYEE">
+<Column id="PERSON_ID" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID"/>
+<Column id="TAX_ID" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="TAX_ID"/>
+<!-- add augmented columns (if any ) -->
+</Entity>
+<DeleteEntity type="VIEW" name="DG/EM/VW/PERSONINFO" serviceLayer="DG"/>
+<Entity name="DG/EM/VW/PERSONINFO" type="VIEW" serviceLayer="DG" sourceTableRef="DA/EM/PERSONINFO">
+<Column id="PERSON_ID" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="PERSON_ID"/>
+<Column id="EFFECTIVE_DATE" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="EFFECTIVE_DATE"/>
+<Column id="GENDER" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="GENDER"/>
+<Column id="NR_CHILDREN" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="NR_CHILDREN"/>
+<Column id="FIRSTNAME" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="FIRSTNAME"/>
+<Column id="LASTNAME" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="LASTNAME"/>
+<Column id="DATE_OF_BIRTH" sourceTableRef="DA/EM/PERSONINFO" sourceColumnRef="DATE_OF_BIRTH"/>
+<!-- add augmented columns (if any ) -->
+</Entity>
+<DeleteEntity type="VIEW" name="DG/EM/VW/MGR_LOCATION" serviceLayer="DG"/>
+<Entity name="DG/EM/VW/MGR_LOCATION" type="VIEW" serviceLayer="DG">
+<!-- add augmented columns (if any ) -->
+<Column id="/DG/EM/PERSON_ID" sourceTableRef="EMP_JOBINFO" sourceColumnRef="PERSON_ID"/>
+<Column id="/DG/EM/MGR_FROM_DATE" sourceTableRef="MGR_JOBINFO" sourceColumnRef="EFFECTIVE_DATE_FROM"/>
+<Column id="/DG/EM/MGR_TO_DATE" sourceTableRef="MGR_JOBINFO" sourceColumnRef="EFFECTIVE_DATE_TO"/>
+<Column id="/DG/EM/SEQ_NR" sourceTableRef="MGR_JOBINFO" sourceColumnRef="SEQ_NR"/>
+<Column id="/DG/EM/MGR_LOCATION" sourceTableRef="MGR_JOBINFO" sourceColumnRef="LOCATION"/>
+<Column id="/DG/EM/NORM_EVENT" dataType="NVARCHAR"/>
+<Join leftTableRef="DG/EM/JOBINFO" leftTableAlias="EMP_JOBINFO" unique="true" rightTableRef="DG/EM/JOBINFO" rightTableAlias="MGR_JOBINFO" joinType="INNER">
+<JoinCondition firstTableRef="EMP_JOBINFO" firstColumnRef="MGR_ID" cond="EQ" secondTableRef="MGR_JOBINFO" secondColumnRef="PERSON_ID"/>
+<JoinCondition cond="timeinLHSRangeSTART" firstTableRef="EMP_JOBINFO" firstColumnRef="EFFECTIVE_START_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_START_DATE"/>
+<JoinCondition cond="timeinLHSRangeEND" firstTableRef="EMP_JOBINFO" firstColumnRef="EFFECTIVE_END_DATE" secondTableRef="MGR_JOBINFO" secondColumnRef="EFFECTIVE_END_DATE"/>
+</Join>
+</Entity>
+<DeleteEntity type="TABLE" name="DG/EM/GE/GEN_AGE" serviceLayer="DG"/>
+<Entity name="DG/EM/GE/GEN_AGE" type="TABLE" serviceLayer="DG">
+<!-- add augmented columns (if any ) -->
+<Column id="/DG/EM/PERSON_ID" sourceTableRef="DA/EM/EMPLOYEE" sourceColumnRef="PERSON_ID" dataType="BIGINT"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE"/>
+<Column id="/DG/EM/AGE" dataType="SMALLINT"/>
+<Column id="/DG/EM/NORM_EVENT" fixedValue="true" value="'DATAC'" dataType="NVARCHAR" precision="12"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DG/EM/GEN_DAYS_SINCE_HIRE" serviceLayer="DG"/>
+<Entity name="DG/EM/GEN_DAYS_SINCE_HIRE" type="TABLE" serviceLayer="DG">
+<!-- add augmented columns (if any ) -->
+<Column id="/DG/EM/PERSON_ID" dataType="BIGINT"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE"/>
+<Column id="/DG/EM/DAYS_SINCE_HIRE" dataType="INTEGER"/>
+<Column id="/DG/EM/MONTHS_SINCE_HIRE" dataType="INTEGER"/>
+<Column id="/DG/EM/NORM_EVENT" fixedValue="true" value="'DATAC'" dataType="NVARCHAR" precision="12"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/EMPLOYMENT_INFO" serviceLayer="DA"/>
+<Entity name="DA/EM/EMPLOYMENT_INFO" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="DECIMAL" precision="10"/>
+<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" dataType="DATE"/>
+<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+<Column id="ORIGINAL_START_DATE" dataType="DATE"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/JOBINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/JOBINFO" type="TABLE" serviceLayer="DA">
+<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" dataType="DATE"/>
+<Column id="EFFECTIVE_END_DATE" dataType="DATE"/>
+<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7"/>
+<Column id="JOB_TITLE" dataType="NVARCHAR" precision="17"/>
+<Column id="FTE" dataType="DECIMAL" precision="15" scale="3"/>
+<Column id="EVENT" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT"/>
+<Column id="SEQ_NR" dataType="BIGINT"/>
+<Column id="FTE" dataType="BIGINT"/>
+<Column id="WEIGHT" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="LOCATION" dataType="BIGINT"/>
+<Column id="MOVE_REASON" dataType="NVARCHAR"/>
+<Column id="HIRE_REASON" dataType="NVARCHAR"/>
+<Column id="EMPLOYMENT_TYPE" dataType="BIGINT"/>
+<Column id="PAYGROUP" dataType="BIGINT"/>
+<Column id="MGR_USER_ID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/PERSONINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/PERSONINFO" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE"/>
+<Column id="GENDER" dataType="NVARCHAR" precision="2"/>
+<Column id="NR_CHILDREN" dataType="BIGINT"/>
+<Column id="FIRSTNAME" dataType="NVARCHAR" precision="30"/>
+<Column id="LASTNAME" dataType="NVARCHAR" precision="100"/>
+<Column id="DATE_OF_BIRTH" dataType="DATE"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/LOCATION_HIER" serviceLayer="DA"/>
+<Entity name="DA/EM/LOCATION_HIER" type="TABLE" serviceLayer="DA">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="LOCATION_ID" dataType="BIGINT"/>
+<Column id="PARENT_LOCATION" dataType="BIGINT"/>
+<Column id="LOCATION_CATEGORY" dataType="NVARCHAR" precision="13"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/EMPLOYEE" serviceLayer="DA"/>
+<Entity name="DA/EM/EMPLOYEE" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="TAX_ID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="PICKLIST" serviceLayer="DA"/>
+<Entity name="PICKLIST" type="TABLE" serviceLayer="DA">
+<Column id="OPTION_ID" dataType="DECIMAL"/>
+<Column id="EXTERNAL_CODE" dataType="NVARCHAR"/>
+<Column id="PICKLISTID" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/AGE_GROUPS" serviceLayer="DA"/>
+<Entity name="DA/EM/AGE_GROUPS" type="TABLE" serviceLayer="DA">
+<Column id="AGE_FROM_INCL" dataType="DATE"/>
+<Column id="AGE_TO_EXCL" dataType="DATE"/>
+<Column id="AGE_GROUP_ID" dataType="BIGINT"/>
+<Column id="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+<Column id="AGE_GROUP_ATTR1" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/TRAVEL_COMP_GROUPS" serviceLayer="DA"/>
+<Entity name="DA/EM/TRAVEL_COMP_GROUPS" type="TABLE" serviceLayer="DA">
+<Column id="AGE_FROM" dataType="SMALLINT"/>
+<Column id="AGE_TO" dataType="SMALLINT"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/USERS_SYSINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/USERS_SYSINFO" type="TABLE" serviceLayer="DA">
+<Column id="USERS_SYS_ID" dataType="BIGINT"/>
+<Column id="USERS_SYS_FIRSTNAME" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MI" dataType="BIGINT"/>
+<Column id="USERS_SYS_LASTNAME" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MANAGERUID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/USERS_SYSINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/USERS_SYSINFO" type="TABLE" serviceLayer="DA">
+<Column id="SF_FIELD1" dataType="BIGINT"/>
+<Column id="USERS_SYS_FIRSTNAME" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/EMPLOYMENT_INFO" serviceLayer="DA"/>
+<Entity name="DA/EM/EMPLOYMENT_INFO" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="DECIMAL" precision="10"/>
+<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" dataType="DATE"/>
+<Column id="ASSIGNMENT_TYPE" dataType="NVARCHAR" precision="2"/>
+<Column id="ORIGINAL_START_DATE" dataType="DATE"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/JOBINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/JOBINFO" type="TABLE" serviceLayer="DA">
+<Column id="USERS_SYS_ID" dataType="NVARCHAR" precision="11"/>
+<Column id="EFFECTIVE_START_DATE" dataType="DATE"/>
+<Column id="EFFECTIVE_END_DATE" dataType="DATE"/>
+<Column id="EMPLOYMENT_STATUS" dataType="NVARCHAR" precision="7"/>
+<Column id="JOB_TITLE" dataType="NVARCHAR" precision="17"/>
+<Column id="FTE" dataType="DECIMAL" precision="15" scale="3"/>
+<Column id="EVENT" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT"/>
+<Column id="SEQ_NR" dataType="BIGINT"/>
+<Column id="FTE" dataType="BIGINT"/>
+<Column id="WEIGHT" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="LOCATION" dataType="BIGINT"/>
+<Column id="MOVE_REASON" dataType="NVARCHAR"/>
+<Column id="HIRE_REASON" dataType="NVARCHAR"/>
+<Column id="EMPLOYMENT_TYPE" dataType="BIGINT"/>
+<Column id="PAYGROUP" dataType="BIGINT"/>
+<Column id="MGR_USER_ID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/PERSONINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/PERSONINFO" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="EFFECTIVE_DATE" dataType="DATE"/>
+<Column id="GENDER" dataType="NVARCHAR" precision="2"/>
+<Column id="NR_CHILDREN" dataType="BIGINT"/>
+<Column id="FIRSTNAME" dataType="NVARCHAR" precision="30"/>
+<Column id="LASTNAME" dataType="NVARCHAR" precision="100"/>
+<Column id="DATE_OF_BIRTH" dataType="DATE"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/LOCATION_HIER" serviceLayer="DA"/>
+<Entity name="DA/EM/LOCATION_HIER" type="TABLE" serviceLayer="DA">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="LOCATION_ID" dataType="BIGINT"/>
+<Column id="PARENT_LOCATION" dataType="BIGINT"/>
+<Column id="LOCATION_CATEGORY" dataType="NVARCHAR" precision="13"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/EMPLOYEE" serviceLayer="DA"/>
+<Entity name="DA/EM/EMPLOYEE" type="TABLE" serviceLayer="DA">
+<Column id="PERSON_ID" dataType="BIGINT"/>
+<Column id="TAX_ID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="PICKLIST" serviceLayer="DA"/>
+<Entity name="PICKLIST" type="TABLE" serviceLayer="DA">
+<Column id="OPTION_ID" dataType="DECIMAL"/>
+<Column id="EXTERNAL_CODE" dataType="NVARCHAR"/>
+<Column id="PICKLISTID" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/AGE_GROUPS" serviceLayer="DA"/>
+<Entity name="DA/EM/AGE_GROUPS" type="TABLE" serviceLayer="DA">
+<Column id="AGE_FROM_INCL" dataType="DATE"/>
+<Column id="AGE_TO_EXCL" dataType="DATE"/>
+<Column id="AGE_GROUP_ID" dataType="BIGINT"/>
+<Column id="AGE_GROUP" dataType="NVARCHAR" precision="18"/>
+<Column id="AGE_GROUP_ATTR1" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/TRAVEL_COMP_GROUPS" serviceLayer="DA"/>
+<Entity name="DA/EM/TRAVEL_COMP_GROUPS" type="TABLE" serviceLayer="DA">
+<Column id="AGE_FROM" dataType="SMALLINT"/>
+<Column id="AGE_TO" dataType="SMALLINT"/>
+<Column id="TRAVEL_COMP_GROUP" dataType="NVARCHAR" precision="9"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/USERS_SYSINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/USERS_SYSINFO" type="TABLE" serviceLayer="DA">
+<Column id="USERS_SYS_ID" dataType="BIGINT"/>
+<Column id="USERS_SYS_FIRSTNAME" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MI" dataType="BIGINT"/>
+<Column id="USERS_SYS_LASTNAME" dataType="NVARCHAR"/>
+<Column id="USERS_SYS_MANAGERUID" dataType="BIGINT"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DA/EM/USERS_SYSINFO" serviceLayer="DA"/>
+<Entity name="DA/EM/USERS_SYSINFO" type="TABLE" serviceLayer="DA">
+<Column id="SF_FIELD1" dataType="BIGINT"/>
+<Column id="USERS_SYS_FIRSTNAME" dataType="NVARCHAR"/>
+</Entity>
+<DeleteEntity type="TABLE" name="DG/EM/CFG_DATA/WEIGHT_GROUPS" serviceLayer="DA"/>
+<Entity name="DG/EM/CFG_DATA/WEIGHT_GROUPS" type="TABLE" serviceLayer="DG">
+<Column id="HIDDEN_IDX" dataType="BIGINT"/>
+<Column id="FROM_WEIGHT" dataType="BIGINT"/>
+<Column id="TO_WEIGHT" dataType="BIGINT"/>
+<Column id="WEIGHT_GROUP" dataType="NVARCHAR" precision="10"/>
+<CsvTableData skipRow="0">
+                        1,-100,5,"0+kg"
+2,50,55,"50+kg"
+3,55,60,"55+kg"
+4,60,65,"60+kg"
+5,65,70,"65+kg"
+6,70,75,"65+kg"
+
+                      </CsvTableData>
+</Entity>
+<DeleteEntity type="TABLE" name="DG/EM/LOCCODE_TO_COUNTRY" serviceLayer="DA"/>
+<Entity name="DG/EM/LOCCODE_TO_COUNTRY" type="TABLE" serviceLayer="DG">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="LOCCODE" dataType="NVARCHAR" precision="3"/>
+<Column id="COUNTRY" dataType="NVARCHAR" precision="3"/>
+<CsvTableData skipRow="0">
+                      
+                1,"WDF","GER"
+                2,"ROT","GER"
+                3,"SFR","USA"
+                4,"BLR","USA"
+                5,"MUM","IND"
+                6,"DHL","IND"
+                    </CsvTableData>
+</Entity>
+<DeleteEntity type="TABLE" name="DG/EM/EVENT_MAPPING" serviceLayer="DA"/>
+<Entity name="DG/EM/EVENT_MAPPING" type="TABLE" serviceLayer="DG">
+<Column id="IDX_HIDDEN" dataType="BIGINT"/>
+<Column id="EVENT" dataType="BIGINT"/>
+<Column id="EVENT_REASON_ICODE" dataType="BIGINT"/>
+<Column id="EVENT_NR" dataType="BIGINT"/>
+<Column id="EVENT_NR2" dataType="BIGINT"/>
+<Column id="NORM_EVENT_PRIO" dataType="BIGINT"/>
+<Column id="NORM_EVENT" dataType="NVARCHAR"/>
+<Column id="EVENT_NR3" dataType="BIGINT"/>
+<Column id="EVENT_CODE_RC" dataType="BIGINT"/>
+<Column id="EVENT_CODE_RS" dataType="NVARCHAR"/>
+<Column id="EVENT_CODE_GASSIGN" dataType="NVARCHAR"/>
+<CsvTableData skipRow="0">
+                      1,-100,5,"0+kg"
+&lt;![CDATA[
+                      1,10999,222,1,1,40,"TERM",1,"_Term_",,
+                      2,10949,227,1,1,30,"HIRE",1,"HIRNEW","H_HIRNEW",
+                      3,10942,216,1,0,2,"DATAC_OUT",1,"DTCNV","5",
+                      4,33388,921,1,1,21,"MOVE_OUT",1,"AGA","AGA","G_ASSIGNM"
+                      5,10973,201,1,1,20,"MOVE_IN",1,"ADDGA","GA","G_ASSIGNM"
+--&gt;
+                        </CsvTableData>
+</Entity>
+</DataSets>
